@@ -1,0 +1,85 @@
+div.example {
+  /*width: 900px;*/
+  min-width: 460px;
+  max-width: 920px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 120px;
+}
+div.example div.table {
+  margin-top: 15px;
+  margin-bottom: 20px;
+}
+div.docs {
+  vertical-align: top;
+  text-align: left;
+}
+div.docs p {
+  padding-right: 5px;
+  padding-top: 5px;
+  padding-bottom: 15px;
+}
+div.code {
+  padding-top: 5px;
+  padding-right: 5px;
+  padding-left: 5px;
+  padding-bottom: 5px;
+  vertical-align: top;
+}
+div.code.leading {
+  padding-bottom: 11px;
+}
+div.code.empty {
+  background: #ffffff;
+}
+div.code {
+  background: #f0f0f0;
+}
+
+/*
+ DIV Layout
+ */
+.table {
+  display: flex;
+  flex-direction: column;
+  gap: 0px; /* space between rows */
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0px; /* space between cells */
+}
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.cell {
+  float: left;
+  /*border: 1px solid #ccc;*/
+  padding: 8px;
+}
+
+.cell.docs {
+  width: 420px;
+}
+
+div.docs.empty {
+  width: 420px;
+  height: 0;
+  padding: 0 8px;
+  margin: 0;
+  /*background: red; !* optional, for visibility *!*/
+}
+.cell.code {
+  width: 460px;
+
+}
+div.code.empty{
+  background: #1f1f1f;
+}
+div.code {
+  background: #282828;
+}
