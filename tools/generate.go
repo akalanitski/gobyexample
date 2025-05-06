@@ -60,13 +60,6 @@ func ensureDir(dir string) {
 }
 
 func copyFile(src, dst string) {
-	_, err := os.Stat(src)
-	if err != nil {
-		if verbose() {
-			fmt.Println("Skipping copy", src, err)
-			return
-		}
-	}
 	dat, err := os.ReadFile(src)
 	check(err)
 	err = os.WriteFile(dst, dat, 0644)
@@ -272,7 +265,7 @@ func parseExamples() []*Example {
 	examples := make([]*Example, 0)
 	for i, exampleName := range exampleNames {
 		if verbose() {
-			fmt.Printf("Processing %s [%d/%d]\n", exampleName, i+1, len(exampleNames))
+			fmt.Printf("Processing [%2d/%d] %s \n", i+1, len(exampleNames), exampleName)
 		}
 		example := Example{Name: exampleName}
 		exampleID := strings.ToLower(exampleName)
@@ -283,20 +276,34 @@ func parseExamples() []*Example {
 		example.ID = exampleID
 		example.FileName = exampleID + outputExt
 		example.Segs = make([][]*Seg, 0)
-		sourcePaths := mustGlob("examples/" + exampleID + "/*")
-		for _, sourcePath := range sourcePaths {
-			if !isDir(sourcePath) {
-				if strings.HasSuffix(sourcePath, ".hash") {
-					example.GoCodeHash, example.URLHash = parseHashFile(sourcePath)
-				} else {
-					sourceSegs, filecontents := parseAndRenderSegs(sourcePath)
-					if filecontents != "" {
-						example.GoCode = filecontents
-					}
-					example.Segs = append(example.Segs, sourceSegs)
-				}
-			}
+
+		hashFileName := "examples/" + exampleID + "/" + exampleID + ".hash"
+		sourceFileName := "examples/" + exampleID + "/" + exampleID + ".go"
+		resultFileName := "examples/" + exampleID + "/" + exampleID + ".sh"
+
+		langSourceFileName := "examples/" + exampleID + "/" + exampleID + "." + langCode + ".go"
+		langResultFileName := "examples/" + exampleID + "/" + exampleID + "." + langCode + ".sh"
+
+		if langCode != "en" && fileExist(langSourceFileName) {
+			sourceFileName = langSourceFileName
 		}
+		if langCode != "en" && fileExist(langResultFileName) {
+			resultFileName = langResultFileName
+		}
+
+		example.GoCodeHash, example.URLHash = parseHashFile(hashFileName)
+		sourceSegs, filecontents := parseAndRenderSegs(sourceFileName)
+		if filecontents != "" {
+			example.GoCode = filecontents
+		}
+		example.Segs = append(example.Segs, sourceSegs)
+
+		sourceSegs, filecontents = parseAndRenderSegs(resultFileName)
+		if filecontents != "" {
+			example.GoCode = filecontents
+		}
+		example.Segs = append(example.Segs, sourceSegs)
+
 		newCodeHash := sha1Sum(example.GoCode)
 		if example.GoCodeHash != newCodeHash {
 			example.URLHash = resetURLHashFile(newCodeHash, example.GoCode, "examples/"+example.ID+"/"+example.ID+".hash")
@@ -312,6 +319,11 @@ func parseExamples() []*Example {
 		}
 	}
 	return examples
+}
+
+func fileExist(path string) bool {
+	_, err := os.Stat(path)
+	return err == nil
 }
 
 func renderIndex(examples []*Example) {
@@ -397,16 +409,17 @@ func parseArguments(args *[]string) {
 func main() {
 	parseArguments(&os.Args)
 
+	// clone static content to output directory
+	copyFile("templates/site.css", siteDir+"/site.css")
+	copyFile("templates/site.js", siteDir+"/site.js")
+	copyFile("templates/favicon.ico", siteDir+"/favicon.ico")
+	copyFile("templates/play.png", siteDir+"/play.png")
+	copyFile("templates/clipboard.png", siteDir+"/clipboard.png")
+
 	if langCode != "en" {
 		templatePath += langCode + "/"
 		siteDir += "/" + langCode
 	}
-	// clone static content to output directory
-	copyFile(templatePath+"site.css", siteDir+"/site.css")
-	copyFile(templatePath+"site.js", siteDir+"/site.js")
-	copyFile(templatePath+"favicon.ico", siteDir+"/favicon.ico")
-	copyFile(templatePath+"play.png", siteDir+"/play.png")
-	copyFile(templatePath+"clipboard.png", siteDir+"/clipboard.png")
 	examples := parseExamples()
 	renderIndex(examples)
 	renderExamples(examples)
