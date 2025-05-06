@@ -326,6 +326,18 @@ func renderExamples(examples []*Example) {
 	}
 }
 
+func renderBook(examples []*Example) {
+	if verbose() {
+		fmt.Println("Rendering book")
+	}
+	bookTemplate := template.New("book")
+	template.Must(bookTemplate.Parse(mustReadFile("templates/book.tex")))
+	file, err := os.Create(siteDir + "/book.tex")
+	check(err)
+	defer file.Close()
+	check(bookTemplate.Execute(file, examples))
+}
+
 func render404() {
 	if verbose() {
 		fmt.Println("Rendering 404")
@@ -375,15 +387,16 @@ func parseArguments(args *[]string) {
 func main() {
 	parseArguments(&os.Args)
 
-	copyFile("templates/site.css", siteDir+"/site.css")
-	copyFile("templates/site.js", siteDir+"/site.js")
-	copyFile("templates/favicon.ico", siteDir+"/favicon.ico")
-	copyFile("templates/play.png", siteDir+"/play.png")
-	copyFile("templates/clipboard.png", siteDir+"/clipboard.png")
+	//copyFile("templates/site.css", siteDir+"/site.css")
+	//copyFile("templates/site.js", siteDir+"/site.js")
+	//copyFile("templates/favicon.ico", siteDir+"/favicon.ico")
+	//copyFile("templates/play.png", siteDir+"/play.png")
+	//copyFile("templates/clipboard.png", siteDir+"/clipboard.png")
 	examples := parseExamples()
-	renderIndex(examples)
-	renderExamples(examples)
-	render404()
+	//renderIndex(examples)
+	//renderExamples(examples)
+	//render404()
+	renderBook(examples)
 }
 
 var SimpleShellOutputLexer = chroma.MustNewLexer(

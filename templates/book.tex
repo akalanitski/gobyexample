@@ -1,0 +1,150 @@
+%! Author = akalanitski
+%! Date = 22.04.25
+
+\documentclass[12pt]{article}
+\usepackage[a4paper,left=2cm, right=1cm, top=1cm, bottom=2cm]{geometry}         % For setting margins
+
+% Optional packages
+\usepackage[utf8]{inputenc}   % Encoding, Allow Unicode input
+\usepackage[T1]{fontenc}      % Better fonts
+\usepackage{multicol}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage[most]{tcolorbox} % loads tikz, xcolor, etc.
+\usepackage[framemethod=default]{mdframed}
+\usepackage[scaled]{beramono}
+\usepackage{tocloft} % Required for custom Table of Contents formatting
+\usepackage{etoolbox}       % For robust patching
+
+
+
+% Make hyperlinks inside of document and clickable TOC
+\usepackage[
+colorlinks=true,              % Enable colored links
+linkcolor=black,              % TOC, sections, etc.
+urlcolor=blue,                % URLs (from \href or \url)
+pdfborder={0 0 1}             % Underline style
+]{hyperref}
+
+% COLUMNS LAYOUT and STYLES
+\setcounter{secnumdepth}{0}
+\renewcommand{\cftsecnumwidth}{0pt} % Remove section numbers from the TOC
+\setlength{\parindent}{0pt}       % First line indentv
+\setlength{\parskip}{1em}         % Add vertical space between paragraphs
+
+% COLUMNS
+\usepackage{paracol}
+\columnratio{0.4}
+\setlength{\columnseprule}{0.4pt} % Line between columns
+\setlength{\columnsep}{1em}       % Space between columns
+
+\tcbset{
+codewordstyle/.style={
+boxrule=0pt,
+colback=gray!20,
+colframe=gray!20,
+boxsep=1pt,
+arc=2pt,
+sharp corners=southwest,  % You can change this
+height=2.5ex,
+valign=center,
+left=2pt, right=2pt,
+enhanced,
+}
+}
+
+
+% Define the command
+\newtcbox{\codeword}{codewordstyle, on line, fontupper=\ttfamily\footnotesize}
+
+\newmdenv[
+linecolor=gray!0.5,
+linewidth=1pt,
+roundcorner=5pt,
+backgroundcolor=gray!10,
+innertopmargin=1em,
+innerbottommargin=1em,
+innerleftmargin=1em,
+innerrightmargin=1em
+]{Note}
+
+
+% Go language definition for listings
+\lstdefinelanguage{Go}{
+morekeywords={
+break, case, chan, const, continue, default, defer, else, fallthrough,
+for, func, go, goto, if, import, interface, map, package, range,
+return, select, struct, switch, type, var, nil, true, false, make,
+new, append, cap, copy, delete, len, close, complex, real, imag
+},
+sensitive=true,
+morecomment=[l]{//},
+morecomment=[s]{/*}{*/},
+morestring=[b]",
+morestring=[b]`,
+}
+
+% Style configuration
+\lstset{
+language=Go,
+%numbers=left,                % Line numbers on the left
+%numbersep=-8pt,
+%numberstyle=\ttfamily\small\color{darkgray},
+basicstyle=\ttfamily\small,
+keywordstyle=\color{blue}\bfseries,
+commentstyle=\color{gray},
+stringstyle=\color{orange},
+rulecolor=\color{gray},
+showstringspaces=false,
+breaklines=true,
+tabsize=1,
+}
+
+\begin{document}
+
+% First page with formal info and document structure.
+% Title page
+\title{Go by Example}
+\author{Mark McGranaghan and Eli Bendersky}
+\date{\today}
+\maketitle
+
+\href{https://go.dev}{Go} is an open source programming language designed for building scalable, secure and reliable software.
+Please read the \href{https://go.dev/doc/tutorial/getting-started}{official documentation} to learn more.
+
+
+\textit{Go by Example} is a hands-on introduction to Go using annotated example programs.
+Check out the \hyperref{sec:hello-world}{first example} or browse the full list below.
+
+
+Unless stated otherwise, examples here assume the \href{https://go.dev/doc/devel/release}{latest major release Go} and may use new language features.
+Try to upgrade to the latest version if something isn't working.
+
+
+% Table of contents
+\begin{multicols}{2}
+\tableofcontents
+\end{multicols}
+
+{{range .}}
+\newpage
+\section{Go by Example: {{.Name}}}
+\label{sec:{{.ID}}}
+  {{range .Segs}}
+    {{range .}}
+\begin{paracol}{2} \begin{leftcolumn}
+    {{.Docs}}
+\end{leftcolumn} \begin{rightcolumn}
+    \begin{lstlisting}
+{{.Code}}
+    \end{lstlisting}
+\end{rightcolumn}
+\end{paracol}
+    {{end}}
+  {{end}}
+{{end}}
+
+
+
+\end{document}
+
