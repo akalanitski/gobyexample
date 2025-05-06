@@ -30,6 +30,15 @@ var siteDir = "./public"
 // otherwise, no extension is used.
 var outputExt = ""
 
+// langCode for language code which will be processed.
+// English language processed by default and doesn't require additional
+// setup in project structure. Templates for other languages must be located in
+// templeates/<langCode> directory. And examples must be next to english go-file
+// with postfix ".<langCode>
+var langCode = "en"
+
+var templatePath = "templates/"
+
 func verbose() bool {
 	return len(os.Getenv("VERBOSE")) > 0
 }
@@ -51,6 +60,13 @@ func ensureDir(dir string) {
 }
 
 func copyFile(src, dst string) {
+	_, err := os.Stat(src)
+	if err != nil {
+		if verbose() {
+			fmt.Println("Skipping copy", src, err)
+			return
+		}
+	}
 	dat, err := os.ReadFile(src)
 	check(err)
 	err = os.WriteFile(dst, dat, 0644)
@@ -303,8 +319,8 @@ func renderIndex(examples []*Example) {
 		fmt.Println("Rendering index")
 	}
 	indexTmpl := template.New("index")
-	template.Must(indexTmpl.Parse(mustReadFile("templates/footer.tmpl")))
-	template.Must(indexTmpl.Parse(mustReadFile("templates/index.tmpl")))
+	template.Must(indexTmpl.Parse(mustReadFile(templatePath + "footer.tmpl")))
+	template.Must(indexTmpl.Parse(mustReadFile(templatePath + "index.tmpl")))
 	indexF, err := os.Create(siteDir + "/index.html")
 	check(err)
 	defer indexF.Close()
@@ -316,8 +332,8 @@ func renderExamples(examples []*Example) {
 		fmt.Println("Rendering examples")
 	}
 	exampleTmpl := template.New("example")
-	template.Must(exampleTmpl.Parse(mustReadFile("templates/footer.tmpl")))
-	template.Must(exampleTmpl.Parse(mustReadFile("templates/example.tmpl")))
+	template.Must(exampleTmpl.Parse(mustReadFile(templatePath + "footer.tmpl")))
+	template.Must(exampleTmpl.Parse(mustReadFile(templatePath + "example.tmpl")))
 	for _, example := range examples {
 		exampleF, err := os.Create(siteDir + "/" + example.FileName)
 		check(err)
@@ -331,8 +347,8 @@ func render404() {
 		fmt.Println("Rendering 404")
 	}
 	tmpl := template.New("404")
-	template.Must(tmpl.Parse(mustReadFile("templates/footer.tmpl")))
-	template.Must(tmpl.Parse(mustReadFile("templates/404.tmpl")))
+	template.Must(tmpl.Parse(mustReadFile(templatePath + "footer.tmpl")))
+	template.Must(tmpl.Parse(mustReadFile(templatePath + "404.tmpl")))
 	file, err := os.Create(siteDir + "/404.html")
 	check(err)
 	defer file.Close()
@@ -353,6 +369,12 @@ func parseArguments(args *[]string) {
 			expectedArg--
 			if verbose() {
 				fmt.Println("Output format HTML")
+			}
+		case "-lang:be":
+			langCode = "be"
+			expectedArg--
+			if verbose() {
+				fmt.Println("Output language BE")
 			}
 		default:
 			err := os.MkdirAll(arg, 0755)
@@ -375,11 +397,16 @@ func parseArguments(args *[]string) {
 func main() {
 	parseArguments(&os.Args)
 
-	copyFile("templates/site.css", siteDir+"/site.css")
-	copyFile("templates/site.js", siteDir+"/site.js")
-	copyFile("templates/favicon.ico", siteDir+"/favicon.ico")
-	copyFile("templates/play.png", siteDir+"/play.png")
-	copyFile("templates/clipboard.png", siteDir+"/clipboard.png")
+	if langCode != "en" {
+		templatePath += langCode + "/"
+		siteDir += "/" + langCode
+	}
+	// clone static content to output directory
+	copyFile(templatePath+"site.css", siteDir+"/site.css")
+	copyFile(templatePath+"site.js", siteDir+"/site.js")
+	copyFile(templatePath+"favicon.ico", siteDir+"/favicon.ico")
+	copyFile(templatePath+"play.png", siteDir+"/play.png")
+	copyFile(templatePath+"clipboard.png", siteDir+"/clipboard.png")
 	examples := parseExamples()
 	renderIndex(examples)
 	renderExamples(examples)
