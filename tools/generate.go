@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"crypto/sha1"
 	"fmt"
+	md "github.com/mmcgrana/gobyexample/tools/markdown"
 	"io"
 	"net/http"
 	"os"
@@ -105,7 +106,7 @@ var dashPat = regexp.MustCompile(`\-+`)
 
 // Seg is a segment of an example
 type Seg struct {
-	Docs, DocsRendered              string
+	Docs, DocsRendered, DocsTex     string
 	Code, CodeRendered, CodeForJs   string
 	CodeEmpty, CodeLeading, CodeRun bool
 }
@@ -228,7 +229,8 @@ func parseAndRenderSegs(sourcePath string) ([]*Seg, string) {
 	lexer := whichLexer(sourcePath)
 	for _, seg := range segs {
 		if seg.Docs != "" {
-			seg.DocsRendered = markdown(seg.Docs)
+			seg.DocsRendered = md.MarkdownToTex(seg.Docs)
+			seg.DocsTex = md.MarkdownToTex(seg.Docs)
 		}
 		if seg.Code != "" {
 			seg.CodeRendered = chromaFormat(seg.Code, sourcePath)
