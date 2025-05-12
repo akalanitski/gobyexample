@@ -20,9 +20,25 @@ func escapeTex(input string) string {
 	return e.ReplaceAllString(input, "\\$0")
 }
 
+func excapeMarkdownInCodeHtml(input string) string {
+	e := regexp.MustCompile("`(.*)(\\*)(.*)`")
+	for e.MatchString(input) {
+		input = e.ReplaceAllString(input, "`$1&ast;$3`")
+	}
+	return input
+}
+func excapeMarkdownInCodeTex(input string) string {
+	e := regexp.MustCompile("`(.*)(\\*)(.*)`")
+	for e.MatchString(input) {
+		input = e.ReplaceAllString(input, "`$1\\char\"42$3`")
+	}
+	return input
+}
+
 func MarkdownToTex(input string) string {
 	input = cleanup(input)
 	input = escapeTex(input)
+	input = excapeMarkdownInCodeTex(input)
 	boldItalicPattern := regexp.MustCompile(`[*_]{3}(.+?)[*_]{3}`)
 	boldPattern := regexp.MustCompile(`[*_]{2}(.+?)[*_]{2}`)
 	italicPattern := regexp.MustCompile(`\*(.+?)\*`)
@@ -46,21 +62,27 @@ func MarkdownToTex(input string) string {
 
 func MarkdownToHTML(input string) string {
 	input = cleanup(input)
+	input = excapeMarkdownInCodeHtml(input)
 	blocks := strings.Split(input, "\n\n")
 	boldItalicPattern := regexp.MustCompile(`[*_]{3}(.+?)[*_]{3}`)
 	boldPattern := regexp.MustCompile(`[*_]{2}(.+?)[*_]{2}`)
-	italicPattern := regexp.MustCompile(`[*_]{1}(.+?)[*_]{1}`)
+	italicPattern := regexp.MustCompile(`\*(.+?)\*`)
+	italicPattern2 := regexp.MustCompile(`\b_(.+?)_\b`)
 	codePattern := regexp.MustCompile("`(.+?)`")
-	urlPattern := regexp.MustCompile(`\[(.+?)\]\((.+?)\)`)
+	urlPattern := regexp.MustCompile(`\[(.+?)\]\((https?://.+?)\)`)
+	refPattern := regexp.MustCompile(`\[(.+?)\]\((.+?)\)`)
 
+	var output []string
 	for _, p := range blocks {
 		p = boldItalicPattern.ReplaceAllString(p, "<em><strong>$1</strong></em>")
 		p = boldPattern.ReplaceAllString(p, "<strong>$1</strong>")
-		p = italicPattern.ReplaceAllString(p, "<em>$1<em>")
+		p = italicPattern.ReplaceAllString(p, "<em>$1</em>")
+		p = italicPattern2.ReplaceAllString(p, "<em>$1</em>")
 		p = codePattern.ReplaceAllString(p, "<code>$1</code>")
-		p = urlPattern.ReplaceAllString(p, "<a href='$2'>$1</a>")
-		p = "<p>" + p + "</p>"
+		p = urlPattern.ReplaceAllString(p, "<a href='$2' class='external' target='_blank'>$1</a>")
+		p = refPattern.ReplaceAllString(p, "<a href='$2'>$1</a>")
+		output = append(output, "<p>"+p+"</p>")
 	}
 
-	return strings.Join(blocks, "\n")
+	return strings.Join(output, "\n")
 }

@@ -229,7 +229,7 @@ func parseAndRenderSegs(sourcePath string) ([]*Seg, string) {
 	lexer := whichLexer(sourcePath)
 	for _, seg := range segs {
 		if seg.Docs != "" {
-			seg.DocsRendered = md.MarkdownToTex(seg.Docs)
+			seg.DocsRendered = md.MarkdownToHTML(seg.Docs)
 			seg.DocsTex = md.MarkdownToTex(seg.Docs)
 		}
 		if seg.Code != "" {
@@ -388,16 +388,15 @@ func parseArguments(args *[]string) {
 
 func main() {
 	parseArguments(&os.Args)
-
-	//copyFile("templates/site.css", siteDir+"/site.css")
-	//copyFile("templates/site.js", siteDir+"/site.js")
-	//copyFile("templates/favicon.ico", siteDir+"/favicon.ico")
-	//copyFile("templates/play.png", siteDir+"/play.png")
-	//copyFile("templates/clipboard.png", siteDir+"/clipboard.png")
+	copyFile("templates/site.css", siteDir+"/site.css")
+	copyFile("templates/site.js", siteDir+"/site.js")
+	copyFile("templates/favicon.ico", siteDir+"/favicon.ico")
+	copyFile("templates/play.png", siteDir+"/play.png")
+	copyFile("templates/clipboard.png", siteDir+"/clipboard.png")
 	examples := parseExamples()
-	//renderIndex(examples)
-	//renderExamples(examples)
-	//render404()
+	renderIndex(examples)
+	renderExamples(examples)
+	render404()
 	renderBook(examples)
 }
 
