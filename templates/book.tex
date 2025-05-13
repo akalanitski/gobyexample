@@ -15,8 +15,9 @@
 \usepackage[scaled]{beramono}
 \usepackage{tocloft} % Required for custom Table of Contents formatting
 \usepackage{etoolbox}       % For robust patching
+\usepackage[english]{babel}
 
-
+\newcommand{\code}[1]{{\footnotesize\texttt{#1}}}
 
 % Make hyperlinks inside of document and clickable TOC
 \usepackage[
@@ -27,8 +28,8 @@ pdfborder={0 0 1}             % Underline style
 ]{hyperref}
 
 % COLUMNS LAYOUT and STYLES
-\setcounter{secnumdepth}{0}
-\renewcommand{\cftsecnumwidth}{0pt} % Remove section numbers from the TOC
+%\setcounter{secnumdepth}{0}
+%\renewcommand{\cftsecnumwidth}{0pt} % Remove section numbers from the TOC
 \setlength{\parindent}{0pt}       % First line indentv
 \setlength{\parskip}{1em}         % Add vertical space between paragraphs
 
@@ -114,7 +115,7 @@ Please read the \href{https://go.dev/doc/tutorial/getting-started}{official docu
 
 
 \textit{Go by Example} is a hands-on introduction to Go using annotated example programs.
-Check out the \hyperref{sec:hello-world}{first example} or browse the full list below.
+Check out the \h\RaggedRightyperref[sec:hello-world]{first example} or browse the full list below.
 
 
 Unless stated otherwise, examples here assume the \href{https://go.dev/doc/devel/release}{latest major release Go} and may use new language features.
@@ -126,23 +127,20 @@ Try to upgrade to the latest version if something isn't working.
 \tableofcontents
 \end{multicols}
 
-{{range .}}
+<range .>
 \newpage
-\section{Go by Example: {{.Name}}}
-\label{sec:{{.ID}}}
-  {{range .Segs}}
-    {{range .}}
-\begin{paracol}{2} \begin{leftcolumn}
-    {{.DocsTex}}
-\end{leftcolumn} \begin{rightcolumn}
-    \begin{lstlisting}
-{{.Code}}
-    \end{lstlisting}
-\end{rightcolumn}
-\end{paracol}
-    {{end}}
-  {{end}}
-{{end}}
+\section{<.Name>}
+\label{sec:<.ID>}
+  <range .Segs>
+    <range .>
+\begin{paracol}{2}\begin{leftcolumn}\sloppy
+<.DocsTex>
+\end{leftcolumn}\begin{rightcolumn}\begin{lstlisting}
+<.Code>
+\end{lstlisting}\end{rightcolumn}\end{paracol}
+    <end>
+  <end>
+<end>
 
 
 

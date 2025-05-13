@@ -333,6 +333,7 @@ func renderBook(examples []*Example) {
 		fmt.Println("Rendering book")
 	}
 	bookTemplate := template.New("book")
+	bookTemplate.Delims("<", ">")
 	template.Must(bookTemplate.Parse(mustReadFile("templates/book.tex")))
 	file, err := os.Create(siteDir + "/book.tex")
 	check(err)

@@ -53,7 +53,7 @@ func MarkdownToTex(input string) string {
 	output = boldPattern.ReplaceAllString(output, "\\textbf{$1}")
 	output = italicPattern.ReplaceAllString(output, "\\textit{$1}")
 	output = italicPattern2.ReplaceAllString(output, "\\textit{$1}")
-	output = codePattern.ReplaceAllString(output, "\\texttt{$1}")
+	output = codePattern.ReplaceAllString(output, "\\code{$1}")
 	output = urlPattern.ReplaceAllString(output, "\\href{$2}{$1}")
 	output = refPattern.ReplaceAllString(output, "\\hyperref[sec:$2]{\\textcolor{blue}{$1}}") //\hyperref[sec:strings-and-runes]{Strings and Runes}
 	output = underscorePattern.ReplaceAllString(output, "\\$0")
