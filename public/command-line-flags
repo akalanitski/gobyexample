@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <title>Go by Example: Command-Line Flags</title>
@@ -30,11 +30,7 @@
         
         <tr>
           <td class="docs">
-            <p><a href="https://en.wikipedia.org/wiki/Command-line_interface#Command-line_option"><em>Command-line flags</em></a>
-are a common way to specify options for command-line
-programs. For example, in <code>wc -l</code> the <code>-l</code> is a
-command-line flag.</p>
-
+            <p><a href='https://en.wikipedia.org/wiki/Command-line_interface#Command-line_option' class='external' target='_blank'><em>Command-line flags</em></a> are a common way to specify options for command-line programs. For example, in <code>wc -l</code> the <code>-l</code> is a command-line flag.</p>
           </td>
           <td class="code empty leading">
             
@@ -47,17 +43,17 @@ command-line flag.</p>
             
           </td>
           <td class="code leading">
-            <a href="https://go.dev/play/p/IUPZlYSigc3"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+            
+              <a href="https://go.dev/play/p/IUPZlYSigc3" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="run"><polygon points="6 3 20 12 6 21 6 3"/></svg></a>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="copy"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/></svg>
+            
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
           </td>
         </tr>
         
         <tr>
           <td class="docs">
-            <p>Go provides a <code>flag</code> package supporting basic
-command-line flag parsing. We&rsquo;ll use this package to
-implement our example command-line program.</p>
-
+            <p>Go provides a <code>flag</code> package supporting basic command-line flag parsing. We'll use this package to implement our example command-line program.</p>
           </td>
           <td class="code leading">
             
@@ -80,13 +76,7 @@ implement our example command-line program.</p>
         
         <tr>
           <td class="docs">
-            <p>Basic flag declarations are available for string,
-integer, and boolean options. Here we declare a
-string flag <code>word</code> with a default value <code>&quot;foo&quot;</code>
-and a short description. This <code>flag.String</code> function
-returns a string pointer (not a string value);
-we&rsquo;ll see how to use this pointer below.</p>
-
+            <p>Basic flag declarations are available for string, integer, and boolean options. Here we declare a string flag <code>word</code> with a default value <code>"foo"</code> and a short description. This <code>flag.String</code> function returns a string pointer (not a string value); we'll see how to use this pointer below.</p>
           </td>
           <td class="code leading">
             
@@ -96,9 +86,7 @@ we&rsquo;ll see how to use this pointer below.</p>
         
         <tr>
           <td class="docs">
-            <p>This declares <code>numb</code> and <code>fork</code> flags, using a
-similar approach to the <code>word</code> flag.</p>
-
+            <p>This declares <code>numb</code> and <code>fork</code> flags, using a similar approach to the <code>word</code> flag.</p>
           </td>
           <td class="code leading">
             
@@ -109,11 +97,7 @@ similar approach to the <code>word</code> flag.</p>
         
         <tr>
           <td class="docs">
-            <p>It&rsquo;s also possible to declare an option that uses an
-existing var declared elsewhere in the program.
-Note that we need to pass in a pointer to the flag
-declaration function.</p>
-
+            <p>It's also possible to declare an option that uses an existing var declared elsewhere in the program. Note that we need to pass in a pointer to the flag declaration function.</p>
           </td>
           <td class="code leading">
             
@@ -124,9 +108,7 @@ declaration function.</p>
         
         <tr>
           <td class="docs">
-            <p>Once all flags are declared, call <code>flag.Parse()</code>
-to execute the command-line parsing.</p>
-
+            <p>Once all flags are declared, call <code>flag.Parse()</code> to execute the command-line parsing.</p>
           </td>
           <td class="code leading">
             
@@ -136,11 +118,7 @@ to execute the command-line parsing.</p>
         
         <tr>
           <td class="docs">
-            <p>Here we&rsquo;ll just dump out the parsed options and
-any trailing positional arguments. Note that we
-need to dereference the pointers with e.g. <code>*wordPtr</code>
-to get the actual option values.</p>
-
+            <p>Here we'll just dump out the parsed options and any trailing positional arguments. Note that we need to dereference the pointers with e.g. <code>&ast;wordPtr</code> to get the actual option values.</p>
           </td>
           <td class="code">
             
@@ -159,10 +137,7 @@ to get the actual option values.</p>
         
         <tr>
           <td class="docs">
-            <p>To experiment with the command-line flags program it&rsquo;s
-best to first compile it and then run the resulting
-binary directly.</p>
-
+            <p>To experiment with the command-line flags program it's best to first compile it and then run the resulting binary directly.</p>
           </td>
           <td class="code leading">
             
@@ -172,9 +147,7 @@ binary directly.</p>
         
         <tr>
           <td class="docs">
-            <p>Try out the built program by first giving it values for
-all flags.</p>
-
+            <p>Try out the built program by first giving it values for all flags.</p>
           </td>
           <td class="code leading">
             
@@ -189,9 +162,7 @@ all flags.</p>
         
         <tr>
           <td class="docs">
-            <p>Note that if you omit flags they automatically take
-their default values.</p>
-
+            <p>Note that if you omit flags they automatically take their default values.</p>
           </td>
           <td class="code leading">
             
@@ -206,9 +177,7 @@ their default values.</p>
         
         <tr>
           <td class="docs">
-            <p>Trailing positional arguments can be provided after
-any flags.</p>
-
+            <p>Trailing positional arguments can be provided after any flags.</p>
           </td>
           <td class="code leading">
             
@@ -221,10 +190,7 @@ any flags.</p>
         
         <tr>
           <td class="docs">
-            <p>Note that the <code>flag</code> package requires all flags to
-appear before positional arguments (otherwise the flags
-will be interpreted as positional arguments).</p>
-
+            <p>Note that the <code>flag</code> package requires all flags to appear before positional arguments (otherwise the flags will be interpreted as positional arguments).</p>
           </td>
           <td class="code leading">
             
@@ -239,9 +205,7 @@ will be interpreted as positional arguments).</p>
         
         <tr>
           <td class="docs">
-            <p>Use <code>-h</code> or <code>--help</code> flags to get automatically
-generated help text for the command-line program.</p>
-
+            <p>Use <code>-h</code> or <code>--help</code> flags to get automatically generated help text for the command-line program.</p>
           </td>
           <td class="code leading">
             
@@ -256,10 +220,7 @@ generated help text for the command-line program.</p>
         
         <tr>
           <td class="docs">
-            <p>If you provide a flag that wasn&rsquo;t specified to the
-<code>flag</code> package, the program will print an error message
-and show the help text again.</p>
-
+            <p>If you provide a flag that wasn't specified to the <code>flag</code> package, the program will print an error message and show the help text again.</p>
           </td>
           <td class="code">
             

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <title>Go by Example: Base64 Encoding</title>
@@ -30,9 +30,7 @@
         
         <tr>
           <td class="docs">
-            <p>Go provides built-in support for <a href="https://en.wikipedia.org/wiki/Base64">base64
-encoding/decoding</a>.</p>
-
+            <p>Go provides built-in support for <a href='https://en.wikipedia.org/wiki/Base64' class='external' target='_blank'>base64 encoding/decoding</a>.</p>
           </td>
           <td class="code empty leading">
             
@@ -45,17 +43,17 @@ encoding/decoding</a>.</p>
             
           </td>
           <td class="code leading">
-            <a href="https://go.dev/play/p/yztzkirFEvv"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+            
+              <a href="https://go.dev/play/p/yztzkirFEvv" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="run"><polygon points="6 3 20 12 6 21 6 3"/></svg></a>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="copy"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/></svg>
+            
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
           </td>
         </tr>
         
         <tr>
           <td class="docs">
-            <p>This syntax imports the <code>encoding/base64</code> package with
-the <code>b64</code> name instead of the default <code>base64</code>. It&rsquo;ll
-save us some space below.</p>
-
+            <p>This syntax imports the <code>encoding/base64</code> package with the <code>b64</code> name instead of the default <code>base64</code>. It'll save us some space below.</p>
           </td>
           <td class="code leading">
             
@@ -78,8 +76,7 @@ save us some space below.</p>
         
         <tr>
           <td class="docs">
-            <p>Here&rsquo;s the <code>string</code> we&rsquo;ll encode/decode.</p>
-
+            <p>Here's the <code>string</code> we'll encode/decode.</p>
           </td>
           <td class="code leading">
             
@@ -89,11 +86,7 @@ save us some space below.</p>
         
         <tr>
           <td class="docs">
-            <p>Go supports both standard and URL-compatible
-base64. Here&rsquo;s how to encode using the standard
-encoder. The encoder requires a <code>[]byte</code> so we
-convert our <code>string</code> to that type.</p>
-
+            <p>Go supports both standard and URL-compatible base64. Here's how to encode using the standard encoder. The encoder requires a <code>[]byte</code> so we convert our <code>string</code> to that type.</p>
           </td>
           <td class="code leading">
             
@@ -104,10 +97,7 @@ convert our <code>string</code> to that type.</p>
         
         <tr>
           <td class="docs">
-            <p>Decoding may return an error, which you can check
-if you don&rsquo;t already know the input to be
-well-formed.</p>
-
+            <p>Decoding may return an error, which you can check if you don't already know the input to be well-formed.</p>
           </td>
           <td class="code leading">
             
@@ -119,9 +109,7 @@ well-formed.</p>
         
         <tr>
           <td class="docs">
-            <p>This encodes/decodes using a URL-compatible base64
-format.</p>
-
+            <p>This encodes/decodes using a URL-compatible base64 format.</p>
           </td>
           <td class="code">
             
@@ -139,10 +127,7 @@ format.</p>
         
         <tr>
           <td class="docs">
-            <p>The string encodes to slightly different values with the
-standard and URL base64 encoders (trailing <code>+</code> vs <code>-</code>)
-but they both decode to the original string as desired.</p>
-
+            <p>The string encodes to slightly different values with the standard and URL base64 encoders (trailing <code>+</code> vs <code>-</code>) but they both decode to the original string as desired.</p>
           </td>
           <td class="code leading">
             

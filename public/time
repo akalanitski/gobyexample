@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <title>Go by Example: Time</title>
@@ -30,9 +30,7 @@
         
         <tr>
           <td class="docs">
-            <p>Go offers extensive support for times and durations;
-here are some examples.</p>
-
+            <p>Go offers extensive support for times and durations; here are some examples.</p>
           </td>
           <td class="code empty leading">
             
@@ -45,7 +43,10 @@ here are some examples.</p>
             
           </td>
           <td class="code leading">
-            <a href="https://go.dev/play/p/YAM3s1KPc8c"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+            
+              <a href="https://go.dev/play/p/YAM3s1KPc8c" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="run"><polygon points="6 3 20 12 6 21 6 3"/></svg></a>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="copy"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/></svg>
+            
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
           </td>
         </tr>
@@ -76,8 +77,7 @@ here are some examples.</p>
         
         <tr>
           <td class="docs">
-            <p>We&rsquo;ll start by getting the current time.</p>
-
+            <p>We'll start by getting the current time.</p>
           </td>
           <td class="code leading">
             
@@ -88,10 +88,7 @@ here are some examples.</p>
         
         <tr>
           <td class="docs">
-            <p>You can build a <code>time</code> struct by providing the
-year, month, day, etc. Times are always associated
-with a <code>Location</code>, i.e. time zone.</p>
-
+            <p>You can build a <code>time</code> struct by providing the year, month, day, etc. Times are always associated with a <code>Location</code>, i.e. time zone.</p>
           </td>
           <td class="code leading">
             
@@ -103,9 +100,7 @@ with a <code>Location</code>, i.e. time zone.</p>
         
         <tr>
           <td class="docs">
-            <p>You can extract the various components of the time
-value as expected.</p>
-
+            <p>You can extract the various components of the time value as expected.</p>
           </td>
           <td class="code leading">
             
@@ -123,7 +118,6 @@ value as expected.</p>
         <tr>
           <td class="docs">
             <p>The Monday-Sunday <code>Weekday</code> is also available.</p>
-
           </td>
           <td class="code leading">
             
@@ -133,10 +127,7 @@ value as expected.</p>
         
         <tr>
           <td class="docs">
-            <p>These methods compare two times, testing if the
-first occurs before, after, or at the same time
-as the second, respectively.</p>
-
+            <p>These methods compare two times, testing if the first occurs before, after, or at the same time as the second, respectively.</p>
           </td>
           <td class="code leading">
             
@@ -148,9 +139,7 @@ as the second, respectively.</p>
         
         <tr>
           <td class="docs">
-            <p>The <code>Sub</code> methods returns a <code>Duration</code> representing
-the interval between two times.</p>
-
+            <p>The <code>Sub</code> methods returns a <code>Duration</code> representing the interval between two times.</p>
           </td>
           <td class="code leading">
             
@@ -161,9 +150,7 @@ the interval between two times.</p>
         
         <tr>
           <td class="docs">
-            <p>We can compute the length of the duration in
-various units.</p>
-
+            <p>We can compute the length of the duration in various units.</p>
           </td>
           <td class="code leading">
             
@@ -176,10 +163,7 @@ various units.</p>
         
         <tr>
           <td class="docs">
-            <p>You can use <code>Add</code> to advance a time by a given
-duration, or with a <code>-</code> to move backwards by a
-duration.</p>
-
+            <p>You can use <code>Add</code> to advance a time by a given duration, or with a <code>-</code> to move backwards by a duration.</p>
           </td>
           <td class="code">
             
@@ -226,9 +210,7 @@ duration.</p>
         
         <tr>
           <td class="docs">
-            <p>Next we&rsquo;ll look at the related idea of time relative to
-the Unix epoch.</p>
-
+            <p>Next we'll look at the related idea of time relative to the Unix epoch.</p>
           </td>
           <td class="code empty">
             

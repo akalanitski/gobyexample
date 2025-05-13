@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <title>Go by Example: Panic</title>
@@ -30,11 +30,7 @@
         
         <tr>
           <td class="docs">
-            <p>A <code>panic</code> typically means something went unexpectedly
-wrong. Mostly we use it to fail fast on errors that
-shouldn&rsquo;t occur during normal operation, or that we
-aren&rsquo;t prepared to handle gracefully.</p>
-
+            <p>A <code>panic</code> typically means something went unexpectedly wrong. Mostly we use it to fail fast on errors that shouldn't occur during normal operation, or that we aren't prepared to handle gracefully.</p>
           </td>
           <td class="code empty leading">
             
@@ -47,7 +43,10 @@ aren&rsquo;t prepared to handle gracefully.</p>
             
           </td>
           <td class="code leading">
-            <a href="https://go.dev/play/p/9-2vCvRuhmE"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+            
+              <a href="https://go.dev/play/p/9-2vCvRuhmE" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="run"><polygon points="6 3 20 12 6 21 6 3"/></svg></a>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="copy"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/></svg>
+            
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
           </td>
         </tr>
@@ -74,10 +73,7 @@ aren&rsquo;t prepared to handle gracefully.</p>
         
         <tr>
           <td class="docs">
-            <p>We&rsquo;ll use panic throughout this site to check for
-unexpected errors. This is the only program on the
-site designed to panic.</p>
-
+            <p>We'll use panic throughout this site to check for unexpected errors. This is the only program on the site designed to panic.</p>
           </td>
           <td class="code leading">
             
@@ -87,11 +83,7 @@ site designed to panic.</p>
         
         <tr>
           <td class="docs">
-            <p>A common use of panic is to abort if a function
-returns an error value that we don&rsquo;t know how to
-(or want to) handle. Here&rsquo;s an example of
-<code>panic</code>king if we get an unexpected error when creating a new file.</p>
-
+            <p>A common use of panic is to abort if a function returns an error value that we don't know how to (or want to) handle. Here's an example of <code>panic</code>king if we get an unexpected error when creating a new file.</p>
           </td>
           <td class="code">
             
@@ -109,10 +101,7 @@ returns an error value that we don&rsquo;t know how to
         
         <tr>
           <td class="docs">
-            <p>Running this program will cause it to panic, print
-an error message and goroutine traces, and exit with
-a non-zero status.</p>
-
+            <p>Running this program will cause it to panic, print an error message and goroutine traces, and exit with a non-zero status.</p>
           </td>
           <td class="code empty leading">
             
@@ -122,11 +111,7 @@ a non-zero status.</p>
         
         <tr>
           <td class="docs">
-            <p>When first panic in <code>main</code> fires, the program exits
-without reaching the rest of the code. If you&rsquo;d like
-to see the program try to create a temp file, comment
-the first panic out.</p>
-
+            <p>When first panic in <code>main</code> fires, the program exits without reaching the rest of the code. If you'd like to see the program try to create a temp file, comment the first panic out.</p>
           </td>
           <td class="code leading">
             
@@ -151,10 +136,7 @@ the first panic out.</p>
         
         <tr>
           <td class="docs">
-            <p>Note that unlike some languages which use exceptions
-for handling of many errors, in Go it is idiomatic
-to use error-indicating return values wherever possible.</p>
-
+            <p>Note that unlike some languages which use exceptions for handling of many errors, in Go it is idiomatic to use error-indicating return values wherever possible.</p>
           </td>
           <td class="code empty">
             

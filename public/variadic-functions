@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <title>Go by Example: Variadic Functions</title>
@@ -30,11 +30,7 @@
         
         <tr>
           <td class="docs">
-            <p><a href="https://en.wikipedia.org/wiki/Variadic_function"><em>Variadic functions</em></a>
-can be called with any number of trailing arguments.
-For example, <code>fmt.Println</code> is a common variadic
-function.</p>
-
+            <p><a href='https://en.wikipedia.org/wiki/Variadic_function' class='external' target='_blank'><em>Variadic functions</em></a> can be called with any number of trailing arguments. For example, <code>fmt.Println</code> is a common variadic function.</p>
           </td>
           <td class="code empty leading">
             
@@ -47,7 +43,10 @@ function.</p>
             
           </td>
           <td class="code leading">
-            <a href="https://go.dev/play/p/glNdE8aKPNq"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+            
+              <a href="https://go.dev/play/p/glNdE8aKPNq" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="run"><polygon points="6 3 20 12 6 21 6 3"/></svg></a>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="copy"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/></svg>
+            
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
           </td>
         </tr>
@@ -64,9 +63,7 @@ function.</p>
         
         <tr>
           <td class="docs">
-            <p>Here&rsquo;s a function that will take an arbitrary number
-of <code>int</code>s as arguments.</p>
-
+            <p>Here's a function that will take an arbitrary number of <code>int</code>s as arguments.</p>
           </td>
           <td class="code leading">
             
@@ -78,10 +75,7 @@ of <code>int</code>s as arguments.</p>
         
         <tr>
           <td class="docs">
-            <p>Within the function, the type of <code>nums</code> is
-equivalent to <code>[]int</code>. We can call <code>len(nums)</code>,
-iterate over it with <code>range</code>, etc.</p>
-
+            <p>Within the function, the type of <code>nums</code> is equivalent to <code>[]int</code>. We can call <code>len(nums)</code>, iterate over it with <code>range</code>, etc.</p>
           </td>
           <td class="code leading">
             
@@ -105,9 +99,7 @@ iterate over it with <code>range</code>, etc.</p>
         
         <tr>
           <td class="docs">
-            <p>Variadic functions can be called in the usual way
-with individual arguments.</p>
-
+            <p>Variadic functions can be called in the usual way with individual arguments.</p>
           </td>
           <td class="code leading">
             
@@ -118,10 +110,7 @@ with individual arguments.</p>
         
         <tr>
           <td class="docs">
-            <p>If you already have multiple args in a slice,
-apply them to a variadic function using
-<code>func(slice...)</code> like this.</p>
-
+            <p>If you already have multiple args in a slice, apply them to a variadic function using <code>func(slice...)</code> like this.</p>
           </td>
           <td class="code">
             
@@ -150,9 +139,7 @@ apply them to a variadic function using
         
         <tr>
           <td class="docs">
-            <p>Another key aspect of functions in Go is their ability
-to form closures, which we&rsquo;ll look at next.</p>
-
+            <p>Another key aspect of functions in Go is their ability to form closures, which we'll look at next.</p>
           </td>
           <td class="code empty">
             

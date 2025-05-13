@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <title>Go by Example: Sorting by Functions</title>
@@ -30,12 +30,7 @@
         
         <tr>
           <td class="docs">
-            <p>Sometimes we&rsquo;ll want to sort a collection by something
-other than its natural order. For example, suppose we
-wanted to sort strings by their length instead of
-alphabetically. Here&rsquo;s an example of custom sorts
-in Go.</p>
-
+            <p>Sometimes we'll want to sort a collection by something other than its natural order. For example, suppose we wanted to sort strings by their length instead of alphabetically. Here's an example of custom sorts in Go.</p>
           </td>
           <td class="code empty leading">
             
@@ -48,7 +43,10 @@ in Go.</p>
             
           </td>
           <td class="code leading">
-            <a href="https://go.dev/play/p/3EaTknAZHMu"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+            
+              <a href="https://go.dev/play/p/3EaTknAZHMu" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="run"><polygon points="6 3 20 12 6 21 6 3"/></svg></a>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="copy"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/></svg>
+            
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
           </td>
         </tr>
@@ -80,9 +78,7 @@ in Go.</p>
         
         <tr>
           <td class="docs">
-            <p>We implement a comparison function for string
-lengths. <code>cmp.Compare</code> is helpful for this.</p>
-
+            <p>We implement a comparison function for string lengths. <code>cmp.Compare</code> is helpful for this.</p>
           </td>
           <td class="code leading">
             
@@ -94,9 +90,7 @@ lengths. <code>cmp.Compare</code> is helpful for this.</p>
         
         <tr>
           <td class="docs">
-            <p>Now we can call <code>slices.SortFunc</code> with this custom
-comparison function to sort <code>fruits</code> by name length.</p>
-
+            <p>Now we can call <code>slices.SortFunc</code> with this custom comparison function to sort <code>fruits</code> by name length.</p>
           </td>
           <td class="code leading">
             
@@ -107,9 +101,7 @@ comparison function to sort <code>fruits</code> by name length.</p>
         
         <tr>
           <td class="docs">
-            <p>We can use the same technique to sort a slice of
-values that aren&rsquo;t built-in types.</p>
-
+            <p>We can use the same technique to sort a slice of values that aren't built-in types.</p>
           </td>
           <td class="code leading">
             
@@ -136,13 +128,7 @@ values that aren&rsquo;t built-in types.</p>
         
         <tr>
           <td class="docs">
-            <p>Sort <code>people</code> by age using <code>slices.SortFunc</code>.</p>
-
-<p>Note: if the <code>Person</code> struct is large,
-you may want the slice to contain <code>*Person</code> instead
-and adjust the sorting function accordingly. If in
-doubt, <a href="testing-and-benchmarking">benchmark</a>!</p>
-
+            <p>Sort <code>people</code> by age using <code>slices.SortFunc</code>. Note: if the <code>Person</code> struct is large, you may want the slice to contain <code>&ast;Person</code> instead and adjust the sorting function accordingly. If in doubt, <a href='testing-and-benchmarking'>benchmark</a>!</p>
           </td>
           <td class="code">
             

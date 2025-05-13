@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <title>Go by Example: Writing Files</title>
@@ -30,9 +30,7 @@
         
         <tr>
           <td class="docs">
-            <p>Writing files in Go follows similar patterns to the
-ones we saw earlier for reading.</p>
-
+            <p>Writing files in Go follows similar patterns to the ones we saw earlier for reading.</p>
           </td>
           <td class="code empty leading">
             
@@ -45,7 +43,10 @@ ones we saw earlier for reading.</p>
             
           </td>
           <td class="code leading">
-            <a href="https://go.dev/play/p/Y12O-L_zFS1"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+            
+              <a href="https://go.dev/play/p/Y12O-L_zFS1" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="run"><polygon points="6 3 20 12 6 21 6 3"/></svg></a>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="copy"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/></svg>
+            
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
           </td>
         </tr>
@@ -90,9 +91,7 @@ ones we saw earlier for reading.</p>
         
         <tr>
           <td class="docs">
-            <p>To start, here&rsquo;s how to dump a string (or just
-bytes) into a file.</p>
-
+            <p>To start, here's how to dump a string (or just bytes) into a file.</p>
           </td>
           <td class="code leading">
             
@@ -105,7 +104,6 @@ bytes) into a file.</p>
         <tr>
           <td class="docs">
             <p>For more granular writes, open a file for writing.</p>
-
           </td>
           <td class="code leading">
             
@@ -116,9 +114,7 @@ bytes) into a file.</p>
         
         <tr>
           <td class="docs">
-            <p>It&rsquo;s idiomatic to defer a <code>Close</code> immediately
-after opening a file.</p>
-
+            <p>It's idiomatic to defer a <code>Close</code> immediately after opening a file.</p>
           </td>
           <td class="code leading">
             
@@ -128,8 +124,7 @@ after opening a file.</p>
         
         <tr>
           <td class="docs">
-            <p>You can <code>Write</code> byte slices as you&rsquo;d expect.</p>
-
+            <p>You can <code>Write</code> byte slices as you'd expect.</p>
           </td>
           <td class="code leading">
             
@@ -143,7 +138,6 @@ after opening a file.</p>
         <tr>
           <td class="docs">
             <p>A <code>WriteString</code> is also available.</p>
-
           </td>
           <td class="code leading">
             
@@ -156,7 +150,6 @@ after opening a file.</p>
         <tr>
           <td class="docs">
             <p>Issue a <code>Sync</code> to flush writes to stable storage.</p>
-
           </td>
           <td class="code leading">
             
@@ -166,9 +159,7 @@ after opening a file.</p>
         
         <tr>
           <td class="docs">
-            <p><code>bufio</code> provides buffered writers in addition
-to the buffered readers we saw earlier.</p>
-
+            <p><code>bufio</code> provides buffered writers in addition to the buffered readers we saw earlier.</p>
           </td>
           <td class="code leading">
             
@@ -181,9 +172,7 @@ to the buffered readers we saw earlier.</p>
         
         <tr>
           <td class="docs">
-            <p>Use <code>Flush</code> to ensure all buffered operations have
-been applied to the underlying writer.</p>
-
+            <p>Use <code>Flush</code> to ensure all buffered operations have been applied to the underlying writer.</p>
           </td>
           <td class="code leading">
             
@@ -208,7 +197,6 @@ been applied to the underlying writer.</p>
         <tr>
           <td class="docs">
             <p>Try running the file-writing code.</p>
-
           </td>
           <td class="code leading">
             
@@ -222,7 +210,6 @@ been applied to the underlying writer.</p>
         <tr>
           <td class="docs">
             <p>Then check the contents of the written files.</p>
-
           </td>
           <td class="code leading">
             
@@ -238,9 +225,7 @@ been applied to the underlying writer.</p>
         
         <tr>
           <td class="docs">
-            <p>Next we&rsquo;ll look at applying some of the file I/O ideas
-we&rsquo;ve just seen to the <code>stdin</code> and <code>stdout</code> streams.</p>
-
+            <p>Next we'll look at applying some of the file I/O ideas we've just seen to the <code>stdin</code> and <code>stdout</code> streams.</p>
           </td>
           <td class="code empty">
             

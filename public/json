@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <title>Go by Example: JSON</title>
@@ -30,10 +30,7 @@
         
         <tr>
           <td class="docs">
-            <p>Go offers built-in support for JSON encoding and
-decoding, including to and from built-in and custom
-data types.</p>
-
+            <p>Go offers built-in support for JSON encoding and decoding, including to and from built-in and custom data types.</p>
           </td>
           <td class="code empty leading">
             
@@ -46,7 +43,10 @@ data types.</p>
             
           </td>
           <td class="code leading">
-            <a href="https://go.dev/play/p/zwf9dZ4pUPW"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+            
+              <a href="https://go.dev/play/p/zwf9dZ4pUPW" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="run"><polygon points="6 3 20 12 6 21 6 3"/></svg></a>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="copy"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/></svg>
+            
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
           </td>
         </tr>
@@ -68,9 +68,7 @@ data types.</p>
         
         <tr>
           <td class="docs">
-            <p>We&rsquo;ll use these two structs to demonstrate encoding and
-decoding of custom types below.</p>
-
+            <p>We'll use these two structs to demonstrate encoding and decoding of custom types below.</p>
           </td>
           <td class="code leading">
             
@@ -83,9 +81,7 @@ decoding of custom types below.</p>
         
         <tr>
           <td class="docs">
-            <p>Only exported fields will be encoded/decoded in JSON.
-Fields must start with capital letters to be exported.</p>
-
+            <p>Only exported fields will be encoded/decoded in JSON. Fields must start with capital letters to be exported.</p>
           </td>
           <td class="code leading">
             
@@ -108,10 +104,7 @@ Fields must start with capital letters to be exported.</p>
         
         <tr>
           <td class="docs">
-            <p>First we&rsquo;ll look at encoding basic data types to
-JSON strings. Here are some examples for atomic
-values.</p>
-
+            <p>First we'll look at encoding basic data types to JSON strings. Here are some examples for atomic values.</p>
           </td>
           <td class="code leading">
             
@@ -155,9 +148,7 @@ values.</p>
         
         <tr>
           <td class="docs">
-            <p>And here are some for slices and maps, which encode
-to JSON arrays and objects as you&rsquo;d expect.</p>
-
+            <p>And here are some for slices and maps, which encode to JSON arrays and objects as you'd expect.</p>
           </td>
           <td class="code leading">
             
@@ -181,11 +172,7 @@ to JSON arrays and objects as you&rsquo;d expect.</p>
         
         <tr>
           <td class="docs">
-            <p>The JSON package can automatically encode your
-custom data types. It will only include exported
-fields in the encoded output and will by default
-use those names as the JSON keys.</p>
-
+            <p>The JSON package can automatically encode your custom data types. It will only include exported fields in the encoded output and will by default use those names as the JSON keys.</p>
           </td>
           <td class="code leading">
             
@@ -199,11 +186,7 @@ use those names as the JSON keys.</p>
         
         <tr>
           <td class="docs">
-            <p>You can use tags on struct field declarations
-to customize the encoded JSON key names. Check the
-definition of <code>response2</code> above to see an example
-of such tags.</p>
-
+            <p>You can use tags on struct field declarations to customize the encoded JSON key names. Check the definition of <code>response2</code> above to see an example of such tags.</p>
           </td>
           <td class="code leading">
             
@@ -217,10 +200,7 @@ of such tags.</p>
         
         <tr>
           <td class="docs">
-            <p>Now let&rsquo;s look at decoding JSON data into Go
-values. Here&rsquo;s an example for a generic data
-structure.</p>
-
+            <p>Now let's look at decoding JSON data into Go values. Here's an example for a generic data structure.</p>
           </td>
           <td class="code leading">
             
@@ -230,11 +210,7 @@ structure.</p>
         
         <tr>
           <td class="docs">
-            <p>We need to provide a variable where the JSON
-package can put the decoded data. This
-<code>map[string]interface{}</code> will hold a map of strings
-to arbitrary data types.</p>
-
+            <p>We need to provide a variable where the JSON package can put the decoded data. This <code>map[string]interface{}</code> will hold a map of strings to arbitrary data types.</p>
           </td>
           <td class="code leading">
             
@@ -244,9 +220,7 @@ to arbitrary data types.</p>
         
         <tr>
           <td class="docs">
-            <p>Here&rsquo;s the actual decoding, and a check for
-associated errors.</p>
-
+            <p>Here's the actual decoding, and a check for associated errors.</p>
           </td>
           <td class="code leading">
             
@@ -259,11 +233,7 @@ associated errors.</p>
         
         <tr>
           <td class="docs">
-            <p>In order to use the values in the decoded map,
-we&rsquo;ll need to convert them to their appropriate type.
-For example here we convert the value in <code>num</code> to
-the expected <code>float64</code> type.</p>
-
+            <p>In order to use the values in the decoded map, we'll need to convert them to their appropriate type. For example here we convert the value in <code>num</code> to the expected <code>float64</code> type.</p>
           </td>
           <td class="code leading">
             
@@ -274,9 +244,7 @@ the expected <code>float64</code> type.</p>
         
         <tr>
           <td class="docs">
-            <p>Accessing nested data requires a series of
-conversions.</p>
-
+            <p>Accessing nested data requires a series of conversions.</p>
           </td>
           <td class="code leading">
             
@@ -288,12 +256,7 @@ conversions.</p>
         
         <tr>
           <td class="docs">
-            <p>We can also decode JSON into custom data types.
-This has the advantages of adding additional
-type-safety to our programs and eliminating the
-need for type assertions when accessing the decoded
-data.</p>
-
+            <p>We can also decode JSON into custom data types. This has the advantages of adding additional type-safety to our programs and eliminating the need for type assertions when accessing the decoded data.</p>
           </td>
           <td class="code leading">
             
@@ -307,12 +270,7 @@ data.</p>
         
         <tr>
           <td class="docs">
-            <p>In the examples above we always used bytes and
-strings as intermediates between the data and
-JSON representation on standard out. We can also
-stream JSON encodings directly to <code>os.Writer</code>s like
-<code>os.Stdout</code> or even HTTP response bodies.</p>
-
+            <p>In the examples above we always used bytes and strings as intermediates between the data and JSON representation on standard out. We can also stream JSON encodings directly to <code>os.Writer</code>s like <code>os.Stdout</code> or even HTTP response bodies.</p>
           </td>
           <td class="code leading">
             
@@ -324,9 +282,7 @@ stream JSON encodings directly to <code>os.Writer</code>s like
         
         <tr>
           <td class="docs">
-            <p>Streaming reads from <code>os.Reader</code>s like <code>os.Stdin</code>
-or HTTP request bodies is done with <code>json.Decoder</code>.</p>
-
+            <p>Streaming reads from <code>os.Reader</code>s like <code>os.Stdin</code> or HTTP request bodies is done with <code>json.Decoder</code>.</p>
           </td>
           <td class="code">
             
@@ -369,11 +325,7 @@ or HTTP request bodies is done with <code>json.Decoder</code>.</p>
         
         <tr>
           <td class="docs">
-            <p>We&rsquo;ve covered the basic of JSON in Go here, but check
-out the <a href="https://go.dev/blog/json">JSON and Go</a>
-blog post and <a href="https://pkg.go.dev/encoding/json">JSON package docs</a>
-for more.</p>
-
+            <p>We've covered the basic of JSON in Go here, but check out the <a href='https://go.dev/blog/json' class='external' target='_blank'>JSON and Go</a> blog post and <a href='https://pkg.go.dev/encoding/json' class='external' target='_blank'>JSON package docs</a> for more.</p>
           </td>
           <td class="code empty">
             

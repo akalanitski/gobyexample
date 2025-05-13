@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <title>Go by Example: Testing and Benchmarking</title>
@@ -30,11 +30,7 @@
         
         <tr>
           <td class="docs">
-            <p>Unit testing is an important part of writing
-principled Go programs. The <code>testing</code> package
-provides the tools we need to write unit tests
-and the <code>go test</code> command runs tests.</p>
-
+            <p>Unit testing is an important part of writing principled Go programs. The <code>testing</code> package provides the tools we need to write unit tests and the <code>go test</code> command runs tests.</p>
           </td>
           <td class="code empty leading">
             
@@ -44,13 +40,13 @@ and the <code>go test</code> command runs tests.</p>
         
         <tr>
           <td class="docs">
-            <p>For the sake of demonstration, this code is in package
-<code>main</code>, but it could be any package. Testing code
-typically lives in the same package as the code it tests.</p>
-
+            <p>For the sake of demonstration, this code is in package <code>main</code>, but it could be any package. Testing code typically lives in the same package as the code it tests.</p>
           </td>
           <td class="code leading">
-            <a href="https://go.dev/play/p/osZckbKSkse"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+            
+              <a href="https://go.dev/play/p/osZckbKSkse" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="run"><polygon points="6 3 20 12 6 21 6 3"/></svg></a>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="copy"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/></svg>
+            
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
           </td>
         </tr>
@@ -70,12 +66,7 @@ typically lives in the same package as the code it tests.</p>
         
         <tr>
           <td class="docs">
-            <p>We&rsquo;ll be testing this simple implementation of an
-integer minimum. Typically, the code we&rsquo;re testing
-would be in a source file named something like
-<code>intutils.go</code>, and the test file for it would then
-be named <code>intutils_test.go</code>.</p>
-
+            <p>We'll be testing this simple implementation of an integer minimum. Typically, the code we're testing would be in a source file named something like <code>intutils.go</code>, and the test file for it would then be named <code>intutils_test.go</code>.</p>
           </td>
           <td class="code leading">
             
@@ -90,9 +81,7 @@ be named <code>intutils_test.go</code>.</p>
         
         <tr>
           <td class="docs">
-            <p>A test is created by writing a function with a name
-beginning with <code>Test</code>.</p>
-
+            <p>A test is created by writing a function with a name beginning with <code>Test</code>.</p>
           </td>
           <td class="code leading">
             
@@ -104,10 +93,7 @@ beginning with <code>Test</code>.</p>
         
         <tr>
           <td class="docs">
-            <p><code>t.Error*</code> will report test failures but continue
-executing the test. <code>t.Fatal*</code> will report test
-failures and stop the test immediately.</p>
-
+            <p><code>t.Error&ast;</code> will report test failures but continue executing the test. <code>t.Fatal&ast;</code> will report test failures and stop the test immediately.</p>
           </td>
           <td class="code leading">
             
@@ -119,11 +105,7 @@ failures and stop the test immediately.</p>
         
         <tr>
           <td class="docs">
-            <p>Writing tests can be repetitive, so it&rsquo;s idiomatic to
-use a <em>table-driven style</em>, where test inputs and
-expected outputs are listed in a table and a single loop
-walks over them and performs the test logic.</p>
-
+            <p>Writing tests can be repetitive, so it's idiomatic to use a <em>table-driven style</em>, where test inputs and expected outputs are listed in a table and a single loop walks over them and performs the test logic.</p>
           </td>
           <td class="code leading">
             
@@ -143,10 +125,7 @@ walks over them and performs the test logic.</p>
         
         <tr>
           <td class="docs">
-            <p><code>t.Run</code> enables running &ldquo;subtests&rdquo;, one for each
-table entry. These are shown separately
-when executing <code>go test -v</code>.</p>
-
+            <p> <code>t.Run</code> enables running "subtests", one for each table entry. These are shown separately when executing <code>go test -v</code>.</p>
           </td>
           <td class="code leading">
             
@@ -174,11 +153,7 @@ when executing <code>go test -v</code>.</p>
         
         <tr>
           <td class="docs">
-            <p>Benchmark tests typically go in <code>_test.go</code> files and are
-named beginning with <code>Benchmark</code>.
-Any code that&rsquo;s required for the benchmark to run but should
-not be measured goes before this loop.</p>
-
+            <p>Benchmark tests typically go in <code>_test.go</code> files and are named beginning with <code>Benchmark</code>. Any code that's required for the benchmark to run but should not be measured goes before this loop.</p>
           </td>
           <td class="code leading">
             
@@ -189,10 +164,7 @@ not be measured goes before this loop.</p>
         
         <tr>
           <td class="docs">
-            <p>The benchmark runner will automatically execute this loop
-body many times to determine a reasonable estimate of the
-run-time of a single iteration.</p>
-
+            <p>The benchmark runner will automatically execute this loop body many times to determine a reasonable estimate of the run-time of a single iteration.</p>
           </td>
           <td class="code">
             
@@ -209,7 +181,6 @@ run-time of a single iteration.</p>
         <tr>
           <td class="docs">
             <p>Run all tests in the current project in verbose mode.</p>
-
           </td>
           <td class="code leading">
             
@@ -235,10 +206,7 @@ run-time of a single iteration.</p>
         
         <tr>
           <td class="docs">
-            <p>Run all benchmarks in the current project. All tests
-are run prior to benchmarks. The <code>bench</code> flag filters
-benchmark function names with a regexp.</p>
-
+            <p>Run all benchmarks in the current project. All tests are run prior to benchmarks. The <code>bench</code> flag filters benchmark function names with a regexp.</p>
           </td>
           <td class="code">
             

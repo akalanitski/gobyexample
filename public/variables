@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <title>Go by Example: Variables</title>
@@ -30,10 +30,7 @@
         
         <tr>
           <td class="docs">
-            <p>In Go, <em>variables</em> are explicitly declared and used by
-the compiler to e.g. check type-correctness of function
-calls.</p>
-
+            <p>In Go, <em>variables</em> are explicitly declared and used by the compiler to e.g. check type-correctness of function calls.</p>
           </td>
           <td class="code empty leading">
             
@@ -46,7 +43,10 @@ calls.</p>
             
           </td>
           <td class="code leading">
-            <a href="https://go.dev/play/p/N5rWndIliJW"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+            
+              <a href="https://go.dev/play/p/N5rWndIliJW" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="run"><polygon points="6 3 20 12 6 21 6 3"/></svg></a>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="copy"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/></svg>
+            
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
           </td>
         </tr>
@@ -74,7 +74,6 @@ calls.</p>
         <tr>
           <td class="docs">
             <p><code>var</code> declares 1 or more variables.</p>
-
           </td>
           <td class="code leading">
             
@@ -86,7 +85,6 @@ calls.</p>
         <tr>
           <td class="docs">
             <p>You can declare multiple variables at once.</p>
-
           </td>
           <td class="code leading">
             
@@ -98,7 +96,6 @@ calls.</p>
         <tr>
           <td class="docs">
             <p>Go will infer the type of initialized variables.</p>
-
           </td>
           <td class="code leading">
             
@@ -109,10 +106,7 @@ calls.</p>
         
         <tr>
           <td class="docs">
-            <p>Variables declared without a corresponding
-initialization are <em>zero-valued</em>. For example, the
-zero value for an <code>int</code> is <code>0</code>.</p>
-
+            <p>Variables declared without a corresponding initialization are <em>zero-valued</em>. For example, the zero value for an <code>int</code> is <code>0</code>.</p>
           </td>
           <td class="code leading">
             
@@ -123,11 +117,7 @@ zero value for an <code>int</code> is <code>0</code>.</p>
         
         <tr>
           <td class="docs">
-            <p>The <code>:=</code> syntax is shorthand for declaring and
-initializing a variable, e.g. for
-<code>var f string = &quot;apple&quot;</code> in this case.
-This syntax is only available inside functions.</p>
-
+            <p>The <code>:=</code> syntax is shorthand for declaring and initializing a variable, e.g. for <code>var f string = "apple"</code> in this case. This syntax is only available inside functions.</p>
           </td>
           <td class="code">
             

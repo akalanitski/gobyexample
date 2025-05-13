@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <title>Go by Example: Environment Variables</title>
@@ -30,11 +30,7 @@
         
         <tr>
           <td class="docs">
-            <p><a href="https://en.wikipedia.org/wiki/Environment_variable">Environment variables</a>
-are a universal mechanism for <a href="https://www.12factor.net/config">conveying configuration
-information to Unix programs</a>.
-Let&rsquo;s look at how to set, get, and list environment variables.</p>
-
+            <p><a href='https://en.wikipedia.org/wiki/Environment_variable' class='external' target='_blank'>Environment variables</a> are a universal mechanism for <a href='https://www.12factor.net/config' class='external' target='_blank'>conveying configuration information to Unix programs</a>. Let's look at how to set, get, and list environment variables.</p>
           </td>
           <td class="code empty leading">
             
@@ -47,7 +43,10 @@ Let&rsquo;s look at how to set, get, and list environment variables.</p>
             
           </td>
           <td class="code leading">
-            <a href="https://go.dev/play/p/2jmwXM264NC"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+            
+              <a href="https://go.dev/play/p/2jmwXM264NC" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="run"><polygon points="6 3 20 12 6 21 6 3"/></svg></a>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="copy"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/></svg>
+            
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
           </td>
         </tr>
@@ -78,11 +77,7 @@ Let&rsquo;s look at how to set, get, and list environment variables.</p>
         
         <tr>
           <td class="docs">
-            <p>To set a key/value pair, use <code>os.Setenv</code>. To get a
-value for a key, use <code>os.Getenv</code>. This will return
-an empty string if the key isn&rsquo;t present in the
-environment.</p>
-
+            <p>To set a key/value pair, use <code>os.Setenv</code>. To get a value for a key, use <code>os.Getenv</code>. This will return an empty string if the key isn't present in the environment.</p>
           </td>
           <td class="code leading">
             
@@ -94,11 +89,7 @@ environment.</p>
         
         <tr>
           <td class="docs">
-            <p>Use <code>os.Environ</code> to list all key/value pairs in the
-environment. This returns a slice of strings in the
-form <code>KEY=value</code>. You can <code>strings.SplitN</code> them to
-get the key and value. Here we print all the keys.</p>
-
+            <p>Use <code>os.Environ</code> to list all key/value pairs in the environment. This returns a slice of strings in the form <code>KEY=value</code>. You can <code>strings.SplitN</code> them to get the key and value. Here we print all the keys.</p>
           </td>
           <td class="code">
             
@@ -117,10 +108,7 @@ get the key and value. Here we print all the keys.</p>
         
         <tr>
           <td class="docs">
-            <p>Running the program shows that we pick up the value
-for <code>FOO</code> that we set in the program, but that
-<code>BAR</code> is empty.</p>
-
+            <p>Running the program shows that we pick up the value for <code>FOO</code> that we set in the program, but that <code>BAR</code> is empty.</p>
           </td>
           <td class="code leading">
             
@@ -132,9 +120,7 @@ for <code>FOO</code> that we set in the program, but that
         
         <tr>
           <td class="docs">
-            <p>The list of keys in the environment will depend on your
-particular machine.</p>
-
+            <p>The list of keys in the environment will depend on your particular machine.</p>
           </td>
           <td class="code leading">
             
@@ -148,9 +134,7 @@ particular machine.</p>
         
         <tr>
           <td class="docs">
-            <p>If we set <code>BAR</code> in the environment first, the running
-program picks that value up.</p>
-
+            <p>If we set <code>BAR</code> in the environment first, the running program picks that value up.</p>
           </td>
           <td class="code">
             

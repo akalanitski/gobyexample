@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <title>Go by Example: Number Parsing</title>
@@ -30,9 +30,7 @@
         
         <tr>
           <td class="docs">
-            <p>Parsing numbers from strings is a basic but common task
-in many programs; here&rsquo;s how to do it in Go.</p>
-
+            <p>Parsing numbers from strings is a basic but common task in many programs; here's how to do it in Go.</p>
           </td>
           <td class="code empty leading">
             
@@ -45,16 +43,17 @@ in many programs; here&rsquo;s how to do it in Go.</p>
             
           </td>
           <td class="code leading">
-            <a href="https://go.dev/play/p/ZAMEid6Fpmu"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+            
+              <a href="https://go.dev/play/p/ZAMEid6Fpmu" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="run"><polygon points="6 3 20 12 6 21 6 3"/></svg></a>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="copy"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/></svg>
+            
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
           </td>
         </tr>
         
         <tr>
           <td class="docs">
-            <p>The built-in package <code>strconv</code> provides the number
-parsing.</p>
-
+            <p>The built-in package <code>strconv</code> provides the number parsing.</p>
           </td>
           <td class="code leading">
             
@@ -77,9 +76,7 @@ parsing.</p>
         
         <tr>
           <td class="docs">
-            <p>With <code>ParseFloat</code>, this <code>64</code> tells how many bits of
-precision to parse.</p>
-
+            <p>With <code>ParseFloat</code>, this <code>64</code> tells how many bits of precision to parse.</p>
           </td>
           <td class="code leading">
             
@@ -90,10 +87,7 @@ precision to parse.</p>
         
         <tr>
           <td class="docs">
-            <p>For <code>ParseInt</code>, the <code>0</code> means infer the base from
-the string. <code>64</code> requires that the result fit in 64
-bits.</p>
-
+            <p>For <code>ParseInt</code>, the <code>0</code> means infer the base from the string. <code>64</code> requires that the result fit in 64 bits.</p>
           </td>
           <td class="code leading">
             
@@ -105,7 +99,6 @@ bits.</p>
         <tr>
           <td class="docs">
             <p><code>ParseInt</code> will recognize hex-formatted numbers.</p>
-
           </td>
           <td class="code leading">
             
@@ -117,7 +110,6 @@ bits.</p>
         <tr>
           <td class="docs">
             <p>A <code>ParseUint</code> is also available.</p>
-
           </td>
           <td class="code leading">
             
@@ -128,9 +120,7 @@ bits.</p>
         
         <tr>
           <td class="docs">
-            <p><code>Atoi</code> is a convenience function for basic base-10
-<code>int</code> parsing.</p>
-
+            <p><code>Atoi</code> is a convenience function for basic base-10 <code>int</code> parsing.</p>
           </td>
           <td class="code leading">
             
@@ -142,7 +132,6 @@ bits.</p>
         <tr>
           <td class="docs">
             <p>Parse functions return an error on bad input.</p>
-
           </td>
           <td class="code">
             
@@ -174,8 +163,7 @@ bits.</p>
         
         <tr>
           <td class="docs">
-            <p>Next we&rsquo;ll look at another common parsing task: URLs.</p>
-
+            <p>Next we'll look at another common parsing task: URLs.</p>
           </td>
           <td class="code empty">
             

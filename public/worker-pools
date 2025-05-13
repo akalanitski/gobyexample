@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <title>Go by Example: Worker Pools</title>
@@ -30,9 +30,7 @@
         
         <tr>
           <td class="docs">
-            <p>In this example we&rsquo;ll look at how to implement
-a <em>worker pool</em> using goroutines and channels.</p>
-
+            <p>In this example we'll look at how to implement a <em>worker pool</em> using goroutines and channels.</p>
           </td>
           <td class="code empty leading">
             
@@ -45,7 +43,10 @@ a <em>worker pool</em> using goroutines and channels.</p>
             
           </td>
           <td class="code leading">
-            <a href="https://go.dev/play/p/hiSJJsYZJKL"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+            
+              <a href="https://go.dev/play/p/hiSJJsYZJKL" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="run"><polygon points="6 3 20 12 6 21 6 3"/></svg></a>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="copy"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/></svg>
+            
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
           </td>
         </tr>
@@ -65,12 +66,7 @@ a <em>worker pool</em> using goroutines and channels.</p>
         
         <tr>
           <td class="docs">
-            <p>Here&rsquo;s the worker, of which we&rsquo;ll run several
-concurrent instances. These workers will receive
-work on the <code>jobs</code> channel and send the corresponding
-results on <code>results</code>. We&rsquo;ll sleep a second per job to
-simulate an expensive task.</p>
-
+            <p>Here's the worker, of which we'll run several concurrent instances. These workers will receive work on the <code>jobs</code> channel and send the corresponding results on <code>results</code>. We'll sleep a second per job to simulate an expensive task.</p>
           </td>
           <td class="code leading">
             
@@ -97,10 +93,7 @@ simulate an expensive task.</p>
         
         <tr>
           <td class="docs">
-            <p>In order to use our pool of workers we need to send
-them work and collect their results. We make 2
-channels for this.</p>
-
+            <p>In order to use our pool of workers we need to send them work and collect their results. We make 2 channels for this.</p>
           </td>
           <td class="code leading">
             
@@ -112,9 +105,7 @@ channels for this.</p>
         
         <tr>
           <td class="docs">
-            <p>This starts up 3 workers, initially blocked
-because there are no jobs yet.</p>
-
+            <p>This starts up 3 workers, initially blocked because there are no jobs yet.</p>
           </td>
           <td class="code leading">
             
@@ -126,9 +117,7 @@ because there are no jobs yet.</p>
         
         <tr>
           <td class="docs">
-            <p>Here we send 5 <code>jobs</code> and then <code>close</code> that
-channel to indicate that&rsquo;s all the work we have.</p>
-
+            <p>Here we send 5 <code>jobs</code> and then <code>close</code> that channel to indicate that's all the work we have.</p>
           </td>
           <td class="code leading">
             
@@ -141,11 +130,7 @@ channel to indicate that&rsquo;s all the work we have.</p>
         
         <tr>
           <td class="docs">
-            <p>Finally we collect all the results of the work.
-This also ensures that the worker goroutines have
-finished. An alternative way to wait for multiple
-goroutines is to use a <a href="waitgroups">WaitGroup</a>.</p>
-
+            <p>Finally we collect all the results of the work. This also ensures that the worker goroutines have finished. An alternative way to wait for multiple goroutines is to use a <a href='waitgroups'>WaitGroup</a>.</p>
           </td>
           <td class="code">
             
@@ -162,11 +147,7 @@ goroutines is to use a <a href="waitgroups">WaitGroup</a>.</p>
         
         <tr>
           <td class="docs">
-            <p>Our running program shows the 5 jobs being executed by
-various workers. The program only takes about 2 seconds
-despite doing about 5 seconds of total work because
-there are 3 workers operating concurrently.</p>
-
+            <p>Our running program shows the 5 jobs being executed by various workers. The program only takes about 2 seconds despite doing about 5 seconds of total work because there are 3 workers operating concurrently.</p>
           </td>
           <td class="code leading">
             

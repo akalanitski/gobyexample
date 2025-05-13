@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <title>Go by Example: Timers</title>
@@ -30,12 +30,7 @@
         
         <tr>
           <td class="docs">
-            <p>We often want to execute Go code at some point in the
-future, or repeatedly at some interval. Go&rsquo;s built-in
-<em>timer</em> and <em>ticker</em> features make both of these tasks
-easy. We&rsquo;ll look first at timers and then
-at <a href="tickers">tickers</a>.</p>
-
+            <p>We often want to execute Go code at some point in the future, or repeatedly at some interval. Go's built-in <em>timer</em> and <em>ticker</em> features make both of these tasks easy. We'll look first at timers and then at <a href='tickers'>tickers</a>.</p>
           </td>
           <td class="code empty leading">
             
@@ -48,7 +43,10 @@ at <a href="tickers">tickers</a>.</p>
             
           </td>
           <td class="code leading">
-            <a href="https://go.dev/play/p/gF7VLRz3URM"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+            
+              <a href="https://go.dev/play/p/gF7VLRz3URM" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="run"><polygon points="6 3 20 12 6 21 6 3"/></svg></a>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="copy"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/></svg>
+            
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
           </td>
         </tr>
@@ -78,11 +76,7 @@ at <a href="tickers">tickers</a>.</p>
         
         <tr>
           <td class="docs">
-            <p>Timers represent a single event in the future. You
-tell the timer how long you want to wait, and it
-provides a channel that will be notified at that
-time. This timer will wait 2 seconds.</p>
-
+            <p>Timers represent a single event in the future. You tell the timer how long you want to wait, and it provides a channel that will be notified at that time. This timer will wait 2 seconds.</p>
           </td>
           <td class="code leading">
             
@@ -92,10 +86,7 @@ time. This timer will wait 2 seconds.</p>
         
         <tr>
           <td class="docs">
-            <p>The <code>&lt;-timer1.C</code> blocks on the timer&rsquo;s channel <code>C</code>
-until it sends a value indicating that the timer
-fired.</p>
-
+            <p>The <code><-timer1.C</code> blocks on the timer's channel <code>C</code> until it sends a value indicating that the timer fired.</p>
           </td>
           <td class="code leading">
             
@@ -106,11 +97,7 @@ fired.</p>
         
         <tr>
           <td class="docs">
-            <p>If you just wanted to wait, you could have used
-<code>time.Sleep</code>. One reason a timer may be useful is
-that you can cancel the timer before it fires.
-Here&rsquo;s an example of that.</p>
-
+            <p>If you just wanted to wait, you could have used <code>time.Sleep</code>. One reason a timer may be useful is that you can cancel the timer before it fires. Here's an example of that.</p>
           </td>
           <td class="code leading">
             
@@ -128,9 +115,7 @@ Here&rsquo;s an example of that.</p>
         
         <tr>
           <td class="docs">
-            <p>Give the <code>timer2</code> enough time to fire, if it ever
-was going to, to show it is in fact stopped.</p>
-
+            <p>Give the <code>timer2</code> enough time to fire, if it ever was going to, to show it is in fact stopped.</p>
           </td>
           <td class="code">
             
@@ -145,10 +130,7 @@ was going to, to show it is in fact stopped.</p>
         
         <tr>
           <td class="docs">
-            <p>The first timer will fire ~2s after we start the
-program, but the second should be stopped before it has
-a chance to fire.</p>
-
+            <p>The first timer will fire ~2s after we start the program, but the second should be stopped before it has a chance to fire.</p>
           </td>
           <td class="code">
             

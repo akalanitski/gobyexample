@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <title>Go by Example: Temporary Files and Directories</title>
@@ -30,12 +30,7 @@
         
         <tr>
           <td class="docs">
-            <p>Throughout program execution, we often want to create
-data that isn&rsquo;t needed after the program exits.
-<em>Temporary files and directories</em> are useful for this
-purpose since they don&rsquo;t pollute the file system over
-time.</p>
-
+            <p>Throughout program execution, we often want to create data that isn't needed after the program exits. <em>Temporary files and directories</em> are useful for this purpose since they don't pollute the file system over time.</p>
           </td>
           <td class="code empty leading">
             
@@ -48,7 +43,10 @@ time.</p>
             
           </td>
           <td class="code leading">
-            <a href="https://go.dev/play/p/hVcPg9RH3_V"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+            
+              <a href="https://go.dev/play/p/hVcPg9RH3_V" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="run"><polygon points="6 3 20 12 6 21 6 3"/></svg></a>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="copy"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/></svg>
+            
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
           </td>
         </tr>
@@ -93,12 +91,7 @@ time.</p>
         
         <tr>
           <td class="docs">
-            <p>The easiest way to create a temporary file is by
-calling <code>os.CreateTemp</code>. It creates a file <em>and</em>
-opens it for reading and writing. We provide <code>&quot;&quot;</code>
-as the first argument, so <code>os.CreateTemp</code> will
-create the file in the default location for our OS.</p>
-
+            <p>The easiest way to create a temporary file is by calling <code>os.CreateTemp</code>. It creates a file &ast;and&ast; opens it for reading and writing. We provide <code>""</code> as the first argument, so <code>os.CreateTemp</code> will create the file in the default location for our OS.</p>
           </td>
           <td class="code leading">
             
@@ -109,13 +102,7 @@ create the file in the default location for our OS.</p>
         
         <tr>
           <td class="docs">
-            <p>Display the name of the temporary file. On
-Unix-based OSes the directory will likely be <code>/tmp</code>.
-The file name starts with the prefix given as the
-second argument to <code>os.CreateTemp</code> and the rest
-is chosen automatically to ensure that concurrent
-calls will always create different file names.</p>
-
+            <p>Display the name of the temporary file. On Unix-based OSes the directory will likely be <code>/tmp</code>. The file name starts with the prefix given as the second argument to <code>os.CreateTemp</code> and the rest is chosen automatically to ensure that concurrent calls will always create different file names.</p>
           </td>
           <td class="code leading">
             
@@ -125,11 +112,7 @@ calls will always create different file names.</p>
         
         <tr>
           <td class="docs">
-            <p>Clean up the file after we&rsquo;re done. The OS is
-likely to clean up temporary files by itself after
-some time, but it&rsquo;s good practice to do this
-explicitly.</p>
-
+            <p>Clean up the file after we're done. The OS is likely to clean up temporary files by itself after some time, but it's good practice to do this explicitly.</p>
           </td>
           <td class="code leading">
             
@@ -140,7 +123,6 @@ explicitly.</p>
         <tr>
           <td class="docs">
             <p>We can write some data to the file.</p>
-
           </td>
           <td class="code leading">
             
@@ -151,12 +133,7 @@ explicitly.</p>
         
         <tr>
           <td class="docs">
-            <p>If we intend to write many temporary files, we may
-prefer to create a temporary <em>directory</em>.
-<code>os.MkdirTemp</code>&rsquo;s arguments are the same as
-<code>CreateTemp</code>&rsquo;s, but it returns a directory <em>name</em>
-rather than an open file.</p>
-
+            <p>If we intend to write many temporary files, we may prefer to create a temporary <em>directory</em>. <code>os.MkdirTemp</code>'s arguments are the same as <code>CreateTemp</code>'s, but it returns a directory <em>name</em> rather than an open file.</p>
           </td>
           <td class="code leading">
             
@@ -178,9 +155,7 @@ rather than an open file.</p>
         
         <tr>
           <td class="docs">
-            <p>Now we can synthesize temporary file names by
-prefixing them with our temporary directory.</p>
-
+            <p>Now we can synthesize temporary file names by prefixing them with our temporary directory.</p>
           </td>
           <td class="code">
             

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <title>Go by Example: Recursion</title>
@@ -30,10 +30,7 @@
         
         <tr>
           <td class="docs">
-            <p>Go supports
-<a href="https://en.wikipedia.org/wiki/Recursion_(computer_science)"><em>recursive functions</em></a>.
-Here&rsquo;s a classic example.</p>
-
+            <p>Go supports <a href='https://en.wikipedia.org/wiki/Recursion_%28computer_science%29' class='external' target='_blank'><em>recursive functions</em></a> Here's a classic example.</p>
           </td>
           <td class="code empty leading">
             
@@ -46,7 +43,10 @@ Here&rsquo;s a classic example.</p>
             
           </td>
           <td class="code leading">
-            <a href="https://go.dev/play/p/k4IRATLn9cE"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+            
+              <a href="https://go.dev/play/p/7Fl3Ag8NC8U" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="run"><polygon points="6 3 20 12 6 21 6 3"/></svg></a>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="copy"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/></svg>
+            
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
           </td>
         </tr>
@@ -63,9 +63,7 @@ Here&rsquo;s a classic example.</p>
         
         <tr>
           <td class="docs">
-            <p>This <code>fact</code> function calls itself until it reaches the
-base case of <code>fact(0)</code>.</p>
-
+            <p>This <code>fact</code> function calls itself until it reaches the base case of <code>fact(0)</code>.</p>
           </td>
           <td class="code leading">
             
@@ -91,10 +89,7 @@ base case of <code>fact(0)</code>.</p>
         
         <tr>
           <td class="docs">
-            <p>Anonymous functions can also be recursive, but this requires
-explicitly declaring a variable with <code>var</code> to store
-the function before it&rsquo;s defined.</p>
-
+            <p>Anonymous functions can also be recursive, but this requires explicitly declaring a variable with <code>var</code> to store the function before it's defined.</p>
           </td>
           <td class="code leading">
             
@@ -117,9 +112,7 @@ the function before it&rsquo;s defined.</p>
         
         <tr>
           <td class="docs">
-            <p>Since <code>fib</code> was previously declared in <code>main</code>, Go
-knows which function to call with <code>fib</code> here.</p>
-
+            <p>Since <code>fib</code> was previously declared in <code>main</code>, Go knows which function to call with <code>fib</code> here.</p>
           </td>
           <td class="code leading">
             

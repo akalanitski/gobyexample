@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <title>Go by Example: HTTP Server</title>
@@ -30,12 +30,13 @@
         
         <tr>
           <td class="docs">
-            <p>Writing a basic HTTP server is easy using the
-<code>net/http</code> package.</p>
-
+            <p>Writing a basic HTTP server is easy using the <code>net/http</code> package.</p>
           </td>
           <td class="code leading">
-            <a href="https://go.dev/play/p/s3xMMt9Ytry"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+            
+              <a href="https://go.dev/play/p/s3xMMt9Ytry" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="run"><polygon points="6 3 20 12 6 21 6 3"/></svg></a>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="copy"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/></svg>
+            
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
           </td>
         </tr>
@@ -55,12 +56,7 @@
         
         <tr>
           <td class="docs">
-            <p>A fundamental concept in <code>net/http</code> servers is
-<em>handlers</em>. A handler is an object implementing the
-<code>http.Handler</code> interface. A common way to write
-a handler is by using the <code>http.HandlerFunc</code> adapter
-on functions with the appropriate signature.</p>
-
+            <p>A fundamental concept in <code>net/http</code> servers is &ast;handlers&ast;. A handler is an object implementing the <code>http.Handler</code> interface. A common way to write a handler is by using the <code>http.HandlerFunc</code> adapter on functions with the appropriate signature.</p>
           </td>
           <td class="code leading">
             
@@ -70,12 +66,7 @@ on functions with the appropriate signature.</p>
         
         <tr>
           <td class="docs">
-            <p>Functions serving as handlers take a
-<code>http.ResponseWriter</code> and a <code>http.Request</code> as
-arguments. The response writer is used to fill in the
-HTTP response. Here our simple response is just
-&ldquo;hello\n&rdquo;.</p>
-
+            <p>Functions serving as handlers take a <code>http.ResponseWriter</code> and a <code>http.Request</code> as arguments. The response writer is used to fill in the HTTP response. Here our simple response is just "hello\n".</p>
           </td>
           <td class="code leading">
             
@@ -96,10 +87,7 @@ HTTP response. Here our simple response is just
         
         <tr>
           <td class="docs">
-            <p>This handler does something a little more
-sophisticated by reading all the HTTP request
-headers and echoing them into the response body.</p>
-
+            <p>This handler does something a little more sophisticated by reading all the HTTP request headers and echoing them into the response body.</p>
           </td>
           <td class="code leading">
             
@@ -124,11 +112,7 @@ headers and echoing them into the response body.</p>
         
         <tr>
           <td class="docs">
-            <p>We register our handlers on server routes using the
-<code>http.HandleFunc</code> convenience function. It sets up
-the <em>default router</em> in the <code>net/http</code> package and
-takes a function as an argument.</p>
-
+            <p>We register our handlers on server routes using the <code>http.HandleFunc</code> convenience function. It sets up the &ast;default router&ast; in the <code>net/http</code> package and takes a function as an argument.</p>
           </td>
           <td class="code leading">
             
@@ -139,10 +123,7 @@ takes a function as an argument.</p>
         
         <tr>
           <td class="docs">
-            <p>Finally, we call the <code>ListenAndServe</code> with the port
-and a handler. <code>nil</code> tells it to use the default
-router we&rsquo;ve just set up.</p>
-
+            <p>Finally, we call the <code>ListenAndServe</code> with the port and a handler. <code>nil</code> tells it to use the default router we've just set up.</p>
           </td>
           <td class="code">
             
@@ -158,7 +139,6 @@ router we&rsquo;ve just set up.</p>
         <tr>
           <td class="docs">
             <p>Run the server in the background.</p>
-
           </td>
           <td class="code leading">
             
@@ -169,7 +149,6 @@ router we&rsquo;ve just set up.</p>
         <tr>
           <td class="docs">
             <p>Access the <code>/hello</code> route.</p>
-
           </td>
           <td class="code">
             

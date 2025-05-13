@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <title>Go by Example: Command-Line Arguments</title>
@@ -30,11 +30,7 @@
         
         <tr>
           <td class="docs">
-            <p><a href="https://en.wikipedia.org/wiki/Command-line_interface#Arguments"><em>Command-line arguments</em></a>
-are a common way to parameterize execution of programs.
-For example, <code>go run hello.go</code> uses <code>run</code> and
-<code>hello.go</code> arguments to the <code>go</code> program.</p>
-
+            <p><a href='https://en.wikipedia.org/wiki/Command-line_interface#Arguments' class='external' target='_blank'><em>Command-line arguments</em></a> are a common way to parameterize execution of programs. For example, <code>go run hello.go</code> uses <code>run</code> and <code>hello.go</code> arguments to the <code>go</code> program.</p>
           </td>
           <td class="code empty leading">
             
@@ -47,7 +43,10 @@ For example, <code>go run hello.go</code> uses <code>run</code> and
             
           </td>
           <td class="code leading">
-            <a href="https://go.dev/play/p/UYCEvh9d2Zb"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+            
+              <a href="https://go.dev/play/p/UYCEvh9d2Zb" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="run"><polygon points="6 3 20 12 6 21 6 3"/></svg></a>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="copy"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/></svg>
+            
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
           </td>
         </tr>
@@ -77,11 +76,7 @@ For example, <code>go run hello.go</code> uses <code>run</code> and
         
         <tr>
           <td class="docs">
-            <p><code>os.Args</code> provides access to raw command-line
-arguments. Note that the first value in this slice
-is the path to the program, and <code>os.Args[1:]</code>
-holds the arguments to the program.</p>
-
+            <p><code>os.Args</code> provides access to raw command-line arguments. Note that the first value in this slice is the path to the program, and <code>os.Args[1:]</code> holds the arguments to the program.</p>
           </td>
           <td class="code leading">
             
@@ -93,7 +88,6 @@ holds the arguments to the program.</p>
         <tr>
           <td class="docs">
             <p>You can get individual args with normal indexing.</p>
-
           </td>
           <td class="code leading">
             
@@ -120,9 +114,7 @@ holds the arguments to the program.</p>
         
         <tr>
           <td class="docs">
-            <p>To experiment with command-line arguments it&rsquo;s best to
-build a binary with <code>go build</code> first.</p>
-
+            <p>To experiment with command-line arguments it's best to build a binary with <code>go build</code> first.</p>
           </td>
           <td class="code leading">
             
@@ -136,9 +128,7 @@ build a binary with <code>go build</code> first.</p>
         
         <tr>
           <td class="docs">
-            <p>Next we&rsquo;ll look at more advanced command-line processing
-with flags.</p>
-
+            <p>Next we'll look at more advanced command-line processing with flags.</p>
           </td>
           <td class="code empty">
             

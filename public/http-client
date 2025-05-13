@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <title>Go by Example: HTTP Client</title>
@@ -30,14 +30,13 @@
         
         <tr>
           <td class="docs">
-            <p>The Go standard library comes with excellent support
-for HTTP clients and servers in the <code>net/http</code>
-package. In this example we&rsquo;ll use it to issue simple
-HTTP requests.</p>
-
+            <p>The Go standard library comes with excellent support for HTTP clients and servers in the <code>net/http</code> package. In this example we'll use it to issue simple HTTP requests.</p>
           </td>
           <td class="code leading">
-            <a href="https://go.dev/play/p/vFW_el7oHMk"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+            
+              <a href="https://go.dev/play/p/vFW_el7oHMk" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="run"><polygon points="6 3 20 12 6 21 6 3"/></svg></a>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="copy"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/></svg>
+            
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
           </td>
         </tr>
@@ -68,12 +67,7 @@ HTTP requests.</p>
         
         <tr>
           <td class="docs">
-            <p>Issue an HTTP GET request to a server. <code>http.Get</code> is a
-convenient shortcut around creating an <code>http.Client</code>
-object and calling its <code>Get</code> method; it uses the
-<code>http.DefaultClient</code> object which has useful default
-settings.</p>
-
+            <p>Issue an HTTP GET request to a server. <code>http.Get</code> is a convenient shortcut around creating an <code>http.Client</code> object and calling its <code>Get</code> method; it uses the <code>http.DefaultClient</code> object which has useful default settings.</p>
           </td>
           <td class="code leading">
             
@@ -88,7 +82,6 @@ settings.</p>
         <tr>
           <td class="docs">
             <p>Print the HTTP response status.</p>
-
           </td>
           <td class="code leading">
             
@@ -99,7 +92,6 @@ settings.</p>
         <tr>
           <td class="docs">
             <p>Print the first 5 lines of the response body.</p>
-
           </td>
           <td class="code leading">
             

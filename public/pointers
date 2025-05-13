@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <title>Go by Example: Pointers</title>
@@ -30,10 +30,7 @@
         
         <tr>
           <td class="docs">
-            <p>Go supports <em><a href="https://en.wikipedia.org/wiki/Pointer_(computer_programming)">pointers</a></em>,
-allowing you to pass references to values and records
-within your program.</p>
-
+            <p>Go supports <a href='https://en.wikipedia.org/wiki/Pointer_%28computer_programming%29' class='external' target='_blank'><em>pointers</em></a> allowing you to pass references to values and records within your program.</p>
           </td>
           <td class="code empty leading">
             
@@ -46,7 +43,10 @@ within your program.</p>
             
           </td>
           <td class="code leading">
-            <a href="https://go.dev/play/p/OlWCLpxAyBz"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+            
+              <a href="https://go.dev/play/p/G2kgB0ZDcTR" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="run"><polygon points="6 3 20 12 6 21 6 3"/></svg></a>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="copy"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/></svg>
+            
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
           </td>
         </tr>
@@ -63,12 +63,7 @@ within your program.</p>
         
         <tr>
           <td class="docs">
-            <p>We&rsquo;ll show how pointers work in contrast to values with
-2 functions: <code>zeroval</code> and <code>zeroptr</code>. <code>zeroval</code> has an
-<code>int</code> parameter, so arguments will be passed to it by
-value. <code>zeroval</code> will get a copy of <code>ival</code> distinct
-from the one in the calling function.</p>
-
+            <p>We'll show how pointers work in contrast to values with 2 functions: <code>zeroval</code> and <code>zeroptr</code>. <code>zeroval</code> has an <code>int</code> parameter, so arguments will be passed to it by value. <code>zeroval</code> will get a copy of <code>ival</code> distinct from the one in the calling function.</p>
           </td>
           <td class="code leading">
             
@@ -80,13 +75,7 @@ from the one in the calling function.</p>
         
         <tr>
           <td class="docs">
-            <p><code>zeroptr</code> in contrast has an <code>*int</code> parameter, meaning
-that it takes an <code>int</code> pointer. The <code>*iptr</code> code in the
-function body then <em>dereferences</em> the pointer from its
-memory address to the current value at that address.
-Assigning a value to a dereferenced pointer changes the
-value at the referenced address.</p>
-
+            <p><code>zeroptr</code> in contrast has an <code>&ast;int</code> parameter, meaning that it takes an <code>int</code> pointer. The <code>&ast;iptr</code> code in the function body then <em>dereferences</em> the pointer from its memory address to the current value at that address. Assigning a value to a dereferenced pointer changes the value at the referenced address.</p>
           </td>
           <td class="code leading">
             
@@ -121,9 +110,7 @@ value at the referenced address.</p>
         
         <tr>
           <td class="docs">
-            <p>The <code>&amp;i</code> syntax gives the memory address of <code>i</code>,
-i.e. a pointer to <code>i</code>.</p>
-
+            <p>The <code>&i</code> syntax gives the memory address of <code>i</code>, i.e. a pointer to <code>i</code>.</p>
           </td>
           <td class="code leading">
             
@@ -135,7 +122,6 @@ i.e. a pointer to <code>i</code>.</p>
         <tr>
           <td class="docs">
             <p>Pointers can be printed too.</p>
-
           </td>
           <td class="code">
             
@@ -150,10 +136,7 @@ i.e. a pointer to <code>i</code>.</p>
         
         <tr>
           <td class="docs">
-            <p><code>zeroval</code> doesn&rsquo;t change the <code>i</code> in <code>main</code>, but
-<code>zeroptr</code> does because it has a reference to
-the memory address for that variable.</p>
-
+            <p><code>zeroval</code> doesn't change the <code>i</code> in <code>main</code>, but <code>zeroptr</code> does because it has a reference to the memory address for that variable.</p>
           </td>
           <td class="code">
             
