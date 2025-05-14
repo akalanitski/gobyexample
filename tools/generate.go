@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"crypto/sha1"
 	"fmt"
+	md "github.com/mmcgrana/gobyexample/tools/markdown"
 	"io"
 	"net/http"
 	"os"
@@ -105,7 +106,7 @@ var dashPat = regexp.MustCompile(`\-+`)
 
 // Seg is a segment of an example
 type Seg struct {
-	Docs, DocsRendered              string
+	Docs, DocsRendered, DocsTex     string
 	Code, CodeRendered, CodeForJs   string
 	CodeEmpty, CodeLeading, CodeRun bool
 }
@@ -228,7 +229,8 @@ func parseAndRenderSegs(sourcePath string) ([]*Seg, string) {
 	lexer := whichLexer(sourcePath)
 	for _, seg := range segs {
 		if seg.Docs != "" {
-			seg.DocsRendered = markdown(seg.Docs)
+			seg.DocsRendered = md.MarkdownToHTML(seg.Docs)
+			seg.DocsTex = md.MarkdownToTex(seg.Docs)
 		}
 		if seg.Code != "" {
 			seg.CodeRendered = chromaFormat(seg.Code, sourcePath)
@@ -326,6 +328,19 @@ func renderExamples(examples []*Example) {
 	}
 }
 
+func renderBook(examples []*Example) {
+	if verbose() {
+		fmt.Println("Rendering book")
+	}
+	bookTemplate := template.New("book")
+	bookTemplate.Delims("<", ">")
+	template.Must(bookTemplate.Parse(mustReadFile("templates/book.tex")))
+	file, err := os.Create(siteDir + "/book.tex")
+	check(err)
+	defer file.Close()
+	check(bookTemplate.Execute(file, examples))
+}
+
 func render404() {
 	if verbose() {
 		fmt.Println("Rendering 404")
@@ -374,7 +389,6 @@ func parseArguments(args *[]string) {
 
 func main() {
 	parseArguments(&os.Args)
-
 	copyFile("templates/site.css", siteDir+"/site.css")
 	copyFile("templates/site.js", siteDir+"/site.js")
 	copyFile("templates/favicon.ico", siteDir+"/favicon.ico")
@@ -384,6 +398,7 @@ func main() {
 	renderIndex(examples)
 	renderExamples(examples)
 	render404()
+	renderBook(examples)
 }
 
 var SimpleShellOutputLexer = chroma.MustNewLexer(
