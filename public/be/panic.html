@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="be">
+  <head>
+    <meta charset="utf-8">
+    <title>Go па прыкладах: Panic</title>
+    <link rel=stylesheet href="../site.css">
+  </head>
+  <script>
+      window.onkeydown = (e) => {
+          if (e.ctrlKey || e.altKey || e.shiftKey) {
+              return;
+          }
+          
+          if (e.key == "ArrowLeft") {
+              window.location.href = 'sorting-by-functions.html';
+          }
+          
+          
+          if (e.key == "ArrowRight") {
+              window.location.href = 'defer.html';
+          }
+          
+      }
+  </script>
+  <body>
+    <article class="example" id="panic">
+      <h2><a href="./">Go па прыкладах</a>: Panic</h2>
+      
+      <table>
+        
+        <tr>
+          <td class="docs">
+            <p><code>Паніка</code> звычайна азначае, што нешта пайшло нечакана
+не так. Часцей за ўсё мы выкарыстоўваем яе для хуткага вырашэння праблем з памылкамі, якія
+не павінны ўзнікаць падчас нармальнай працы, або з якімі мы
+не гатовыя справіцца карэктна.</p>
+
+          </td>
+          <td class="code empty leading">
+            
+          
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            <a href="https://go.dev/play/p/VFe8dqGWPTG"><img title="Run code" src="../play.png" class="run" /></a><img title="Copy code" src="../clipboard.png" class="copy" />
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="s">&#34;os&#34;</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Мы будзем выкарыстоўваць panic на гэтым сайце для праверкі на наяўнасць
+нечаканых памылак. Гэта адзіная праграма на
+сайце, прызначаная для панікі.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nb">panic</span><span class="p">(</span><span class="s">&#34;a problem&#34;</span><span class="p">)</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Звычайная функцыя panic выкарыстоўваецца для перапынення выканання, калі яна вяртае значэнне памылкі, якое мы не ведаем, як</p>
+
+          </td>
+          <td class="code leading">
+            
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="c1">//(ці хочам) апрацаваць. Вось прыклад таго, як
+</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p><code>panic</code>king выклікае нечаканую памылку пры стварэнні новага файла.</p>
+
+          </td>
+          <td class="code">
+            
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">_</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">os</span><span class="p">.</span><span class="nf">Create</span><span class="p">(</span><span class="s">&#34;/tmp/file&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">panic</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+      </table>
+      
+      <table>
+        
+        <tr>
+          <td class="docs">
+            <p>Запуск гэтай праграмы прывядзе да яе панікі, друку
+паведамлення пра памылку і трасіроўкі goroutine, а таксама да выхаду з
+ненулявым статусам.</p>
+
+          </td>
+          <td class="code empty leading">
+            
+          
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Калі спрацоўвае першая паніка ў <code>main</code>, праграма завяршаецца
+не даходзячы да астатняй часткі кода. Калі вы хочаце
+бачыць, як праграма спрабуе стварыць часовы файл, закаментуйце
+першы выхад панікі.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run panic.go
+</span></span><span class="line"><span class="cl"><span class="go">panic: a problem</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="go">goroutine 1 [running]:
+</span></span></span><span class="line"><span class="cl"><span class="go">main.main()
+</span></span></span><span class="line"><span class="cl"><span class="go">    /.../panic.go:12 +0x47
+</span></span></span><span class="line"><span class="cl"><span class="go">...љ
+</span></span></span><span class="line"><span class="cl"><span class="go">exit status 2</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Звярніце ўвагу, што ў адрозненне ад некаторых моў праграмавання, якія выкарыстоўваюць выключэнні
+для апрацоўкі многіх памылак, у Go з&rsquo;яўляецца ідыяматычным
+выкарыстоўваць вяртаемыя значэнні, якія паказваюць памылкі, дзе гэта магчыма.</p>
+
+          </td>
+          <td class="code empty">
+            
+          
+          </td>
+        </tr>
+        
+      </table>
+      
+      
+      <p class="next">
+        Наступны прыклад: <a href="defer.html" rel="next">Defer</a>.
+      </p>
+      
+
+    <p class="footer">
+      ад <a href="https://markmcgranaghan.com">Марк МакГранаган</a>
+      і <a href="https://eli.thegreenplace.net">Элі Бендэрскі</a>
+      | <a href="https://github.com/mmcgrana/gobyexample">код</a>
+      | <a href="https://github.com/mmcgrana/gobyexample#license">ліцэнзія</a><br />
+      Мова <a href="#" onclick="switchLanguage('be')">BE</a> | <a href="#" onclick="switchLanguage('en')">EN</a>
+    </p>
+    <script src="../site.js" async></script>
+
+    </article>
+    <script>
+      var codeLines = [];
+      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import \"os\"\u000A');codeLines.push('func main() {\u000A');codeLines.push('    panic(\"a problem\")\u000A');codeLines.push('    //(ці хочам) апрацаваць. Вось прыклад таго, як\u000A');codeLines.push('    _, err :\u003D os.Create(\"/tmp/file\")\u000A    if err !\u003D nil {\u000A        panic(err)\u000A    }\u000A}\u000A');codeLines.push('');codeLines.push('');codeLines.push('');codeLines.push('');
+    </script>
+  </body>
+</html>

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="be">
+  <head>
+    <meta charset="utf-8">
+    <title>Go па прыкладах: Closures</title>
+    <link rel=stylesheet href="../site.css">
+  </head>
+  <script>
+      window.onkeydown = (e) => {
+          if (e.ctrlKey || e.altKey || e.shiftKey) {
+              return;
+          }
+          
+          if (e.key == "ArrowLeft") {
+              window.location.href = 'variadic-functions.html';
+          }
+          
+          
+          if (e.key == "ArrowRight") {
+              window.location.href = 'recursion.html';
+          }
+          
+      }
+  </script>
+  <body>
+    <article class="example" id="closures">
+      <h2><a href="./">Go па прыкладах</a>: Closures</h2>
+      
+      <table>
+        
+        <tr>
+          <td class="docs">
+            <p>Го падтрымлівае <a href="https://en.wikipedia.org/wiki/Anonymous_function"><em>ананімныя функцыі</em></a>,
+якая ёсць формай <a href="https://en.wikipedia.org/wiki/Closure_(computer_science)"><em>замыканняў</em></a>.
+Ананімны функцыі карсыня калі трэба стварыць функцыю на месцы
+без імені.</p>
+
+          </td>
+          <td class="code empty leading">
+            
+          
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            <a href="https://go.dev/play/p/2jvyZ6Q-dfn"><img title="Run code" src="../play.png" class="run" /></a><img title="Copy code" src="../clipboard.png" class="copy" />
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="s">&#34;fmt&#34;</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Гэтая функцыя <code>intSeq</code> вяртае іншую функцыю, якую
+ствараем у целе <code>intSeq</code>. Вярнутая функцыя <em>замыкае</em>
+зменную <code>i</code>, і стварае замыканне.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">intSeq</span><span class="p">()</span> <span class="kd">func</span><span class="p">()</span> <span class="kt">int</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="kd">func</span><span class="p">()</span> <span class="kt">int</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">i</span><span class="o">++</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nx">i</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Мы выклікаем <code>intSeq</code>, прысвойваючы вынік (функцыю)
+зменнай <code>nextInt</code>. Гэта значэнне функцыі мае
+уласнае значэнне <code>i</code>, якое будзе абнаўляцца кожны раз
+калі выклікаецца <code>nextInt</code>.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">nextInt</span> <span class="o">:=</span> <span class="nf">intSeq</span><span class="p">()</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Паглядзіце на эфект замыкання, выклікаўшы <code>nextInt</code>
+некалькі разоў.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nf">nextInt</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nf">nextInt</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nf">nextInt</span><span class="p">())</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Каб пацвердзіць, што стан унікальны для гэтай
+канкрэтнай функцыі, стварыце і пратэстуйце яшчэ адну функцыю
+ў зменную newInts</p>
+
+          </td>
+          <td class="code">
+            
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">newInts</span> <span class="o">:=</span> <span class="nf">intSeq</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nf">newInts</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+      </table>
+      
+      <table>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run closures.go
+</span></span><span class="line"><span class="cl"><span class="go">1
+</span></span></span><span class="line"><span class="cl"><span class="go">2
+</span></span></span><span class="line"><span class="cl"><span class="go">3
+</span></span></span><span class="line"><span class="cl"><span class="go">1</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>The last feature of functions we&rsquo;ll look at for now is
+recursion.</p>
+
+          </td>
+          <td class="code empty">
+            
+          
+          </td>
+        </tr>
+        
+      </table>
+      
+      
+      <p class="next">
+        Наступны прыклад: <a href="recursion.html" rel="next">Recursion</a>.
+      </p>
+      
+
+    <p class="footer">
+      ад <a href="https://markmcgranaghan.com">Марк МакГранаган</a>
+      і <a href="https://eli.thegreenplace.net">Элі Бендэрскі</a>
+      | <a href="https://github.com/mmcgrana/gobyexample">код</a>
+      | <a href="https://github.com/mmcgrana/gobyexample#license">ліцэнзія</a><br />
+      Мова <a href="#" onclick="switchLanguage('be')">BE</a> | <a href="#" onclick="switchLanguage('en')">EN</a>
+    </p>
+    <script src="../site.js" async></script>
+
+    </article>
+    <script>
+      var codeLines = [];
+      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import \"fmt\"\u000A');codeLines.push('func intSeq() func() int {\u000A    i :\u003D 0\u000A    return func() int {\u000A        i++\u000A        return i\u000A    }\u000A}\u000A');codeLines.push('func main() {\u000A');codeLines.push('    nextInt :\u003D intSeq()\u000A');codeLines.push('    fmt.Println(nextInt())\u000A    fmt.Println(nextInt())\u000A    fmt.Println(nextInt())\u000A');codeLines.push('    newInts :\u003D intSeq()\u000A    fmt.Println(newInts())\u000A}\u000A');codeLines.push('');codeLines.push('');
+    </script>
+  </body>
+</html>

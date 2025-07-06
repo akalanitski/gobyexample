@@ -30,6 +30,15 @@ var siteDir = "./public"
 // otherwise, no extension is used.
 var outputExt = ""
 
+// langCode for language code which will be processed.
+// English language processed by default and doesn't require additional
+// setup in project structure. Templates for other languages must be located in
+// templeates/<langCode> directory. And examples must be next to english go-file
+// with postfix ".<langCode>
+var langCode = "en"
+
+var templatePath = "templates/"
+
 func verbose() bool {
 	return len(os.Getenv("VERBOSE")) > 0
 }
@@ -112,7 +121,7 @@ type Seg struct {
 
 // Example is info extracted from an example file
 type Example struct {
-	ID, Name, FileName          string
+	ID, Name                    string
 	GoCode, GoCodeHash, URLHash string
 	Segs                        [][]*Seg
 	PrevExample                 *Example
@@ -265,7 +274,6 @@ func parseExamples() []*Example {
 		exampleID = strings.Replace(exampleID, "'", "", -1)
 		exampleID = dashPat.ReplaceAllString(exampleID, "-")
 		example.ID = exampleID
-		example.FileName = exampleID + outputExt
 		example.Segs = make([][]*Seg, 0)
 		sourcePaths := mustGlob("examples/" + exampleID + "/*")
 		for _, sourcePath := range sourcePaths {
@@ -319,7 +327,7 @@ func renderExamples(examples []*Example) {
 	template.Must(exampleTmpl.Parse(mustReadFile("templates/footer.tmpl")))
 	template.Must(exampleTmpl.Parse(mustReadFile("templates/example.tmpl")))
 	for _, example := range examples {
-		exampleF, err := os.Create(siteDir + "/" + example.FileName)
+		exampleF, err := os.Create(siteDir + "/" + example.ID)
 		check(err)
 		defer exampleF.Close()
 		check(exampleTmpl.Execute(exampleF, example))
@@ -354,6 +362,12 @@ func parseArguments(args *[]string) {
 			if verbose() {
 				fmt.Println("Output format HTML")
 			}
+		case "-lang:be":
+			langCode = "be"
+			expectedArg--
+			if verbose() {
+				fmt.Println("Output language BE")
+			}
 		default:
 			err := os.MkdirAll(arg, 0755)
 			if err != nil {
@@ -373,7 +387,10 @@ func parseArguments(args *[]string) {
 }
 
 func main() {
-	parseArguments(&os.Args)
+	if len(os.Args) > 1 {
+		siteDir = os.Args[1]
+	}
+	ensureDir(siteDir)
 
 	copyFile("templates/site.css", siteDir+"/site.css")
 	copyFile("templates/site.js", siteDir+"/site.js")

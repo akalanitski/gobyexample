@@ -1,4 +1,5 @@
-// Go supports [*recursive functions*](https://en.wikipedia.org/wiki/Recursion_%28computer_science%29)
+// Go supports
+// [*recursive functions*](https://en.wikipedia.org/wiki/Recursion_%28computer_science%29)
 // Here's a classic example.
 
 package main
