@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="be">
+  <head>
+    <meta charset="utf-8">
+    <title>Go па прыкладах: Stateful Goroutines</title>
+    <link rel=stylesheet href="../site.css">
+  </head>
+  <script>
+      window.onkeydown = (e) => {
+          if (e.ctrlKey || e.altKey || e.shiftKey) {
+              return;
+          }
+          
+          if (e.key == "ArrowLeft") {
+              window.location.href = 'mutexes.html';
+          }
+          
+          
+          if (e.key == "ArrowRight") {
+              window.location.href = 'sorting.html';
+          }
+          
+      }
+  </script>
+  <body>
+    <article class="example" id="stateful-goroutines">
+      <h2><a href="./">Go па прыкладах</a>: Stateful Goroutines</h2>
+      
+      <table>
+        
+        <tr>
+          <td class="docs">
+            <p>У папярэднім прыкладзе мы выкарыстоўвалі відавочную блакіроўку з дапамогай
+<a href="mutexes">м&rsquo;ютэксаў</a> для сінхранізацыі доступу да агульнага стану
+паміж некалькімі горуцінамі. Іншы варыянт - выкарыстоўваць
+убудаваныя функцыі сінхранізацыі горуцін і
+каналаў для дасягнення таго ж выніку. Гэты падыход, заснаваны на каналах,
+адпавядае ідэям Go аб сумесным выкарыстанні памяці шляхам
+абмену інфармацыяй і належання кожнай часткі дадзеных
+роўна адной горуцінам.</p>
+
+          </td>
+          <td class="code empty leading">
+            
+          
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            <a href="https://go.dev/play/p/rOCZaltdje0"><img title="Run code" src="../play.png" class="run" /></a><img title="Copy code" src="../clipboard.png" class="copy" />
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;fmt&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;math/rand&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;sync/atomic&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;time&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>У гэтым прыкладзе наш стан будзе належаць адной
+горуціне. Гэта гарантуе, што дадзеныя ніколі не будуць
+пашкоджаныя пры адначасовым доступе. Каб прачытаць або
+запісаць гэты стан, іншыя горуціны будуць адпраўляць паведамленні
+у горуціне-ўладальніку і атрымліваць адпаведныя
+адказы. Гэтыя структуры <code>readOp</code> і <code>writeOp</code>
+інкапсулююць гэтыя запыты і спосаб для горуціны-ўладальніка адказаць.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">type</span> <span class="nx">readOp</span> <span class="kd">struct</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">key</span>  <span class="kt">int</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">resp</span> <span class="kd">chan</span> <span class="kt">int</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="kd">type</span> <span class="nx">writeOp</span> <span class="kd">struct</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">key</span>  <span class="kt">int</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">val</span>  <span class="kt">int</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">resp</span> <span class="kd">chan</span> <span class="kt">bool</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Як і раней, мы будзем лічыць, колькі аперацый мы выконваем.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="kd">var</span> <span class="nx">readOps</span> <span class="kt">uint64</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">var</span> <span class="nx">writeOps</span> <span class="kt">uint64</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Каналы <code>reads</code> і <code>wires</code> будуць выкарыстоўвацца
+іншымі горуцінамі для выканання запытаў на чытанне і запіс,
+адпаведна.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">reads</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="nx">readOp</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">writes</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="nx">writeOp</span><span class="p">)</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Тут гаруціна, якая валодае <code>станам</code>, які
+з&rsquo;яўляецца мапай, як у папярэднім прыкладзе, але цяпер прыватным
+для гаруціны з захаваннем стану. Гэта гаруціна паўторна
+выбірае з каналаў <code>чытання</code> і <code>запісу</code>,
+адказваючы на запыты па меры іх паступлення. Адказ
+выконваецца шляхам спачатку выканання запытанай
+аперацыі, а затым адпраўкі значэння на канале адказу
+<code>resp</code>, каб паказаць поспех (і жаданае
+значэнне ў выпадку <code>чытання</code>).</p>
+
+          </td>
+          <td class="code leading">
+            
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="k">go</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kd">var</span> <span class="nx">state</span> <span class="p">=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="kt">int</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">select</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">case</span> <span class="nx">read</span> <span class="o">:=</span> <span class="o">&lt;-</span><span class="nx">reads</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                <span class="nx">read</span><span class="p">.</span><span class="nx">resp</span> <span class="o">&lt;-</span> <span class="nx">state</span><span class="p">[</span><span class="nx">read</span><span class="p">.</span><span class="nx">key</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">            <span class="k">case</span> <span class="nx">write</span> <span class="o">:=</span> <span class="o">&lt;-</span><span class="nx">writes</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                <span class="nx">state</span><span class="p">[</span><span class="nx">write</span><span class="p">.</span><span class="nx">key</span><span class="p">]</span> <span class="p">=</span> <span class="nx">write</span><span class="p">.</span><span class="nx">val</span>
+</span></span><span class="line"><span class="cl">                <span class="nx">write</span><span class="p">.</span><span class="nx">resp</span> <span class="o">&lt;-</span> <span class="kc">true</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}()</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Тут запускаецца 100 горуцін для выдачы чытанняў у
+горуціну, якая валодае станам, праз канал <code>reads</code>.
+Кожнае чытанне патрабуе стварэння <code>readOp</code>, адпраўкі
+яе праз канал <code>reads</code>, а затым атрымання
+выніку праз прадастаўлены канал <code>resp</code>.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="k">for</span> <span class="nx">r</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">r</span> <span class="p">&lt;</span> <span class="mi">100</span><span class="p">;</span> <span class="nx">r</span><span class="o">++</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">go</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">for</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="nx">read</span> <span class="o">:=</span> <span class="nx">readOp</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">                    <span class="nx">key</span><span class="p">:</span>  <span class="nx">rand</span><span class="p">.</span><span class="nf">Intn</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">                    <span class="nx">resp</span><span class="p">:</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="kt">int</span><span class="p">)}</span>
+</span></span><span class="line"><span class="cl">                <span class="nx">reads</span> <span class="o">&lt;-</span> <span class="nx">read</span>
+</span></span><span class="line"><span class="cl">                <span class="o">&lt;-</span><span class="nx">read</span><span class="p">.</span><span class="nx">resp</span>
+</span></span><span class="line"><span class="cl">                <span class="nx">atomic</span><span class="p">.</span><span class="nf">AddUint64</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">readOps</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                <span class="nx">time</span><span class="p">.</span><span class="nf">Sleep</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">Millisecond</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Мы таксама запускаем 10 &ldquo;пісацелей&rdquo;, выкарыстоўваючы падобны
+падыход.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="k">for</span> <span class="nx">w</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">w</span> <span class="p">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="nx">w</span><span class="o">++</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">go</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">for</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="nx">write</span> <span class="o">:=</span> <span class="nx">writeOp</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">                    <span class="nx">key</span><span class="p">:</span>  <span class="nx">rand</span><span class="p">.</span><span class="nf">Intn</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">                    <span class="nx">val</span><span class="p">:</span>  <span class="nx">rand</span><span class="p">.</span><span class="nf">Intn</span><span class="p">(</span><span class="mi">100</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">                    <span class="nx">resp</span><span class="p">:</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="kt">bool</span><span class="p">)}</span>
+</span></span><span class="line"><span class="cl">                <span class="nx">writes</span> <span class="o">&lt;-</span> <span class="nx">write</span>
+</span></span><span class="line"><span class="cl">                <span class="o">&lt;-</span><span class="nx">write</span><span class="p">.</span><span class="nx">resp</span>
+</span></span><span class="line"><span class="cl">                <span class="nx">atomic</span><span class="p">.</span><span class="nf">AddUint64</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">writeOps</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                <span class="nx">time</span><span class="p">.</span><span class="nf">Sleep</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">Millisecond</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Дайце горуцінам папрацаваць секунду.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">time</span><span class="p">.</span><span class="nf">Sleep</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">)</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Нарэшце, зафіксаваць і паведаміць пра колькасць аперацый.</p>
+
+          </td>
+          <td class="code">
+            
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">readOpsFinal</span> <span class="o">:=</span> <span class="nx">atomic</span><span class="p">.</span><span class="nf">LoadUint64</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">readOps</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;readOps:&#34;</span><span class="p">,</span> <span class="nx">readOpsFinal</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">writeOpsFinal</span> <span class="o">:=</span> <span class="nx">atomic</span><span class="p">.</span><span class="nf">LoadUint64</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">writeOps</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;writeOps:&#34;</span><span class="p">,</span> <span class="nx">writeOpsFinal</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+      </table>
+      
+      <table>
+        
+        <tr>
+          <td class="docs">
+            <p>Запуск нашай праграмы паказвае, што прыклад кіравання станам на аснове горуцін
+выконвае каля 80 000
+аперацый.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run stateful-goroutines.go
+</span></span><span class="line"><span class="cl"><span class="go">readOps: 71708
+</span></span></span><span class="line"><span class="cl"><span class="go">writeOps: 7177</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>У гэтым канкрэтным выпадку падыход на аснове горуцін
+быў крыху больш складаным, чым падыход на аснове м&rsquo;ютэкса. Ён
+можа быць карысным у некаторых выпадках, напрыклад,
+калі ў вас задзейнічаны іншыя каналы або пры кіраванні
+некалькімі такімі м&rsquo;ютэксамі, што можа прыводзіць да памылак. Вам варта
+выкарыстоўваць той падыход, які здаецца найбольш натуральным, асабліва
+з пункту гледжання разумення карэктнасці вашай
+праграмы.</p>
+
+          </td>
+          <td class="code empty">
+            
+          
+          </td>
+        </tr>
+        
+      </table>
+      
+      
+      <p class="next">
+        Наступны прыклад: <a href="sorting.html" rel="next">Sorting</a>.
+      </p>
+      
+
+    <p class="footer">
+      ад <a href="https://markmcgranaghan.com">Марк МакГранаган</a>
+      і <a href="https://eli.thegreenplace.net">Элі Бендэрскі</a>
+      | <a href="https://github.com/mmcgrana/gobyexample">код</a>
+      | <a href="https://github.com/mmcgrana/gobyexample#license">ліцэнзія</a><br />
+      Мова <a href="#" onclick="switchLanguage('be')">BE</a> | <a href="#" onclick="switchLanguage('en')">EN</a>
+    </p>
+    <script src="../site.js" async></script>
+
+    </article>
+    <script>
+      var codeLines = [];
+      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import (\u000A    \"fmt\"\u000A    \"math/rand\"\u000A    \"sync/atomic\"\u000A    \"time\"\u000A)\u000A');codeLines.push('type readOp struct {\u000A    key  int\u000A    resp chan int\u000A}\u000Atype writeOp struct {\u000A    key  int\u000A    val  int\u000A    resp chan bool\u000A}\u000A');codeLines.push('func main() {\u000A');codeLines.push('    var readOps uint64\u000A    var writeOps uint64\u000A');codeLines.push('    reads :\u003D make(chan readOp)\u000A    writes :\u003D make(chan writeOp)\u000A');codeLines.push('    go func() {\u000A        var state \u003D make(map[int]int)\u000A        for {\u000A            select {\u000A            case read :\u003D \u003C-reads:\u000A                read.resp \u003C- state[read.key]\u000A            case write :\u003D \u003C-writes:\u000A                state[write.key] \u003D write.val\u000A                write.resp \u003C- true\u000A            }\u000A        }\u000A    }()\u000A');codeLines.push('    for r :\u003D 0; r \u003C 100; r++ {\u000A        go func() {\u000A            for {\u000A                read :\u003D readOp{\u000A                    key:  rand.Intn(5),\u000A                    resp: make(chan int)}\u000A                reads \u003C- read\u000A                \u003C-read.resp\u000A                atomic.AddUint64(\u0026readOps, 1)\u000A                time.Sleep(time.Millisecond)\u000A            }\u000A        }()\u000A    }\u000A');codeLines.push('    for w :\u003D 0; w \u003C 10; w++ {\u000A        go func() {\u000A            for {\u000A                write :\u003D writeOp{\u000A                    key:  rand.Intn(5),\u000A                    val:  rand.Intn(100),\u000A                    resp: make(chan bool)}\u000A                writes \u003C- write\u000A                \u003C-write.resp\u000A                atomic.AddUint64(\u0026writeOps, 1)\u000A                time.Sleep(time.Millisecond)\u000A            }\u000A        }()\u000A    }\u000A');codeLines.push('    time.Sleep(time.Second)\u000A');codeLines.push('    readOpsFinal :\u003D atomic.LoadUint64(\u0026readOps)\u000A    fmt.Println(\"readOps:\", readOpsFinal)\u000A    writeOpsFinal :\u003D atomic.LoadUint64(\u0026writeOps)\u000A    fmt.Println(\"writeOps:\", writeOpsFinal)\u000A}\u000A');codeLines.push('');codeLines.push('');
+    </script>
+  </body>
+</html>

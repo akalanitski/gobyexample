@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="be">
+  <head>
+    <meta charset="utf-8">
+    <title>Go па прыкладах: Variables</title>
+    <link rel=stylesheet href="../site.css">
+  </head>
+  <script>
+      window.onkeydown = (e) => {
+          if (e.ctrlKey || e.altKey || e.shiftKey) {
+              return;
+          }
+          
+          if (e.key == "ArrowLeft") {
+              window.location.href = 'values.html';
+          }
+          
+          
+          if (e.key == "ArrowRight") {
+              window.location.href = 'constants.html';
+          }
+          
+      }
+  </script>
+  <body>
+    <article class="example" id="variables">
+      <h2><a href="./">Go па прыкладах</a>: Variables</h2>
+      
+      <table>
+        
+        <tr>
+          <td class="docs">
+            <p>У Go <em>зменныя</em> аб&rsquo;яўляюцца дакладна і выкарыстоўваюцца
+кампілятарам, для праверкі тыпізацыі і выклікаў функцый.</p>
+
+          </td>
+          <td class="code empty leading">
+            
+          
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            <a href="https://go.dev/play/p/Yg7jGhn4yB7"><img title="Run code" src="../play.png" class="run" /></a><img title="Copy code" src="../clipboard.png" class="copy" />
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="s">&#34;fmt&#34;</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p><code>var</code> аб&rsquo;яўляе 1 або больш зменных.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="kd">var</span> <span class="nx">a</span> <span class="p">=</span> <span class="s">&#34;initial&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">a</span><span class="p">)</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Можна аб&rsquo;явіць некалькі зменных адначасова.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="kd">var</span> <span class="nx">b</span><span class="p">,</span> <span class="nx">c</span> <span class="kt">int</span> <span class="p">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">b</span><span class="p">,</span> <span class="nx">c</span><span class="p">)</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Go вызначыць тып ініцыялізаваных зменных.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="kd">var</span> <span class="nx">d</span> <span class="p">=</span> <span class="kc">true</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">d</span><span class="p">)</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Зменныя, абвешчаныя без адпаведнай
+ініцыялізацыі, маюць <em>нулявое значэнне</em>. Напрыклад,
+нулявое значэнне для <code>int</code> роўнае <code>0</code>.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="kd">var</span> <span class="nx">e</span> <span class="kt">int</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Сінтаксіс <code>:=</code> — гэта скарочаная форма аб&rsquo;яўлення і
+ініцыялізацыі зменнай, напрыклад, for
+у гэтым выпадку <code>var f string = &quot;apple&quot;</code>.
+Гэты сінтаксіс даступны толькі ўнутры функцый.</p>
+
+          </td>
+          <td class="code">
+            
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">f</span> <span class="o">:=</span> <span class="s">&#34;apple&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">f</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+      </table>
+      
+      <table>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code">
+            
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run variables.go
+</span></span><span class="line"><span class="cl"><span class="go">initial
+</span></span></span><span class="line"><span class="cl"><span class="go">1 2
+</span></span></span><span class="line"><span class="cl"><span class="go">true
+</span></span></span><span class="line"><span class="cl"><span class="go">0
+</span></span></span><span class="line"><span class="cl"><span class="go">apple</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+      </table>
+      
+      
+      <p class="next">
+        Наступны прыклад: <a href="constants.html" rel="next">Constants</a>.
+      </p>
+      
+
+    <p class="footer">
+      ад <a href="https://markmcgranaghan.com">Марк МакГранаган</a>
+      і <a href="https://eli.thegreenplace.net">Элі Бендэрскі</a>
+      | <a href="https://github.com/mmcgrana/gobyexample">код</a>
+      | <a href="https://github.com/mmcgrana/gobyexample#license">ліцэнзія</a><br />
+      Мова <a href="#" onclick="switchLanguage('be')">BE</a> | <a href="#" onclick="switchLanguage('en')">EN</a>
+    </p>
+    <script src="../site.js" async></script>
+
+    </article>
+    <script>
+      var codeLines = [];
+      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import \"fmt\"\u000A');codeLines.push('func main() {\u000A');codeLines.push('    var a \u003D \"initial\"\u000A    fmt.Println(a)\u000A');codeLines.push('    var b, c int \u003D 1, 2\u000A    fmt.Println(b, c)\u000A');codeLines.push('    var d \u003D true\u000A    fmt.Println(d)\u000A');codeLines.push('    var e int\u000A    fmt.Println(e)\u000A');codeLines.push('    f :\u003D \"apple\"\u000A    fmt.Println(f)\u000A}\u000A');codeLines.push('');
+    </script>
+  </body>
+</html>

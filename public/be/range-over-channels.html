@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="be">
+  <head>
+    <meta charset="utf-8">
+    <title>Go па прыкладах: Range over Channels</title>
+    <link rel=stylesheet href="../site.css">
+  </head>
+  <script>
+      window.onkeydown = (e) => {
+          if (e.ctrlKey || e.altKey || e.shiftKey) {
+              return;
+          }
+          
+          if (e.key == "ArrowLeft") {
+              window.location.href = 'closing-channels.html';
+          }
+          
+          
+          if (e.key == "ArrowRight") {
+              window.location.href = 'timers.html';
+          }
+          
+      }
+  </script>
+  <body>
+    <article class="example" id="range-over-channels">
+      <h2><a href="./">Go па прыкладах</a>: Range over Channels</h2>
+      
+      <table>
+        
+        <tr>
+          <td class="docs">
+            <p>У <a href="range-over-built-in-types">папярэднім прыкладзе</a> мы ўбачылі, як <code>for</code> і
+<code>range</code> забяспечваюць ітэрацыю па базавых структурах дадзеных.
+Мы таксама можам выкарыстоўваць гэты сінтаксіс для ітэрацыі па
+значэннях, атрыманых з канала.</p>
+
+          </td>
+          <td class="code empty leading">
+            
+          
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            <a href="https://go.dev/play/p/ll_-T-nmAIb"><img title="Run code" src="../play.png" class="run" /></a><img title="Copy code" src="../clipboard.png" class="copy" />
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="s">&#34;fmt&#34;</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Мы перабярэм 2 значэнні ў канале <code>queue</code>.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">queue</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="kt">string</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">queue</span> <span class="o">&lt;-</span> <span class="s">&#34;one&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">queue</span> <span class="o">&lt;-</span> <span class="s">&#34;two&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">close</span><span class="p">(</span><span class="nx">queue</span><span class="p">)</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Гэты <code>дыяпазон</code> перабірае кожны элемент па меры яго атрымання
+з заргі (<code>queue</code>). Паколькі мы закрылі
+канал вышэй (<code>close</code>), ітэрацыя завяршаецца пасля
+атрымання 2 элементаў.</p>
+
+          </td>
+          <td class="code">
+            
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="k">for</span> <span class="nx">elem</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">queue</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">elem</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+      </table>
+      
+      <table>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run range-over-channels.go
+</span></span><span class="line"><span class="cl"><span class="go">one
+</span></span></span><span class="line"><span class="cl"><span class="go">two</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Гэты прыклад таксама паказаў, што можна закрыць
+непусты канал, але пры гэтым атрымаць астатнія
+значэнні.</p>
+
+          </td>
+          <td class="code empty">
+            
+          
+          </td>
+        </tr>
+        
+      </table>
+      
+      
+      <p class="next">
+        Наступны прыклад: <a href="timers.html" rel="next">Timers</a>.
+      </p>
+      
+
+    <p class="footer">
+      ад <a href="https://markmcgranaghan.com">Марк МакГранаган</a>
+      і <a href="https://eli.thegreenplace.net">Элі Бендэрскі</a>
+      | <a href="https://github.com/mmcgrana/gobyexample">код</a>
+      | <a href="https://github.com/mmcgrana/gobyexample#license">ліцэнзія</a><br />
+      Мова <a href="#" onclick="switchLanguage('be')">BE</a> | <a href="#" onclick="switchLanguage('en')">EN</a>
+    </p>
+    <script src="../site.js" async></script>
+
+    </article>
+    <script>
+      var codeLines = [];
+      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import \"fmt\"\u000A');codeLines.push('func main() {\u000A');codeLines.push('    queue :\u003D make(chan string, 2)\u000A    queue \u003C- \"one\"\u000A    queue \u003C- \"two\"\u000A    close(queue)\u000A');codeLines.push('    for elem :\u003D range queue {\u000A        fmt.Println(elem)\u000A    }\u000A}\u000A');codeLines.push('');codeLines.push('');
+    </script>
+  </body>
+</html>

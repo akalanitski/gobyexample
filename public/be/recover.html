@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="be">
+  <head>
+    <meta charset="utf-8">
+    <title>Go па прыкладах: Recover</title>
+    <link rel=stylesheet href="../site.css">
+  </head>
+  <script>
+      window.onkeydown = (e) => {
+          if (e.ctrlKey || e.altKey || e.shiftKey) {
+              return;
+          }
+          
+          if (e.key == "ArrowLeft") {
+              window.location.href = 'defer.html';
+          }
+          
+          
+          if (e.key == "ArrowRight") {
+              window.location.href = 'string-functions.html';
+          }
+          
+      }
+  </script>
+  <body>
+    <article class="example" id="recover">
+      <h2><a href="./">Go па прыкладах</a>: Recover</h2>
+      
+      <table>
+        
+        <tr>
+          <td class="docs">
+            <p>Go дазваляе <em>аднаўляцца</em> пасля панікі, выкарыстоўваючы
+ўбудаваную функцыю <code>recover</code>. <code>recover</code> можа
+спыніць <code>panic</code> ад перапынення праграмы і дазволіць ёй
+працягваць выкананне.</p>
+
+          </td>
+          <td class="code empty leading">
+            
+          
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Прыклад таго, дзе гэта можа быць карысным: сервер
+не хацеў бы ляснуцца, калі на адным з кліенцкіх злучэнняў
+адбудзецца крытычная памылка. Замест гэтага сервер
+закрые злучэнне з такім кліентам і працягне абслугоўванне
+іншых. Фактычна, гэта тое, што <code>net/http</code> у Go
+робіць па змаўчанні для HTTP-сервераў.</p>
+
+          </td>
+          <td class="code empty leading">
+            
+          
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            <a href="https://go.dev/play/p/ThsiTPOecZb"><img title="Run code" src="../play.png" class="run" /></a><img title="Copy code" src="../clipboard.png" class="copy" />
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="s">&#34;fmt&#34;</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Гэтая функцыя выклікае паніку.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">mayPanic</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">panic</span><span class="p">(</span><span class="s">&#34;a problem&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p><code>recover</code> павінна быць выклікана ўнутры адкладзенай функцыі.
+Калі функцыя, якая яе ахоплівае, панікуе, defer будзе
+актываваны, і выклік <code>recover</code> унутры яе перахапіць
+паніку.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Вяртанае значэнне <code>recover</code> — гэта памылка, узнікшая пры
+выкліку <code>panic</code>.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="k">defer</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="nx">r</span> <span class="o">:=</span> <span class="nb">recover</span><span class="p">();</span> <span class="nx">r</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            
+          <pre class="chroma"><code><span class="line"><span class="cl">            <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;Recovered. Error:\n&#34;</span><span class="p">,</span> <span class="nx">r</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}()</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nf">mayPanic</span><span class="p">()</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Гэты код не будзе выкананы, бо <code>mayPanic</code> выклікае паніку.
+Выкананне <code>main</code> спыняецца ў пункце
+панікі і аднаўляецца ў адкладзеным замыканні.</p>
+
+          </td>
+          <td class="code">
+            
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;After mayPanic()&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+      </table>
+      
+      <table>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code">
+            
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run recover.go
+</span></span><span class="line"><span class="cl"><span class="go">Recovered. Error:
+</span></span></span><span class="line"><span class="cl"><span class="go"> a problem</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+      </table>
+      
+      
+      <p class="next">
+        Наступны прыклад: <a href="string-functions.html" rel="next">String Functions</a>.
+      </p>
+      
+
+    <p class="footer">
+      ад <a href="https://markmcgranaghan.com">Марк МакГранаган</a>
+      і <a href="https://eli.thegreenplace.net">Элі Бендэрскі</a>
+      | <a href="https://github.com/mmcgrana/gobyexample">код</a>
+      | <a href="https://github.com/mmcgrana/gobyexample#license">ліцэнзія</a><br />
+      Мова <a href="#" onclick="switchLanguage('be')">BE</a> | <a href="#" onclick="switchLanguage('en')">EN</a>
+    </p>
+    <script src="../site.js" async></script>
+
+    </article>
+    <script>
+      var codeLines = [];
+      codeLines.push('');codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import \"fmt\"\u000A');codeLines.push('func mayPanic() {\u000A    panic(\"a problem\")\u000A}\u000A');codeLines.push('func main() {\u000A');codeLines.push('    defer func() {\u000A        if r :\u003D recover(); r !\u003D nil {\u000A');codeLines.push('            fmt.Println(\"Recovered. Error:\\n\", r)\u000A        }\u000A    }()\u000A');codeLines.push('    mayPanic()\u000A');codeLines.push('    fmt.Println(\"After mayPanic()\")\u000A}\u000A');codeLines.push('');
+    </script>
+  </body>
+</html>

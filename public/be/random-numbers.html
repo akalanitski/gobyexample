@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="be">
+  <head>
+    <meta charset="utf-8">
+    <title>Go па прыкладах: Random Numbers</title>
+    <link rel=stylesheet href="../site.css">
+  </head>
+  <script>
+      window.onkeydown = (e) => {
+          if (e.ctrlKey || e.altKey || e.shiftKey) {
+              return;
+          }
+          
+          if (e.key == "ArrowLeft") {
+              window.location.href = 'time-formatting-parsing.html';
+          }
+          
+          
+          if (e.key == "ArrowRight") {
+              window.location.href = 'number-parsing.html';
+          }
+          
+      }
+  </script>
+  <body>
+    <article class="example" id="random-numbers">
+      <h2><a href="./">Go па прыкладах</a>: Random Numbers</h2>
+      
+      <table>
+        
+        <tr>
+          <td class="docs">
+            <p>Пакет <code>math/rand/v2</code> у Go забяспечвае генерацыю
+<a href="https://en.wikipedia.org/wiki/Pseudorandom_number_generator">псеўдавыпадковых лічбаў</a></p>
+
+          </td>
+          <td class="code empty leading">
+            
+          
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            <a href="https://go.dev/play/p/gh6u76H7OGV"><img title="Run code" src="../play.png" class="run" /></a><img title="Copy code" src="../clipboard.png" class="copy" />
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;fmt&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;math/rand/v2&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Напрыклад, <code>rand.IntN</code> вяртае выпадковае <code>цэлае</code> n,
+<code>0 &lt;= n &lt; 100</code>.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Print</span><span class="p">(</span><span class="nx">rand</span><span class="p">.</span><span class="nf">IntN</span><span class="p">(</span><span class="mi">100</span><span class="p">),</span> <span class="s">&#34;,&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Print</span><span class="p">(</span><span class="nx">rand</span><span class="p">.</span><span class="nf">IntN</span><span class="p">(</span><span class="mi">100</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">()</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p><code>rand.Float64</code> вяртае <code>float64</code> <code>f</code>,
+<code>0.0 &lt;= f &lt; 1.0</code>.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">rand</span><span class="p">.</span><span class="nf">Float64</span><span class="p">())</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Гэта можна выкарыстоўваць для генерацыі выпадковых лікаў з плаваючай кропкай у
+іншых дыяпазонах, напрыклад, <code>5.0 &lt;= f' &lt; 10.0</code>.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Print</span><span class="p">((</span><span class="nx">rand</span><span class="p">.</span><span class="nf">Float64</span><span class="p">()</span><span class="o">*</span><span class="mi">5</span><span class="p">)</span><span class="o">+</span><span class="mi">5</span><span class="p">,</span> <span class="s">&#34;,&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Print</span><span class="p">((</span><span class="nx">rand</span><span class="p">.</span><span class="nf">Float64</span><span class="p">()</span> <span class="o">*</span> <span class="mi">5</span><span class="p">)</span> <span class="o">+</span> <span class="mi">5</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">()</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Калі патрэбна вядомае пачатковае значэнне, стварыце новае
+<code>rand.Source</code> і перадайце яго ў канструктар <code>New</code>
+<code>NewPCG</code> стварае новую
+<a href="https://en.wikipedia.org/wiki/Permuted_congruential_generator">PCG</a>
+крыніцу, якая патрабуе пачатковага значэння з двух лікаў <code>uint64</code>.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">s2</span> <span class="o">:=</span> <span class="nx">rand</span><span class="p">.</span><span class="nf">NewPCG</span><span class="p">(</span><span class="mi">42</span><span class="p">,</span> <span class="mi">1024</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">r2</span> <span class="o">:=</span> <span class="nx">rand</span><span class="p">.</span><span class="nf">New</span><span class="p">(</span><span class="nx">s2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Print</span><span class="p">(</span><span class="nx">r2</span><span class="p">.</span><span class="nf">IntN</span><span class="p">(</span><span class="mi">100</span><span class="p">),</span> <span class="s">&#34;,&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Print</span><span class="p">(</span><span class="nx">r2</span><span class="p">.</span><span class="nf">IntN</span><span class="p">(</span><span class="mi">100</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">()</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code">
+            
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">s3</span> <span class="o">:=</span> <span class="nx">rand</span><span class="p">.</span><span class="nf">NewPCG</span><span class="p">(</span><span class="mi">42</span><span class="p">,</span> <span class="mi">1024</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">r3</span> <span class="o">:=</span> <span class="nx">rand</span><span class="p">.</span><span class="nf">New</span><span class="p">(</span><span class="nx">s3</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Print</span><span class="p">(</span><span class="nx">r3</span><span class="p">.</span><span class="nf">IntN</span><span class="p">(</span><span class="mi">100</span><span class="p">),</span> <span class="s">&#34;,&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Print</span><span class="p">(</span><span class="nx">r3</span><span class="p">.</span><span class="nf">IntN</span><span class="p">(</span><span class="mi">100</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+      </table>
+      
+      <table>
+        
+        <tr>
+          <td class="docs">
+            <p>Некаторыя з згенераваных лікаў могуць адрознівацца пры запуску прыкладу.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run random-numbers.go
+</span></span><span class="line"><span class="cl"><span class="go">68,56
+</span></span></span><span class="line"><span class="cl"><span class="go">0.8090228139659177
+</span></span></span><span class="line"><span class="cl"><span class="go">5.840125017402497,6.937056298890035
+</span></span></span><span class="line"><span class="cl"><span class="go">94,49
+</span></span></span><span class="line"><span class="cl"><span class="go">94,49</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Глядзіце дакументацыю пакета <a href="https://pkg.go.dev/math/rand/v2"><code>math/rand/v2</code></a>
+для атрымання спасылак на іншыя выпадковыя велічыні,
+якія можа забяспечыць Go.</p>
+
+          </td>
+          <td class="code empty">
+            
+          
+          </td>
+        </tr>
+        
+      </table>
+      
+      
+      <p class="next">
+        Наступны прыклад: <a href="number-parsing.html" rel="next">Number Parsing</a>.
+      </p>
+      
+
+    <p class="footer">
+      ад <a href="https://markmcgranaghan.com">Марк МакГранаган</a>
+      і <a href="https://eli.thegreenplace.net">Элі Бендэрскі</a>
+      | <a href="https://github.com/mmcgrana/gobyexample">код</a>
+      | <a href="https://github.com/mmcgrana/gobyexample#license">ліцэнзія</a><br />
+      Мова <a href="#" onclick="switchLanguage('be')">BE</a> | <a href="#" onclick="switchLanguage('en')">EN</a>
+    </p>
+    <script src="../site.js" async></script>
+
+    </article>
+    <script>
+      var codeLines = [];
+      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import (\u000A    \"fmt\"\u000A    \"math/rand/v2\"\u000A)\u000A');codeLines.push('func main() {\u000A');codeLines.push('    fmt.Print(rand.IntN(100), \",\")\u000A    fmt.Print(rand.IntN(100))\u000A    fmt.Println()\u000A');codeLines.push('    fmt.Println(rand.Float64())\u000A');codeLines.push('    fmt.Print((rand.Float64()*5)+5, \",\")\u000A    fmt.Print((rand.Float64() * 5) + 5)\u000A    fmt.Println()\u000A');codeLines.push('    s2 :\u003D rand.NewPCG(42, 1024)\u000A    r2 :\u003D rand.New(s2)\u000A    fmt.Print(r2.IntN(100), \",\")\u000A    fmt.Print(r2.IntN(100))\u000A    fmt.Println()\u000A');codeLines.push('    s3 :\u003D rand.NewPCG(42, 1024)\u000A    r3 :\u003D rand.New(s3)\u000A    fmt.Print(r3.IntN(100), \",\")\u000A    fmt.Print(r3.IntN(100))\u000A    fmt.Println()\u000A}\u000A');codeLines.push('');codeLines.push('');
+    </script>
+  </body>
+</html>

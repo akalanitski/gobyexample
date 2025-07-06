@@ -255,10 +255,29 @@ func parseAndRenderSegs(sourcePath string) ([]*Seg, string) {
 	return segs, filecontent
 }
 
+func strToID(src string) string {
+	id := strings.ToLower(src)
+	id = strings.TrimSpace(id)
+	id = strings.Replace(id, " ", "-", -1)
+	id = strings.Replace(id, "/", "-", -1)
+	id = strings.Replace(id, "'", "", -1)
+	id = dashPat.ReplaceAllString(id, "-")
+	return id
+}
+
 func parseExamples() []*Example {
 	var exampleNames []string
+	var exampleSrcFile []string
 	for _, line := range readLines("examples.txt") {
-		if line != "" && !strings.HasPrefix(line, "#") {
+		if line == "" || strings.HasPrefix(line, "#") {
+			continue
+		}
+		var lineSplit = strings.Split(line, ",")
+		if len(lineSplit) == 2 {
+			exampleSrcFile = append(exampleSrcFile, strToID(lineSplit[1]))
+			exampleNames = append(exampleNames, lineSplit[0])
+		} else {
+			exampleSrcFile = append(exampleSrcFile, strToID(line))
 			exampleNames = append(exampleNames, line)
 		}
 	}
@@ -267,22 +286,19 @@ func parseExamples() []*Example {
 		if verbose() {
 			fmt.Printf("Processing [%2d/%d] %s \n", i+1, len(exampleNames), exampleName)
 		}
+		fileName := exampleSrcFile[i]
 		example := Example{Name: exampleName}
-		exampleID := strings.ToLower(exampleName)
-		exampleID = strings.Replace(exampleID, " ", "-", -1)
-		exampleID = strings.Replace(exampleID, "/", "-", -1)
-		exampleID = strings.Replace(exampleID, "'", "", -1)
-		exampleID = dashPat.ReplaceAllString(exampleID, "-")
+		exampleID := strToID(exampleName)
 		example.ID = exampleID
 		example.FileName = exampleID + outputExt
 		example.Segs = make([][]*Seg, 0)
 
-		hashFileName := "examples/" + exampleID + "/" + exampleID + ".hash"
-		sourceFileName := "examples/" + exampleID + "/" + exampleID + ".go"
-		resultFileName := "examples/" + exampleID + "/" + exampleID + ".sh"
+		hashFileName := "examples/" + exampleID + "/" + fileName + ".hash"
+		sourceFileName := "examples/" + exampleID + "/" + fileName + ".go"
+		resultFileName := "examples/" + exampleID + "/" + fileName + ".sh"
 
-		langSourceFileName := "examples/" + exampleID + "/" + exampleID + "." + langCode + ".go"
-		langResultFileName := "examples/" + exampleID + "/" + exampleID + "." + langCode + ".sh"
+		langSourceFileName := "examples/" + exampleID + "/" + fileName + "." + langCode + ".go"
+		langResultFileName := "examples/" + exampleID + "/" + fileName + "." + langCode + ".sh"
 
 		if langCode != "en" && fileExist(langSourceFileName) {
 			sourceFileName = langSourceFileName

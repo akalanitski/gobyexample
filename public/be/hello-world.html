@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="be">
+  <head>
+    <meta charset="utf-8">
+    <title>Go па прыкладах: Hello World</title>
+    <link rel=stylesheet href="../site.css">
+  </head>
+  <script>
+      window.onkeydown = (e) => {
+          if (e.ctrlKey || e.altKey || e.shiftKey) {
+              return;
+          }
+          
+          
+          if (e.key == "ArrowRight") {
+              window.location.href = 'values.html';
+          }
+          
+      }
+  </script>
+  <body>
+    <article class="example" id="hello-world">
+      <h2><a href="./">Go па прыкладах</a>: Hello World</h2>
+      
+      <table>
+        
+        <tr>
+          <td class="docs">
+            <p>Наша першая праграма вывядзе паведамленне &ldquo;hello world&rdquo; на экран
+Вось поўны зыходны код.</p>
+
+          </td>
+          <td class="code leading">
+            <a href="https://go.dev/play/p/ihxhIPZ-TqY"><img title="Run code" src="../play.png" class="run" /></a><img title="Copy code" src="../clipboard.png" class="copy" />
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="s">&#34;fmt&#34;</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code">
+            
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;hello world&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+      </table>
+      
+      <table>
+        
+        <tr>
+          <td class="docs">
+            <p>Каб запусціць праграму яе трэбя зберагчы ў файл <code>hello-world.go</code> і
+напісаць <code>go run</code> ў тэрмінале</p>
+
+          </td>
+          <td class="code leading">
+            
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run hello-world.go
+</span></span><span class="line"><span class="cl"><span class="go">hello world</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Часам трэба будзе сабраць нашы праграмы ў бінарныя файлы.
+Для гэтага трэба яке скампіліраваць камандай <code>go build</code>.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go build hello-world.go
+</span></span><span class="line"><span class="cl"><span class="gp">$</span> ls
+</span></span><span class="line"><span class="cl"><span class="go">hello-world    hello-world.go</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Пасля кампіляцыі праграму можна выконваць без кампілятра Go</p>
+
+          </td>
+          <td class="code leading">
+            
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> ./hello-world
+</span></span><span class="line"><span class="cl"><span class="go">hello world</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Цяпер, калі мы можам запускаць і ствараць просты праграмы на Go, давайце
+даведаемся больш пра Go.</p>
+
+          </td>
+          <td class="code empty">
+            
+          
+          </td>
+        </tr>
+        
+      </table>
+      
+      
+      <p class="next">
+        Наступны прыклад: <a href="values.html" rel="next">Values</a>.
+      </p>
+      
+
+    <p class="footer">
+      ад <a href="https://markmcgranaghan.com">Марк МакГранаган</a>
+      і <a href="https://eli.thegreenplace.net">Элі Бендэрскі</a>
+      | <a href="https://github.com/mmcgrana/gobyexample">код</a>
+      | <a href="https://github.com/mmcgrana/gobyexample#license">ліцэнзія</a><br />
+      Мова <a href="#" onclick="switchLanguage('be')">BE</a> | <a href="#" onclick="switchLanguage('en')">EN</a>
+    </p>
+    <script src="../site.js" async></script>
+
+    </article>
+    <script>
+      var codeLines = [];
+      codeLines.push('package main\u000A');codeLines.push('import \"fmt\"\u000A');codeLines.push('func main() {\u000A    fmt.Println(\"hello world\")\u000A}\u000A');codeLines.push('');codeLines.push('');codeLines.push('');codeLines.push('');
+    </script>
+  </body>
+</html>
