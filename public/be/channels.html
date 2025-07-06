@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="be">
+  <head>
+    <meta charset="utf-8">
+    <title>Go па прыкладах: Channels</title>
+    <link rel=stylesheet href="../site.css">
+  </head>
+  <script>
+      window.onkeydown = (e) => {
+          if (e.ctrlKey || e.altKey || e.shiftKey) {
+              return;
+          }
+          
+          if (e.key == "ArrowLeft") {
+              window.location.href = 'goroutines.html';
+          }
+          
+          
+          if (e.key == "ArrowRight") {
+              window.location.href = 'channel-buffering.html';
+          }
+          
+      }
+  </script>
+  <body>
+    <article class="example" id="channels">
+      <h2><a href="./">Go па прыкладах</a>: Channels</h2>
+      
+      <table>
+        
+        <tr>
+          <td class="docs">
+            <p><em>Каналы</em> — гэта трубы, якія злучаюцца канкурэнтныя
+горуціны. Вы можаце адпраўляць значэнні ў каналы з адной
+горуціны і атрымаць іх у другой.</p>
+
+          </td>
+          <td class="code empty leading">
+            
+          
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            <a href="https://go.dev/play/p/Ny7pKRURbBP"><img title="Run code" src="../play.png" class="run" /></a><img title="Copy code" src="../clipboard.png" class="copy" />
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="s">&#34;fmt&#34;</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Ствараецца новы канал праз <code>make(chan val-type)</code>.
+Каналы тыпізуюцца праз тып якія яны перадаюць.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">messages</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="kt">string</span><span class="p">)</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Канструкцыя <code>channel &lt;-</code> <em>адпраўляе</em> значэння ў канал.
+Ніжэй <code>&quot;ping&quot;</code> адпраўляецца ў канал <code>messages</code>, створаны вышэй,
+з новай горуціны.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="k">go</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span> <span class="nx">messages</span> <span class="o">&lt;-</span> <span class="s">&#34;ping&#34;</span> <span class="p">}()</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Канструкцыя <code>&lt;-channel</code> <em>атрымлівае</em> значэнне з
+канал. Тут мы атрымаем і выводзіцца <code>&quot;ping&quot;</code> які быў
+адпраўлены вышэй.</p>
+
+          </td>
+          <td class="code">
+            
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">msg</span> <span class="o">:=</span> <span class="o">&lt;-</span><span class="nx">messages</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">msg</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+      </table>
+      
+      <table>
+        
+        <tr>
+          <td class="docs">
+            <p>When we run the program the <code>&quot;ping&quot;</code> message is
+successfully passed from one goroutine to another via
+our channel.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run channels.go 
+</span></span><span class="line"><span class="cl"><span class="go">ping</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>By default sends and receives block until both the
+sender and receiver are ready. This property allowed
+us to wait at the end of our program for the <code>&quot;ping&quot;</code>
+message without having to use any other synchronization.</p>
+
+          </td>
+          <td class="code empty">
+            
+          
+          </td>
+        </tr>
+        
+      </table>
+      
+      
+      <p class="next">
+        Наступны прыклад: <a href="channel-buffering.html" rel="next">Channel Buffering</a>.
+      </p>
+      
+
+    <p class="footer">
+      ад <a href="https://markmcgranaghan.com">Марк МакГранаган</a>
+      і <a href="https://eli.thegreenplace.net">Элі Бендэрскі</a>
+      | <a href="https://github.com/mmcgrana/gobyexample">код</a>
+      | <a href="https://github.com/mmcgrana/gobyexample#license">ліцэнзія</a><br />
+      Мова <a href="#" onclick="switchLanguage('be')">BE</a> | <a href="#" onclick="switchLanguage('en')">EN</a>
+    </p>
+    <script src="../site.js" async></script>
+
+    </article>
+    <script>
+      var codeLines = [];
+      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import \"fmt\"\u000A');codeLines.push('func main() {\u000A');codeLines.push('    messages :\u003D make(chan string)\u000A');codeLines.push('    go func() { messages \u003C- \"ping\" }()\u000A');codeLines.push('    msg :\u003D \u003C-messages\u000A    fmt.Println(msg)\u000A}\u000A');codeLines.push('');codeLines.push('');
+    </script>
+  </body>
+</html>

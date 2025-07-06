@@ -19,7 +19,7 @@ time, mark, audio, video {
   font: inherit;
   vertical-align: baseline;
 }
-article, aside, details, figcaption, figure,
+aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
   display: block;
 }
@@ -60,7 +60,7 @@ h2 {
 h2 a {
   text-decoration: none;
 }
-div.example {
+article.example {
   width: 900px;
   min-width: 900px;
   max-width: 900px;
@@ -68,7 +68,7 @@ div.example {
   margin-right: auto;
   margin-bottom: 120px;
 }
-div.example table {
+article.example table {
   margin-top: 15px;
   margin-bottom: 20px;
 }
@@ -78,7 +78,7 @@ p.next {
 p.footer {
   font-size: 75%;
 }
-div#intro {
+#intro {
   width: 420px;
   min-width: 420px;
   max-width: 420px;
@@ -86,10 +86,10 @@ div#intro {
   margin-right: auto;
   margin-bottom: 120px;
 }
-div#intro p {
+#intro p {
   padding-top: 20px;
 }
-div#intro ul {
+#intro ul {
   padding-top: 20px;
 }
 table td {

@@ -24,7 +24,7 @@
       }
   </script>
   <body>
-    <div class="example" id="{{.ID}}">
+    <article class="example" id="{{.ID}}">
       <h2><a href="./">Go by Example</a>: {{.Name}}</h2>
       {{range .Segs}}
       <table>
@@ -50,7 +50,7 @@
       </p>
       {{end}}
 {{ template "footer" }}
-    </div>
+    </article>
     <script>
       var codeLines = [];
       {{range .Segs}}{{range .}}codeLines.push('{{js .CodeForJs}}');{{end}}{{end}}

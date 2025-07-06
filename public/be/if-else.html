@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="be">
+  <head>
+    <meta charset="utf-8">
+    <title>Go па прыкладах: If/Else</title>
+    <link rel=stylesheet href="../site.css">
+  </head>
+  <script>
+      window.onkeydown = (e) => {
+          if (e.ctrlKey || e.altKey || e.shiftKey) {
+              return;
+          }
+          
+          if (e.key == "ArrowLeft") {
+              window.location.href = 'for.html';
+          }
+          
+          
+          if (e.key == "ArrowRight") {
+              window.location.href = 'switch.html';
+          }
+          
+      }
+  </script>
+  <body>
+    <article class="example" id="if-else">
+      <h2><a href="./">Go па прыкладах</a>: If/Else</h2>
+      
+      <table>
+        
+        <tr>
+          <td class="docs">
+            <p>Галінаванне з дапамогай <code>if</code> і <code>else</code> у Go з&rsquo;яўляецца простым.</p>
+
+          </td>
+          <td class="code empty leading">
+            
+          
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            <a href="https://go.dev/play/p/8ZYKV6Axlc3"><img title="Run code" src="../play.png" class="run" /></a><img title="Copy code" src="../clipboard.png" class="copy" />
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="s">&#34;fmt&#34;</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Вось просты прыклад.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="k">if</span> <span class="mi">7</span><span class="o">%</span><span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;7 is even&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;7 is odd&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Можна выкарыстоўваць аператар <code>if</code> без <code>else</code>.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="k">if</span> <span class="mi">8</span><span class="o">%</span><span class="mi">4</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;8 is divisible by 4&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>часта ва ўмовах выкарыстоўваюцца лагічныя аператары такія як <code>&amp;&amp;</code> і <code>||</code></p>
+
+          </td>
+          <td class="code leading">
+            
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="k">if</span> <span class="mi">8</span><span class="o">%</span><span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">||</span> <span class="mi">7</span><span class="o">%</span><span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;either 8 or 7 are even&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>У блогу з умовай можа апісаць зменныя якію будуць даступны ва ўсех галінах
+канструкцыі <code>if-else</code></p>
+
+          </td>
+          <td class="code leading">
+            
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="k">if</span> <span class="nx">num</span> <span class="o">:=</span> <span class="mi">9</span><span class="p">;</span> <span class="nx">num</span> <span class="p">&lt;</span> <span class="mi">0</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">num</span><span class="p">,</span> <span class="s">&#34;is negative&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="nx">num</span> <span class="p">&lt;</span> <span class="mi">10</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">num</span><span class="p">,</span> <span class="s">&#34;has 1 digit&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">num</span><span class="p">,</span> <span class="s">&#34;has multiple digits&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Звярніце ўвагу, што ў Go не патрэбныя дужкі вакол умоў,
+але фігурныя дужкі абавязковыя.</p>
+
+          </td>
+          <td class="code empty">
+            
+          
+          </td>
+        </tr>
+        
+      </table>
+      
+      <table>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run if-else.go
+</span></span><span class="line"><span class="cl"><span class="go">7 is odd
+</span></span></span><span class="line"><span class="cl"><span class="go">8 is divisible by 4
+</span></span></span><span class="line"><span class="cl"><span class="go">either 8 or 7 are even
+</span></span></span><span class="line"><span class="cl"><span class="go">9 has 1 digit</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>У Go няма <a href="https://en.wikipedia.org/wiki/%3F:">тернарннага аператар ?:</a>
+таму вам трэба будзе выкарыстоўваць поўны канструкцыю <code>if</code> нават
+для простых умоў.</p>
+
+          </td>
+          <td class="code empty">
+            
+          
+          </td>
+        </tr>
+        
+      </table>
+      
+      
+      <p class="next">
+        Наступны прыклад: <a href="switch.html" rel="next">Switch</a>.
+      </p>
+      
+
+    <p class="footer">
+      ад <a href="https://markmcgranaghan.com">Марк МакГранаган</a>
+      і <a href="https://eli.thegreenplace.net">Элі Бендэрскі</a>
+      | <a href="https://github.com/mmcgrana/gobyexample">код</a>
+      | <a href="https://github.com/mmcgrana/gobyexample#license">ліцэнзія</a><br />
+      Мова <a href="#" onclick="switchLanguage('be')">BE</a> | <a href="#" onclick="switchLanguage('en')">EN</a>
+    </p>
+    <script src="../site.js" async></script>
+
+    </article>
+    <script>
+      var codeLines = [];
+      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import \"fmt\"\u000A');codeLines.push('func main() {\u000A');codeLines.push('    if 7%2 \u003D\u003D 0 {\u000A        fmt.Println(\"7 is even\")\u000A    } else {\u000A        fmt.Println(\"7 is odd\")\u000A    }\u000A');codeLines.push('    if 8%4 \u003D\u003D 0 {\u000A        fmt.Println(\"8 is divisible by 4\")\u000A    }\u000A');codeLines.push('    if 8%2 \u003D\u003D 0 || 7%2 \u003D\u003D 0 {\u000A        fmt.Println(\"either 8 or 7 are even\")\u000A    }\u000A');codeLines.push('    if num :\u003D 9; num \u003C 0 {\u000A        fmt.Println(num, \"is negative\")\u000A    } else if num \u003C 10 {\u000A        fmt.Println(num, \"has 1 digit\")\u000A    } else {\u000A        fmt.Println(num, \"has multiple digits\")\u000A    }\u000A}\u000A');codeLines.push('');codeLines.push('');codeLines.push('');
+    </script>
+  </body>
+</html>

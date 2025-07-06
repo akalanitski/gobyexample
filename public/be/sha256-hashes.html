@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="be">
+  <head>
+    <meta charset="utf-8">
+    <title>Go па прыкладах: SHA256 Hashes</title>
+    <link rel=stylesheet href="../site.css">
+  </head>
+  <script>
+      window.onkeydown = (e) => {
+          if (e.ctrlKey || e.altKey || e.shiftKey) {
+              return;
+          }
+          
+          if (e.key == "ArrowLeft") {
+              window.location.href = 'url-parsing.html';
+          }
+          
+          
+          if (e.key == "ArrowRight") {
+              window.location.href = 'base64-encoding.html';
+          }
+          
+      }
+  </script>
+  <body>
+    <article class="example" id="sha256-hashes">
+      <h2><a href="./">Go па прыкладах</a>: SHA256 Hashes</h2>
+      
+      <table>
+        
+        <tr>
+          <td class="docs">
+            <p><a href="https://en.wikipedia.org/wiki/SHA-2"><em>SHA256 хэшы</em></a> часта выкарыстоўваюцца
+для вылічэння кароткіх ідэнтыфікатараў для бінарных
+або тэкставых блобаў. Напрыклад, сертыфікаты TLS/SSL выкарыстоўваюць SHA256
+для вылічэння подпісу сертыфіката. Вось як вылічыць
+SHA256 хэшы ў Go.</p>
+
+          </td>
+          <td class="code empty leading">
+            
+          
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            <a href="https://go.dev/play/p/J6sv_9mkjhM"><img title="Run code" src="../play.png" class="run" /></a><img title="Copy code" src="../clipboard.png" class="copy" />
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Go рэалізуе некалькі хэш-функцый у розных
+пакетах <code>crypto/*</code>.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;crypto/sha256&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;fmt&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">s</span> <span class="o">:=</span> <span class="s">&#34;sha256 this string&#34;</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Тут мы пачынаем з новага хэша.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">h</span> <span class="o">:=</span> <span class="nx">sha256</span><span class="p">.</span><span class="nf">New</span><span class="p">()</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p><code>Write</code> прымае байты. Калі ў вас ёсць тэкс <code>s</code>,
+выкарыстоўвайце <code>[]byte(s)</code>, каб пераўтварыць яго ў байты.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">h</span><span class="p">.</span><span class="nf">Write</span><span class="p">([]</span><span class="nb">byte</span><span class="p">(</span><span class="nx">s</span><span class="p">))</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Тут атрымліваецца канчатковы вынік хэш ў выглядзе слайса байтаў
+Функцыю <code>Sum</code> можна выкарыстоўваць для дадання
+да існуючага байтавага слайсу: звычайна гэта не патрабуецца.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">bs</span> <span class="o">:=</span> <span class="nx">h</span><span class="p">.</span><span class="nf">Sum</span><span class="p">(</span><span class="kc">nil</span><span class="p">)</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code">
+            
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;%x\n&#34;</span><span class="p">,</span> <span class="nx">bs</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+      </table>
+      
+      <table>
+        
+        <tr>
+          <td class="docs">
+            <p>Запуск праграмы вылічвае хэш і друкуе яго ў
+зручным для чытання фармаце.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run sha256-hashes.go
+</span></span><span class="line"><span class="cl"><span class="go">sha256 this string
+</span></span></span><span class="line"><span class="cl"><span class="go">1af1dfa857bf1d8814fe1af8983c18080019922e557f15a8a...</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Вы можаце вылічыць іншыя хэшы, выкарыстоўваючы падобны шаблон да
+паказанага вышэй. Напрыклад, каб вылічыць
+хэшы SHA512, імпартуйце <code>crypto/sha512</code> і выкарыстоўвайце
+<code>sha512.New()</code>.</p>
+
+          </td>
+          <td class="code empty leading">
+            
+          
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Звярніце ўвагу, што калі вам патрэбныя крыптаграфічна бяспечныя хэшы,
+вам варта ўважліва даследаваць
+<a href="https://en.wikipedia.org/wiki/Cryptographic_hash_function">Надзейнасць хэша</a>!</p>
+
+          </td>
+          <td class="code empty">
+            
+          
+          </td>
+        </tr>
+        
+      </table>
+      
+      
+      <p class="next">
+        Наступны прыклад: <a href="base64-encoding.html" rel="next">Base64 Encoding</a>.
+      </p>
+      
+
+    <p class="footer">
+      ад <a href="https://markmcgranaghan.com">Марк МакГранаган</a>
+      і <a href="https://eli.thegreenplace.net">Элі Бендэрскі</a>
+      | <a href="https://github.com/mmcgrana/gobyexample">код</a>
+      | <a href="https://github.com/mmcgrana/gobyexample#license">ліцэнзія</a><br />
+      Мова <a href="#" onclick="switchLanguage('be')">BE</a> | <a href="#" onclick="switchLanguage('en')">EN</a>
+    </p>
+    <script src="../site.js" async></script>
+
+    </article>
+    <script>
+      var codeLines = [];
+      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import (\u000A    \"crypto/sha256\"\u000A    \"fmt\"\u000A)\u000A');codeLines.push('func main() {\u000A    s :\u003D \"sha256 this string\"\u000A');codeLines.push('    h :\u003D sha256.New()\u000A');codeLines.push('    h.Write([]byte(s))\u000A');codeLines.push('    bs :\u003D h.Sum(nil)\u000A');codeLines.push('    fmt.Println(s)\u000A    fmt.Printf(\"%x\\n\", bs)\u000A}\u000A');codeLines.push('');codeLines.push('');codeLines.push('');
+    </script>
+  </body>
+</html>
