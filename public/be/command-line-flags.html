@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="be">
+  <head>
+    <meta charset="utf-8">
+    <title>Go па прыкладах: Command-Line Flags</title>
+    <link rel=stylesheet href="../site.css">
+  </head>
+  <script>
+      window.onkeydown = (e) => {
+          if (e.ctrlKey || e.altKey || e.shiftKey) {
+              return;
+          }
+          
+          if (e.key == "ArrowLeft") {
+              window.location.href = 'command-line-arguments.html';
+          }
+          
+          
+          if (e.key == "ArrowRight") {
+              window.location.href = 'command-line-subcommands.html';
+          }
+          
+      }
+  </script>
+  <body>
+    <article class="example" id="command-line-flags">
+      <h2><a href="./">Go па прыкладах</a>: Command-Line Flags</h2>
+      
+      <table>
+        
+        <tr>
+          <td class="docs">
+            <p><a href="https://be.wikipedia.org/wiki/Інтэрфейс_каманднага_радка"><em>параметры каманд</em></a>
+з&rsquo;яўляюцца распаўсюджаным спосабам задання камунікацыі з
+праграмай. Напрыклад, у <code>wc -l</code> <code>-l</code> з&rsquo;яўляецца
+параметрам каманды.</p>
+
+          </td>
+          <td class="code empty leading">
+            
+          
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            <a href="https://go.dev/play/p/Y5j7fWbqKYo"><img title="Run code" src="../play.png" class="run" /></a><img title="Copy code" src="../clipboard.png" class="copy" />
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Go прапануе пакет <code>flag</code>, які падтрымлівае базавы
+разбор параметраў каманды. Гэты пакет выкарыстоўваецца ніжэй
+для рэалізацыі пграмы-прыкладу.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;flag&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;fmt&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Апісанне тэкставага, лічбавых і булеўскага параметраў.
+Тут мы аб&rsquo;яўляем тэкставы параметр <code>word</code> са стандартным значэннем <code>&quot;foo&quot;</code>
+і невялікім апісаннем. Функцыя <code>flag.String</code> вяртае
+ўказальнік тэкст (не зменную з тэкстам);
+мы пабачым, як выкарыстоўваць гэты ўказальнік далей.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">wordPtr</span> <span class="o">:=</span> <span class="nx">flag</span><span class="p">.</span><span class="nf">String</span><span class="p">(</span><span class="s">&#34;word&#34;</span><span class="p">,</span> <span class="s">&#34;foo&#34;</span><span class="p">,</span> <span class="s">&#34;a string&#34;</span><span class="p">)</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Тут аб&rsquo;яўляюцца параметр <code>numb</code> і <code>fork</code>, тым жа парадкам
+што і параметра <code>word</code>.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">numbPtr</span> <span class="o">:=</span> <span class="nx">flag</span><span class="p">.</span><span class="nf">Int</span><span class="p">(</span><span class="s">&#34;numb&#34;</span><span class="p">,</span> <span class="mi">42</span><span class="p">,</span> <span class="s">&#34;an int&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">forkPtr</span> <span class="o">:=</span> <span class="nx">flag</span><span class="p">.</span><span class="nf">Bool</span><span class="p">(</span><span class="s">&#34;fork&#34;</span><span class="p">,</span> <span class="kc">false</span><span class="p">,</span> <span class="s">&#34;a bool&#34;</span><span class="p">)</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Таксама можна аб&rsquo;явіць параметр, які выкарыстоўвае
+існуючую зменную, аб&rsquo;яўленую ў іншым месцы праграмы.
+Звярніце ўвагу, што нам трэба перадаць указальнік</p>
+
+          </td>
+          <td class="code leading">
+            
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="kd">var</span> <span class="nx">svar</span> <span class="kt">string</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">flag</span><span class="p">.</span><span class="nf">StringVar</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">svar</span><span class="p">,</span> <span class="s">&#34;svar&#34;</span><span class="p">,</span> <span class="s">&#34;bar&#34;</span><span class="p">,</span> <span class="s">&#34;a string var&#34;</span><span class="p">)</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Калі ўсе параметры апісаны функцыя <code>flag.Parse()</code>
+разбірае аргументы каманды</p>
+
+          </td>
+          <td class="code leading">
+            
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">flag</span><span class="p">.</span><span class="nf">Parse</span><span class="p">()</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Тут мы проста вывядзем разабраныя і не разобранныя параметры.
+Звярніце ўвагу, што нам трэба разыменаваць указальнікі,
+напрыклад, з дапамогай <code>*wordPtr</code> каб атрымаць рэальныя
+значэнні параметраў.</p>
+
+          </td>
+          <td class="code">
+            
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;word:&#34;</span><span class="p">,</span> <span class="o">*</span><span class="nx">wordPtr</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;numb:&#34;</span><span class="p">,</span> <span class="o">*</span><span class="nx">numbPtr</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;fork:&#34;</span><span class="p">,</span> <span class="o">*</span><span class="nx">forkPtr</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;svar:&#34;</span><span class="p">,</span> <span class="nx">svar</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;tail:&#34;</span><span class="p">,</span> <span class="nx">flag</span><span class="p">.</span><span class="nf">Args</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+      </table>
+      
+      <table>
+        
+        <tr>
+          <td class="docs">
+            <p>To experiment with the command-line flags program it&rsquo;s
+best to first compile it and then run the resulting
+binary directly.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go build command-line-flags.go</span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Try out the built program by first giving it values for
+all flags.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> ./command-line-flags -word=opt -numb=7 -fork -svar=flag
+</span></span><span class="line"><span class="cl"><span class="go">word: opt
+</span></span></span><span class="line"><span class="cl"><span class="go">numb: 7
+</span></span></span><span class="line"><span class="cl"><span class="go">fork: true
+</span></span></span><span class="line"><span class="cl"><span class="go">svar: flag
+</span></span></span><span class="line"><span class="cl"><span class="go">tail: []</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Note that if you omit flags they automatically take
+their default values.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> ./command-line-flags -word=opt
+</span></span><span class="line"><span class="cl"><span class="go">word: opt
+</span></span></span><span class="line"><span class="cl"><span class="go">numb: 42
+</span></span></span><span class="line"><span class="cl"><span class="go">fork: false
+</span></span></span><span class="line"><span class="cl"><span class="go">svar: bar
+</span></span></span><span class="line"><span class="cl"><span class="go">tail: []</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Trailing positional arguments can be provided after
+any flags.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> ./command-line-flags -word=opt a1 a2 a3
+</span></span><span class="line"><span class="cl"><span class="go">word: opt
+</span></span></span><span class="line"><span class="cl"><span class="go">...
+</span></span></span><span class="line"><span class="cl"><span class="go">tail: [a1 a2 a3]</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Note that the <code>flag</code> package requires all flags to
+appear before positional arguments (otherwise the flags
+will be interpreted as positional arguments).</p>
+
+          </td>
+          <td class="code leading">
+            
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> ./command-line-flags -word=opt a1 a2 a3 -numb=7
+</span></span><span class="line"><span class="cl"><span class="go">word: opt
+</span></span></span><span class="line"><span class="cl"><span class="go">numb: 42
+</span></span></span><span class="line"><span class="cl"><span class="go">fork: false
+</span></span></span><span class="line"><span class="cl"><span class="go">svar: bar
+</span></span></span><span class="line"><span class="cl"><span class="go">tail: [a1 a2 a3 -numb=7]</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Use <code>-h</code> or <code>--help</code> flags to get automatically
+generated help text for the command-line program.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> ./command-line-flags -h
+</span></span><span class="line"><span class="cl"><span class="go">Usage of ./command-line-flags:
+</span></span></span><span class="line"><span class="cl"><span class="go">  -fork=false: a bool
+</span></span></span><span class="line"><span class="cl"><span class="go">  -numb=42: an int
+</span></span></span><span class="line"><span class="cl"><span class="go">  -svar=&#34;bar&#34;: a string var
+</span></span></span><span class="line"><span class="cl"><span class="go">  -word=&#34;foo&#34;: a string</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>If you provide a flag that wasn&rsquo;t specified to the
+<code>flag</code> package, the program will print an error message
+and show the help text again.</p>
+
+          </td>
+          <td class="code">
+            
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> ./command-line-flags -wat
+</span></span><span class="line"><span class="cl"><span class="go">flag provided but not defined: -wat
+</span></span></span><span class="line"><span class="cl"><span class="go">Usage of ./command-line-flags:
+</span></span></span><span class="line"><span class="cl"><span class="go">...</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+      </table>
+      
+      
+      <p class="next">
+        Наступны прыклад: <a href="command-line-subcommands.html" rel="next">Command-Line Subcommands</a>.
+      </p>
+      
+
+    <p class="footer">
+      ад <a href="https://markmcgranaghan.com">Марк МакГранаган</a>
+      і <a href="https://eli.thegreenplace.net">Элі Бендэрскі</a>
+      | <a href="https://github.com/mmcgrana/gobyexample">код</a>
+      | <a href="https://github.com/mmcgrana/gobyexample#license">ліцэнзія</a><br />
+      Мова <a href="#" onclick="switchLanguage('be')">BE</a> | <a href="#" onclick="switchLanguage('en')">EN</a>
+    </p>
+    <script src="../site.js" async></script>
+
+    </article>
+    <script>
+      var codeLines = [];
+      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import (\u000A    \"flag\"\u000A    \"fmt\"\u000A)\u000A');codeLines.push('func main() {\u000A');codeLines.push('    wordPtr :\u003D flag.String(\"word\", \"foo\", \"a string\")\u000A');codeLines.push('    numbPtr :\u003D flag.Int(\"numb\", 42, \"an int\")\u000A    forkPtr :\u003D flag.Bool(\"fork\", false, \"a bool\")\u000A');codeLines.push('    var svar string\u000A    flag.StringVar(\u0026svar, \"svar\", \"bar\", \"a string var\")\u000A');codeLines.push('    flag.Parse()\u000A');codeLines.push('    fmt.Println(\"word:\", *wordPtr)\u000A    fmt.Println(\"numb:\", *numbPtr)\u000A    fmt.Println(\"fork:\", *forkPtr)\u000A    fmt.Println(\"svar:\", svar)\u000A    fmt.Println(\"tail:\", flag.Args())\u000A}\u000A');codeLines.push('');codeLines.push('');codeLines.push('');codeLines.push('');codeLines.push('');codeLines.push('');codeLines.push('');
+    </script>
+  </body>
+</html>

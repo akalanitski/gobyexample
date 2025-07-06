@@ -15,3 +15,33 @@ var clipboard = new Clipboard('.copy', {
         return codeLines.filter(function(cL) { return cL != '' }).join("\n").replace(/\n$/, '');
     }
 });
+
+function switchLanguage(targetLang) {
+    if (!targetLang) {
+        return;
+    }
+    const supportedLanguages = ["en", "be"]
+    const url = new URL(window.location.href);
+    const path = url.pathname.split('/');
+    let currentLanguage = "en";
+    if (path.length > 1) {
+        const hasLangCode = supportedLanguages.includes(path[1]);
+        if (hasLangCode) {
+            currentLanguage = path[1];
+        }
+    }
+    if (currentLanguage === targetLang) {
+        return;
+    }
+
+    if (targetLang === "en") {
+        path.splice(path.indexOf(currentLanguage), 1);
+        url.pathname = path.join("/")
+        console.log("TO ENGLISH -- ", url.pathname, url);
+    } else {
+        path.splice(1, 0, targetLang);
+        url.pathname = path.join("/");
+        console.log("TO ", targetLang, " -- ", url.pathname, url);
+    }
+    window.location.href = url.href;
+}
