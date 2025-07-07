@@ -23,11 +23,12 @@ function switchLanguage(targetLang) {
     const supportedLanguages = ["en", "be"]
     const url = new URL(window.location.href);
     const path = url.pathname.split('/');
+    const langIndex = path.length - 2;
     let currentLanguage = "en";
     if (path.length > 1) {
-        const hasLangCode = supportedLanguages.includes(path[1]);
+        const hasLangCode = supportedLanguages.includes(path[langIndex]);
         if (hasLangCode) {
-            currentLanguage = path[1];
+            currentLanguage = path[langIndex];
         }
     }
     if (currentLanguage === targetLang) {
@@ -39,7 +40,7 @@ function switchLanguage(targetLang) {
         url.pathname = path.join("/")
         console.log("TO ENGLISH -- ", url.pathname, url);
     } else {
-        path.splice(1, 0, targetLang);
+        path.splice(path.length - 1, 0, targetLang);
         url.pathname = path.join("/");
         console.log("TO ", targetLang, " -- ", url.pathname, url);
     }
