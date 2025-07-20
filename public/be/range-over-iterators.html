@@ -252,30 +252,6 @@
         
       </table>
       
-      <table>
-        
-        <tr>
-          <td class="docs">
-            
-          </td>
-          <td class="code">
-            
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run range-over-iterators.go
-</span></span><span class="line"><span class="cl"><span class="go">10
-</span></span></span><span class="line"><span class="cl"><span class="go">13
-</span></span></span><span class="line"><span class="cl"><span class="go">23
-</span></span></span><span class="line"><span class="cl"><span class="go">all: [10 13 23]
-</span></span></span><span class="line"><span class="cl"><span class="go">1
-</span></span></span><span class="line"><span class="cl"><span class="go">1
-</span></span></span><span class="line"><span class="cl"><span class="go">2
-</span></span></span><span class="line"><span class="cl"><span class="go">3
-</span></span></span><span class="line"><span class="cl"><span class="go">5
-</span></span></span><span class="line"><span class="cl"><span class="go">8</span></span></span></code></pre>
-          </td>
-        </tr>
-        
-      </table>
-      
       
       <p class="next">
         Наступны прыклад: <a href="errors.html" rel="next">Errors</a>.
@@ -294,7 +270,7 @@
     </article>
     <script>
       var codeLines = [];
-      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import (\u000A    \"fmt\"\u000A    \"iter\"\u000A    \"slices\"\u000A)\u000A');codeLines.push('type List[T any] struct {\u000A    head, tail *element[T]\u000A}\u000A');codeLines.push('type element[T any] struct {\u000A    next *element[T]\u000A    val  T\u000A}\u000A');codeLines.push('func (lst *List[T]) Push(v T) {\u000A    if lst.tail \u003D\u003D nil {\u000A        lst.head \u003D \u0026element[T]{val: v}\u000A        lst.tail \u003D lst.head\u000A    } else {\u000A        lst.tail.next \u003D \u0026element[T]{val: v}\u000A        lst.tail \u003D lst.tail.next\u000A    }\u000A}\u000A');codeLines.push('func (lst *List[T]) All() iter.Seq[T] {\u000A    return func(yield func(T) bool) {\u000A');codeLines.push('        for e :\u003D lst.head; e !\u003D nil; e \u003D e.next {\u000A            if !yield(e.val) {\u000A                return\u000A            }\u000A        }\u000A    }\u000A}\u000A');codeLines.push('func genFib() iter.Seq[int] {\u000A    return func(yield func(int) bool) {\u000A        a, b :\u003D 1, 1\u000A');codeLines.push('        for {\u000A            if !yield(a) {\u000A                return\u000A            }\u000A            a, b \u003D b, a+b\u000A        }\u000A    }\u000A}\u000A');codeLines.push('func main() {\u000A    lst :\u003D List[int]{}\u000A    lst.Push(10)\u000A    lst.Push(13)\u000A    lst.Push(23)\u000A');codeLines.push('    for e :\u003D range lst.All() {\u000A        fmt.Println(e)\u000A    }\u000A');codeLines.push('    all :\u003D slices.Collect(lst.All())\u000A    fmt.Println(\"all:\", all)\u000A');codeLines.push('    for n :\u003D range genFib() {\u000A');codeLines.push('        if n \u003E\u003D 10 {\u000A            break\u000A        }\u000A        fmt.Println(n)\u000A    }\u000A}\u000A');codeLines.push('');
+      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import (\u000A    \"fmt\"\u000A    \"iter\"\u000A    \"slices\"\u000A)\u000A');codeLines.push('type List[T any] struct {\u000A    head, tail *element[T]\u000A}\u000A');codeLines.push('type element[T any] struct {\u000A    next *element[T]\u000A    val  T\u000A}\u000A');codeLines.push('func (lst *List[T]) Push(v T) {\u000A    if lst.tail \u003D\u003D nil {\u000A        lst.head \u003D \u0026element[T]{val: v}\u000A        lst.tail \u003D lst.head\u000A    } else {\u000A        lst.tail.next \u003D \u0026element[T]{val: v}\u000A        lst.tail \u003D lst.tail.next\u000A    }\u000A}\u000A');codeLines.push('func (lst *List[T]) All() iter.Seq[T] {\u000A    return func(yield func(T) bool) {\u000A');codeLines.push('        for e :\u003D lst.head; e !\u003D nil; e \u003D e.next {\u000A            if !yield(e.val) {\u000A                return\u000A            }\u000A        }\u000A    }\u000A}\u000A');codeLines.push('func genFib() iter.Seq[int] {\u000A    return func(yield func(int) bool) {\u000A        a, b :\u003D 1, 1\u000A');codeLines.push('        for {\u000A            if !yield(a) {\u000A                return\u000A            }\u000A            a, b \u003D b, a+b\u000A        }\u000A    }\u000A}\u000A');codeLines.push('func main() {\u000A    lst :\u003D List[int]{}\u000A    lst.Push(10)\u000A    lst.Push(13)\u000A    lst.Push(23)\u000A');codeLines.push('    for e :\u003D range lst.All() {\u000A        fmt.Println(e)\u000A    }\u000A');codeLines.push('    all :\u003D slices.Collect(lst.All())\u000A    fmt.Println(\"all:\", all)\u000A');codeLines.push('    for n :\u003D range genFib() {\u000A');codeLines.push('        if n \u003E\u003D 10 {\u000A            break\u000A        }\u000A        fmt.Println(n)\u000A    }\u000A}\u000A');
     </script>
   </body>
 </html>

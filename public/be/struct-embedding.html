@@ -30,11 +30,11 @@
         
         <tr>
           <td class="docs">
-            <p>Go supports <em>embedding</em> of structs and interfaces
-to express a more seamless <em>composition</em> of types.
-This is not to be confused with <a href="embed-directive"><code>//go:embed</code></a> which is
-a go directive introduced in Go version 1.16+ to embed
-files and folders into the application binary.</p>
+            <p>Go падтрымлівае <em>ўбудоўванне</em> структур і інтэрфейсаў
+для больш галдкай <em>кампазіцыяй</em> тыпаў.
+Не варта блытаць з <a href="embed-directive"><code>//go:embed</code></a>, якая з&rsquo;яўляецца
+дырэктывай камплітара go, уведзенай у Go версіі 1.16+ для ўбудоўвання
+файлаў і папак у двайковы файл праграмы.</p>
 
           </td>
           <td class="code empty leading">
@@ -48,7 +48,7 @@ files and folders into the application binary.</p>
             
           </td>
           <td class="code leading">
-            <a href="https://go.dev/play/p/-LOu1L0i2tR"><img title="Run code" src="../play.png" class="run" /></a><img title="Copy code" src="../clipboard.png" class="copy" />
+            <a href="https://go.dev/play/p/smx9Oy3ZP26"><img title="Run code" src="../play.png" class="run" /></a><img title="Copy code" src="../clipboard.png" class="copy" />
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
           </td>
         </tr>
@@ -89,8 +89,8 @@ files and folders into the application binary.</p>
         
         <tr>
           <td class="docs">
-            <p>A <code>container</code> <em>embeds</em> a <code>base</code>. An embedding looks
-like a field without a name.</p>
+            <p><code>container</code> <em>ўбудоўвае</em> <code>базу</code>. Убудаванне выглядае
+як поле без назвы.</p>
 
           </td>
           <td class="code leading">
@@ -114,9 +114,8 @@ like a field without a name.</p>
         
         <tr>
           <td class="docs">
-            <p>When creating structs with literals, we have to
-initialize the embedding explicitly; here the
-embedded type serves as the field name.</p>
+            <p>Пры стварэнні структур з літэраламі мы павінны яўна
+задаць значэнні убудаванай структуры; тут убудаваны тып служыць імем поля.</p>
 
           </td>
           <td class="code leading">
@@ -132,8 +131,8 @@ embedded type serves as the field name.</p>
         
         <tr>
           <td class="docs">
-            <p>We can access the base&rsquo;s fields directly on <code>co</code>,
-e.g. <code>co.num</code>.</p>
+            <p>Але выкарыстоўваць значэнні убудаванай структуры можам без указання яе назвы
+напрыклад, <code>co.num</code>.</p>
 
           </td>
           <td class="code leading">
@@ -144,8 +143,8 @@ e.g. <code>co.num</code>.</p>
         
         <tr>
           <td class="docs">
-            <p>Alternatively, we can spell out the full path using
-the embedded type name.</p>
+            <p>Пры гэтым можно прапісаць і поўны шлях, выкарыстоўваючы
+назву ўбудаванай структуры.</p>
 
           </td>
           <td class="code leading">
@@ -156,10 +155,10 @@ the embedded type name.</p>
         
         <tr>
           <td class="docs">
-            <p>Since <code>container</code> embeds <code>base</code>, the methods of
-<code>base</code> also become methods of a <code>container</code>. Here
-we invoke a method that was embedded from <code>base</code>
-directly on <code>co</code>.</p>
+            <p>Паколькі <code>container</code> умяшчае <code>base</code>, метады
+<code>base</code> таксама становяцца метадамі <code>container</code>. Тут
+мы выклікаем метад, які быў убудаваны з <code>base</code>
+непасрэдна ў <code>co</code>.</p>
 
           </td>
           <td class="code leading">
@@ -182,10 +181,10 @@ directly on <code>co</code>.</p>
         
         <tr>
           <td class="docs">
-            <p>Embedding structs with methods may be used to bestow
-interface implementations onto other structs. Here
-we see that a <code>container</code> now implements the
-<code>describer</code> interface because it embeds <code>base</code>.</p>
+            <p>Убудаванне структур з метадамі можа выкарыстоўвацца для перадачы
+рэалізацый інтэрфейсаў іншым структурам. Тут
+мы бачым, што <code>container</code> цяпер рэалізуе
+інтэрфейс <code>describer</code>, таму што ён убудоўвае <code>base</code>.</p>
 
           </td>
           <td class="code">
@@ -193,24 +192,6 @@ we see that a <code>container</code> now implements the
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="kd">var</span> <span class="nx">d</span> <span class="nx">describer</span> <span class="p">=</span> <span class="nx">co</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;describer:&#34;</span><span class="p">,</span> <span class="nx">d</span><span class="p">.</span><span class="nf">describe</span><span class="p">())</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
-          </td>
-        </tr>
-        
-      </table>
-      
-      <table>
-        
-        <tr>
-          <td class="docs">
-            
-          </td>
-          <td class="code">
-            
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run struct-embedding.go
-</span></span><span class="line"><span class="cl"><span class="go">co={num: 1, str: some name}
-</span></span></span><span class="line"><span class="cl"><span class="go">also num: 1
-</span></span></span><span class="line"><span class="cl"><span class="go">describe: base with num=1
-</span></span></span><span class="line"><span class="cl"><span class="go">describer: base with num=1</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -234,7 +215,7 @@ we see that a <code>container</code> now implements the
     </article>
     <script>
       var codeLines = [];
-      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import \"fmt\"\u000A');codeLines.push('type base struct {\u000A    num int\u000A}\u000A');codeLines.push('func (b base) describe() string {\u000A    return fmt.Sprintf(\"base with num\u003D%v\", b.num)\u000A}\u000A');codeLines.push('type container struct {\u000A    base\u000A    str string\u000A}\u000A');codeLines.push('func main() {\u000A');codeLines.push('    co :\u003D container{\u000A        base: base{\u000A            num: 1,\u000A        },\u000A        str: \"some name\",\u000A    }\u000A');codeLines.push('    fmt.Printf(\"co\u003D{num: %v, str: %v}\\n\", co.num, co.str)\u000A');codeLines.push('    fmt.Println(\"also num:\", co.base.num)\u000A');codeLines.push('    fmt.Println(\"describe:\", co.describe())\u000A');codeLines.push('    type describer interface {\u000A        describe() string\u000A    }\u000A');codeLines.push('    var d describer \u003D co\u000A    fmt.Println(\"describer:\", d.describe())\u000A}\u000A');codeLines.push('');
+      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import \"fmt\"\u000A');codeLines.push('type base struct {\u000A    num int\u000A}\u000A');codeLines.push('func (b base) describe() string {\u000A    return fmt.Sprintf(\"base with num\u003D%v\", b.num)\u000A}\u000A');codeLines.push('type container struct {\u000A    base\u000A    str string\u000A}\u000A');codeLines.push('func main() {\u000A');codeLines.push('    co :\u003D container{\u000A        base: base{\u000A            num: 1,\u000A        },\u000A        str: \"some name\",\u000A    }\u000A');codeLines.push('    fmt.Printf(\"co\u003D{num: %v, str: %v}\\n\", co.num, co.str)\u000A');codeLines.push('    fmt.Println(\"also num:\", co.base.num)\u000A');codeLines.push('    fmt.Println(\"describe:\", co.describe())\u000A');codeLines.push('    type describer interface {\u000A        describe() string\u000A    }\u000A');codeLines.push('    var d describer \u003D co\u000A    fmt.Println(\"describer:\", d.describe())\u000A}\u000A');
     </script>
   </body>
 </html>

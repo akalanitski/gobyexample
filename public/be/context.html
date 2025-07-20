@@ -144,38 +144,6 @@
         
       </table>
       
-      <table>
-        
-        <tr>
-          <td class="docs">
-            <p>Run the server in the background.</p>
-
-          </td>
-          <td class="code leading">
-            
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run context.go &amp;</span></span></code></pre>
-          </td>
-        </tr>
-        
-        <tr>
-          <td class="docs">
-            <p>Simulate a client request to <code>/hello</code>, hitting
-Ctrl+C shortly after starting to signal
-cancellation.</p>
-
-          </td>
-          <td class="code">
-            
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> curl localhost:8090/hello
-</span></span><span class="line"><span class="cl"><span class="go">server: hello handler started
-</span></span></span><span class="line"><span class="cl"><span class="go">^C
-</span></span></span><span class="line"><span class="cl"><span class="go">server: context canceled
-</span></span></span><span class="line"><span class="cl"><span class="go">server: hello handler ended</span></span></span></code></pre>
-          </td>
-        </tr>
-        
-      </table>
-      
       
       <p class="next">
         Наступны прыклад: <a href="spawning-processes.html" rel="next">Spawning Processes</a>.
@@ -194,7 +162,7 @@ cancellation.</p>
     </article>
     <script>
       var codeLines = [];
-      codeLines.push('package main\u000A');codeLines.push('import (\u000A    \"fmt\"\u000A    \"net/http\"\u000A    \"time\"\u000A)\u000A');codeLines.push('func hello(w http.ResponseWriter, req *http.Request) {\u000A');codeLines.push('    ctx :\u003D req.Context()\u000A    fmt.Println(\"server: hello handler started\")\u000A    defer fmt.Println(\"server: hello handler ended\")\u000A');codeLines.push('    select {\u000A    case \u003C-time.After(10 * time.Second):\u000A        fmt.Fprintf(w, \"hello\\n\")\u000A    case \u003C-ctx.Done():\u000A');codeLines.push('        err :\u003D ctx.Err()\u000A        fmt.Println(\"server:\", err)\u000A        internalError :\u003D http.StatusInternalServerError\u000A        http.Error(w, err.Error(), internalError)\u000A    }\u000A}\u000A');codeLines.push('func main() {\u000A');codeLines.push('    http.HandleFunc(\"/hello\", hello)\u000A    http.ListenAndServe(\":8090\", nil)\u000A}\u000A');codeLines.push('');codeLines.push('');
+      codeLines.push('package main\u000A');codeLines.push('import (\u000A    \"fmt\"\u000A    \"net/http\"\u000A    \"time\"\u000A)\u000A');codeLines.push('func hello(w http.ResponseWriter, req *http.Request) {\u000A');codeLines.push('    ctx :\u003D req.Context()\u000A    fmt.Println(\"server: hello handler started\")\u000A    defer fmt.Println(\"server: hello handler ended\")\u000A');codeLines.push('    select {\u000A    case \u003C-time.After(10 * time.Second):\u000A        fmt.Fprintf(w, \"hello\\n\")\u000A    case \u003C-ctx.Done():\u000A');codeLines.push('        err :\u003D ctx.Err()\u000A        fmt.Println(\"server:\", err)\u000A        internalError :\u003D http.StatusInternalServerError\u000A        http.Error(w, err.Error(), internalError)\u000A    }\u000A}\u000A');codeLines.push('func main() {\u000A');codeLines.push('    http.HandleFunc(\"/hello\", hello)\u000A    http.ListenAndServe(\":8090\", nil)\u000A}\u000A');
     </script>
   </body>
 </html>

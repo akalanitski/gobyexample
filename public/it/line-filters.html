@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Go by Example - IT: Line Filters</title>
+    <link rel=stylesheet href="site.css">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YS5D7DR8P1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-YS5D7DR8P1');
+    </script>
+  </head>
+  <body>
+    <div class="example" id="line-filters">
+      <h2><a href="./">Go by Example - IT</a>: Line Filters</h2>
+      
+      <table>
+        
+        <tr>
+          <td class="docs">
+            <p>Un <em>line filter</em> è un tipo di programma molto comune
+che legge l&rsquo;input da stdin, lo processa, e ne stampa
+l&rsquo;output su stdout. <code>grep</code> e <code>sed</code> sono comuni esempi
+di <em>line filter</em>.</p>
+
+          </td>
+          <td class="code empty leading">
+	        
+            
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Ecco un esempio di line filter scritto in Go, che scrive
+in maiscuolo tutto il testo che riceve in input. Puoi
+utilizzare questo scheletro di line filter per realizzare
+il tuo line filter.</p>
+
+          </td>
+          <td class="code leading">
+	        <a href="http://play.golang.org/p/uI5MPV_xU0T"><img title="Run code" src="play.png" class="run" /></a>
+            <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+	        
+            <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;bufio&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;fmt&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;os&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;strings&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+	        
+            <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Tramite <code>NewScanner</code> creiamo un wrapper intorno a
+<code>os.Stdin</code> (che è non bufferizzato), permettendoci
+di invocare la funzione <code>Scan</code> per ottenere il
+prossimo token (in questo caso la prossima linea).</p>
+
+          </td>
+          <td class="code leading">
+	        
+            <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">scanner</span> <span class="o">:=</span> <span class="nx">bufio</span><span class="p">.</span><span class="nf">NewScanner</span><span class="p">(</span><span class="nx">os</span><span class="p">.</span><span class="nx">Stdin</span><span class="p">)</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p><code>Text</code> restituisce il token corrente, in questo caso
+la prossima linea dall&rsquo;input.</p>
+
+          </td>
+          <td class="code leading">
+	        
+            <pre class="chroma"><code><span class="line"><span class="cl">    <span class="k">for</span> <span class="nx">scanner</span><span class="p">.</span><span class="nf">Scan</span><span class="p">()</span> <span class="p">{</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+	        
+            <pre class="chroma"><code><span class="line"><span class="cl">        <span class="nx">ucl</span> <span class="o">:=</span> <span class="nx">strings</span><span class="p">.</span><span class="nf">ToUpper</span><span class="p">(</span><span class="nx">scanner</span><span class="p">.</span><span class="nf">Text</span><span class="p">())</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Stampa la linea in maiuscolo.</p>
+
+          </td>
+          <td class="code leading">
+	        
+            <pre class="chroma"><code><span class="line"><span class="cl">        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">ucl</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Controlla eventuali errori durante lo <code>Scan</code>.
+Un <em>End of file</em> è atteso dallo scanner e non viene
+quindi considerato un errore</p>
+
+          </td>
+          <td class="code">
+	        
+            <pre class="chroma"><code><span class="line"><span class="cl">    <span class="k">if</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">scanner</span><span class="p">.</span><span class="nf">Err</span><span class="p">();</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Fprintln</span><span class="p">(</span><span class="nx">os</span><span class="p">.</span><span class="nx">Stderr</span><span class="p">,</span> <span class="s">&#34;error:&#34;</span><span class="p">,</span> <span class="nx">err</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">os</span><span class="p">.</span><span class="nf">Exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+      </table>
+      
+      <table>
+        
+        <tr>
+          <td class="docs">
+            <p>Per provare il line filter creaiamo prima un file con
+alcune linee in minuscolo.</p>
+
+          </td>
+          <td class="code leading">
+	        
+            <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> echo &#39;ciao&#39;   &gt; /tmp/lines
+</span></span><span class="line"><span class="cl"><span class="gp">$</span> echo &#39;filter&#39; &gt;&gt; /tmp/lines</span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Utilizziamo il line filter per ottenere le stringhe
+in maiuscolo.</p>
+
+          </td>
+          <td class="code">
+	        
+            <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> cat /tmp/lines | go run line-filters.go
+</span></span><span class="line"><span class="cl"><span class="go">CIAO
+</span></span></span><span class="line"><span class="cl"><span class="go">FILTER</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+      </table>
+      
+      
+      <p class="next">
+        Prossimo esempio: <a href="file-paths.html" rel="next">File Paths</a>.
+      </p>
+      
+
+    <p class="footer">
+        by <a href="https://twitter.com/cortinico">@cortinico</a> &amp; <a href="https://twitter.com/_tyge">@_tyge</a> | <a href="mailto:dahhowl@gmail.com,corti.nico@gmail.com">feedback</a> | <a href="https://github.com/golangit/gobyexample-it">source</a> | <a href="https://github.com/golangit/gobyexample-it#license">license</a>
+    </p>
+    <script src="site.js" async></script>
+
+    </div>
+    <script>
+      var codeLines = [];
+      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import (\u000A    \"bufio\"\u000A    \"fmt\"\u000A    \"os\"\u000A    \"strings\"\u000A)\u000A');codeLines.push('func main() {\u000A');codeLines.push('    scanner :\u003D bufio.NewScanner(os.Stdin)\u000A');codeLines.push('    for scanner.Scan() {\u000A');codeLines.push('        ucl :\u003D strings.ToUpper(scanner.Text())\u000A');codeLines.push('        fmt.Println(ucl)\u000A    }\u000A');codeLines.push('    if err :\u003D scanner.Err(); err !\u003D nil {\u000A        fmt.Fprintln(os.Stderr, \"error:\", err)\u000A        os.Exit(1)\u000A    }\u000A}\u000A');codeLines.push('');codeLines.push('');
+    </script>
+    <script src="site.js" async></script>
+  </body>
+</html>

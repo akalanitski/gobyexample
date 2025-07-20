@@ -194,22 +194,6 @@ Enum — гэта тып, які мае фіксаваную колькасць 
         
       </table>
       
-      <table>
-        
-        <tr>
-          <td class="docs">
-            
-          </td>
-          <td class="code">
-            
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run enums.go
-</span></span><span class="line"><span class="cl"><span class="go">connected
-</span></span></span><span class="line"><span class="cl"><span class="go">idle</span></span></span></code></pre>
-          </td>
-        </tr>
-        
-      </table>
-      
       
       <p class="next">
         Наступны прыклад: <a href="struct-embedding.html" rel="next">Struct Embedding</a>.
@@ -228,7 +212,7 @@ Enum — гэта тып, які мае фіксаваную колькасць 
     </article>
     <script>
       var codeLines = [];
-      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import \"fmt\"\u000A');codeLines.push('type ServerState int\u000A');codeLines.push('const (\u000A    StateIdle ServerState \u003D iota\u000A    StateConnected\u000A    StateError\u000A    StateRetrying\u000A)\u000A');codeLines.push('var stateName \u003D map[ServerState]string{\u000A    StateIdle:      \"idle\",\u000A    StateConnected: \"connected\",\u000A    StateError:     \"error\",\u000A    StateRetrying:  \"retrying\",\u000A}\u000A');codeLines.push('func (ss ServerState) String() string {\u000A    return stateName[ss]\u000A}\u000A');codeLines.push('func main() {\u000A    ns :\u003D transition(StateIdle)\u000A    fmt.Println(ns)\u000A');codeLines.push('    ns2 :\u003D transition(ns)\u000A    fmt.Println(ns2)\u000A}\u000A');codeLines.push('func transition(s ServerState) ServerState {\u000A    switch s {\u000A    case StateIdle:\u000A        return StateConnected\u000A    case StateConnected, StateRetrying:\u000A');codeLines.push('        return StateIdle\u000A    case StateError:\u000A        return StateError\u000A    default:\u000A        panic(fmt.Errorf(\"unknown state: %s\", s))\u000A    }\u000A}\u000A');codeLines.push('');
+      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import \"fmt\"\u000A');codeLines.push('type ServerState int\u000A');codeLines.push('const (\u000A    StateIdle ServerState \u003D iota\u000A    StateConnected\u000A    StateError\u000A    StateRetrying\u000A)\u000A');codeLines.push('var stateName \u003D map[ServerState]string{\u000A    StateIdle:      \"idle\",\u000A    StateConnected: \"connected\",\u000A    StateError:     \"error\",\u000A    StateRetrying:  \"retrying\",\u000A}\u000A');codeLines.push('func (ss ServerState) String() string {\u000A    return stateName[ss]\u000A}\u000A');codeLines.push('func main() {\u000A    ns :\u003D transition(StateIdle)\u000A    fmt.Println(ns)\u000A');codeLines.push('    ns2 :\u003D transition(ns)\u000A    fmt.Println(ns2)\u000A}\u000A');codeLines.push('func transition(s ServerState) ServerState {\u000A    switch s {\u000A    case StateIdle:\u000A        return StateConnected\u000A    case StateConnected, StateRetrying:\u000A');codeLines.push('        return StateIdle\u000A    case StateError:\u000A        return StateError\u000A    default:\u000A        panic(fmt.Errorf(\"unknown state: %s\", s))\u000A    }\u000A}\u000A');
     </script>
   </body>
 </html>
