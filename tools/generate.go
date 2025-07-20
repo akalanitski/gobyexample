@@ -3,10 +3,12 @@ package main
 import (
 	"bytes"
 	"crypto/sha1"
+	"flag"
 	"fmt"
 	"io"
 	"net/http"
 	"os"
+	"path"
 	"path/filepath"
 	"regexp"
 	"strings"
@@ -59,10 +61,12 @@ func ensureDir(dir string) {
 	check(err)
 }
 
-func copyFile(src, dst string) {
-	dat, err := os.ReadFile(src)
+func copyFile(srcDir, distDir, fileName string) {
+	srcFileName := path.Join(srcDir, fileName)
+	distFileName := path.Join(distDir, fileName)
+	dat, err := os.ReadFile(srcFileName)
 	check(err)
-	err = os.WriteFile(dst, dat, 0644)
+	err = os.WriteFile(distFileName, dat, 0644)
 	check(err)
 }
 
@@ -73,8 +77,9 @@ func sha1Sum(s string) string {
 	return fmt.Sprintf("%x", b)
 }
 
-func mustReadFile(path string) string {
-	bytes, err := os.ReadFile(path)
+func readTemplateFile(fileName string) string {
+	fullName := path.Join(templatePath, fileName)
+	bytes, err := os.ReadFile(fullName)
 	check(err)
 	return string(bytes)
 }
@@ -84,8 +89,9 @@ func markdown(src string) string {
 }
 
 func readLines(path string) []string {
-	src := mustReadFile(path)
-	return strings.Split(src, "\n")
+	bytes, err := os.ReadFile(path)
+	check(err)
+	return strings.Split(string(bytes), "\n")
 }
 
 func mustGlob(glob string) []string {
@@ -121,7 +127,7 @@ type Seg struct {
 
 // Example is info extracted from an example file
 type Example struct {
-	ID, Name                    string
+	ID, Name, FileName          string
 	GoCode, GoCodeHash, URLHash string
 	Segs                        [][]*Seg
 	PrevExample                 *Example
@@ -256,16 +262,15 @@ func parseAndRenderSegs(sourcePath string) ([]*Seg, string) {
 }
 
 func parseExamples() []*Example {
-	var exampleNames []string
-	for _, line := range readLines("examples.txt") {
-		if line != "" && !strings.HasPrefix(line, "#") {
-			exampleNames = append(exampleNames, line)
-		}
-	}
+	i := 0
 	examples := make([]*Example, 0)
-	for i, exampleName := range exampleNames {
+	exampleNames := readLines("examples.txt")
+	for _, exampleName := range exampleNames {
+		if exampleName == "" || strings.HasPrefix(exampleName, "#") {
+			continue
+		}
 		if verbose() {
-			fmt.Printf("Processing %s [%d/%d]\n", exampleName, i+1, len(exampleNames))
+			fmt.Printf("Processing [%d/%d]\t %s\n", i+1, len(exampleNames), exampleName)
 		}
 		example := Example{Name: exampleName}
 		exampleID := strings.ToLower(exampleName)
@@ -274,27 +279,38 @@ func parseExamples() []*Example {
 		exampleID = strings.Replace(exampleID, "'", "", -1)
 		exampleID = dashPat.ReplaceAllString(exampleID, "-")
 		example.ID = exampleID
+		example.FileName = exampleID
+		if outputExt != "" {
+			example.FileName += "." + outputExt
+		}
 		example.Segs = make([][]*Seg, 0)
-		sourcePaths := mustGlob("examples/" + exampleID + "/*")
+		exampleDirPath := "examples/" + exampleID + "/"
+		if langCode != "en" {
+			exampleDirPath += langCode + "/"
+		}
+		sourcePaths := mustGlob(exampleDirPath + "*")
 		for _, sourcePath := range sourcePaths {
-			if !isDir(sourcePath) {
-				if strings.HasSuffix(sourcePath, ".hash") {
-					example.GoCodeHash, example.URLHash = parseHashFile(sourcePath)
-				} else {
-					sourceSegs, filecontents := parseAndRenderSegs(sourcePath)
-					if filecontents != "" {
-						example.GoCode = filecontents
-					}
-					example.Segs = append(example.Segs, sourceSegs)
+			if isDir(sourcePath) {
+				continue
+			}
+			if strings.HasSuffix(sourcePath, ".hash") {
+				example.GoCodeHash, example.URLHash = parseHashFile(sourcePath)
+			} else if strings.HasSuffix(sourcePath, ".go") || strings.HasSuffix(sourcePath, ".sh") {
+				sourceSegs, filecontents := parseAndRenderSegs(sourcePath)
+				if filecontents != "" {
+					example.GoCode = filecontents
 				}
+				example.Segs = append(example.Segs, sourceSegs)
 			}
 		}
 		newCodeHash := sha1Sum(example.GoCode)
 		if example.GoCodeHash != newCodeHash {
-			example.URLHash = resetURLHashFile(newCodeHash, example.GoCode, "examples/"+example.ID+"/"+example.ID+".hash")
+			example.URLHash = resetURLHashFile(newCodeHash, example.GoCode, exampleDirPath+example.ID+".hash")
 		}
 		examples = append(examples, &example)
+		i++
 	}
+
 	for i, example := range examples {
 		if i > 0 {
 			example.PrevExample = examples[i-1]
@@ -311,8 +327,8 @@ func renderIndex(examples []*Example) {
 		fmt.Println("Rendering index")
 	}
 	indexTmpl := template.New("index")
-	template.Must(indexTmpl.Parse(mustReadFile("templates/footer.tmpl")))
-	template.Must(indexTmpl.Parse(mustReadFile("templates/index.tmpl")))
+	template.Must(indexTmpl.Parse(readTemplateFile("footer.tmpl")))
+	template.Must(indexTmpl.Parse(readTemplateFile("index.tmpl")))
 	indexF, err := os.Create(siteDir + "/index.html")
 	check(err)
 	defer indexF.Close()
@@ -324,10 +340,10 @@ func renderExamples(examples []*Example) {
 		fmt.Println("Rendering examples")
 	}
 	exampleTmpl := template.New("example")
-	template.Must(exampleTmpl.Parse(mustReadFile("templates/footer.tmpl")))
-	template.Must(exampleTmpl.Parse(mustReadFile("templates/example.tmpl")))
+	template.Must(exampleTmpl.Parse(readTemplateFile("footer.tmpl")))
+	template.Must(exampleTmpl.Parse(readTemplateFile("example.tmpl")))
 	for _, example := range examples {
-		exampleF, err := os.Create(siteDir + "/" + example.ID)
+		exampleF, err := os.Create(siteDir + "/" + example.FileName)
 		check(err)
 		defer exampleF.Close()
 		check(exampleTmpl.Execute(exampleF, example))
@@ -339,64 +355,34 @@ func render404() {
 		fmt.Println("Rendering 404")
 	}
 	tmpl := template.New("404")
-	template.Must(tmpl.Parse(mustReadFile("templates/footer.tmpl")))
-	template.Must(tmpl.Parse(mustReadFile("templates/404.tmpl")))
+	template.Must(tmpl.Parse(readTemplateFile("footer.tmpl")))
+	template.Must(tmpl.Parse(readTemplateFile("404.tmpl")))
 	file, err := os.Create(siteDir + "/404.html")
 	check(err)
 	defer file.Close()
 	check(tmpl.Execute(file, ""))
 }
 
-func parseArguments(args *[]string) {
-	if len(*args) == 0 {
-		return
-	}
-	i := 0
-	expectedArg := 2
-	for ; expectedArg > 0 && i < len(*args); i++ {
-		arg := (*args)[i]
-		switch arg {
-		case "-html":
-			outputExt = ".html"
-			expectedArg--
-			if verbose() {
-				fmt.Println("Output format HTML")
-			}
-		case "-lang:be":
-			langCode = "be"
-			expectedArg--
-			if verbose() {
-				fmt.Println("Output language BE")
-			}
-		default:
-			err := os.MkdirAll(arg, 0755)
-			if err != nil {
-				fmt.Printf("Unknown argument: `%s`\n", arg)
-			} else {
-				siteDir = arg
-				expectedArg--
-				if verbose() {
-					fmt.Printf("Output directory %s\n", siteDir)
-				}
-			}
-		}
-	}
-	if expectedArg == 0 && i < len(*args) && verbose() {
-		fmt.Println("WARN: Too many arguments")
-	}
-}
-
 func main() {
-	if len(os.Args) > 1 {
-		siteDir = os.Args[1]
+	flag.StringVar(&outputExt, "ext", "", "Extenstion of generated HTML files for static server")
+	flag.StringVar(&langCode, "lang", "en", "Language of examples scanned for generation")
+	flag.Parse()
+	if len(flag.Args()) > 1 {
+		siteDir = flag.Args()[1]
 	}
+	fmt.Println("Lang: %v, Extension: %v, site: %v", langCode, outputExt, siteDir)
 	ensureDir(siteDir)
 
-	copyFile("templates/site.css", siteDir+"/site.css")
-	copyFile("templates/site.js", siteDir+"/site.js")
-	copyFile("templates/favicon.ico", siteDir+"/favicon.ico")
-	copyFile("templates/play.png", siteDir+"/play.png")
-	copyFile("templates/clipboard.png", siteDir+"/clipboard.png")
+	if langCode != "en" {
+		templatePath = path.Join(templatePath, langCode)
+		siteDir = path.Join(siteDir, langCode)
+	}
+	// Clone static content in public directory
+	staticFiles := []string{"site.css", "site.js", "favicon.ico", "play.png", "clipboard.png"}
+	for _, fileName := range staticFiles {
+		copyFile(templatePath, siteDir, fileName)
+	}
+
 	examples := parseExamples()
 	renderIndex(examples)
 	renderExamples(examples)

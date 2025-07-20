@@ -144,28 +144,6 @@
         
       </table>
       
-      <table>
-        
-        <tr>
-          <td class="docs">
-            
-          </td>
-          <td class="code">
-            
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run time-formatting-parsing.go 
-</span></span><span class="line"><span class="cl"><span class="go">2014-04-15T18:00:15-07:00
-</span></span></span><span class="line"><span class="cl"><span class="go">2012-11-01 22:08:41 +0000 +0000
-</span></span></span><span class="line"><span class="cl"><span class="go">6:00PM
-</span></span></span><span class="line"><span class="cl"><span class="go">Tue Apr 15 18:00:15 2014
-</span></span></span><span class="line"><span class="cl"><span class="go">2014-04-15T18:00:15.161182-07:00
-</span></span></span><span class="line"><span class="cl"><span class="go">0000-01-01 20:41:00 +0000 UTC
-</span></span></span><span class="line"><span class="cl"><span class="go">2014-04-15T18:00:15-00:00
-</span></span></span><span class="line"><span class="cl"><span class="go">parsing time &#34;8:41PM&#34; as &#34;Mon Jan _2 15:04:05 2006&#34;: ...</span></span></span></code></pre>
-          </td>
-        </tr>
-        
-      </table>
-      
       
       <p class="next">
         Наступны прыклад: <a href="random-numbers.html" rel="next">Random Numbers</a>.
@@ -184,7 +162,7 @@
     </article>
     <script>
       var codeLines = [];
-      codeLines.push('package main\u000A');codeLines.push('import (\u000A    \"fmt\"\u000A    \"time\"\u000A)\u000A');codeLines.push('func main() {\u000A    p :\u003D fmt.Println\u000A');codeLines.push('    t :\u003D time.Now()\u000A    p(t.Format(time.RFC3339))\u000A');codeLines.push('    t1, e :\u003D time.Parse(\u000A        time.RFC3339,\u000A        \"2012-11-01T22:08:41+00:00\")\u000A    p(t1)\u000A');codeLines.push('    p(t.Format(\"3:04PM\"))\u000A    p(t.Format(\"Mon Jan _2 15:04:05 2006\"))\u000A    p(t.Format(\"2006-01-02T15:04:05.999999-07:00\"))\u000A    form :\u003D \"3 04 PM\"\u000A    t2, e :\u003D time.Parse(form, \"8 41 PM\")\u000A    p(t2)\u000A');codeLines.push('    fmt.Printf(\"%d-%02d-%02dT%02d:%02d:%02d-00:00\\n\",\u000A        t.Year(), t.Month(), t.Day(),\u000A        t.Hour(), t.Minute(), t.Second())\u000A');codeLines.push('    ansic :\u003D \"Mon Jan _2 15:04:05 2006\"\u000A    _, e \u003D time.Parse(ansic, \"8:41PM\")\u000A    p(e)\u000A}\u000A');codeLines.push('');
+      codeLines.push('package main\u000A');codeLines.push('import (\u000A    \"fmt\"\u000A    \"time\"\u000A)\u000A');codeLines.push('func main() {\u000A    p :\u003D fmt.Println\u000A');codeLines.push('    t :\u003D time.Now()\u000A    p(t.Format(time.RFC3339))\u000A');codeLines.push('    t1, e :\u003D time.Parse(\u000A        time.RFC3339,\u000A        \"2012-11-01T22:08:41+00:00\")\u000A    p(t1)\u000A');codeLines.push('    p(t.Format(\"3:04PM\"))\u000A    p(t.Format(\"Mon Jan _2 15:04:05 2006\"))\u000A    p(t.Format(\"2006-01-02T15:04:05.999999-07:00\"))\u000A    form :\u003D \"3 04 PM\"\u000A    t2, e :\u003D time.Parse(form, \"8 41 PM\")\u000A    p(t2)\u000A');codeLines.push('    fmt.Printf(\"%d-%02d-%02dT%02d:%02d:%02d-00:00\\n\",\u000A        t.Year(), t.Month(), t.Day(),\u000A        t.Hour(), t.Minute(), t.Second())\u000A');codeLines.push('    ansic :\u003D \"Mon Jan _2 15:04:05 2006\"\u000A    _, e \u003D time.Parse(ansic, \"8:41PM\")\u000A    p(e)\u000A}\u000A');
     </script>
   </body>
 </html>

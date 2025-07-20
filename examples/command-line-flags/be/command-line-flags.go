@@ -23,7 +23,7 @@ func main() {
 	wordPtr := flag.String("word", "foo", "a string")
 
 	// Тут аб'яўляюцца параметр `numb` і `fork`, тым жа парадкам
-	// што і параметра `word`.
+	// што і параметр `word`.
 	numbPtr := flag.Int("numb", 42, "an int")
 	forkPtr := flag.Bool("fork", false, "a bool")
 
@@ -33,7 +33,7 @@ func main() {
 	var svar string
 	flag.StringVar(&svar, "svar", "bar", "a string var")
 
-	// Калі ўсе параметры апісаны функцыя `flag.Parse()`
+	// Калі ўсе параметры апісаны, функцыя `flag.Parse()`
 	// разбірае аргументы каманды
 	flag.Parse()
 

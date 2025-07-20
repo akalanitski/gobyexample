@@ -124,26 +124,6 @@
         
       </table>
       
-      <table>
-        
-        <tr>
-          <td class="docs">
-            
-          </td>
-          <td class="code">
-            
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run http-clients.go
-</span></span><span class="line"><span class="cl"><span class="go">Response status: 200 OK
-</span></span></span><span class="line"><span class="cl"><span class="go">&lt;!DOCTYPE html&gt;
-</span></span></span><span class="line"><span class="cl"><span class="go">&lt;html&gt;
-</span></span></span><span class="line"><span class="cl"><span class="go">  &lt;head&gt;
-</span></span></span><span class="line"><span class="cl"><span class="go">    &lt;meta charset=&#34;utf-8&#34;&gt;
-</span></span></span><span class="line"><span class="cl"><span class="go">    &lt;title&gt;Go by Example&lt;/title&gt;</span></span></span></code></pre>
-          </td>
-        </tr>
-        
-      </table>
-      
       
       <p class="next">
         Наступны прыклад: <a href="http-server.html" rel="next">HTTP Server</a>.
@@ -162,7 +142,7 @@
     </article>
     <script>
       var codeLines = [];
-      codeLines.push('package main\u000A');codeLines.push('import (\u000A    \"bufio\"\u000A    \"fmt\"\u000A    \"net/http\"\u000A)\u000A');codeLines.push('func main() {\u000A');codeLines.push('    //які мае карысныя налады па змаўчанні.\u000A    resp, err :\u003D http.Get(\"https://gobyexample.com\")\u000A    if err !\u003D nil {\u000A        panic(err)\u000A    }\u000A    defer resp.Body.Close()\u000A');codeLines.push('    fmt.Println(\"Response status:\", resp.Status)\u000A');codeLines.push('    scanner :\u003D bufio.NewScanner(resp.Body)\u000A    for i :\u003D 0; scanner.Scan() \u0026\u0026 i \u003C 5; i++ {\u000A        fmt.Println(scanner.Text())\u000A    }\u000A');codeLines.push('    if err :\u003D scanner.Err(); err !\u003D nil {\u000A        panic(err)\u000A    }\u000A}\u000A');codeLines.push('');
+      codeLines.push('package main\u000A');codeLines.push('import (\u000A    \"bufio\"\u000A    \"fmt\"\u000A    \"net/http\"\u000A)\u000A');codeLines.push('func main() {\u000A');codeLines.push('    //які мае карысныя налады па змаўчанні.\u000A    resp, err :\u003D http.Get(\"https://gobyexample.com\")\u000A    if err !\u003D nil {\u000A        panic(err)\u000A    }\u000A    defer resp.Body.Close()\u000A');codeLines.push('    fmt.Println(\"Response status:\", resp.Status)\u000A');codeLines.push('    scanner :\u003D bufio.NewScanner(resp.Body)\u000A    for i :\u003D 0; scanner.Scan() \u0026\u0026 i \u003C 5; i++ {\u000A        fmt.Println(scanner.Text())\u000A    }\u000A');codeLines.push('    if err :\u003D scanner.Err(); err !\u003D nil {\u000A        panic(err)\u000A    }\u000A}\u000A');
     </script>
   </body>
 </html>

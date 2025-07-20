@@ -109,21 +109,6 @@
         
       </table>
       
-      <table>
-        
-        <tr>
-          <td class="docs">
-            
-          </td>
-          <td class="code">
-            
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run channel-directions.go
-</span></span><span class="line"><span class="cl"><span class="go">passed message</span></span></span></code></pre>
-          </td>
-        </tr>
-        
-      </table>
-      
       
       <p class="next">
         Наступны прыклад: <a href="select.html" rel="next">Select</a>.
@@ -142,7 +127,7 @@
     </article>
     <script>
       var codeLines = [];
-      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import \"fmt\"\u000A');codeLines.push('func ping(pings chan\u003C- string, msg string) {\u000A    pings \u003C- msg\u000A}\u000A');codeLines.push('func pong(pings \u003C-chan string, pongs chan\u003C- string) {\u000A    msg :\u003D \u003C-pings\u000A    pongs \u003C- msg\u000A}\u000A');codeLines.push('func main() {\u000A    pings :\u003D make(chan string, 1)\u000A    pongs :\u003D make(chan string, 1)\u000A    ping(pings, \"passed message\")\u000A    pong(pings, pongs)\u000A    fmt.Println(\u003C-pongs)\u000A}\u000A');codeLines.push('');
+      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import \"fmt\"\u000A');codeLines.push('func ping(pings chan\u003C- string, msg string) {\u000A    pings \u003C- msg\u000A}\u000A');codeLines.push('func pong(pings \u003C-chan string, pongs chan\u003C- string) {\u000A    msg :\u003D \u003C-pings\u000A    pongs \u003C- msg\u000A}\u000A');codeLines.push('func main() {\u000A    pings :\u003D make(chan string, 1)\u000A    pongs :\u003D make(chan string, 1)\u000A    ping(pings, \"passed message\")\u000A    pong(pings, pongs)\u000A    fmt.Println(\u003C-pongs)\u000A}\u000A');
     </script>
   </body>
 </html>
