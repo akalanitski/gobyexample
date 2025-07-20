@@ -15,7 +15,7 @@
     </script>
   </head>
   <body>
-    <div class="example" id="number-parsing">
+    <article class="example" id="number-parsing">
       <h2><a href="./">Go by Example - IT</a>: Number Parsing</h2>
       
       <table>
@@ -188,11 +188,12 @@ comune: gli URL.</p>
       
 
     <p class="footer">
-        by <a href="https://twitter.com/cortinico">@cortinico</a> &amp; <a href="https://twitter.com/_tyge">@_tyge</a> | <a href="mailto:dahhowl@gmail.com,corti.nico@gmail.com">feedback</a> | <a href="https://github.com/golangit/gobyexample-it">source</a> | <a href="https://github.com/golangit/gobyexample-it#license">license</a>
+        by <a href="https://twitter.com/cortinico">@cortinico</a> &amp; <a href="https://twitter.com/_tyge">@_tyge</a> | <a href="mailto:dahhowl@gmail.com,corti.nico@gmail.com">feedback</a> | <a href="https://github.com/golangit/gobyexample-it">source</a> | <a href="https://github.com/golangit/gobyexample-it#license">license</a><br />
+        Мова <a href="#" onclick="switchLanguage('be')">BE</a> | <a href="#" onclick="switchLanguage('en')">EN</a> | <a href="#" onclick="switchLanguage('it')">IT</a>
     </p>
     <script src="site.js" async></script>
 
-    </div>
+    </article>
     <script>
       var codeLines = [];
       codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import \"strconv\"\u000Aimport \"fmt\"\u000A');codeLines.push('func main() {\u000A');codeLines.push('    f, _ :\u003D strconv.ParseFloat(\"1.234\", 64)\u000A    fmt.Println(f)\u000A');codeLines.push('    i, _ :\u003D strconv.ParseInt(\"123\", 0, 64)\u000A    fmt.Println(i)\u000A');codeLines.push('    d, _ :\u003D strconv.ParseInt(\"0x1c8\", 0, 64)\u000A    fmt.Println(d)\u000A');codeLines.push('    u, _ :\u003D strconv.ParseUint(\"789\", 0, 64)\u000A    fmt.Println(u)\u000A');codeLines.push('    k, _ :\u003D strconv.Atoi(\"135\")\u000A    fmt.Println(k)\u000A');codeLines.push('    _, e :\u003D strconv.Atoi(\"wat\")\u000A    fmt.Println(e)\u000A}\u000A');codeLines.push('');codeLines.push('');

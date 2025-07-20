@@ -15,7 +15,7 @@
     </script>
   </head>
   <body>
-    <div class="example" id="worker-pools">
+    <article class="example" id="worker-pools">
       <h2><a href="./">Go by Example - IT</a>: Worker Pools</h2>
       
       <table>
@@ -190,11 +190,12 @@ sono 3 worker che vengono eseguiti in parallelo</p>
       
 
     <p class="footer">
-        by <a href="https://twitter.com/cortinico">@cortinico</a> &amp; <a href="https://twitter.com/_tyge">@_tyge</a> | <a href="mailto:dahhowl@gmail.com,corti.nico@gmail.com">feedback</a> | <a href="https://github.com/golangit/gobyexample-it">source</a> | <a href="https://github.com/golangit/gobyexample-it#license">license</a>
+        by <a href="https://twitter.com/cortinico">@cortinico</a> &amp; <a href="https://twitter.com/_tyge">@_tyge</a> | <a href="mailto:dahhowl@gmail.com,corti.nico@gmail.com">feedback</a> | <a href="https://github.com/golangit/gobyexample-it">source</a> | <a href="https://github.com/golangit/gobyexample-it#license">license</a><br />
+        Мова <a href="#" onclick="switchLanguage('be')">BE</a> | <a href="#" onclick="switchLanguage('en')">EN</a> | <a href="#" onclick="switchLanguage('it')">IT</a>
     </p>
     <script src="site.js" async></script>
 
-    </div>
+    </article>
     <script>
       var codeLines = [];
       codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import \"fmt\"\u000Aimport \"time\"\u000A');codeLines.push('func worker(id int, jobs \u003C-chan int, results chan\u003C- int) {\u000A    for j :\u003D range jobs {\u000A        fmt.Println(\"worker\", id, \"sta eseguendo task\", j)\u000A        time.Sleep(time.Second)\u000A        results \u003C- j * 2\u000A    }\u000A}\u000A');codeLines.push('func main() {\u000A');codeLines.push('    jobs :\u003D make(chan int, 100)\u000A    results :\u003D make(chan int, 100)\u000A');codeLines.push('    for w :\u003D 1; w \u003C\u003D 3; w++ {\u000A        go worker(w, jobs, results)\u000A    }\u000A');codeLines.push('    for j :\u003D 1; j \u003C\u003D 9; j++ {\u000A        jobs \u003C- j\u000A    }\u000A    close(jobs)\u000A');codeLines.push('    for a :\u003D 1; a \u003C\u003D 9; a++ {\u000A        \u003C-results\u000A    }\u000A}\u000A');codeLines.push('');codeLines.push('');

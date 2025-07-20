@@ -15,7 +15,7 @@
     </script>
   </head>
   <body>
-    <div class="example" id="http-client">
+    <article class="example" id="http-client">
       <h2><a href="./">Go by Example - IT</a>: HTTP Client</h2>
       
       <table>
@@ -69,11 +69,12 @@
       
 
     <p class="footer">
-        by <a href="https://twitter.com/cortinico">@cortinico</a> &amp; <a href="https://twitter.com/_tyge">@_tyge</a> | <a href="mailto:dahhowl@gmail.com,corti.nico@gmail.com">feedback</a> | <a href="https://github.com/golangit/gobyexample-it">source</a> | <a href="https://github.com/golangit/gobyexample-it#license">license</a>
+        by <a href="https://twitter.com/cortinico">@cortinico</a> &amp; <a href="https://twitter.com/_tyge">@_tyge</a> | <a href="mailto:dahhowl@gmail.com,corti.nico@gmail.com">feedback</a> | <a href="https://github.com/golangit/gobyexample-it">source</a> | <a href="https://github.com/golangit/gobyexample-it#license">license</a><br />
+        Мова <a href="#" onclick="switchLanguage('be')">BE</a> | <a href="#" onclick="switchLanguage('en')">EN</a> | <a href="#" onclick="switchLanguage('it')">IT</a>
     </p>
     <script src="site.js" async></script>
 
-    </div>
+    </article>
     <script>
       var codeLines = [];
       codeLines.push('package main\u000A');codeLines.push('import \"net/http\"\u000Aimport \"io/ioutil\"\u000Aimport \"fmt\"\u000A');codeLines.push('func main() {\u000A    resp, err :\u003D http.Get(\"http://127.0.0.1:5000/\")\u000A    if err !\u003D nil {\u000A        panic(err)\u000A    }\u000A    defer resp.Body.Close()\u000A    body, err :\u003D ioutil.ReadAll(resp.Body)\u000A    fmt.Print(string(body))\u000A}\u000A');

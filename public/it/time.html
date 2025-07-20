@@ -15,7 +15,7 @@
     </script>
   </head>
   <body>
-    <div class="example" id="time">
+    <article class="example" id="time">
       <h2><a href="./">Go by Example - IT</a>: Time</h2>
       
       <table>
@@ -239,11 +239,12 @@ allo Unix epoch.</p>
       
 
     <p class="footer">
-        by <a href="https://twitter.com/cortinico">@cortinico</a> &amp; <a href="https://twitter.com/_tyge">@_tyge</a> | <a href="mailto:dahhowl@gmail.com,corti.nico@gmail.com">feedback</a> | <a href="https://github.com/golangit/gobyexample-it">source</a> | <a href="https://github.com/golangit/gobyexample-it#license">license</a>
+        by <a href="https://twitter.com/cortinico">@cortinico</a> &amp; <a href="https://twitter.com/_tyge">@_tyge</a> | <a href="mailto:dahhowl@gmail.com,corti.nico@gmail.com">feedback</a> | <a href="https://github.com/golangit/gobyexample-it">source</a> | <a href="https://github.com/golangit/gobyexample-it#license">license</a><br />
+        Мова <a href="#" onclick="switchLanguage('be')">BE</a> | <a href="#" onclick="switchLanguage('en')">EN</a> | <a href="#" onclick="switchLanguage('it')">IT</a>
     </p>
     <script src="site.js" async></script>
 
-    </div>
+    </article>
     <script>
       var codeLines = [];
       codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import \"fmt\"\u000Aimport \"time\"\u000A');codeLines.push('func main() {\u000A    p :\u003D fmt.Println\u000A');codeLines.push('    now :\u003D time.Now()\u000A    p(now)\u000A');codeLines.push('    then :\u003D time.Date(\u000A        2009, 11, 17, 20, 34, 58, 651387237, time.UTC)\u000A    p(then)\u000A');codeLines.push('    p(then.Year())\u000A    p(then.Month())\u000A    p(then.Day())\u000A    p(then.Hour())\u000A    p(then.Minute())\u000A    p(then.Second())\u000A    p(then.Nanosecond())\u000A    p(then.Location())\u000A');codeLines.push('    p(then.Weekday())\u000A');codeLines.push('    p(then.Before(now))\u000A    p(then.After(now))\u000A    p(then.Equal(now))\u000A');codeLines.push('    diff :\u003D now.Sub(then)\u000A    p(diff)\u000A');codeLines.push('    p(diff.Hours())\u000A    p(diff.Minutes())\u000A    p(diff.Seconds())\u000A    p(diff.Nanoseconds())\u000A');codeLines.push('    p(then.Add(diff))\u000A    p(then.Add(-diff))\u000A}\u000A');codeLines.push('');codeLines.push('');

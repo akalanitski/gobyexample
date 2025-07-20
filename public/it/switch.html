@@ -15,7 +15,7 @@
     </script>
   </head>
   <body>
-    <div class="example" id="switch">
+    <article class="example" id="switch">
       <h2><a href="./">Go by Example - IT</a>: Switch</h2>
       
       <table>
@@ -177,11 +177,12 @@ che segnala di usare il type switch.</p>
       
 
     <p class="footer">
-        by <a href="https://twitter.com/cortinico">@cortinico</a> &amp; <a href="https://twitter.com/_tyge">@_tyge</a> | <a href="mailto:dahhowl@gmail.com,corti.nico@gmail.com">feedback</a> | <a href="https://github.com/golangit/gobyexample-it">source</a> | <a href="https://github.com/golangit/gobyexample-it#license">license</a>
+        by <a href="https://twitter.com/cortinico">@cortinico</a> &amp; <a href="https://twitter.com/_tyge">@_tyge</a> | <a href="mailto:dahhowl@gmail.com,corti.nico@gmail.com">feedback</a> | <a href="https://github.com/golangit/gobyexample-it">source</a> | <a href="https://github.com/golangit/gobyexample-it#license">license</a><br />
+        Мова <a href="#" onclick="switchLanguage('be')">BE</a> | <a href="#" onclick="switchLanguage('en')">EN</a> | <a href="#" onclick="switchLanguage('it')">IT</a>
     </p>
     <script src="site.js" async></script>
 
-    </div>
+    </article>
     <script>
       var codeLines = [];
       codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import \"fmt\"\u000Aimport \"time\"\u000A');codeLines.push('func main() {\u000A');codeLines.push('    i :\u003D 2\u000A    fmt.Print(i, \" in lettere è \")\u000A    switch i {\u000A    case 1:\u000A        fmt.Println(\"uno\")\u000A    case 2:\u000A        fmt.Println(\"due\")\u000A    case 3:\u000A        fmt.Println(\"tre\")\u000A    }\u000A');codeLines.push('    switch time.Now().Weekday() {\u000A    case time.Saturday, time.Sunday:\u000A        fmt.Println(\"siamo nel fine settimana\")\u000A    default:\u000A        fmt.Println(\"oggi è un giorno feriale\")\u000A    }\u000A');codeLines.push('    t :\u003D time.Now()\u000A    switch {\u000A    case t.Hour() \u003C 12:\u000A        fmt.Println(\"non è ancora passato mezzogiorno\")\u000A    default:\u000A        fmt.Println(\"è passato mezzogiorno\")\u000A    }\u000A');codeLines.push('    v :\u003D 3\u000A    switch interface{}(v).(type) {\u000A    case string:\u000A        fmt.Println(\"v è di tipo `string`\")\u000A    case int:\u000A        fmt.Println(\"v è di tipo `int`\")\u000A    default:\u000A        fmt.Println(\"v è di un altro tipo ancora\")\u000A    }\u000A}\u000A');codeLines.push('');
