@@ -15,7 +15,7 @@
     </script>
   </head>
   <body>
-    <div class="example" id="reading-files">
+    <article class="example" id="reading-files">
       <h2><a href="./">Go by Example - IT</a>: Reading Files</h2>
       
       <table>
@@ -38,7 +38,7 @@ qualche esempio di lettura da file.</p>
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/Forbidden"><img title="Run code" src="play.png" class="run" /></a>
+	        <a href="http://play.golang.org/p/hAzDYf7dl9J"><img title="Run code" src="play.png" class="run" /></a>
             <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
           </td>
         </tr>
@@ -256,11 +256,12 @@ su file.</p>
       
 
     <p class="footer">
-        by <a href="https://twitter.com/cortinico">@cortinico</a> &amp; <a href="https://twitter.com/_tyge">@_tyge</a> | <a href="mailto:dahhowl@gmail.com,corti.nico@gmail.com">feedback</a> | <a href="https://github.com/golangit/gobyexample-it">source</a> | <a href="https://github.com/golangit/gobyexample-it#license">license</a>
+        by <a href="https://twitter.com/cortinico">@cortinico</a> &amp; <a href="https://twitter.com/_tyge">@_tyge</a> | <a href="mailto:dahhowl@gmail.com,corti.nico@gmail.com">feedback</a> | <a href="https://github.com/golangit/gobyexample-it">source</a> | <a href="https://github.com/golangit/gobyexample-it#license">license</a><br />
+        Мова <a href="#" onclick="switchLanguage('be')">BE</a> | <a href="#" onclick="switchLanguage('en')">EN</a> | <a href="#" onclick="switchLanguage('it')">IT</a>
     </p>
     <script src="site.js" async></script>
 
-    </div>
+    </article>
     <script>
       var codeLines = [];
       codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import (\u000A    \"bufio\"\u000A    \"fmt\"\u000A    \"io\"\u000A    \"io/ioutil\"\u000A    \"os\"\u000A)\u000A');codeLines.push('func check(e error) {\u000A    if e !\u003D nil {\u000A        panic(e)\u000A    }\u000A}\u000A');codeLines.push('func main() {\u000A');codeLines.push('    dat, err :\u003D ioutil.ReadFile(\"/tmp/dat\")\u000A    check(err)\u000A    fmt.Print(string(dat))\u000A');codeLines.push('    f, err :\u003D os.Open(\"/tmp/dat\")\u000A    check(err)\u000A');codeLines.push('    b1 :\u003D make([]byte, 5)\u000A    n1, err :\u003D f.Read(b1)\u000A    check(err)\u000A    fmt.Printf(\"%d bytes: %s\\n\", n1, string(b1))\u000A');codeLines.push('    o2, err :\u003D f.Seek(6, 0)\u000A    check(err)\u000A    b2 :\u003D make([]byte, 2)\u000A    n2, err :\u003D f.Read(b2)\u000A    check(err)\u000A    fmt.Printf(\"%d bytes @ %d: %s\\n\", n2, o2, string(b2))\u000A');codeLines.push('    o3, err :\u003D f.Seek(6, 0)\u000A    check(err)\u000A    b3 :\u003D make([]byte, 2)\u000A    n3, err :\u003D io.ReadAtLeast(f, b3, 2)\u000A    check(err)\u000A    fmt.Printf(\"%d bytes @ %d: %s\\n\", n3, o3, string(b3))\u000A');codeLines.push('    _, err \u003D f.Seek(0, 0)\u000A    check(err)\u000A');codeLines.push('    r4 :\u003D bufio.NewReader(f)\u000A    b4, err :\u003D r4.Peek(5)\u000A    check(err)\u000A    fmt.Printf(\"5 bytes: %s\\n\", string(b4))\u000A');codeLines.push('    f.Close()\u000A}\u000A');codeLines.push('');codeLines.push('');

@@ -15,7 +15,7 @@
     </script>
   </head>
   <body>
-    <div class="example" id="constants">
+    <article class="example" id="constants">
       <h2><a href="./">Go by Example - IT</a>: Constants</h2>
       
       <table>
@@ -154,11 +154,12 @@ In questo caso <code>math.Sin</code> si aspetta un valore di tipo <code>float64<
       
 
     <p class="footer">
-        by <a href="https://twitter.com/cortinico">@cortinico</a> &amp; <a href="https://twitter.com/_tyge">@_tyge</a> | <a href="mailto:dahhowl@gmail.com,corti.nico@gmail.com">feedback</a> | <a href="https://github.com/golangit/gobyexample-it">source</a> | <a href="https://github.com/golangit/gobyexample-it#license">license</a>
+        by <a href="https://twitter.com/cortinico">@cortinico</a> &amp; <a href="https://twitter.com/_tyge">@_tyge</a> | <a href="mailto:dahhowl@gmail.com,corti.nico@gmail.com">feedback</a> | <a href="https://github.com/golangit/gobyexample-it">source</a> | <a href="https://github.com/golangit/gobyexample-it#license">license</a><br />
+        Мова <a href="#" onclick="switchLanguage('be')">BE</a> | <a href="#" onclick="switchLanguage('en')">EN</a> | <a href="#" onclick="switchLanguage('it')">IT</a>
     </p>
     <script src="site.js" async></script>
 
-    </div>
+    </article>
     <script>
       var codeLines = [];
       codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import \"fmt\"\u000Aimport \"math\"\u000A');codeLines.push('const s string \u003D \"constant\"\u000A');codeLines.push('func main() {\u000A    fmt.Println(s)\u000A');codeLines.push('    const n \u003D 500000000\u000A');codeLines.push('    const d \u003D 3e20 / n\u000A    fmt.Println(d)\u000A');codeLines.push('    fmt.Println(int64(d))\u000A');codeLines.push('    fmt.Println(math.Sin(n))\u000A}\u000A');codeLines.push('');

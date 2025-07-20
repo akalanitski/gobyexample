@@ -15,7 +15,7 @@
     </script>
   </head>
   <body>
-    <div class="example" id="closing-channels">
+    <article class="example" id="closing-channels">
       <h2><a href="./">Go by Example - IT</a>: Closing Channels</h2>
       
       <table>
@@ -177,11 +177,12 @@ su un channel.</p>
       
 
     <p class="footer">
-        by <a href="https://twitter.com/cortinico">@cortinico</a> &amp; <a href="https://twitter.com/_tyge">@_tyge</a> | <a href="mailto:dahhowl@gmail.com,corti.nico@gmail.com">feedback</a> | <a href="https://github.com/golangit/gobyexample-it">source</a> | <a href="https://github.com/golangit/gobyexample-it#license">license</a>
+        by <a href="https://twitter.com/cortinico">@cortinico</a> &amp; <a href="https://twitter.com/_tyge">@_tyge</a> | <a href="mailto:dahhowl@gmail.com,corti.nico@gmail.com">feedback</a> | <a href="https://github.com/golangit/gobyexample-it">source</a> | <a href="https://github.com/golangit/gobyexample-it#license">license</a><br />
+        Мова <a href="#" onclick="switchLanguage('be')">BE</a> | <a href="#" onclick="switchLanguage('en')">EN</a> | <a href="#" onclick="switchLanguage('it')">IT</a>
     </p>
     <script src="site.js" async></script>
 
-    </div>
+    </article>
     <script>
       var codeLines = [];
       codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import \"fmt\"\u000A');codeLines.push('func main() {\u000A    jobs :\u003D make(chan int, 5)\u000A    done :\u003D make(chan bool)\u000A');codeLines.push('    go func() {\u000A        for {\u000A            j, more :\u003D \u003C-jobs\u000A            if more {\u000A                fmt.Println(\"received job\", j)\u000A            } else {\u000A                fmt.Println(\"received all jobs\")\u000A                done \u003C- true\u000A                return\u000A            }\u000A        }\u000A    }()\u000A');codeLines.push('    for j :\u003D 1; j \u003C\u003D 3; j++ {\u000A        jobs \u003C- j\u000A        fmt.Println(\"sent job\", j)\u000A    }\u000A    close(jobs)\u000A    fmt.Println(\"sent all jobs\")\u000A');codeLines.push('    \u003C-done\u000A}\u000A');codeLines.push('');codeLines.push('');

@@ -15,7 +15,7 @@
     </script>
   </head>
   <body>
-    <div class="example" id="structs">
+    <article class="example" id="structs">
       <h2><a href="./">Go by Example - IT</a>: Structs</h2>
       
       <table>
@@ -193,11 +193,12 @@ Il puntatore verrà dereferenziato automaticamente.</p>
       
 
     <p class="footer">
-        by <a href="https://twitter.com/cortinico">@cortinico</a> &amp; <a href="https://twitter.com/_tyge">@_tyge</a> | <a href="mailto:dahhowl@gmail.com,corti.nico@gmail.com">feedback</a> | <a href="https://github.com/golangit/gobyexample-it">source</a> | <a href="https://github.com/golangit/gobyexample-it#license">license</a>
+        by <a href="https://twitter.com/cortinico">@cortinico</a> &amp; <a href="https://twitter.com/_tyge">@_tyge</a> | <a href="mailto:dahhowl@gmail.com,corti.nico@gmail.com">feedback</a> | <a href="https://github.com/golangit/gobyexample-it">source</a> | <a href="https://github.com/golangit/gobyexample-it#license">license</a><br />
+        Мова <a href="#" onclick="switchLanguage('be')">BE</a> | <a href="#" onclick="switchLanguage('en')">EN</a> | <a href="#" onclick="switchLanguage('it')">IT</a>
     </p>
     <script src="site.js" async></script>
 
-    </div>
+    </article>
     <script>
       var codeLines = [];
       codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import \"fmt\"\u000A');codeLines.push('type person struct {\u000A    name string\u000A    age  int\u000A}\u000A');codeLines.push('func main() {\u000A');codeLines.push('    fmt.Println(person{\"Nicola\", 20})\u000A');codeLines.push('    fmt.Println(person{name: \"Luigi\", age: 30})\u000A');codeLines.push('    fmt.Println(person{name: \"Alessandro\"})\u000A');codeLines.push('    fmt.Println(\u0026person{name: \"Luca\", age: 40})\u000A');codeLines.push('    s :\u003D person{name: \"Mario\", age: 50}\u000A    fmt.Println(s.name)\u000A');codeLines.push('    sp :\u003D \u0026s\u000A    fmt.Println(sp.age)\u000A');codeLines.push('    sp.age \u003D 51\u000A    fmt.Println(sp.age)\u000A}\u000A');codeLines.push('');

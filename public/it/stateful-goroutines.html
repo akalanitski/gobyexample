@@ -15,7 +15,7 @@
     </script>
   </head>
   <body>
-    <div class="example" id="stateful-goroutines">
+    <article class="example" id="stateful-goroutines">
       <h2><a href="./">Go by Example - IT</a>: Stateful Goroutines</h2>
       
       <table>
@@ -44,7 +44,7 @@ goroutine con la propria memoria privata.</p>
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/Forbidden"><img title="Run code" src="play.png" class="run" /></a>
+	        <a href="http://play.golang.org/p/3jIhzgJmShs"><img title="Run code" src="play.png" class="run" /></a>
             <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
           </td>
         </tr>
@@ -278,11 +278,12 @@ codice.</p>
       
 
     <p class="footer">
-        by <a href="https://twitter.com/cortinico">@cortinico</a> &amp; <a href="https://twitter.com/_tyge">@_tyge</a> | <a href="mailto:dahhowl@gmail.com,corti.nico@gmail.com">feedback</a> | <a href="https://github.com/golangit/gobyexample-it">source</a> | <a href="https://github.com/golangit/gobyexample-it#license">license</a>
+        by <a href="https://twitter.com/cortinico">@cortinico</a> &amp; <a href="https://twitter.com/_tyge">@_tyge</a> | <a href="mailto:dahhowl@gmail.com,corti.nico@gmail.com">feedback</a> | <a href="https://github.com/golangit/gobyexample-it">source</a> | <a href="https://github.com/golangit/gobyexample-it#license">license</a><br />
+        Мова <a href="#" onclick="switchLanguage('be')">BE</a> | <a href="#" onclick="switchLanguage('en')">EN</a> | <a href="#" onclick="switchLanguage('it')">IT</a>
     </p>
     <script src="site.js" async></script>
 
-    </div>
+    </article>
     <script>
       var codeLines = [];
       codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import (\u000A    \"fmt\"\u000A    \"math/rand\"\u000A    \"sync/atomic\"\u000A    \"time\"\u000A)\u000A');codeLines.push('type readOp struct {\u000A    key  int\u000A    resp chan int\u000A}\u000Atype writeOp struct {\u000A    key  int\u000A    val  int\u000A    resp chan bool\u000A}\u000A');codeLines.push('func main() {\u000A');codeLines.push('    var ops int64 \u003D 0\u000A');codeLines.push('    reads :\u003D make(chan *readOp)\u000A    writes :\u003D make(chan *writeOp)\u000A');codeLines.push('    go func() {\u000A        var state \u003D make(map[int]int)\u000A        for {\u000A            select {\u000A            case read :\u003D \u003C-reads:\u000A                read.resp \u003C- state[read.key]\u000A            case write :\u003D \u003C-writes:\u000A                state[write.key] \u003D write.val\u000A                write.resp \u003C- true\u000A            }\u000A        }\u000A    }()\u000A');codeLines.push('    for r :\u003D 0; r \u003C 100; r++ {\u000A        go func() {\u000A            for {\u000A                read :\u003D \u0026readOp{\u000A                    key:  rand.Intn(5),\u000A                    resp: make(chan int)}\u000A                reads \u003C- read\u000A                \u003C-read.resp\u000A                atomic.AddInt64(\u0026ops, 1)\u000A            }\u000A        }()\u000A    }\u000A');codeLines.push('    for w :\u003D 0; w \u003C 10; w++ {\u000A        go func() {\u000A            for {\u000A                write :\u003D \u0026writeOp{\u000A                    key:  rand.Intn(5),\u000A                    val:  rand.Intn(100),\u000A                    resp: make(chan bool)}\u000A                writes \u003C- write\u000A                \u003C-write.resp\u000A                atomic.AddInt64(\u0026ops, 1)\u000A            }\u000A        }()\u000A    }\u000A');codeLines.push('    time.Sleep(time.Second)\u000A');codeLines.push('    opsFinal :\u003D atomic.LoadInt64(\u0026ops)\u000A    fmt.Println(\"ops:\", opsFinal)\u000A}\u000A');codeLines.push('');codeLines.push('');

@@ -15,7 +15,7 @@
     </script>
   </head>
   <body>
-    <div class="example" id="non-blocking-channel-operations">
+    <article class="example" id="non-blocking-channel-operations">
       <h2><a href="./">Go by Example - IT</a>: Non-Blocking Channel Operations</h2>
       
       <table>
@@ -39,7 +39,7 @@ a più clausole <em>non bloccanti</em>.</p>
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/Forbidden"><img title="Run code" src="play.png" class="run" /></a>
+	        <a href="http://play.golang.org/p/xlaWIRAndeM"><img title="Run code" src="play.png" class="run" /></a>
             <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
           </td>
         </tr>
@@ -152,11 +152,12 @@ non-bloccante sia su <code>messaggi</code> che su <code>segnali</code>.</p>
       
 
     <p class="footer">
-        by <a href="https://twitter.com/cortinico">@cortinico</a> &amp; <a href="https://twitter.com/_tyge">@_tyge</a> | <a href="mailto:dahhowl@gmail.com,corti.nico@gmail.com">feedback</a> | <a href="https://github.com/golangit/gobyexample-it">source</a> | <a href="https://github.com/golangit/gobyexample-it#license">license</a>
+        by <a href="https://twitter.com/cortinico">@cortinico</a> &amp; <a href="https://twitter.com/_tyge">@_tyge</a> | <a href="mailto:dahhowl@gmail.com,corti.nico@gmail.com">feedback</a> | <a href="https://github.com/golangit/gobyexample-it">source</a> | <a href="https://github.com/golangit/gobyexample-it#license">license</a><br />
+        Мова <a href="#" onclick="switchLanguage('be')">BE</a> | <a href="#" onclick="switchLanguage('en')">EN</a> | <a href="#" onclick="switchLanguage('it')">IT</a>
     </p>
     <script src="site.js" async></script>
 
-    </div>
+    </article>
     <script>
       var codeLines = [];
       codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import \"fmt\"\u000A');codeLines.push('func main() {\u000A    messaggi :\u003D make(chan string)\u000A    segnali :\u003D make(chan bool)\u000A');codeLines.push('    select {\u000A    case msg :\u003D \u003C-messaggi:\u000A        fmt.Println(\"messaggio ricevuto\", msg)\u000A    default:\u000A        fmt.Println(\"nessun messaggio ricevuto\")\u000A    }\u000A');codeLines.push('    msg :\u003D \"ciao\"\u000A    select {\u000A    case messaggi \u003C- msg:\u000A        fmt.Println(\"messaggio inviato\", msg)\u000A    default:\u000A        fmt.Println(\"nessun messaggio inviato\")\u000A    }\u000A');codeLines.push('    select {\u000A    case msg :\u003D \u003C-messaggi:\u000A        fmt.Println(\"messaggio ricevuto\", msg)\u000A    case sig :\u003D \u003C-segnali:\u000A        fmt.Println(\"segnale ricevuto\", sig)\u000A    default:\u000A        fmt.Println(\"nessuna attività\")\u000A    }\u000A}\u000A');codeLines.push('');

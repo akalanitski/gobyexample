@@ -15,7 +15,7 @@
     </script>
   </head>
   <body>
-    <div class="example" id="atomic-counters">
+    <article class="example" id="atomic-counters">
       <h2><a href="./">Go by Example - IT</a>: Atomic Counters</h2>
       
       <table>
@@ -194,11 +194,12 @@ modificare lo stato.</p>
       
 
     <p class="footer">
-        by <a href="https://twitter.com/cortinico">@cortinico</a> &amp; <a href="https://twitter.com/_tyge">@_tyge</a> | <a href="mailto:dahhowl@gmail.com,corti.nico@gmail.com">feedback</a> | <a href="https://github.com/golangit/gobyexample-it">source</a> | <a href="https://github.com/golangit/gobyexample-it#license">license</a>
+        by <a href="https://twitter.com/cortinico">@cortinico</a> &amp; <a href="https://twitter.com/_tyge">@_tyge</a> | <a href="mailto:dahhowl@gmail.com,corti.nico@gmail.com">feedback</a> | <a href="https://github.com/golangit/gobyexample-it">source</a> | <a href="https://github.com/golangit/gobyexample-it#license">license</a><br />
+        Мова <a href="#" onclick="switchLanguage('be')">BE</a> | <a href="#" onclick="switchLanguage('en')">EN</a> | <a href="#" onclick="switchLanguage('it')">IT</a>
     </p>
     <script src="site.js" async></script>
 
-    </div>
+    </article>
     <script>
       var codeLines = [];
       codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import \"fmt\"\u000Aimport \"time\"\u000Aimport \"sync/atomic\"\u000Aimport \"runtime\"\u000A');codeLines.push('func main() {\u000A');codeLines.push('    var ops uint64 \u003D 0\u000A');codeLines.push('    for i :\u003D 0; i \u003C 50; i++ {\u000A        go func() {\u000A            for {\u000A');codeLines.push('                atomic.AddUint64(\u0026ops, 1)\u000A');codeLines.push('                runtime.Gosched()\u000A            }\u000A        }()\u000A    }\u000A');codeLines.push('    time.Sleep(time.Second)\u000A');codeLines.push('    opsFinal :\u003D atomic.LoadUint64(\u0026ops)\u000A    fmt.Println(\"ops:\", opsFinal)\u000A}\u000A');codeLines.push('');codeLines.push('');

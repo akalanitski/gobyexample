@@ -15,7 +15,7 @@
     </script>
   </head>
   <body>
-    <div class="example" id="timeouts">
+    <article class="example" id="timeouts">
       <h2><a href="./">Go by Example - IT</a>: Timeouts</h2>
       
       <table>
@@ -175,11 +175,12 @@ breve: i <em>timer</em> e i <em>ticker</em>.</p>
       
 
     <p class="footer">
-        by <a href="https://twitter.com/cortinico">@cortinico</a> &amp; <a href="https://twitter.com/_tyge">@_tyge</a> | <a href="mailto:dahhowl@gmail.com,corti.nico@gmail.com">feedback</a> | <a href="https://github.com/golangit/gobyexample-it">source</a> | <a href="https://github.com/golangit/gobyexample-it#license">license</a>
+        by <a href="https://twitter.com/cortinico">@cortinico</a> &amp; <a href="https://twitter.com/_tyge">@_tyge</a> | <a href="mailto:dahhowl@gmail.com,corti.nico@gmail.com">feedback</a> | <a href="https://github.com/golangit/gobyexample-it">source</a> | <a href="https://github.com/golangit/gobyexample-it#license">license</a><br />
+        Мова <a href="#" onclick="switchLanguage('be')">BE</a> | <a href="#" onclick="switchLanguage('en')">EN</a> | <a href="#" onclick="switchLanguage('it')">IT</a>
     </p>
     <script src="site.js" async></script>
 
-    </div>
+    </article>
     <script>
       var codeLines = [];
       codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import \"time\"\u000Aimport \"fmt\"\u000A');codeLines.push('func main() {\u000A');codeLines.push('    c1 :\u003D make(chan string, 1)\u000A    go func() {\u000A        time.Sleep(time.Second * 2)\u000A        c1 \u003C- \"risultato 1\"\u000A    }()\u000A');codeLines.push('    select {\u000A    case res :\u003D \u003C-c1:\u000A        fmt.Println(res)\u000A    case \u003C-time.After(time.Second * 1):\u000A        fmt.Println(\"timeout 1\")\u000A    }\u000A');codeLines.push('    c2 :\u003D make(chan string, 1)\u000A    go func() {\u000A        time.Sleep(time.Second * 2)\u000A        c2 \u003C- \"risultato 2\"\u000A    }()\u000A    select {\u000A    case res :\u003D \u003C-c2:\u000A        fmt.Println(res)\u000A    case \u003C-time.After(time.Second * 3):\u000A        fmt.Println(\"timeout 2\")\u000A    }\u000A}\u000A');codeLines.push('');codeLines.push('');

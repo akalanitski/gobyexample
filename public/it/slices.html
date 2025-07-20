@@ -15,7 +15,7 @@
     </script>
   </head>
   <body>
-    <div class="example" id="slices">
+    <article class="example" id="slices">
       <h2><a href="./">Go by Example - IT</a>: Slices</h2>
       
       <table>
@@ -283,11 +283,12 @@ all&rsquo;altra struttura di dati basilare di Go: le <em>map</em>.</p>
       
 
     <p class="footer">
-        by <a href="https://twitter.com/cortinico">@cortinico</a> &amp; <a href="https://twitter.com/_tyge">@_tyge</a> | <a href="mailto:dahhowl@gmail.com,corti.nico@gmail.com">feedback</a> | <a href="https://github.com/golangit/gobyexample-it">source</a> | <a href="https://github.com/golangit/gobyexample-it#license">license</a>
+        by <a href="https://twitter.com/cortinico">@cortinico</a> &amp; <a href="https://twitter.com/_tyge">@_tyge</a> | <a href="mailto:dahhowl@gmail.com,corti.nico@gmail.com">feedback</a> | <a href="https://github.com/golangit/gobyexample-it">source</a> | <a href="https://github.com/golangit/gobyexample-it#license">license</a><br />
+        Мова <a href="#" onclick="switchLanguage('be')">BE</a> | <a href="#" onclick="switchLanguage('en')">EN</a> | <a href="#" onclick="switchLanguage('it')">IT</a>
     </p>
     <script src="site.js" async></script>
 
-    </div>
+    </article>
     <script>
       var codeLines = [];
       codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import \"fmt\"\u000A');codeLines.push('func main() {\u000A');codeLines.push('    s :\u003D make([]string, 3)\u000A    fmt.Println(\"emp:\", s)\u000A');codeLines.push('    s[0] \u003D \"a\"\u000A    s[1] \u003D \"b\"\u000A    s[2] \u003D \"c\"\u000A    fmt.Println(\"set:\", s)\u000A    fmt.Println(\"get:\", s[2])\u000A');codeLines.push('    fmt.Println(\"len:\", len(s))\u000A');codeLines.push('    s \u003D append(s, \"d\")\u000A    s \u003D append(s, \"e\", \"f\")\u000A    fmt.Println(\"apd:\", s)\u000A');codeLines.push('    c :\u003D make([]string, len(s))\u000A    copy(c, s)\u000A    fmt.Println(\"cpy:\", c)\u000A');codeLines.push('    l :\u003D s[2:5]\u000A    fmt.Println(\"sl1:\", l)\u000A');codeLines.push('    l \u003D s[:5]\u000A    fmt.Println(\"sl2:\", l)\u000A');codeLines.push('    l \u003D s[2:]\u000A    fmt.Println(\"sl3:\", l)\u000A');codeLines.push('    t :\u003D []string{\"g\", \"h\", \"i\"}\u000A    fmt.Println(\"dcl:\", t)\u000A');codeLines.push('    biDim :\u003D make([][]int, 3)\u000A    for i :\u003D 0; i \u003C 3; i++ {\u000A        innerLen :\u003D i + 1\u000A        biDim[i] \u003D make([]int, innerLen)\u000A        for j :\u003D 0; j \u003C innerLen; j++ {\u000A            biDim[i][j] \u003D i + j\u000A        }\u000A    }\u000A    fmt.Println(\"2d: \", biDim)\u000A}\u000A');codeLines.push('');codeLines.push('');codeLines.push('');

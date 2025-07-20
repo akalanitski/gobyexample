@@ -15,7 +15,7 @@
     </script>
   </head>
   <body>
-    <div class="example" id="tickers">
+    <article class="example" id="tickers">
       <h2><a href="./">Go by Example - IT</a>: Tickers</h2>
       
       <table>
@@ -134,11 +134,12 @@ tichettare 3 volte prima che lo fermiamo.</p>
       
 
     <p class="footer">
-        by <a href="https://twitter.com/cortinico">@cortinico</a> &amp; <a href="https://twitter.com/_tyge">@_tyge</a> | <a href="mailto:dahhowl@gmail.com,corti.nico@gmail.com">feedback</a> | <a href="https://github.com/golangit/gobyexample-it">source</a> | <a href="https://github.com/golangit/gobyexample-it#license">license</a>
+        by <a href="https://twitter.com/cortinico">@cortinico</a> &amp; <a href="https://twitter.com/_tyge">@_tyge</a> | <a href="mailto:dahhowl@gmail.com,corti.nico@gmail.com">feedback</a> | <a href="https://github.com/golangit/gobyexample-it">source</a> | <a href="https://github.com/golangit/gobyexample-it#license">license</a><br />
+        Мова <a href="#" onclick="switchLanguage('be')">BE</a> | <a href="#" onclick="switchLanguage('en')">EN</a> | <a href="#" onclick="switchLanguage('it')">IT</a>
     </p>
     <script src="site.js" async></script>
 
-    </div>
+    </article>
     <script>
       var codeLines = [];
       codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import \"time\"\u000Aimport \"fmt\"\u000A');codeLines.push('func main() {\u000A');codeLines.push('    ticker :\u003D time.NewTicker(time.Millisecond * 500)\u000A    go func() {\u000A        for t :\u003D range ticker.C {\u000A            fmt.Println(\"Tick\", t)\u000A        }\u000A    }()\u000A');codeLines.push('    time.Sleep(time.Millisecond * 1600)\u000A    ticker.Stop()\u000A    fmt.Println(\"Ticker fermato\")\u000A}\u000A');codeLines.push('');

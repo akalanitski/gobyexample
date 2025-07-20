@@ -15,7 +15,7 @@
     </script>
   </head>
   <body>
-    <div class="example" id="channel-directions">
+    <article class="example" id="channel-directions">
       <h2><a href="./">Go by Example - IT</a>: Channel Directions</h2>
       
       <table>
@@ -122,11 +122,12 @@ il solo invio (<code>pongs</code>).</p>
       
 
     <p class="footer">
-        by <a href="https://twitter.com/cortinico">@cortinico</a> &amp; <a href="https://twitter.com/_tyge">@_tyge</a> | <a href="mailto:dahhowl@gmail.com,corti.nico@gmail.com">feedback</a> | <a href="https://github.com/golangit/gobyexample-it">source</a> | <a href="https://github.com/golangit/gobyexample-it#license">license</a>
+        by <a href="https://twitter.com/cortinico">@cortinico</a> &amp; <a href="https://twitter.com/_tyge">@_tyge</a> | <a href="mailto:dahhowl@gmail.com,corti.nico@gmail.com">feedback</a> | <a href="https://github.com/golangit/gobyexample-it">source</a> | <a href="https://github.com/golangit/gobyexample-it#license">license</a><br />
+        Мова <a href="#" onclick="switchLanguage('be')">BE</a> | <a href="#" onclick="switchLanguage('en')">EN</a> | <a href="#" onclick="switchLanguage('it')">IT</a>
     </p>
     <script src="site.js" async></script>
 
-    </div>
+    </article>
     <script>
       var codeLines = [];
       codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import \"fmt\"\u000A');codeLines.push('func ping(pings chan\u003C- string, msg string) {\u000A    pings \u003C- msg\u000A}\u000A');codeLines.push('func pong(pings \u003C-chan string, pongs chan\u003C- string) {\u000A    msg :\u003D \u003C-pings\u000A    pongs \u003C- msg\u000A}\u000A');codeLines.push('func main() {\u000A    pings :\u003D make(chan string, 1)\u000A    pongs :\u003D make(chan string, 1)\u000A    ping(pings, \"messaggio passato\")\u000A    pong(pings, pongs)\u000A    fmt.Println(\u003C-pongs)\u000A}\u000A');codeLines.push('');

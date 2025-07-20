@@ -15,7 +15,7 @@
     </script>
   </head>
   <body>
-    <div class="example" id="methods">
+    <article class="example" id="methods">
       <h2><a href="./">Go by Example - IT</a>: Methods</h2>
       
       <table>
@@ -174,11 +174,12 @@ le interfacce.</p>
       
 
     <p class="footer">
-        by <a href="https://twitter.com/cortinico">@cortinico</a> &amp; <a href="https://twitter.com/_tyge">@_tyge</a> | <a href="mailto:dahhowl@gmail.com,corti.nico@gmail.com">feedback</a> | <a href="https://github.com/golangit/gobyexample-it">source</a> | <a href="https://github.com/golangit/gobyexample-it#license">license</a>
+        by <a href="https://twitter.com/cortinico">@cortinico</a> &amp; <a href="https://twitter.com/_tyge">@_tyge</a> | <a href="mailto:dahhowl@gmail.com,corti.nico@gmail.com">feedback</a> | <a href="https://github.com/golangit/gobyexample-it">source</a> | <a href="https://github.com/golangit/gobyexample-it#license">license</a><br />
+        Мова <a href="#" onclick="switchLanguage('be')">BE</a> | <a href="#" onclick="switchLanguage('en')">EN</a> | <a href="#" onclick="switchLanguage('it')">IT</a>
     </p>
     <script src="site.js" async></script>
 
-    </div>
+    </article>
     <script>
       var codeLines = [];
       codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import \"fmt\"\u000A');codeLines.push('type rect struct {\u000A    width, height int\u000A}\u000A');codeLines.push('func (r *rect) area() int {\u000A    return r.width * r.height\u000A}\u000A');codeLines.push('func (r rect) perim() int {\u000A    return 2*r.width + 2*r.height\u000A}\u000A');codeLines.push('func main() {\u000A    r :\u003D rect{width: 10, height: 5}\u000A');codeLines.push('    fmt.Println(\"area: \", r.area())\u000A    fmt.Println(\"perim:\", r.perim())\u000A');codeLines.push('    rp :\u003D \u0026r\u000A    fmt.Println(\"area: \", rp.area())\u000A    fmt.Println(\"perim:\", rp.perim())\u000A}\u000A');codeLines.push('');codeLines.push('');

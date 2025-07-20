@@ -15,7 +15,7 @@
     </script>
   </head>
   <body>
-    <div class="example" id="signals">
+    <article class="example" id="signals">
       <h2><a href="./">Go by Example - IT</a>: Signals</h2>
       
       <table>
@@ -166,11 +166,12 @@ programma.</p>
       
 
     <p class="footer">
-        by <a href="https://twitter.com/cortinico">@cortinico</a> &amp; <a href="https://twitter.com/_tyge">@_tyge</a> | <a href="mailto:dahhowl@gmail.com,corti.nico@gmail.com">feedback</a> | <a href="https://github.com/golangit/gobyexample-it">source</a> | <a href="https://github.com/golangit/gobyexample-it#license">license</a>
+        by <a href="https://twitter.com/cortinico">@cortinico</a> &amp; <a href="https://twitter.com/_tyge">@_tyge</a> | <a href="mailto:dahhowl@gmail.com,corti.nico@gmail.com">feedback</a> | <a href="https://github.com/golangit/gobyexample-it">source</a> | <a href="https://github.com/golangit/gobyexample-it#license">license</a><br />
+        Мова <a href="#" onclick="switchLanguage('be')">BE</a> | <a href="#" onclick="switchLanguage('en')">EN</a> | <a href="#" onclick="switchLanguage('it')">IT</a>
     </p>
     <script src="site.js" async></script>
 
-    </div>
+    </article>
     <script>
       var codeLines = [];
       codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import \"fmt\"\u000Aimport \"os\"\u000Aimport \"os/signal\"\u000Aimport \"syscall\"\u000A');codeLines.push('func main() {\u000A');codeLines.push('    sigs :\u003D make(chan os.Signal, 1)\u000A    done :\u003D make(chan bool, 1)\u000A');codeLines.push('    signal.Notify(sigs, syscall.SIGINT, syscall.SIGTERM)\u000A');codeLines.push('    go func() {\u000A        sig :\u003D \u003C-sigs\u000A        fmt.Println()\u000A        fmt.Println(sig)\u000A        done \u003C- true\u000A    }()\u000A');codeLines.push('    fmt.Println(\"awaiting signal\")\u000A    \u003C-done\u000A    fmt.Println(\"exiting\")\u000A}\u000A');codeLines.push('');

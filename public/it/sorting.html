@@ -15,7 +15,7 @@
     </script>
   </head>
   <body>
-    <div class="example" id="sorting">
+    <article class="example" id="sorting">
       <h2><a href="./">Go by Example - IT</a>: Sorting</h2>
       
       <table>
@@ -139,11 +139,12 @@ della nostra chiamata alla funzione <code>AreSorted</code>.</p>
       
 
     <p class="footer">
-        by <a href="https://twitter.com/cortinico">@cortinico</a> &amp; <a href="https://twitter.com/_tyge">@_tyge</a> | <a href="mailto:dahhowl@gmail.com,corti.nico@gmail.com">feedback</a> | <a href="https://github.com/golangit/gobyexample-it">source</a> | <a href="https://github.com/golangit/gobyexample-it#license">license</a>
+        by <a href="https://twitter.com/cortinico">@cortinico</a> &amp; <a href="https://twitter.com/_tyge">@_tyge</a> | <a href="mailto:dahhowl@gmail.com,corti.nico@gmail.com">feedback</a> | <a href="https://github.com/golangit/gobyexample-it">source</a> | <a href="https://github.com/golangit/gobyexample-it#license">license</a><br />
+        Мова <a href="#" onclick="switchLanguage('be')">BE</a> | <a href="#" onclick="switchLanguage('en')">EN</a> | <a href="#" onclick="switchLanguage('it')">IT</a>
     </p>
     <script src="site.js" async></script>
 
-    </div>
+    </article>
     <script>
       var codeLines = [];
       codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import \"fmt\"\u000Aimport \"sort\"\u000A');codeLines.push('func main() {\u000A');codeLines.push('    strs :\u003D []string{\"c\", \"a\", \"b\"}\u000A    sort.Strings(strs)\u000A    fmt.Println(\"Strings:\", strs)\u000A');codeLines.push('    ints :\u003D []int{7, 2, 4}\u000A    sort.Ints(ints)\u000A    fmt.Println(\"Ints:   \", ints)\u000A');codeLines.push('    s :\u003D sort.IntsAreSorted(ints)\u000A    fmt.Println(\"Sorted: \", s)\u000A}\u000A');codeLines.push('');

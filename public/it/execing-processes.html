@@ -15,7 +15,7 @@
     </script>
   </head>
   <body>
-    <div class="example" id="execing-processes">
+    <article class="example" id="execing-processes">
       <h2><a href="./">Go by Example - IT</a>: Exec'ing Processes</h2>
       
       <table>
@@ -181,11 +181,12 @@ di <code>fork</code>.</p>
       
 
     <p class="footer">
-        by <a href="https://twitter.com/cortinico">@cortinico</a> &amp; <a href="https://twitter.com/_tyge">@_tyge</a> | <a href="mailto:dahhowl@gmail.com,corti.nico@gmail.com">feedback</a> | <a href="https://github.com/golangit/gobyexample-it">source</a> | <a href="https://github.com/golangit/gobyexample-it#license">license</a>
+        by <a href="https://twitter.com/cortinico">@cortinico</a> &amp; <a href="https://twitter.com/_tyge">@_tyge</a> | <a href="mailto:dahhowl@gmail.com,corti.nico@gmail.com">feedback</a> | <a href="https://github.com/golangit/gobyexample-it">source</a> | <a href="https://github.com/golangit/gobyexample-it#license">license</a><br />
+        Мова <a href="#" onclick="switchLanguage('be')">BE</a> | <a href="#" onclick="switchLanguage('en')">EN</a> | <a href="#" onclick="switchLanguage('it')">IT</a>
     </p>
     <script src="site.js" async></script>
 
-    </div>
+    </article>
     <script>
       var codeLines = [];
       codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import \"syscall\"\u000Aimport \"os\"\u000Aimport \"os/exec\"\u000A');codeLines.push('func main() {\u000A');codeLines.push('    binary, lookErr :\u003D exec.LookPath(\"ls\")\u000A    if lookErr !\u003D nil {\u000A        panic(lookErr)\u000A    }\u000A');codeLines.push('    args :\u003D []string{\"ls\", \"-a\", \"-l\", \"-h\"}\u000A');codeLines.push('    env :\u003D os.Environ()\u000A');codeLines.push('    execErr :\u003D syscall.Exec(binary, args, env)\u000A    if execErr !\u003D nil {\u000A        panic(execErr)\u000A    }\u000A}\u000A');codeLines.push('');codeLines.push('');

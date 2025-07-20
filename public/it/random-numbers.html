@@ -15,7 +15,7 @@
     </script>
   </head>
   <body>
-    <div class="example" id="random-numbers">
+    <article class="example" id="random-numbers">
       <h2><a href="./">Go by Example - IT</a>: Random Numbers</h2>
       
       <table>
@@ -202,11 +202,12 @@ consultare la documentazione del pacchetto.
       
 
     <p class="footer">
-        by <a href="https://twitter.com/cortinico">@cortinico</a> &amp; <a href="https://twitter.com/_tyge">@_tyge</a> | <a href="mailto:dahhowl@gmail.com,corti.nico@gmail.com">feedback</a> | <a href="https://github.com/golangit/gobyexample-it">source</a> | <a href="https://github.com/golangit/gobyexample-it#license">license</a>
+        by <a href="https://twitter.com/cortinico">@cortinico</a> &amp; <a href="https://twitter.com/_tyge">@_tyge</a> | <a href="mailto:dahhowl@gmail.com,corti.nico@gmail.com">feedback</a> | <a href="https://github.com/golangit/gobyexample-it">source</a> | <a href="https://github.com/golangit/gobyexample-it#license">license</a><br />
+        Мова <a href="#" onclick="switchLanguage('be')">BE</a> | <a href="#" onclick="switchLanguage('en')">EN</a> | <a href="#" onclick="switchLanguage('it')">IT</a>
     </p>
     <script src="site.js" async></script>
 
-    </div>
+    </article>
     <script>
       var codeLines = [];
       codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import \"time\"\u000Aimport \"fmt\"\u000Aimport \"math/rand\"\u000A');codeLines.push('func main() {\u000A');codeLines.push('    fmt.Print(rand.Intn(100), \",\")\u000A    fmt.Print(rand.Intn(100))\u000A    fmt.Println()\u000A');codeLines.push('    fmt.Println(rand.Float64())\u000A');codeLines.push('    fmt.Print((rand.Float64()*5)+5, \",\")\u000A    fmt.Print((rand.Float64() * 5) + 5)\u000A    fmt.Println()\u000A');codeLines.push('    s1 :\u003D rand.NewSource(time.Now().UnixNano())\u000A    r1 :\u003D rand.New(s1)\u000A');codeLines.push('    fmt.Print(r1.Intn(100), \",\")\u000A    fmt.Print(r1.Intn(100))\u000A    fmt.Println()\u000A');codeLines.push('    s2 :\u003D rand.NewSource(42)\u000A    r2 :\u003D rand.New(s2)\u000A    fmt.Print(r2.Intn(100), \",\")\u000A    fmt.Print(r2.Intn(100))\u000A    fmt.Println()\u000A    s3 :\u003D rand.NewSource(42)\u000A    r3 :\u003D rand.New(s3)\u000A    fmt.Print(r3.Intn(100), \",\")\u000A    fmt.Print(r3.Intn(100))\u000A}\u000A');codeLines.push('');codeLines.push('');
