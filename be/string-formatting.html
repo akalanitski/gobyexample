@@ -358,43 +358,6 @@
         
       </table>
       
-      <table>
-        
-        <tr>
-          <td class="docs">
-            
-          </td>
-          <td class="code">
-            
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run string-formatting.go
-</span></span><span class="line"><span class="cl"><span class="go">struct1: {1 2}
-</span></span></span><span class="line"><span class="cl"><span class="go">struct2: {x:1 y:2}
-</span></span></span><span class="line"><span class="cl"><span class="go">struct3: main.point{x:1, y:2}
-</span></span></span><span class="line"><span class="cl"><span class="go">type: main.point
-</span></span></span><span class="line"><span class="cl"><span class="go">bool: true
-</span></span></span><span class="line"><span class="cl"><span class="go">int: 123
-</span></span></span><span class="line"><span class="cl"><span class="go">bin: 1110
-</span></span></span><span class="line"><span class="cl"><span class="go">char: !
-</span></span></span><span class="line"><span class="cl"><span class="go">hex: 1c8
-</span></span></span><span class="line"><span class="cl"><span class="go">float1: 78.900000
-</span></span></span><span class="line"><span class="cl"><span class="go">float2: 1.234000e+08
-</span></span></span><span class="line"><span class="cl"><span class="go">float3: 1.234000E+08
-</span></span></span><span class="line"><span class="cl"><span class="go">str1: &#34;string&#34;
-</span></span></span><span class="line"><span class="cl"><span class="go">str2: &#34;\&#34;string\&#34;&#34;
-</span></span></span><span class="line"><span class="cl"><span class="go">str3: 6865782074686973
-</span></span></span><span class="line"><span class="cl"><span class="go">pointer: 0xc0000ba000
-</span></span></span><span class="line"><span class="cl"><span class="go">width1: |    12|   345|
-</span></span></span><span class="line"><span class="cl"><span class="go">width2: |  1.20|  3.45|
-</span></span></span><span class="line"><span class="cl"><span class="go">width3: |1.20  |3.45  |
-</span></span></span><span class="line"><span class="cl"><span class="go">width4: |   foo|     b|
-</span></span></span><span class="line"><span class="cl"><span class="go">width5: |foo   |b     |
-</span></span></span><span class="line"><span class="cl"><span class="go">sprintf: a string
-</span></span></span><span class="line"><span class="cl"><span class="go">io: an error</span></span></span></code></pre>
-          </td>
-        </tr>
-        
-      </table>
-      
       
       <p class="next">
         Наступны прыклад: <a href="text-templates.html" rel="next">Text Templates</a>.
@@ -406,14 +369,14 @@
       і <a href="https://eli.thegreenplace.net">Элі Бендэрскі</a>
       | <a href="https://github.com/mmcgrana/gobyexample">код</a>
       | <a href="https://github.com/mmcgrana/gobyexample#license">ліцэнзія</a><br />
-      Мова <a href="#" onclick="switchLanguage('be')">BE</a> | <a href="#" onclick="switchLanguage('en')">EN</a>
+      Мова <a href="#" onclick="switchLanguage('be')">BE</a> | <a href="#" onclick="switchLanguage('en')">EN</a> | <a href="#" onclick="switchLanguage('it')">IT</a>
     </p>
     <script src="../site.js" async></script>
 
     </article>
     <script>
       var codeLines = [];
-      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import (\u000A    \"fmt\"\u000A    \"os\"\u000A)\u000A');codeLines.push('type point struct {\u000A    x, y int\u000A}\u000A');codeLines.push('func main() {\u000A');codeLines.push('    p :\u003D point{1, 2}\u000A    fmt.Printf(\"struct1: %v\\n\", p)\u000A');codeLines.push('    fmt.Printf(\"struct2: %+v\\n\", p)\u000A');codeLines.push('    fmt.Printf(\"struct3: %#v\\n\", p)\u000A');codeLines.push('    fmt.Printf(\"type: %T\\n\", p)\u000A');codeLines.push('    fmt.Printf(\"bool: %t\\n\", true)\u000A');codeLines.push('    fmt.Printf(\"int: %d\\n\", 123)\u000A');codeLines.push('    fmt.Printf(\"bin: %b\\n\", 14)\u000A');codeLines.push('    fmt.Printf(\"char: %c\\n\", 33)\u000A');codeLines.push('    fmt.Printf(\"hex: %x\\n\", 456)\u000A');codeLines.push('    fmt.Printf(\"float1: %f\\n\", 78.9)\u000A');codeLines.push('    fmt.Printf(\"float2: %e\\n\", 123400000.0)\u000A    fmt.Printf(\"float3: %E\\n\", 123400000.0)\u000A');codeLines.push('    fmt.Printf(\"str1: %s\\n\", \"\\\"string\\\"\")\u000A');codeLines.push('    fmt.Printf(\"str2: %q\\n\", \"\\\"string\\\"\")\u000A');codeLines.push('    fmt.Printf(\"str3: %x\\n\", \"hex this\")\u000A');codeLines.push('    fmt.Printf(\"pointer: %p\\n\", \u0026p)\u000A');codeLines.push('    fmt.Printf(\"width1: |%6d|%6d|\\n\", 12, 345)\u000A');codeLines.push('    fmt.Printf(\"width2: |%6.2f|%6.2f|\\n\", 1.2, 3.45)\u000A');codeLines.push('    fmt.Printf(\"width3: |%-6.2f|%-6.2f|\\n\", 1.2, 3.45)\u000A');codeLines.push('    fmt.Printf(\"width4: |%6s|%6s|\\n\", \"foo\", \"b\")\u000A');codeLines.push('    fmt.Printf(\"width5: |%-6s|%-6s|\\n\", \"foo\", \"b\")\u000A');codeLines.push('    s :\u003D fmt.Sprintf(\"sprintf: a %s\", \"string\")\u000A    fmt.Println(s)\u000A');codeLines.push('    fmt.Fprintf(os.Stderr, \"io: an %s\\n\", \"error\")\u000A}\u000A');codeLines.push('');
+      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import (\u000A    \"fmt\"\u000A    \"os\"\u000A)\u000A');codeLines.push('type point struct {\u000A    x, y int\u000A}\u000A');codeLines.push('func main() {\u000A');codeLines.push('    p :\u003D point{1, 2}\u000A    fmt.Printf(\"struct1: %v\\n\", p)\u000A');codeLines.push('    fmt.Printf(\"struct2: %+v\\n\", p)\u000A');codeLines.push('    fmt.Printf(\"struct3: %#v\\n\", p)\u000A');codeLines.push('    fmt.Printf(\"type: %T\\n\", p)\u000A');codeLines.push('    fmt.Printf(\"bool: %t\\n\", true)\u000A');codeLines.push('    fmt.Printf(\"int: %d\\n\", 123)\u000A');codeLines.push('    fmt.Printf(\"bin: %b\\n\", 14)\u000A');codeLines.push('    fmt.Printf(\"char: %c\\n\", 33)\u000A');codeLines.push('    fmt.Printf(\"hex: %x\\n\", 456)\u000A');codeLines.push('    fmt.Printf(\"float1: %f\\n\", 78.9)\u000A');codeLines.push('    fmt.Printf(\"float2: %e\\n\", 123400000.0)\u000A    fmt.Printf(\"float3: %E\\n\", 123400000.0)\u000A');codeLines.push('    fmt.Printf(\"str1: %s\\n\", \"\\\"string\\\"\")\u000A');codeLines.push('    fmt.Printf(\"str2: %q\\n\", \"\\\"string\\\"\")\u000A');codeLines.push('    fmt.Printf(\"str3: %x\\n\", \"hex this\")\u000A');codeLines.push('    fmt.Printf(\"pointer: %p\\n\", \u0026p)\u000A');codeLines.push('    fmt.Printf(\"width1: |%6d|%6d|\\n\", 12, 345)\u000A');codeLines.push('    fmt.Printf(\"width2: |%6.2f|%6.2f|\\n\", 1.2, 3.45)\u000A');codeLines.push('    fmt.Printf(\"width3: |%-6.2f|%-6.2f|\\n\", 1.2, 3.45)\u000A');codeLines.push('    fmt.Printf(\"width4: |%6s|%6s|\\n\", \"foo\", \"b\")\u000A');codeLines.push('    fmt.Printf(\"width5: |%-6s|%-6s|\\n\", \"foo\", \"b\")\u000A');codeLines.push('    s :\u003D fmt.Sprintf(\"sprintf: a %s\", \"string\")\u000A    fmt.Println(s)\u000A');codeLines.push('    fmt.Fprintf(os.Stderr, \"io: an %s\\n\", \"error\")\u000A}\u000A');
     </script>
   </body>
 </html>

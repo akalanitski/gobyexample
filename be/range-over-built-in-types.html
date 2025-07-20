@@ -153,28 +153,6 @@
         
       </table>
       
-      <table>
-        
-        <tr>
-          <td class="docs">
-            
-          </td>
-          <td class="code">
-            
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run range-over-built-in-types.go
-</span></span><span class="line"><span class="cl"><span class="go">sum: 9
-</span></span></span><span class="line"><span class="cl"><span class="go">index: 1
-</span></span></span><span class="line"><span class="cl"><span class="go">a -&gt; apple
-</span></span></span><span class="line"><span class="cl"><span class="go">b -&gt; banana
-</span></span></span><span class="line"><span class="cl"><span class="go">key: a
-</span></span></span><span class="line"><span class="cl"><span class="go">key: b
-</span></span></span><span class="line"><span class="cl"><span class="go">0 103
-</span></span></span><span class="line"><span class="cl"><span class="go">1 111</span></span></span></code></pre>
-          </td>
-        </tr>
-        
-      </table>
-      
       
       <p class="next">
         Наступны прыклад: <a href="pointers.html" rel="next">Pointers</a>.
@@ -186,14 +164,14 @@
       і <a href="https://eli.thegreenplace.net">Элі Бендэрскі</a>
       | <a href="https://github.com/mmcgrana/gobyexample">код</a>
       | <a href="https://github.com/mmcgrana/gobyexample#license">ліцэнзія</a><br />
-      Мова <a href="#" onclick="switchLanguage('be')">BE</a> | <a href="#" onclick="switchLanguage('en')">EN</a>
+      Мова <a href="#" onclick="switchLanguage('be')">BE</a> | <a href="#" onclick="switchLanguage('en')">EN</a> | <a href="#" onclick="switchLanguage('it')">IT</a>
     </p>
     <script src="../site.js" async></script>
 
     </article>
     <script>
       var codeLines = [];
-      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import \"fmt\"\u000A');codeLines.push('func main() {\u000A');codeLines.push('    nums :\u003D []int{2, 3, 4}\u000A    sum :\u003D 0\u000A    for _, num :\u003D range nums {\u000A        sum +\u003D num\u000A    }\u000A    fmt.Println(\"sum:\", sum)\u000A');codeLines.push('    for i, num :\u003D range nums {\u000A        if num \u003D\u003D 3 {\u000A            fmt.Println(\"index:\", i)\u000A        }\u000A    }\u000A');codeLines.push('    kvs :\u003D map[string]string{\"a\": \"apple\", \"b\": \"banana\"}\u000A    for k, v :\u003D range kvs {\u000A        fmt.Printf(\"%s -\u003E %s\\n\", k, v)\u000A    }\u000A');codeLines.push('    for k :\u003D range kvs {\u000A        fmt.Println(\"key:\", k)\u000A    }\u000A');codeLines.push('    for i, c :\u003D range \"go\" {\u000A        fmt.Println(i, c)\u000A    }\u000A}\u000A');codeLines.push('');
+      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import \"fmt\"\u000A');codeLines.push('func main() {\u000A');codeLines.push('    nums :\u003D []int{2, 3, 4}\u000A    sum :\u003D 0\u000A    for _, num :\u003D range nums {\u000A        sum +\u003D num\u000A    }\u000A    fmt.Println(\"sum:\", sum)\u000A');codeLines.push('    for i, num :\u003D range nums {\u000A        if num \u003D\u003D 3 {\u000A            fmt.Println(\"index:\", i)\u000A        }\u000A    }\u000A');codeLines.push('    kvs :\u003D map[string]string{\"a\": \"apple\", \"b\": \"banana\"}\u000A    for k, v :\u003D range kvs {\u000A        fmt.Printf(\"%s -\u003E %s\\n\", k, v)\u000A    }\u000A');codeLines.push('    for k :\u003D range kvs {\u000A        fmt.Println(\"key:\", k)\u000A    }\u000A');codeLines.push('    for i, c :\u003D range \"go\" {\u000A        fmt.Println(i, c)\u000A    }\u000A}\u000A');
     </script>
   </body>
 </html>

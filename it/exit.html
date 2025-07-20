@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Go by Example - IT: Exit</title>
+    <link rel=stylesheet href="site.css">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YS5D7DR8P1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-YS5D7DR8P1');
+    </script>
+  </head>
+  <body>
+    <article class="example" id="exit">
+      <h2><a href="./">Go by Example - IT</a>: Exit</h2>
+      
+      <table>
+        
+        <tr>
+          <td class="docs">
+            <p>Usa <code>os.Exit</code> per terminare immediatamente l&rsquo;esecuzione
+di un programma con un determinato <a href="https://it.wikipedia.org/wiki/Valore_di_uscita">valore di uscita</a>.</p>
+
+          </td>
+          <td class="code empty leading">
+	        
+            
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+	        <a href="http://play.golang.org/p/bq-bRD_hZ9L"><img title="Run code" src="play.png" class="run" /></a>
+            <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+	        
+            <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="s">&#34;fmt&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="s">&#34;os&#34;</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+	        
+            <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>I <code>defer</code> <em>non</em> saranno eseguiti con <code>os.Exit</code>,
+quindi questo <code>fmt.Println</code> non verrà mai eseguito.</p>
+
+          </td>
+          <td class="code leading">
+	        
+            <pre class="chroma"><code><span class="line"><span class="cl">    <span class="k">defer</span> <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;!&#34;</span><span class="p">)</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Terminiamo il programma col valore di uscita 3.</p>
+
+          </td>
+          <td class="code leading">
+	        
+            <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">os</span><span class="p">.</span><span class="nf">Exit</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Nota che a differenza di C e simili, Go non usa un
+valore restituito da <code>main()</code> per indicare il valore
+di uscita. Se vuoi terminare il programma con un valore
+non-zero, usa <code>os.Exit</code>.</p>
+
+          </td>
+          <td class="code empty">
+	        
+            
+          </td>
+        </tr>
+        
+      </table>
+      
+      <table>
+        
+        <tr>
+          <td class="docs">
+            <p>Se esegui <code>exit.go</code> usando <code>go run</code>, il valore di uscita
+verrà intercettato da Go e stampato.</p>
+
+          </td>
+          <td class="code leading">
+	        
+            <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run exit.go
+</span></span><span class="line"><span class="cl"><span class="go">exit status 3</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Compilando e eseguendo il programma potrai anche vedere
+il valore restituito nel terminale.</p>
+
+          </td>
+          <td class="code leading">
+	        
+            <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go build exit.go
+</span></span><span class="line"><span class="cl"><span class="gp">$</span> ./exit
+</span></span><span class="line"><span class="cl"><span class="gp">$</span> echo $?
+</span></span><span class="line"><span class="cl"><span class="go">3</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Nota che il <code>!</code> del nostro programma non è mai stato
+stampato.</p>
+
+          </td>
+          <td class="code empty">
+	        
+            
+          </td>
+        </tr>
+        
+      </table>
+      
+      
+
+    <p class="footer">
+        by <a href="https://twitter.com/cortinico">@cortinico</a> &amp; <a href="https://twitter.com/_tyge">@_tyge</a> | <a href="mailto:dahhowl@gmail.com,corti.nico@gmail.com">feedback</a> | <a href="https://github.com/golangit/gobyexample-it">source</a> | <a href="https://github.com/golangit/gobyexample-it#license">license</a><br />
+        Мова <a href="#" onclick="switchLanguage('be')">BE</a> | <a href="#" onclick="switchLanguage('en')">EN</a> | <a href="#" onclick="switchLanguage('it')">IT</a>
+    </p>
+    <script src="site.js" async></script>
+
+    </article>
+    <script>
+      var codeLines = [];
+      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import \"fmt\"\u000Aimport \"os\"\u000A');codeLines.push('func main() {\u000A');codeLines.push('    defer fmt.Println(\"!\")\u000A');codeLines.push('    os.Exit(3)\u000A}\u000A');codeLines.push('');codeLines.push('');codeLines.push('');codeLines.push('');
+    </script>
+    <script src="site.js" async></script>
+  </body>
+</html>

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Go by Example - IT: Closing Channels</title>
+    <link rel=stylesheet href="site.css">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YS5D7DR8P1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-YS5D7DR8P1');
+    </script>
+  </head>
+  <body>
+    <article class="example" id="closing-channels">
+      <h2><a href="./">Go by Example - IT</a>: Closing Channels</h2>
+      
+      <table>
+        
+        <tr>
+          <td class="docs">
+            <p>Chiudere un channel serve ad indicare che non verranno
+più inviati su quel channel.
+Questo è utile per comunicare il completamento di
+un operazione a chi sta ascoltando sul channel.</p>
+
+          </td>
+          <td class="code empty leading">
+	        
+            
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+	        <a href="http://play.golang.org/p/gZa6RtcNw-_g"><img title="Run code" src="play.png" class="run" /></a>
+            <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+	        
+            <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="s">&#34;fmt&#34;</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>In questo esempio useremo un channel <code>jobs</code> per
+inviare i task che devono essere eseguiti dalla
+goroutine <code>main()</code> a una goroutine che svolge il
+ruolo di <code>worker</code>. Quando non si hanno più task
+da eseguire si chiuderà il channel <code>jobs</code> tramite
+il built-in <code>close</code>.</p>
+
+          </td>
+          <td class="code leading">
+	        
+            <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">jobs</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="kt">int</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">done</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="kt">bool</span><span class="p">)</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Questa è la goroutine worker, che riceverà i task
+in modo continuativo dal channel <code>jobs</code> tramite il
+comando <code>j, more := &lt;-jobs</code>. Utilizzando questa forma
+speciale per ricevere i valori, nella variabile
+<code>more</code> avremo il valore <code>false</code> se il channel <code>jobs</code>
+è stato chiuso e tutti i valori sono stati ricevuti.
+Utilizzeremo questo valore per indicare quando la
+goroutine ha terminato di eseguire tutti i task che
+ha ricevuto.</p>
+
+          </td>
+          <td class="code leading">
+	        
+            <pre class="chroma"><code><span class="line"><span class="cl">    <span class="k">go</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">j</span><span class="p">,</span> <span class="nx">more</span> <span class="o">:=</span> <span class="o">&lt;-</span><span class="nx">jobs</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="nx">more</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;received job&#34;</span><span class="p">,</span> <span class="nx">j</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;received all jobs&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                <span class="nx">done</span> <span class="o">&lt;-</span> <span class="kc">true</span>
+</span></span><span class="line"><span class="cl">                <span class="k">return</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}()</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Questo invia 3 job alla goroutine worker sul channel
+<code>jobs</code> e lo chiude subito dopo.</p>
+
+          </td>
+          <td class="code leading">
+	        
+            <pre class="chroma"><code><span class="line"><span class="cl">    <span class="k">for</span> <span class="nx">j</span> <span class="o">:=</span> <span class="mi">1</span><span class="p">;</span> <span class="nx">j</span> <span class="o">&lt;=</span> <span class="mi">3</span><span class="p">;</span> <span class="nx">j</span><span class="o">++</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">jobs</span> <span class="o">&lt;-</span> <span class="nx">j</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;sent job&#34;</span><span class="p">,</span> <span class="nx">j</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">close</span><span class="p">(</span><span class="nx">jobs</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;sent all jobs&#34;</span><span class="p">)</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Attendiamo la goroutine worker utilizzando l&rsquo;approccio
+di <a href="sincronizzazione-dei-channel">sincronizzazione</a> che abbiamo
+visto negli esempi precedenti</p>
+
+          </td>
+          <td class="code">
+	        
+            <pre class="chroma"><code><span class="line"><span class="cl">    <span class="o">&lt;-</span><span class="nx">done</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+      </table>
+      
+      <table>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+	        
+            <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run closing-channels.go 
+</span></span><span class="line"><span class="cl"><span class="go">sent job 1
+</span></span></span><span class="line"><span class="cl"><span class="go">received job 1
+</span></span></span><span class="line"><span class="cl"><span class="go">sent job 2
+</span></span></span><span class="line"><span class="cl"><span class="go">received job 2
+</span></span></span><span class="line"><span class="cl"><span class="go">sent job 3
+</span></span></span><span class="line"><span class="cl"><span class="go">received job 3
+</span></span></span><span class="line"><span class="cl"><span class="go">sent all jobs
+</span></span></span><span class="line"><span class="cl"><span class="go">received all jobs</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>L&rsquo;esempio che segue deriva direttamente dal concetto di
+chiusura di un channel: come effettuare un <code>range</code>
+su un channel.</p>
+
+          </td>
+          <td class="code empty">
+	        
+            
+          </td>
+        </tr>
+        
+      </table>
+      
+      
+      <p class="next">
+        Prossimo esempio: <a href="range-over-channels.html" rel="next">Range over Channels</a>.
+      </p>
+      
+
+    <p class="footer">
+        by <a href="https://twitter.com/cortinico">@cortinico</a> &amp; <a href="https://twitter.com/_tyge">@_tyge</a> | <a href="mailto:dahhowl@gmail.com,corti.nico@gmail.com">feedback</a> | <a href="https://github.com/golangit/gobyexample-it">source</a> | <a href="https://github.com/golangit/gobyexample-it#license">license</a><br />
+        Мова <a href="#" onclick="switchLanguage('be')">BE</a> | <a href="#" onclick="switchLanguage('en')">EN</a> | <a href="#" onclick="switchLanguage('it')">IT</a>
+    </p>
+    <script src="site.js" async></script>
+
+    </article>
+    <script>
+      var codeLines = [];
+      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import \"fmt\"\u000A');codeLines.push('func main() {\u000A    jobs :\u003D make(chan int, 5)\u000A    done :\u003D make(chan bool)\u000A');codeLines.push('    go func() {\u000A        for {\u000A            j, more :\u003D \u003C-jobs\u000A            if more {\u000A                fmt.Println(\"received job\", j)\u000A            } else {\u000A                fmt.Println(\"received all jobs\")\u000A                done \u003C- true\u000A                return\u000A            }\u000A        }\u000A    }()\u000A');codeLines.push('    for j :\u003D 1; j \u003C\u003D 3; j++ {\u000A        jobs \u003C- j\u000A        fmt.Println(\"sent job\", j)\u000A    }\u000A    close(jobs)\u000A    fmt.Println(\"sent all jobs\")\u000A');codeLines.push('    \u003C-done\u000A}\u000A');codeLines.push('');codeLines.push('');
+    </script>
+    <script src="site.js" async></script>
+  </body>
+</html>

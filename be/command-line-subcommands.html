@@ -160,76 +160,6 @@
         
       </table>
       
-      <table>
-        
-        <tr>
-          <td class="docs">
-            
-          </td>
-          <td class="code leading">
-            
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go build command-line-subcommands.go </span></span></code></pre>
-          </td>
-        </tr>
-        
-        <tr>
-          <td class="docs">
-            <p>First invoke the foo subcommand.</p>
-
-          </td>
-          <td class="code leading">
-            
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> ./command-line-subcommands foo -enable -name=joe a1 a2
-</span></span><span class="line"><span class="cl"><span class="go">subcommand &#39;foo&#39;
-</span></span></span><span class="line"><span class="cl"><span class="go">  enable: true
-</span></span></span><span class="line"><span class="cl"><span class="go">  name: joe
-</span></span></span><span class="line"><span class="cl"><span class="go">  tail: [a1 a2]</span></span></span></code></pre>
-          </td>
-        </tr>
-        
-        <tr>
-          <td class="docs">
-            <p>Now try bar.</p>
-
-          </td>
-          <td class="code leading">
-            
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> ./command-line-subcommands bar -level 8 a1
-</span></span><span class="line"><span class="cl"><span class="go">subcommand &#39;bar&#39;
-</span></span></span><span class="line"><span class="cl"><span class="go">  level: 8
-</span></span></span><span class="line"><span class="cl"><span class="go">  tail: [a1]</span></span></span></code></pre>
-          </td>
-        </tr>
-        
-        <tr>
-          <td class="docs">
-            <p>But bar won&rsquo;t accept foo&rsquo;s flags.</p>
-
-          </td>
-          <td class="code leading">
-            
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> ./command-line-subcommands bar -enable a1
-</span></span><span class="line"><span class="cl"><span class="go">flag provided but not defined: -enable
-</span></span></span><span class="line"><span class="cl"><span class="go">Usage of bar:
-</span></span></span><span class="line"><span class="cl"><span class="go">  -level int
-</span></span></span><span class="line"><span class="cl"><span class="go">        level</span></span></span></code></pre>
-          </td>
-        </tr>
-        
-        <tr>
-          <td class="docs">
-            <p>Next we&rsquo;ll look at environment variables, another common
-way to parameterize programs.</p>
-
-          </td>
-          <td class="code empty">
-            
-          
-          </td>
-        </tr>
-        
-      </table>
-      
       
       <p class="next">
         Наступны прыклад: <a href="environment-variables.html" rel="next">Environment Variables</a>.
@@ -241,14 +171,14 @@ way to parameterize programs.</p>
       і <a href="https://eli.thegreenplace.net">Элі Бендэрскі</a>
       | <a href="https://github.com/mmcgrana/gobyexample">код</a>
       | <a href="https://github.com/mmcgrana/gobyexample#license">ліцэнзія</a><br />
-      Мова <a href="#" onclick="switchLanguage('be')">BE</a> | <a href="#" onclick="switchLanguage('en')">EN</a>
+      Мова <a href="#" onclick="switchLanguage('be')">BE</a> | <a href="#" onclick="switchLanguage('en')">EN</a> | <a href="#" onclick="switchLanguage('it')">IT</a>
     </p>
     <script src="../site.js" async></script>
 
     </article>
     <script>
       var codeLines = [];
-      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import (\u000A    \"flag\"\u000A    \"fmt\"\u000A    \"os\"\u000A)\u000A');codeLines.push('func main() {\u000A');codeLines.push('    fooCmd :\u003D flag.NewFlagSet(\"foo\", flag.ExitOnError)\u000A    fooEnable :\u003D fooCmd.Bool(\"enable\", false, \"enable\")\u000A    fooName :\u003D fooCmd.String(\"name\", \"\", \"name\")\u000A');codeLines.push('    barCmd :\u003D flag.NewFlagSet(\"bar\", flag.ExitOnError)\u000A    barLevel :\u003D barCmd.Int(\"level\", 0, \"level\")\u000A');codeLines.push('    if len(os.Args) \u003C 2 {\u000A        fmt.Println(\"expected \'foo\' or \'bar\' subcommands\")\u000A        os.Exit(1)\u000A    }\u000A');codeLines.push('    switch os.Args[1] {\u000A');codeLines.push('    case \"foo\":\u000A        fooCmd.Parse(os.Args[2:])\u000A        fmt.Println(\"subcommand \'foo\'\")\u000A        fmt.Println(\"  enable:\", *fooEnable)\u000A        fmt.Println(\"  name:\", *fooName)\u000A        fmt.Println(\"  tail:\", fooCmd.Args())\u000A    case \"bar\":\u000A        barCmd.Parse(os.Args[2:])\u000A        fmt.Println(\"subcommand \'bar\'\")\u000A        fmt.Println(\"  level:\", *barLevel)\u000A        fmt.Println(\"  tail:\", barCmd.Args())\u000A    default:\u000A        fmt.Println(\"expected \'foo\' or \'bar\' subcommands\")\u000A        os.Exit(1)\u000A    }\u000A}\u000A');codeLines.push('');codeLines.push('');codeLines.push('');codeLines.push('');codeLines.push('');
+      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import (\u000A    \"flag\"\u000A    \"fmt\"\u000A    \"os\"\u000A)\u000A');codeLines.push('func main() {\u000A');codeLines.push('    fooCmd :\u003D flag.NewFlagSet(\"foo\", flag.ExitOnError)\u000A    fooEnable :\u003D fooCmd.Bool(\"enable\", false, \"enable\")\u000A    fooName :\u003D fooCmd.String(\"name\", \"\", \"name\")\u000A');codeLines.push('    barCmd :\u003D flag.NewFlagSet(\"bar\", flag.ExitOnError)\u000A    barLevel :\u003D barCmd.Int(\"level\", 0, \"level\")\u000A');codeLines.push('    if len(os.Args) \u003C 2 {\u000A        fmt.Println(\"expected \'foo\' or \'bar\' subcommands\")\u000A        os.Exit(1)\u000A    }\u000A');codeLines.push('    switch os.Args[1] {\u000A');codeLines.push('    case \"foo\":\u000A        fooCmd.Parse(os.Args[2:])\u000A        fmt.Println(\"subcommand \'foo\'\")\u000A        fmt.Println(\"  enable:\", *fooEnable)\u000A        fmt.Println(\"  name:\", *fooName)\u000A        fmt.Println(\"  tail:\", fooCmd.Args())\u000A    case \"bar\":\u000A        barCmd.Parse(os.Args[2:])\u000A        fmt.Println(\"subcommand \'bar\'\")\u000A        fmt.Println(\"  level:\", *barLevel)\u000A        fmt.Println(\"  tail:\", barCmd.Args())\u000A    default:\u000A        fmt.Println(\"expected \'foo\' or \'bar\' subcommands\")\u000A        os.Exit(1)\u000A    }\u000A}\u000A');
     </script>
   </body>
 </html>

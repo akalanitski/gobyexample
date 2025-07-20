@@ -177,40 +177,6 @@ counters</em>, да якіх звяртаюцца некалькі горуты�
         
       </table>
       
-      <table>
-        
-        <tr>
-          <td class="docs">
-            <p>We expect to get exactly 50,000 operations. Had we
-used a non-atomic integer and incremented it with
-<code>ops++</code>, we&rsquo;d likely get a different number,
-changing between runs, because the goroutines
-would interfere with each other. Moreover, we&rsquo;d
-get data race failures when running with the
-<code>-race</code> flag.</p>
-
-          </td>
-          <td class="code leading">
-            
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run atomic-counters.go
-</span></span><span class="line"><span class="cl"><span class="go">ops: 50000</span></span></span></code></pre>
-          </td>
-        </tr>
-        
-        <tr>
-          <td class="docs">
-            <p>Next we&rsquo;ll look at mutexes, another tool for managing
-state.</p>
-
-          </td>
-          <td class="code empty">
-            
-          
-          </td>
-        </tr>
-        
-      </table>
-      
       
       <p class="next">
         Наступны прыклад: <a href="mutexes.html" rel="next">Mutexes</a>.
@@ -222,14 +188,14 @@ state.</p>
       і <a href="https://eli.thegreenplace.net">Элі Бендэрскі</a>
       | <a href="https://github.com/mmcgrana/gobyexample">код</a>
       | <a href="https://github.com/mmcgrana/gobyexample#license">ліцэнзія</a><br />
-      Мова <a href="#" onclick="switchLanguage('be')">BE</a> | <a href="#" onclick="switchLanguage('en')">EN</a>
+      Мова <a href="#" onclick="switchLanguage('be')">BE</a> | <a href="#" onclick="switchLanguage('en')">EN</a> | <a href="#" onclick="switchLanguage('it')">IT</a>
     </p>
     <script src="../site.js" async></script>
 
     </article>
     <script>
       var codeLines = [];
-      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import (\u000A    \"fmt\"\u000A    \"sync\"\u000A    \"sync/atomic\"\u000A)\u000A');codeLines.push('func main() {\u000A');codeLines.push('    var ops atomic.Uint64\u000A');codeLines.push('    var wg sync.WaitGroup\u000A');codeLines.push('    for i :\u003D 0; i \u003C 50; i++ {\u000A        wg.Add(1)\u000A');codeLines.push('        go func() {\u000A            for c :\u003D 0; c \u003C 1000; c++ {\u000A');codeLines.push('                ops.Add(1)\u000A            }\u000A');codeLines.push('            wg.Done()\u000A        }()\u000A    }\u000A');codeLines.push('    wg.Wait()\u000A');codeLines.push('    fmt.Println(\"ops:\", ops.Load())\u000A}\u000A');codeLines.push('');codeLines.push('');
+      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import (\u000A    \"fmt\"\u000A    \"sync\"\u000A    \"sync/atomic\"\u000A)\u000A');codeLines.push('func main() {\u000A');codeLines.push('    var ops atomic.Uint64\u000A');codeLines.push('    var wg sync.WaitGroup\u000A');codeLines.push('    for i :\u003D 0; i \u003C 50; i++ {\u000A        wg.Add(1)\u000A');codeLines.push('        go func() {\u000A            for c :\u003D 0; c \u003C 1000; c++ {\u000A');codeLines.push('                ops.Add(1)\u000A            }\u000A');codeLines.push('            wg.Done()\u000A        }()\u000A    }\u000A');codeLines.push('    wg.Wait()\u000A');codeLines.push('    fmt.Println(\"ops:\", ops.Load())\u000A}\u000A');
     </script>
   </body>
 </html>

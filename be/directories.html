@@ -278,34 +278,6 @@
         
       </table>
       
-      <table>
-        
-        <tr>
-          <td class="docs">
-            
-          </td>
-          <td class="code">
-            
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run directories.go
-</span></span><span class="line"><span class="cl"><span class="go">Listing subdir/parent
-</span></span></span><span class="line"><span class="cl"><span class="go">  child true
-</span></span></span><span class="line"><span class="cl"><span class="go">  file2 false
-</span></span></span><span class="line"><span class="cl"><span class="go">  file3 false
-</span></span></span><span class="line"><span class="cl"><span class="go">Listing subdir/parent/child
-</span></span></span><span class="line"><span class="cl"><span class="go">  file4 false
-</span></span></span><span class="line"><span class="cl"><span class="go">Visiting subdir
-</span></span></span><span class="line"><span class="cl"><span class="go">  subdir true
-</span></span></span><span class="line"><span class="cl"><span class="go">  subdir/file1 false
-</span></span></span><span class="line"><span class="cl"><span class="go">  subdir/parent true
-</span></span></span><span class="line"><span class="cl"><span class="go">  subdir/parent/child true
-</span></span></span><span class="line"><span class="cl"><span class="go">  subdir/parent/child/file4 false
-</span></span></span><span class="line"><span class="cl"><span class="go">  subdir/parent/file2 false
-</span></span></span><span class="line"><span class="cl"><span class="go">  subdir/parent/file3 false</span></span></span></code></pre>
-          </td>
-        </tr>
-        
-      </table>
-      
       
       <p class="next">
         Наступны прыклад: <a href="temporary-files-and-directories.html" rel="next">Temporary Files and Directories</a>.
@@ -317,14 +289,14 @@
       і <a href="https://eli.thegreenplace.net">Элі Бендэрскі</a>
       | <a href="https://github.com/mmcgrana/gobyexample">код</a>
       | <a href="https://github.com/mmcgrana/gobyexample#license">ліцэнзія</a><br />
-      Мова <a href="#" onclick="switchLanguage('be')">BE</a> | <a href="#" onclick="switchLanguage('en')">EN</a>
+      Мова <a href="#" onclick="switchLanguage('be')">BE</a> | <a href="#" onclick="switchLanguage('en')">EN</a> | <a href="#" onclick="switchLanguage('it')">IT</a>
     </p>
     <script src="../site.js" async></script>
 
     </article>
     <script>
       var codeLines = [];
-      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import (\u000A    \"fmt\"\u000A    \"io/fs\"\u000A    \"os\"\u000A    \"path/filepath\"\u000A)\u000A');codeLines.push('func check(e error) {\u000A    if e !\u003D nil {\u000A        panic(e)\u000A    }\u000A}\u000A');codeLines.push('func main() {\u000A');codeLines.push('    err :\u003D os.Mkdir(\"subdir\", 0755)\u000A    check(err)\u000A');codeLines.push('    defer os.RemoveAll(\"subdir\")\u000A');codeLines.push('    createEmptyFile :\u003D func(name string) {\u000A        d :\u003D []byte(\"\")\u000A        check(os.WriteFile(name, d, 0644))\u000A    }\u000A');codeLines.push('    createEmptyFile(\"subdir/file1\")\u000A');codeLines.push('    err \u003D os.MkdirAll(\"subdir/parent/child\", 0755)\u000A    check(err)\u000A');codeLines.push('    createEmptyFile(\"subdir/parent/file2\")\u000A    createEmptyFile(\"subdir/parent/file3\")\u000A    createEmptyFile(\"subdir/parent/child/file4\")\u000A');codeLines.push('    c, err :\u003D os.ReadDir(\"subdir/parent\")\u000A    check(err)\u000A');codeLines.push('    fmt.Println(\"Listing subdir/parent\")\u000A    for _, entry :\u003D range c {\u000A        fmt.Println(\" \", entry.Name(), entry.IsDir())\u000A    }\u000A');codeLines.push('    err \u003D os.Chdir(\"subdir/parent/child\")\u000A    check(err)\u000A');codeLines.push('    c, err \u003D os.ReadDir(\".\")\u000A    check(err)\u000A');codeLines.push('    fmt.Println(\"Listing subdir/parent/child\")\u000A    for _, entry :\u003D range c {\u000A        fmt.Println(\" \", entry.Name(), entry.IsDir())\u000A    }\u000A');codeLines.push('    err \u003D os.Chdir(\"../../..\")\u000A    check(err)\u000A');codeLines.push('    fmt.Println(\"Visiting subdir\")\u000A    err \u003D filepath.WalkDir(\"subdir\", visit)\u000A}\u000A');codeLines.push('func visit(path string, d fs.DirEntry, err error) error {\u000A    if err !\u003D nil {\u000A        return err\u000A    }\u000A    fmt.Println(\" \", path, d.IsDir())\u000A    return nil\u000A}\u000A');codeLines.push('');
+      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import (\u000A    \"fmt\"\u000A    \"io/fs\"\u000A    \"os\"\u000A    \"path/filepath\"\u000A)\u000A');codeLines.push('func check(e error) {\u000A    if e !\u003D nil {\u000A        panic(e)\u000A    }\u000A}\u000A');codeLines.push('func main() {\u000A');codeLines.push('    err :\u003D os.Mkdir(\"subdir\", 0755)\u000A    check(err)\u000A');codeLines.push('    defer os.RemoveAll(\"subdir\")\u000A');codeLines.push('    createEmptyFile :\u003D func(name string) {\u000A        d :\u003D []byte(\"\")\u000A        check(os.WriteFile(name, d, 0644))\u000A    }\u000A');codeLines.push('    createEmptyFile(\"subdir/file1\")\u000A');codeLines.push('    err \u003D os.MkdirAll(\"subdir/parent/child\", 0755)\u000A    check(err)\u000A');codeLines.push('    createEmptyFile(\"subdir/parent/file2\")\u000A    createEmptyFile(\"subdir/parent/file3\")\u000A    createEmptyFile(\"subdir/parent/child/file4\")\u000A');codeLines.push('    c, err :\u003D os.ReadDir(\"subdir/parent\")\u000A    check(err)\u000A');codeLines.push('    fmt.Println(\"Listing subdir/parent\")\u000A    for _, entry :\u003D range c {\u000A        fmt.Println(\" \", entry.Name(), entry.IsDir())\u000A    }\u000A');codeLines.push('    err \u003D os.Chdir(\"subdir/parent/child\")\u000A    check(err)\u000A');codeLines.push('    c, err \u003D os.ReadDir(\".\")\u000A    check(err)\u000A');codeLines.push('    fmt.Println(\"Listing subdir/parent/child\")\u000A    for _, entry :\u003D range c {\u000A        fmt.Println(\" \", entry.Name(), entry.IsDir())\u000A    }\u000A');codeLines.push('    err \u003D os.Chdir(\"../../..\")\u000A    check(err)\u000A');codeLines.push('    fmt.Println(\"Visiting subdir\")\u000A    err \u003D filepath.WalkDir(\"subdir\", visit)\u000A}\u000A');codeLines.push('func visit(path string, d fs.DirEntry, err error) error {\u000A    if err !\u003D nil {\u000A        return err\u000A    }\u000A    fmt.Println(\" \", path, d.IsDir())\u000A    return nil\u000A}\u000A');
     </script>
   </body>
 </html>

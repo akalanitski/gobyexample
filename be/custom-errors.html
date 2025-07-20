@@ -30,10 +30,10 @@
         
         <tr>
           <td class="docs">
-            <p>It&rsquo;s possible to use custom types as <code>error</code>s by
-implementing the <code>Error()</code> method on them. Here&rsquo;s a
-variant on the example above that uses a custom type
-to explicitly represent an argument error.</p>
+            <p>Можна выкарыстоўваць уласныя тыпы як <code>error</code> шляхам
+рэалізацыі на іх метаду <code>Error()</code>. Прыклад ніжэй
+выкарыстоўвае ўласны тып для відавочнага прадстаўлення
+памылкі агрумента.</p>
 
           </td>
           <td class="code empty leading">
@@ -47,7 +47,7 @@ to explicitly represent an argument error.</p>
             
           </td>
           <td class="code leading">
-            <a href="https://go.dev/play/p/qKKTjmc6SuB"><img title="Run code" src="../play.png" class="run" /></a><img title="Copy code" src="../clipboard.png" class="copy" />
+            <a href="https://go.dev/play/p/xCEf6FpE1u8"><img title="Run code" src="../play.png" class="run" /></a><img title="Copy code" src="../clipboard.png" class="copy" />
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
           </td>
         </tr>
@@ -67,7 +67,7 @@ to explicitly represent an argument error.</p>
         
         <tr>
           <td class="docs">
-            <p>A custom error type usually has the suffix &ldquo;Error&rdquo;.</p>
+            <p>Выкарыстанне суфікс &ldquo;Error&rdquo; добрая практыка для ўласных памылак</p>
 
           </td>
           <td class="code leading">
@@ -81,8 +81,8 @@ to explicitly represent an argument error.</p>
         
         <tr>
           <td class="docs">
-            <p>Adding this <code>Error</code> method makes <code>argError</code> implement
-the <code>error</code> interface.</p>
+            <p>Даданне гэтага метаду <code>Error</code> дазваляе <code>argError</code> рэалізаваць
+інтэрфейс <code>error</code>.</p>
 
           </td>
           <td class="code leading">
@@ -106,7 +106,7 @@ the <code>error</code> interface.</p>
         
         <tr>
           <td class="docs">
-            <p>Return our custom error.</p>
+            <p>Павяртае памылку ўласнага тыпу</p>
 
           </td>
           <td class="code leading">
@@ -130,11 +130,11 @@ the <code>error</code> interface.</p>
         
         <tr>
           <td class="docs">
-            <p><code>errors.As</code> is a more advanced version of <code>errors.Is</code>.
-It checks that a given error (or any error in its chain)
-matches a specific error type and converts to a value
-of that type, returning <code>true</code>. If there&rsquo;s no match, it
-returns <code>false</code>.</p>
+            <p><code>errors.As</code> — гэта больш пашыраная версія <code>errors.Is</code>.
+Правярае, ці адпавядае зададзеная памылка (ці любая памылка ў яе ланцужку)
+пэўнаму тыпу памылкі і пераўтварае яе ў значэнне
+гэтага тыпу, вяртаючы <code>true</code>. Калі супадзення няма, яна
+вяртае <code>false</code>.</p>
 
           </td>
           <td class="code">
@@ -153,22 +153,6 @@ returns <code>false</code>.</p>
         
       </table>
       
-      <table>
-        
-        <tr>
-          <td class="docs">
-            
-          </td>
-          <td class="code">
-            
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run custom-errors.go
-</span></span><span class="line"><span class="cl"><span class="go">42
-</span></span></span><span class="line"><span class="cl"><span class="go">can&#39;t work with it</span></span></span></code></pre>
-          </td>
-        </tr>
-        
-      </table>
-      
       
       <p class="next">
         Наступны прыклад: <a href="goroutines.html" rel="next">Goroutines</a>.
@@ -180,14 +164,14 @@ returns <code>false</code>.</p>
       і <a href="https://eli.thegreenplace.net">Элі Бендэрскі</a>
       | <a href="https://github.com/mmcgrana/gobyexample">код</a>
       | <a href="https://github.com/mmcgrana/gobyexample#license">ліцэнзія</a><br />
-      Мова <a href="#" onclick="switchLanguage('be')">BE</a> | <a href="#" onclick="switchLanguage('en')">EN</a>
+      Мова <a href="#" onclick="switchLanguage('be')">BE</a> | <a href="#" onclick="switchLanguage('en')">EN</a> | <a href="#" onclick="switchLanguage('it')">IT</a>
     </p>
     <script src="../site.js" async></script>
 
     </article>
     <script>
       var codeLines = [];
-      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import (\u000A    \"errors\"\u000A    \"fmt\"\u000A)\u000A');codeLines.push('type argError struct {\u000A    arg     int\u000A    message string\u000A}\u000A');codeLines.push('func (e *argError) Error() string {\u000A    return fmt.Sprintf(\"%d - %s\", e.arg, e.message)\u000A}\u000A');codeLines.push('func f(arg int) (int, error) {\u000A    if arg \u003D\u003D 42 {\u000A');codeLines.push('        return -1, \u0026argError{arg, \"can\'t work with it\"}\u000A    }\u000A    return arg + 3, nil\u000A}\u000A');codeLines.push('func main() {\u000A');codeLines.push('    _, err :\u003D f(42)\u000A    var ae *argError\u000A    if errors.As(err, \u0026ae) {\u000A        fmt.Println(ae.arg)\u000A        fmt.Println(ae.message)\u000A    } else {\u000A        fmt.Println(\"err doesn\'t match argError\")\u000A    }\u000A}\u000A');codeLines.push('');
+      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import (\u000A    \"errors\"\u000A    \"fmt\"\u000A)\u000A');codeLines.push('type argError struct {\u000A    arg     int\u000A    message string\u000A}\u000A');codeLines.push('func (e *argError) Error() string {\u000A    return fmt.Sprintf(\"%d - %s\", e.arg, e.message)\u000A}\u000A');codeLines.push('func f(arg int) (int, error) {\u000A    if arg \u003D\u003D 42 {\u000A');codeLines.push('        return -1, \u0026argError{arg, \"can\'t work with it\"}\u000A    }\u000A    return arg + 3, nil\u000A}\u000A');codeLines.push('func main() {\u000A');codeLines.push('    _, err :\u003D f(42)\u000A    var ae *argError\u000A    if errors.As(err, \u0026ae) {\u000A        fmt.Println(ae.arg)\u000A        fmt.Println(ae.message)\u000A    } else {\u000A        fmt.Println(\"err doesn\'t match argError\")\u000A    }\u000A}\u000A');
     </script>
   </body>
 </html>
