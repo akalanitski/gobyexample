@@ -5,24 +5,24 @@
     <title>Go by Example: Errors</title>
     <link rel=stylesheet href="site.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-  </head>
-  <script>
+    <script>
       window.onkeydown = (e) => {
-          if (e.ctrlKey || e.altKey || e.shiftKey) {
-              return;
-          }
-          
-          if (e.key == "ArrowLeft") {
-              window.location.href = 'range-over-iterators.html';
-          }
-          
-          
-          if (e.key == "ArrowRight") {
-              window.location.href = 'custom-errors.html';
-          }
-          
+        if (e.ctrlKey || e.altKey || e.shiftKey) {
+          return;
+        }
+        
+        if (e.key == "ArrowLeft") {
+          window.location.href = 'range-over-iterators.html';
+        }
+        
+        
+        if (e.key == "ArrowRight") {
+          window.location.href = 'custom-errors.html';
+        }
+        
       }
-  </script>
+    </script>
+  </head>
   <body>
     <article class="example" id="errors">
       <h2><a href="./">Go by Example</a>: Errors</h2>
@@ -47,7 +47,7 @@ details.</p>
           </td>
           <td class="code empty leading">
             
-          
+            
           </td>
         </tr>
         
@@ -56,11 +56,9 @@ details.</p>
             
           </td>
           <td class="code leading">
-            
-              <a href="https://go.dev/play/p/j6odYuFpOeb" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="run"><polygon points="6 3 20 12 6 21 6 3"/></svg></a>
+            <a href="https://go.dev/play/p/j6odYuFpOeb" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="run"><polygon points="6 3 20 12 6 21 6 3"/></svg></a>
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="copy"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/></svg>
-            
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
+            <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -70,7 +68,7 @@ details.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
+            <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
 </span></span><span class="line"><span class="cl">    <span class="s">&#34;errors&#34;</span>
 </span></span><span class="line"><span class="cl">    <span class="s">&#34;fmt&#34;</span>
 </span></span><span class="line"><span class="cl"><span class="p">)</span></span></span></code></pre>
@@ -85,7 +83,7 @@ have type <code>error</code>, a built-in interface.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">f</span><span class="p">(</span><span class="nx">arg</span> <span class="kt">int</span><span class="p">)</span> <span class="p">(</span><span class="kt">int</span><span class="p">,</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
+            <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">f</span><span class="p">(</span><span class="nx">arg</span> <span class="kt">int</span><span class="p">)</span> <span class="p">(</span><span class="kt">int</span><span class="p">,</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nx">arg</span> <span class="o">==</span> <span class="mi">42</span> <span class="p">{</span></span></span></code></pre>
           </td>
         </tr>
@@ -98,7 +96,7 @@ with the given error message.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl">        <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="nx">errors</span><span class="p">.</span><span class="nf">New</span><span class="p">(</span><span class="s">&#34;can&#39;t work with 42&#34;</span><span class="p">)</span>
+            <pre class="chroma"><code><span class="line"><span class="cl">        <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="nx">errors</span><span class="p">.</span><span class="nf">New</span><span class="p">(</span><span class="s">&#34;can&#39;t work with 42&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span></span></span></code></pre>
           </td>
         </tr>
@@ -111,7 +109,7 @@ there was no error.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="k">return</span> <span class="nx">arg</span> <span class="o">+</span> <span class="mi">3</span><span class="p">,</span> <span class="kc">nil</span>
+            <pre class="chroma"><code><span class="line"><span class="cl">    <span class="k">return</span> <span class="nx">arg</span> <span class="o">+</span> <span class="mi">3</span><span class="p">,</span> <span class="kc">nil</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
           </td>
         </tr>
@@ -124,7 +122,7 @@ signify a specific error condition.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">ErrOutOfTea</span> <span class="p">=</span> <span class="nx">fmt</span><span class="p">.</span><span class="nf">Errorf</span><span class="p">(</span><span class="s">&#34;no more tea available&#34;</span><span class="p">)</span>
+            <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">ErrOutOfTea</span> <span class="p">=</span> <span class="nx">fmt</span><span class="p">.</span><span class="nf">Errorf</span><span class="p">(</span><span class="s">&#34;no more tea available&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">ErrPower</span> <span class="p">=</span> <span class="nx">fmt</span><span class="p">.</span><span class="nf">Errorf</span><span class="p">(</span><span class="s">&#34;can&#39;t boil water&#34;</span><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
@@ -135,7 +133,7 @@ signify a specific error condition.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">makeTea</span><span class="p">(</span><span class="nx">arg</span> <span class="kt">int</span><span class="p">)</span> <span class="kt">error</span> <span class="p">{</span>
+            <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">makeTea</span><span class="p">(</span><span class="nx">arg</span> <span class="kt">int</span><span class="p">)</span> <span class="kt">error</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nx">arg</span> <span class="o">==</span> <span class="mi">2</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nx">ErrOutOfTea</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="nx">arg</span> <span class="o">==</span> <span class="mi">4</span> <span class="p">{</span></span></span></code></pre>
@@ -154,7 +152,7 @@ and <code>errors.As</code>.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl">        <span class="k">return</span> <span class="nx">fmt</span><span class="p">.</span><span class="nf">Errorf</span><span class="p">(</span><span class="s">&#34;making tea: %w&#34;</span><span class="p">,</span> <span class="nx">ErrPower</span><span class="p">)</span>
+            <pre class="chroma"><code><span class="line"><span class="cl">        <span class="k">return</span> <span class="nx">fmt</span><span class="p">.</span><span class="nf">Errorf</span><span class="p">(</span><span class="s">&#34;making tea: %w&#34;</span><span class="p">,</span> <span class="nx">ErrPower</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="kc">nil</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
@@ -167,7 +165,7 @@ and <code>errors.As</code>.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+            <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">i</span> <span class="o">:=</span> <span class="k">range</span> <span class="p">[]</span><span class="kt">int</span><span class="p">{</span><span class="mi">7</span><span class="p">,</span> <span class="mi">42</span><span class="p">}</span> <span class="p">{</span></span></span></code></pre>
           </td>
         </tr>
@@ -180,7 +178,7 @@ line.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl">        <span class="k">if</span> <span class="nx">r</span><span class="p">,</span> <span class="nx">e</span> <span class="o">:=</span> <span class="nf">f</span><span class="p">(</span><span class="nx">i</span><span class="p">);</span> <span class="nx">e</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+            <pre class="chroma"><code><span class="line"><span class="cl">        <span class="k">if</span> <span class="nx">r</span><span class="p">,</span> <span class="nx">e</span> <span class="o">:=</span> <span class="nf">f</span><span class="p">(</span><span class="nx">i</span><span class="p">);</span> <span class="nx">e</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">            <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;f failed:&#34;</span><span class="p">,</span> <span class="nx">e</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">            <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;f worked:&#34;</span><span class="p">,</span> <span class="nx">r</span><span class="p">)</span>
@@ -195,7 +193,7 @@ line.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="k">range</span> <span class="mi">5</span> <span class="p">{</span>
+            <pre class="chroma"><code><span class="line"><span class="cl">    <span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="k">range</span> <span class="mi">5</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nf">makeTea</span><span class="p">(</span><span class="nx">i</span><span class="p">);</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span></span></span></code></pre>
           </td>
         </tr>
@@ -210,7 +208,7 @@ errors in a chain of errors.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl">            <span class="k">if</span> <span class="nx">errors</span><span class="p">.</span><span class="nf">Is</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">ErrOutOfTea</span><span class="p">)</span> <span class="p">{</span>
+            <pre class="chroma"><code><span class="line"><span class="cl">            <span class="k">if</span> <span class="nx">errors</span><span class="p">.</span><span class="nf">Is</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">ErrOutOfTea</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">                <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;We should buy new tea!&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">            <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="nx">errors</span><span class="p">.</span><span class="nf">Is</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">ErrPower</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">                <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;Now it is dark.&#34;</span><span class="p">)</span>
@@ -228,7 +226,7 @@ errors in a chain of errors.</p>
           </td>
           <td class="code">
             
-          <pre class="chroma"><code><span class="line"><span class="cl">        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;Tea is ready!&#34;</span><span class="p">)</span>
+            <pre class="chroma"><code><span class="line"><span class="cl">        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;Tea is ready!&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
           </td>
@@ -244,7 +242,7 @@ errors in a chain of errors.</p>
           </td>
           <td class="code">
             
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run errors.go
+            <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run errors.go
 </span></span><span class="line"><span class="cl"><span class="go">f worked: 10
 </span></span></span><span class="line"><span class="cl"><span class="go">f failed: can&#39;t work with 42
 </span></span></span><span class="line"><span class="cl"><span class="go">Tea is ready!
@@ -277,6 +275,5 @@ errors in a chain of errors.</p>
       var codeLines = [];
       codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import (\u000A    \"errors\"\u000A    \"fmt\"\u000A)\u000A');codeLines.push('func f(arg int) (int, error) {\u000A    if arg \u003D\u003D 42 {\u000A');codeLines.push('        return -1, errors.New(\"can\'t work with 42\")\u000A    }\u000A');codeLines.push('    return arg + 3, nil\u000A}\u000A');codeLines.push('var ErrOutOfTea \u003D fmt.Errorf(\"no more tea available\")\u000Avar ErrPower \u003D fmt.Errorf(\"can\'t boil water\")\u000A');codeLines.push('func makeTea(arg int) error {\u000A    if arg \u003D\u003D 2 {\u000A        return ErrOutOfTea\u000A    } else if arg \u003D\u003D 4 {\u000A');codeLines.push('        return fmt.Errorf(\"making tea: %w\", ErrPower)\u000A    }\u000A    return nil\u000A}\u000A');codeLines.push('func main() {\u000A    for _, i :\u003D range []int{7, 42} {\u000A');codeLines.push('        if r, e :\u003D f(i); e !\u003D nil {\u000A            fmt.Println(\"f failed:\", e)\u000A        } else {\u000A            fmt.Println(\"f worked:\", r)\u000A        }\u000A    }\u000A');codeLines.push('    for i :\u003D range 5 {\u000A        if err :\u003D makeTea(i); err !\u003D nil {\u000A');codeLines.push('            if errors.Is(err, ErrOutOfTea) {\u000A                fmt.Println(\"We should buy new tea!\")\u000A            } else if errors.Is(err, ErrPower) {\u000A                fmt.Println(\"Now it is dark.\")\u000A            } else {\u000A                fmt.Printf(\"unknown error: %s\\n\", err)\u000A            }\u000A            continue\u000A        }\u000A');codeLines.push('        fmt.Println(\"Tea is ready!\")\u000A    }\u000A}\u000A');codeLines.push('');
     </script>
-    <script src="site.js" async></script>
   </body>
 </html>

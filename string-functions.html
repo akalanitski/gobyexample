@@ -5,24 +5,24 @@
     <title>Go by Example: String Functions</title>
     <link rel=stylesheet href="site.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-  </head>
-  <script>
+    <script>
       window.onkeydown = (e) => {
-          if (e.ctrlKey || e.altKey || e.shiftKey) {
-              return;
-          }
-          
-          if (e.key == "ArrowLeft") {
-              window.location.href = 'recover.html';
-          }
-          
-          
-          if (e.key == "ArrowRight") {
-              window.location.href = 'string-formatting.html';
-          }
-          
+        if (e.ctrlKey || e.altKey || e.shiftKey) {
+          return;
+        }
+        
+        if (e.key == "ArrowLeft") {
+          window.location.href = 'recover.html';
+        }
+        
+        
+        if (e.key == "ArrowRight") {
+          window.location.href = 'string-formatting.html';
+        }
+        
       }
-  </script>
+    </script>
+  </head>
   <body>
     <article class="example" id="string-functions">
       <h2><a href="./">Go by Example</a>: String Functions</h2>
@@ -38,7 +38,7 @@ to give you a sense of the package.</p>
           </td>
           <td class="code empty leading">
             
-          
+            
           </td>
         </tr>
         
@@ -47,11 +47,9 @@ to give you a sense of the package.</p>
             
           </td>
           <td class="code leading">
-            
-              <a href="https://go.dev/play/p/wKSAzxfs96O" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="run"><polygon points="6 3 20 12 6 21 6 3"/></svg></a>
+            <a href="https://go.dev/play/p/wKSAzxfs96O" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="run"><polygon points="6 3 20 12 6 21 6 3"/></svg></a>
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="copy"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/></svg>
-            
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
+            <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -61,7 +59,7 @@ to give you a sense of the package.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
+            <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
 </span></span><span class="line"><span class="cl">    <span class="s">&#34;fmt&#34;</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">s</span> <span class="s">&#34;strings&#34;</span>
 </span></span><span class="line"><span class="cl"><span class="p">)</span></span></span></code></pre>
@@ -76,7 +74,7 @@ it a lot below.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">p</span> <span class="p">=</span> <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span></span></span></code></pre>
+            <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">p</span> <span class="p">=</span> <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -86,7 +84,7 @@ it a lot below.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span></span></span></code></pre>
+            <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -103,7 +101,7 @@ package docs.</p>
           </td>
           <td class="code">
             
-          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nf">p</span><span class="p">(</span><span class="s">&#34;Contains:  &#34;</span><span class="p">,</span> <span class="nx">s</span><span class="p">.</span><span class="nf">Contains</span><span class="p">(</span><span class="s">&#34;test&#34;</span><span class="p">,</span> <span class="s">&#34;es&#34;</span><span class="p">))</span>
+            <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nf">p</span><span class="p">(</span><span class="s">&#34;Contains:  &#34;</span><span class="p">,</span> <span class="nx">s</span><span class="p">.</span><span class="nf">Contains</span><span class="p">(</span><span class="s">&#34;test&#34;</span><span class="p">,</span> <span class="s">&#34;es&#34;</span><span class="p">))</span>
 </span></span><span class="line"><span class="cl">    <span class="nf">p</span><span class="p">(</span><span class="s">&#34;Count:     &#34;</span><span class="p">,</span> <span class="nx">s</span><span class="p">.</span><span class="nf">Count</span><span class="p">(</span><span class="s">&#34;test&#34;</span><span class="p">,</span> <span class="s">&#34;t&#34;</span><span class="p">))</span>
 </span></span><span class="line"><span class="cl">    <span class="nf">p</span><span class="p">(</span><span class="s">&#34;HasPrefix: &#34;</span><span class="p">,</span> <span class="nx">s</span><span class="p">.</span><span class="nf">HasPrefix</span><span class="p">(</span><span class="s">&#34;test&#34;</span><span class="p">,</span> <span class="s">&#34;te&#34;</span><span class="p">))</span>
 </span></span><span class="line"><span class="cl">    <span class="nf">p</span><span class="p">(</span><span class="s">&#34;HasSuffix: &#34;</span><span class="p">,</span> <span class="nx">s</span><span class="p">.</span><span class="nf">HasSuffix</span><span class="p">(</span><span class="s">&#34;test&#34;</span><span class="p">,</span> <span class="s">&#34;st&#34;</span><span class="p">))</span>
@@ -129,7 +127,7 @@ package docs.</p>
           </td>
           <td class="code">
             
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run string-functions.go
+            <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run string-functions.go
 </span></span><span class="line"><span class="cl"><span class="go">Contains:   true
 </span></span></span><span class="line"><span class="cl"><span class="go">Count:      2
 </span></span></span><span class="line"><span class="cl"><span class="go">HasPrefix:  true
@@ -167,6 +165,5 @@ package docs.</p>
       var codeLines = [];
       codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import (\u000A    \"fmt\"\u000A    s \"strings\"\u000A)\u000A');codeLines.push('var p \u003D fmt.Println\u000A');codeLines.push('func main() {\u000A');codeLines.push('    p(\"Contains:  \", s.Contains(\"test\", \"es\"))\u000A    p(\"Count:     \", s.Count(\"test\", \"t\"))\u000A    p(\"HasPrefix: \", s.HasPrefix(\"test\", \"te\"))\u000A    p(\"HasSuffix: \", s.HasSuffix(\"test\", \"st\"))\u000A    p(\"Index:     \", s.Index(\"test\", \"e\"))\u000A    p(\"Join:      \", s.Join([]string{\"a\", \"b\"}, \"-\"))\u000A    p(\"Repeat:    \", s.Repeat(\"a\", 5))\u000A    p(\"Replace:   \", s.Replace(\"foo\", \"o\", \"0\", -1))\u000A    p(\"Replace:   \", s.Replace(\"foo\", \"o\", \"0\", 1))\u000A    p(\"Split:     \", s.Split(\"a-b-c-d-e\", \"-\"))\u000A    p(\"ToLower:   \", s.ToLower(\"TEST\"))\u000A    p(\"ToUpper:   \", s.ToUpper(\"test\"))\u000A}\u000A');codeLines.push('');
     </script>
-    <script src="site.js" async></script>
   </body>
 </html>

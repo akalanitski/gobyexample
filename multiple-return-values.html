@@ -5,24 +5,24 @@
     <title>Go by Example: Multiple Return Values</title>
     <link rel=stylesheet href="site.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-  </head>
-  <script>
+    <script>
       window.onkeydown = (e) => {
-          if (e.ctrlKey || e.altKey || e.shiftKey) {
-              return;
-          }
-          
-          if (e.key == "ArrowLeft") {
-              window.location.href = 'functions.html';
-          }
-          
-          
-          if (e.key == "ArrowRight") {
-              window.location.href = 'variadic-functions.html';
-          }
-          
+        if (e.ctrlKey || e.altKey || e.shiftKey) {
+          return;
+        }
+        
+        if (e.key == "ArrowLeft") {
+          window.location.href = 'functions.html';
+        }
+        
+        
+        if (e.key == "ArrowRight") {
+          window.location.href = 'variadic-functions.html';
+        }
+        
       }
-  </script>
+    </script>
+  </head>
   <body>
     <article class="example" id="multiple-return-values">
       <h2><a href="./">Go by Example</a>: Multiple Return Values</h2>
@@ -38,7 +38,7 @@ to return both result and error values from a function.</p>
           </td>
           <td class="code empty leading">
             
-          
+            
           </td>
         </tr>
         
@@ -47,11 +47,9 @@ to return both result and error values from a function.</p>
             
           </td>
           <td class="code leading">
-            
-              <a href="https://go.dev/play/p/vZdUvLB1WbK" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="run"><polygon points="6 3 20 12 6 21 6 3"/></svg></a>
+            <a href="https://go.dev/play/p/vZdUvLB1WbK" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="run"><polygon points="6 3 20 12 6 21 6 3"/></svg></a>
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="copy"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/></svg>
-            
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
+            <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -61,7 +59,7 @@ to return both result and error values from a function.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="s">&#34;fmt&#34;</span></span></span></code></pre>
+            <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="s">&#34;fmt&#34;</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -73,7 +71,7 @@ the function returns 2 <code>int</code>s.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">vals</span><span class="p">()</span> <span class="p">(</span><span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
+            <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">vals</span><span class="p">()</span> <span class="p">(</span><span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">7</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
           </td>
@@ -85,7 +83,7 @@ the function returns 2 <code>int</code>s.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span></span></span></code></pre>
+            <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -97,7 +95,7 @@ call with <em>multiple assignment</em>.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">a</span><span class="p">,</span> <span class="nx">b</span> <span class="o">:=</span> <span class="nf">vals</span><span class="p">()</span>
+            <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">a</span><span class="p">,</span> <span class="nx">b</span> <span class="o">:=</span> <span class="nf">vals</span><span class="p">()</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">a</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">b</span><span class="p">)</span></span></span></code></pre>
           </td>
@@ -111,7 +109,7 @@ use the blank identifier <code>_</code>.</p>
           </td>
           <td class="code">
             
-          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">_</span><span class="p">,</span> <span class="nx">c</span> <span class="o">:=</span> <span class="nf">vals</span><span class="p">()</span>
+            <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">_</span><span class="p">,</span> <span class="nx">c</span> <span class="o">:=</span> <span class="nf">vals</span><span class="p">()</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">c</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
           </td>
@@ -127,7 +125,7 @@ use the blank identifier <code>_</code>.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run multiple-return-values.go
+            <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run multiple-return-values.go
 </span></span><span class="line"><span class="cl"><span class="go">3
 </span></span></span><span class="line"><span class="cl"><span class="go">7
 </span></span></span><span class="line"><span class="cl"><span class="go">7</span></span></span></code></pre>
@@ -142,7 +140,7 @@ feature of Go functions; we&rsquo;ll look at this next.</p>
           </td>
           <td class="code empty">
             
-          
+            
           </td>
         </tr>
         
@@ -168,6 +166,5 @@ feature of Go functions; we&rsquo;ll look at this next.</p>
       var codeLines = [];
       codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import \"fmt\"\u000A');codeLines.push('func vals() (int, int) {\u000A    return 3, 7\u000A}\u000A');codeLines.push('func main() {\u000A');codeLines.push('    a, b :\u003D vals()\u000A    fmt.Println(a)\u000A    fmt.Println(b)\u000A');codeLines.push('    _, c :\u003D vals()\u000A    fmt.Println(c)\u000A}\u000A');codeLines.push('');codeLines.push('');
     </script>
-    <script src="site.js" async></script>
   </body>
 </html>

@@ -5,24 +5,24 @@
     <title>Go by Example: HTTP Server</title>
     <link rel=stylesheet href="site.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-  </head>
-  <script>
+    <script>
       window.onkeydown = (e) => {
-          if (e.ctrlKey || e.altKey || e.shiftKey) {
-              return;
-          }
-          
-          if (e.key == "ArrowLeft") {
-              window.location.href = 'http-client.html';
-          }
-          
-          
-          if (e.key == "ArrowRight") {
-              window.location.href = 'context.html';
-          }
-          
+        if (e.ctrlKey || e.altKey || e.shiftKey) {
+          return;
+        }
+        
+        if (e.key == "ArrowLeft") {
+          window.location.href = 'http-client.html';
+        }
+        
+        
+        if (e.key == "ArrowRight") {
+          window.location.href = 'context.html';
+        }
+        
       }
-  </script>
+    </script>
+  </head>
   <body>
     <article class="example" id="http-server">
       <h2><a href="./">Go by Example</a>: HTTP Server</h2>
@@ -36,11 +36,9 @@
 
           </td>
           <td class="code leading">
-            
-              <a href="https://go.dev/play/p/s3xMMt9Ytry" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="run"><polygon points="6 3 20 12 6 21 6 3"/></svg></a>
+            <a href="https://go.dev/play/p/s3xMMt9Ytry" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="run"><polygon points="6 3 20 12 6 21 6 3"/></svg></a>
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="copy"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/></svg>
-            
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
+            <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -50,7 +48,7 @@
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
+            <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
 </span></span><span class="line"><span class="cl">    <span class="s">&#34;fmt&#34;</span>
 </span></span><span class="line"><span class="cl">    <span class="s">&#34;net/http&#34;</span>
 </span></span><span class="line"><span class="cl"><span class="p">)</span></span></span></code></pre>
@@ -68,7 +66,7 @@ on functions with the appropriate signature.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">hello</span><span class="p">(</span><span class="nx">w</span> <span class="nx">http</span><span class="p">.</span><span class="nx">ResponseWriter</span><span class="p">,</span> <span class="nx">req</span> <span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">)</span> <span class="p">{</span></span></span></code></pre>
+            <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">hello</span><span class="p">(</span><span class="nx">w</span> <span class="nx">http</span><span class="p">.</span><span class="nx">ResponseWriter</span><span class="p">,</span> <span class="nx">req</span> <span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">)</span> <span class="p">{</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -83,7 +81,7 @@ HTTP response. Here our simple response is just
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Fprintf</span><span class="p">(</span><span class="nx">w</span><span class="p">,</span> <span class="s">&#34;hello\n&#34;</span><span class="p">)</span>
+            <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Fprintf</span><span class="p">(</span><span class="nx">w</span><span class="p">,</span> <span class="s">&#34;hello\n&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
           </td>
         </tr>
@@ -94,7 +92,7 @@ HTTP response. Here our simple response is just
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">headers</span><span class="p">(</span><span class="nx">w</span> <span class="nx">http</span><span class="p">.</span><span class="nx">ResponseWriter</span><span class="p">,</span> <span class="nx">req</span> <span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">)</span> <span class="p">{</span></span></span></code></pre>
+            <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">headers</span><span class="p">(</span><span class="nx">w</span> <span class="nx">http</span><span class="p">.</span><span class="nx">ResponseWriter</span><span class="p">,</span> <span class="nx">req</span> <span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">)</span> <span class="p">{</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -107,7 +105,7 @@ headers and echoing them into the response body.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="k">for</span> <span class="nx">name</span><span class="p">,</span> <span class="nx">headers</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">req</span><span class="p">.</span><span class="nx">Header</span> <span class="p">{</span>
+            <pre class="chroma"><code><span class="line"><span class="cl">    <span class="k">for</span> <span class="nx">name</span><span class="p">,</span> <span class="nx">headers</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">req</span><span class="p">.</span><span class="nx">Header</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">h</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">headers</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">            <span class="nx">fmt</span><span class="p">.</span><span class="nf">Fprintf</span><span class="p">(</span><span class="nx">w</span><span class="p">,</span> <span class="s">&#34;%v: %v\n&#34;</span><span class="p">,</span> <span class="nx">name</span><span class="p">,</span> <span class="nx">h</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">        <span class="p">}</span>
@@ -122,7 +120,7 @@ headers and echoing them into the response body.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span></span></span></code></pre>
+            <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -136,7 +134,7 @@ takes a function as an argument.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">http</span><span class="p">.</span><span class="nf">HandleFunc</span><span class="p">(</span><span class="s">&#34;/hello&#34;</span><span class="p">,</span> <span class="nx">hello</span><span class="p">)</span>
+            <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">http</span><span class="p">.</span><span class="nf">HandleFunc</span><span class="p">(</span><span class="s">&#34;/hello&#34;</span><span class="p">,</span> <span class="nx">hello</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">http</span><span class="p">.</span><span class="nf">HandleFunc</span><span class="p">(</span><span class="s">&#34;/headers&#34;</span><span class="p">,</span> <span class="nx">headers</span><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
@@ -150,7 +148,7 @@ router we&rsquo;ve just set up.</p>
           </td>
           <td class="code">
             
-          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">http</span><span class="p">.</span><span class="nf">ListenAndServe</span><span class="p">(</span><span class="s">&#34;:8090&#34;</span><span class="p">,</span> <span class="kc">nil</span><span class="p">)</span>
+            <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">http</span><span class="p">.</span><span class="nf">ListenAndServe</span><span class="p">(</span><span class="s">&#34;:8090&#34;</span><span class="p">,</span> <span class="kc">nil</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
           </td>
         </tr>
@@ -166,7 +164,7 @@ router we&rsquo;ve just set up.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run http-server.go &amp;</span></span></code></pre>
+            <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run http-server.go &amp;</span></span></code></pre>
           </td>
         </tr>
         
@@ -177,7 +175,7 @@ router we&rsquo;ve just set up.</p>
           </td>
           <td class="code">
             
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> curl localhost:8090/hello
+            <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> curl localhost:8090/hello
 </span></span><span class="line"><span class="cl"><span class="go">hello</span></span></span></code></pre>
           </td>
         </tr>
@@ -204,6 +202,5 @@ router we&rsquo;ve just set up.</p>
       var codeLines = [];
       codeLines.push('package main\u000A');codeLines.push('import (\u000A    \"fmt\"\u000A    \"net/http\"\u000A)\u000A');codeLines.push('func hello(w http.ResponseWriter, req *http.Request) {\u000A');codeLines.push('    fmt.Fprintf(w, \"hello\\n\")\u000A}\u000A');codeLines.push('func headers(w http.ResponseWriter, req *http.Request) {\u000A');codeLines.push('    for name, headers :\u003D range req.Header {\u000A        for _, h :\u003D range headers {\u000A            fmt.Fprintf(w, \"%v: %v\\n\", name, h)\u000A        }\u000A    }\u000A}\u000A');codeLines.push('func main() {\u000A');codeLines.push('    http.HandleFunc(\"/hello\", hello)\u000A    http.HandleFunc(\"/headers\", headers)\u000A');codeLines.push('    http.ListenAndServe(\":8090\", nil)\u000A}\u000A');codeLines.push('');codeLines.push('');
     </script>
-    <script src="site.js" async></script>
   </body>
 </html>

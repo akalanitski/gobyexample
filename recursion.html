@@ -5,24 +5,24 @@
     <title>Go by Example: Recursion</title>
     <link rel=stylesheet href="site.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-  </head>
-  <script>
+    <script>
       window.onkeydown = (e) => {
-          if (e.ctrlKey || e.altKey || e.shiftKey) {
-              return;
-          }
-          
-          if (e.key == "ArrowLeft") {
-              window.location.href = 'closures.html';
-          }
-          
-          
-          if (e.key == "ArrowRight") {
-              window.location.href = 'range-over-built-in-types.html';
-          }
-          
+        if (e.ctrlKey || e.altKey || e.shiftKey) {
+          return;
+        }
+        
+        if (e.key == "ArrowLeft") {
+          window.location.href = 'closures.html';
+        }
+        
+        
+        if (e.key == "ArrowRight") {
+          window.location.href = 'range-over-built-in-types.html';
+        }
+        
       }
-  </script>
+    </script>
+  </head>
   <body>
     <article class="example" id="recursion">
       <h2><a href="./">Go by Example</a>: Recursion</h2>
@@ -38,7 +38,7 @@ Here&rsquo;s a classic example.</p>
           </td>
           <td class="code empty leading">
             
-          
+            
           </td>
         </tr>
         
@@ -47,11 +47,9 @@ Here&rsquo;s a classic example.</p>
             
           </td>
           <td class="code leading">
-            
-              <a href="https://go.dev/play/p/oo5vWEVa3DH" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="run"><polygon points="6 3 20 12 6 21 6 3"/></svg></a>
+            <a href="https://go.dev/play/p/oo5vWEVa3DH" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="run"><polygon points="6 3 20 12 6 21 6 3"/></svg></a>
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="copy"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/></svg>
-            
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
+            <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -61,7 +59,7 @@ Here&rsquo;s a classic example.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="s">&#34;fmt&#34;</span></span></span></code></pre>
+            <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="s">&#34;fmt&#34;</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -73,7 +71,7 @@ base case of <code>fact(0)</code>.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">fact</span><span class="p">(</span><span class="nx">n</span> <span class="kt">int</span><span class="p">)</span> <span class="kt">int</span> <span class="p">{</span>
+            <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">fact</span><span class="p">(</span><span class="nx">n</span> <span class="kt">int</span><span class="p">)</span> <span class="kt">int</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nx">n</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="mi">1</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
@@ -88,7 +86,7 @@ base case of <code>fact(0)</code>.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+            <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nf">fact</span><span class="p">(</span><span class="mi">7</span><span class="p">))</span></span></span></code></pre>
           </td>
         </tr>
@@ -102,7 +100,7 @@ the function before it&rsquo;s defined.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="kd">var</span> <span class="nx">fib</span> <span class="kd">func</span><span class="p">(</span><span class="nx">n</span> <span class="kt">int</span><span class="p">)</span> <span class="kt">int</span></span></span></code></pre>
+            <pre class="chroma"><code><span class="line"><span class="cl">    <span class="kd">var</span> <span class="nx">fib</span> <span class="kd">func</span><span class="p">(</span><span class="nx">n</span> <span class="kt">int</span><span class="p">)</span> <span class="kt">int</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -112,7 +110,7 @@ the function before it&rsquo;s defined.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">fib</span> <span class="p">=</span> <span class="kd">func</span><span class="p">(</span><span class="nx">n</span> <span class="kt">int</span><span class="p">)</span> <span class="kt">int</span> <span class="p">{</span>
+            <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">fib</span> <span class="p">=</span> <span class="kd">func</span><span class="p">(</span><span class="nx">n</span> <span class="kt">int</span><span class="p">)</span> <span class="kt">int</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="nx">n</span> <span class="p">&lt;</span> <span class="mi">2</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="nx">n</span>
 </span></span><span class="line"><span class="cl">        <span class="p">}</span></span></span></code></pre>
@@ -127,7 +125,7 @@ knows which function to call with <code>fib</code> here.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl">        <span class="k">return</span> <span class="nf">fib</span><span class="p">(</span><span class="nx">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="nf">fib</span><span class="p">(</span><span class="nx">n</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span>
+            <pre class="chroma"><code><span class="line"><span class="cl">        <span class="k">return</span> <span class="nf">fib</span><span class="p">(</span><span class="nx">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="nf">fib</span><span class="p">(</span><span class="nx">n</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span></span></span></code></pre>
           </td>
         </tr>
@@ -138,7 +136,7 @@ knows which function to call with <code>fib</code> here.</p>
           </td>
           <td class="code">
             
-          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nf">fib</span><span class="p">(</span><span class="mi">7</span><span class="p">))</span>
+            <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nf">fib</span><span class="p">(</span><span class="mi">7</span><span class="p">))</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
           </td>
         </tr>
@@ -153,7 +151,7 @@ knows which function to call with <code>fib</code> here.</p>
           </td>
           <td class="code">
             
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run recursion.go 
+            <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run recursion.go 
 </span></span><span class="line"><span class="cl"><span class="go">5040
 </span></span></span><span class="line"><span class="cl"><span class="go">13</span></span></span></code></pre>
           </td>
@@ -181,6 +179,5 @@ knows which function to call with <code>fib</code> here.</p>
       var codeLines = [];
       codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import \"fmt\"\u000A');codeLines.push('func fact(n int) int {\u000A    if n \u003D\u003D 0 {\u000A        return 1\u000A    }\u000A    return n * fact(n-1)\u000A}\u000A');codeLines.push('func main() {\u000A    fmt.Println(fact(7))\u000A');codeLines.push('    var fib func(n int) int\u000A');codeLines.push('    fib \u003D func(n int) int {\u000A        if n \u003C 2 {\u000A            return n\u000A        }\u000A');codeLines.push('        return fib(n-1) + fib(n-2)\u000A    }\u000A');codeLines.push('    fmt.Println(fib(7))\u000A}\u000A');codeLines.push('');
     </script>
-    <script src="site.js" async></script>
   </body>
 </html>

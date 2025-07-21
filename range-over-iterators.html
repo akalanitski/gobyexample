@@ -5,24 +5,24 @@
     <title>Go by Example: Range over Iterators</title>
     <link rel=stylesheet href="site.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-  </head>
-  <script>
+    <script>
       window.onkeydown = (e) => {
-          if (e.ctrlKey || e.altKey || e.shiftKey) {
-              return;
-          }
-          
-          if (e.key == "ArrowLeft") {
-              window.location.href = 'generics.html';
-          }
-          
-          
-          if (e.key == "ArrowRight") {
-              window.location.href = 'errors.html';
-          }
-          
+        if (e.ctrlKey || e.altKey || e.shiftKey) {
+          return;
+        }
+        
+        if (e.key == "ArrowLeft") {
+          window.location.href = 'generics.html';
+        }
+        
+        
+        if (e.key == "ArrowRight") {
+          window.location.href = 'errors.html';
+        }
+        
       }
-  </script>
+    </script>
+  </head>
   <body>
     <article class="example" id="range-over-iterators">
       <h2><a href="./">Go by Example</a>: Range over Iterators</h2>
@@ -38,7 +38,7 @@ which lets us range over pretty much anything!</p>
           </td>
           <td class="code empty leading">
             
-          
+            
           </td>
         </tr>
         
@@ -47,11 +47,9 @@ which lets us range over pretty much anything!</p>
             
           </td>
           <td class="code leading">
-            
-              <a href="https://go.dev/play/p/JsdFcZac4E-" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="run"><polygon points="6 3 20 12 6 21 6 3"/></svg></a>
+            <a href="https://go.dev/play/p/JsdFcZac4E-" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="run"><polygon points="6 3 20 12 6 21 6 3"/></svg></a>
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="copy"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/></svg>
-            
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
+            <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -61,7 +59,7 @@ which lets us range over pretty much anything!</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
+            <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
 </span></span><span class="line"><span class="cl">    <span class="s">&#34;fmt&#34;</span>
 </span></span><span class="line"><span class="cl">    <span class="s">&#34;iter&#34;</span>
 </span></span><span class="line"><span class="cl">    <span class="s">&#34;slices&#34;</span>
@@ -80,7 +78,7 @@ can do it better - as shown below.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">type</span> <span class="nx">List</span><span class="p">[</span><span class="nx">T</span> <span class="nx">any</span><span class="p">]</span> <span class="kd">struct</span> <span class="p">{</span>
+            <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">type</span> <span class="nx">List</span><span class="p">[</span><span class="nx">T</span> <span class="nx">any</span><span class="p">]</span> <span class="kd">struct</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">head</span><span class="p">,</span> <span class="nx">tail</span> <span class="o">*</span><span class="nx">element</span><span class="p">[</span><span class="nx">T</span><span class="p">]</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
           </td>
@@ -92,7 +90,7 @@ can do it better - as shown below.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">type</span> <span class="nx">element</span><span class="p">[</span><span class="nx">T</span> <span class="nx">any</span><span class="p">]</span> <span class="kd">struct</span> <span class="p">{</span>
+            <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">type</span> <span class="nx">element</span><span class="p">[</span><span class="nx">T</span> <span class="nx">any</span><span class="p">]</span> <span class="kd">struct</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">next</span> <span class="o">*</span><span class="nx">element</span><span class="p">[</span><span class="nx">T</span><span class="p">]</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">val</span>  <span class="nx">T</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
@@ -105,7 +103,7 @@ can do it better - as shown below.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="p">(</span><span class="nx">lst</span> <span class="o">*</span><span class="nx">List</span><span class="p">[</span><span class="nx">T</span><span class="p">])</span> <span class="nf">Push</span><span class="p">(</span><span class="nx">v</span> <span class="nx">T</span><span class="p">)</span> <span class="p">{</span>
+            <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="p">(</span><span class="nx">lst</span> <span class="o">*</span><span class="nx">List</span><span class="p">[</span><span class="nx">T</span><span class="p">])</span> <span class="nf">Push</span><span class="p">(</span><span class="nx">v</span> <span class="nx">T</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nx">lst</span><span class="p">.</span><span class="nx">tail</span> <span class="o">==</span> <span class="kc">nil</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="nx">lst</span><span class="p">.</span><span class="nx">head</span> <span class="p">=</span> <span class="o">&amp;</span><span class="nx">element</span><span class="p">[</span><span class="nx">T</span><span class="p">]{</span><span class="nx">val</span><span class="p">:</span> <span class="nx">v</span><span class="p">}</span>
 </span></span><span class="line"><span class="cl">        <span class="nx">lst</span><span class="p">.</span><span class="nx">tail</span> <span class="p">=</span> <span class="nx">lst</span><span class="p">.</span><span class="nx">head</span>
@@ -125,7 +123,7 @@ with a <a href="https://pkg.go.dev/iter#Seq">special signature</a>.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="p">(</span><span class="nx">lst</span> <span class="o">*</span><span class="nx">List</span><span class="p">[</span><span class="nx">T</span><span class="p">])</span> <span class="nf">All</span><span class="p">()</span> <span class="nx">iter</span><span class="p">.</span><span class="nx">Seq</span><span class="p">[</span><span class="nx">T</span><span class="p">]</span> <span class="p">{</span>
+            <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="p">(</span><span class="nx">lst</span> <span class="o">*</span><span class="nx">List</span><span class="p">[</span><span class="nx">T</span><span class="p">])</span> <span class="nf">All</span><span class="p">()</span> <span class="nx">iter</span><span class="p">.</span><span class="nx">Seq</span><span class="p">[</span><span class="nx">T</span><span class="p">]</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="kd">func</span><span class="p">(</span><span class="nx">yield</span> <span class="kd">func</span><span class="p">(</span><span class="nx">T</span><span class="p">)</span> <span class="kt">bool</span><span class="p">)</span> <span class="p">{</span></span></span></code></pre>
           </td>
         </tr>
@@ -141,7 +139,7 @@ return value for a potential early termination.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl">        <span class="k">for</span> <span class="nx">e</span> <span class="o">:=</span> <span class="nx">lst</span><span class="p">.</span><span class="nx">head</span><span class="p">;</span> <span class="nx">e</span> <span class="o">!=</span> <span class="kc">nil</span><span class="p">;</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">e</span><span class="p">.</span><span class="nx">next</span> <span class="p">{</span>
+            <pre class="chroma"><code><span class="line"><span class="cl">        <span class="k">for</span> <span class="nx">e</span> <span class="o">:=</span> <span class="nx">lst</span><span class="p">.</span><span class="nx">head</span><span class="p">;</span> <span class="nx">e</span> <span class="o">!=</span> <span class="kc">nil</span><span class="p">;</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">e</span><span class="p">.</span><span class="nx">next</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="p">!</span><span class="nf">yield</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">val</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">                <span class="k">return</span>
 </span></span><span class="line"><span class="cl">            <span class="p">}</span>
@@ -161,7 +159,7 @@ running as long as <code>yield</code> keeps returning <code>true</code>.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">genFib</span><span class="p">()</span> <span class="nx">iter</span><span class="p">.</span><span class="nx">Seq</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span> <span class="p">{</span>
+            <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">genFib</span><span class="p">()</span> <span class="nx">iter</span><span class="p">.</span><span class="nx">Seq</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="kd">func</span><span class="p">(</span><span class="nx">yield</span> <span class="kd">func</span><span class="p">(</span><span class="kt">int</span><span class="p">)</span> <span class="kt">bool</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="nx">a</span><span class="p">,</span> <span class="nx">b</span> <span class="o">:=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span></span></span></code></pre>
           </td>
@@ -173,7 +171,7 @@ running as long as <code>yield</code> keeps returning <code>true</code>.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl">        <span class="k">for</span> <span class="p">{</span>
+            <pre class="chroma"><code><span class="line"><span class="cl">        <span class="k">for</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="p">!</span><span class="nf">yield</span><span class="p">(</span><span class="nx">a</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">                <span class="k">return</span>
 </span></span><span class="line"><span class="cl">            <span class="p">}</span>
@@ -190,7 +188,7 @@ running as long as <code>yield</code> keeps returning <code>true</code>.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+            <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">lst</span> <span class="o">:=</span> <span class="nx">List</span><span class="p">[</span><span class="kt">int</span><span class="p">]{}</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">lst</span><span class="p">.</span><span class="nf">Push</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">lst</span><span class="p">.</span><span class="nf">Push</span><span class="p">(</span><span class="mi">13</span><span class="p">)</span>
@@ -206,7 +204,7 @@ in a regular <code>range</code> loop.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="k">for</span> <span class="nx">e</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">lst</span><span class="p">.</span><span class="nf">All</span><span class="p">()</span> <span class="p">{</span>
+            <pre class="chroma"><code><span class="line"><span class="cl">    <span class="k">for</span> <span class="nx">e</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">lst</span><span class="p">.</span><span class="nf">All</span><span class="p">()</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span></span></span></code></pre>
           </td>
@@ -222,7 +220,7 @@ all its values into a slice.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">all</span> <span class="o">:=</span> <span class="nx">slices</span><span class="p">.</span><span class="nf">Collect</span><span class="p">(</span><span class="nx">lst</span><span class="p">.</span><span class="nf">All</span><span class="p">())</span>
+            <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">all</span> <span class="o">:=</span> <span class="nx">slices</span><span class="p">.</span><span class="nf">Collect</span><span class="p">(</span><span class="nx">lst</span><span class="p">.</span><span class="nf">All</span><span class="p">())</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;all:&#34;</span><span class="p">,</span> <span class="nx">all</span><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
@@ -233,7 +231,7 @@ all its values into a slice.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="k">for</span> <span class="nx">n</span> <span class="o">:=</span> <span class="k">range</span> <span class="nf">genFib</span><span class="p">()</span> <span class="p">{</span></span></span></code></pre>
+            <pre class="chroma"><code><span class="line"><span class="cl">    <span class="k">for</span> <span class="nx">n</span> <span class="o">:=</span> <span class="k">range</span> <span class="nf">genFib</span><span class="p">()</span> <span class="p">{</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -245,7 +243,7 @@ passed to the iterator will return <code>false</code>.</p>
           </td>
           <td class="code">
             
-          <pre class="chroma"><code><span class="line"><span class="cl">        <span class="k">if</span> <span class="nx">n</span> <span class="o">&gt;=</span> <span class="mi">10</span> <span class="p">{</span>
+            <pre class="chroma"><code><span class="line"><span class="cl">        <span class="k">if</span> <span class="nx">n</span> <span class="o">&gt;=</span> <span class="mi">10</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">            <span class="k">break</span>
 </span></span><span class="line"><span class="cl">        <span class="p">}</span>
 </span></span><span class="line"><span class="cl">        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">n</span><span class="p">)</span>
@@ -264,7 +262,7 @@ passed to the iterator will return <code>false</code>.</p>
           </td>
           <td class="code">
             
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run range-over-iterators.go
+            <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run range-over-iterators.go
 </span></span><span class="line"><span class="cl"><span class="go">10
 </span></span></span><span class="line"><span class="cl"><span class="go">13
 </span></span></span><span class="line"><span class="cl"><span class="go">23
@@ -300,6 +298,5 @@ passed to the iterator will return <code>false</code>.</p>
       var codeLines = [];
       codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import (\u000A    \"fmt\"\u000A    \"iter\"\u000A    \"slices\"\u000A)\u000A');codeLines.push('type List[T any] struct {\u000A    head, tail *element[T]\u000A}\u000A');codeLines.push('type element[T any] struct {\u000A    next *element[T]\u000A    val  T\u000A}\u000A');codeLines.push('func (lst *List[T]) Push(v T) {\u000A    if lst.tail \u003D\u003D nil {\u000A        lst.head \u003D \u0026element[T]{val: v}\u000A        lst.tail \u003D lst.head\u000A    } else {\u000A        lst.tail.next \u003D \u0026element[T]{val: v}\u000A        lst.tail \u003D lst.tail.next\u000A    }\u000A}\u000A');codeLines.push('func (lst *List[T]) All() iter.Seq[T] {\u000A    return func(yield func(T) bool) {\u000A');codeLines.push('        for e :\u003D lst.head; e !\u003D nil; e \u003D e.next {\u000A            if !yield(e.val) {\u000A                return\u000A            }\u000A        }\u000A    }\u000A}\u000A');codeLines.push('func genFib() iter.Seq[int] {\u000A    return func(yield func(int) bool) {\u000A        a, b :\u003D 1, 1\u000A');codeLines.push('        for {\u000A            if !yield(a) {\u000A                return\u000A            }\u000A            a, b \u003D b, a+b\u000A        }\u000A    }\u000A}\u000A');codeLines.push('func main() {\u000A    lst :\u003D List[int]{}\u000A    lst.Push(10)\u000A    lst.Push(13)\u000A    lst.Push(23)\u000A');codeLines.push('    for e :\u003D range lst.All() {\u000A        fmt.Println(e)\u000A    }\u000A');codeLines.push('    all :\u003D slices.Collect(lst.All())\u000A    fmt.Println(\"all:\", all)\u000A');codeLines.push('    for n :\u003D range genFib() {\u000A');codeLines.push('        if n \u003E\u003D 10 {\u000A            break\u000A        }\u000A        fmt.Println(n)\u000A    }\u000A}\u000A');codeLines.push('');
     </script>
-    <script src="site.js" async></script>
   </body>
 </html>

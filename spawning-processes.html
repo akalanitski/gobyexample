@@ -5,24 +5,24 @@
     <title>Go by Example: Spawning Processes</title>
     <link rel=stylesheet href="site.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-  </head>
-  <script>
+    <script>
       window.onkeydown = (e) => {
-          if (e.ctrlKey || e.altKey || e.shiftKey) {
-              return;
-          }
-          
-          if (e.key == "ArrowLeft") {
-              window.location.href = 'context.html';
-          }
-          
-          
-          if (e.key == "ArrowRight") {
-              window.location.href = 'execing-processes.html';
-          }
-          
+        if (e.ctrlKey || e.altKey || e.shiftKey) {
+          return;
+        }
+        
+        if (e.key == "ArrowLeft") {
+          window.location.href = 'context.html';
+        }
+        
+        
+        if (e.key == "ArrowRight") {
+          window.location.href = 'execing-processes.html';
+        }
+        
       }
-  </script>
+    </script>
+  </head>
   <body>
     <article class="example" id="spawning-processes">
       <h2><a href="./">Go by Example</a>: Spawning Processes</h2>
@@ -37,7 +37,7 @@ processes.</p>
           </td>
           <td class="code empty leading">
             
-          
+            
           </td>
         </tr>
         
@@ -46,11 +46,9 @@ processes.</p>
             
           </td>
           <td class="code leading">
-            
-              <a href="https://go.dev/play/p/rmnQdR-dMWU" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="run"><polygon points="6 3 20 12 6 21 6 3"/></svg></a>
+            <a href="https://go.dev/play/p/rmnQdR-dMWU" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="run"><polygon points="6 3 20 12 6 21 6 3"/></svg></a>
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="copy"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/></svg>
-            
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
+            <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -60,7 +58,7 @@ processes.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
+            <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
 </span></span><span class="line"><span class="cl">    <span class="s">&#34;fmt&#34;</span>
 </span></span><span class="line"><span class="cl">    <span class="s">&#34;io&#34;</span>
 </span></span><span class="line"><span class="cl">    <span class="s">&#34;os/exec&#34;</span>
@@ -74,7 +72,7 @@ processes.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span></span></span></code></pre>
+            <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -88,7 +86,7 @@ to represent this external process.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">dateCmd</span> <span class="o">:=</span> <span class="nx">exec</span><span class="p">.</span><span class="nf">Command</span><span class="p">(</span><span class="s">&#34;date&#34;</span><span class="p">)</span></span></span></code></pre>
+            <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">dateCmd</span> <span class="o">:=</span> <span class="nx">exec</span><span class="p">.</span><span class="nf">Command</span><span class="p">(</span><span class="s">&#34;date&#34;</span><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -102,7 +100,7 @@ with the date info.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">dateOut</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">dateCmd</span><span class="p">.</span><span class="nf">Output</span><span class="p">()</span>
+            <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">dateOut</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">dateCmd</span><span class="p">.</span><span class="nf">Output</span><span class="p">()</span>
 </span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="nb">panic</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
@@ -122,7 +120,7 @@ code.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">_</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">exec</span><span class="p">.</span><span class="nf">Command</span><span class="p">(</span><span class="s">&#34;date&#34;</span><span class="p">,</span> <span class="s">&#34;-x&#34;</span><span class="p">).</span><span class="nf">Output</span><span class="p">()</span>
+            <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">_</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">exec</span><span class="p">.</span><span class="nf">Command</span><span class="p">(</span><span class="s">&#34;date&#34;</span><span class="p">,</span> <span class="s">&#34;-x&#34;</span><span class="p">).</span><span class="nf">Output</span><span class="p">()</span>
 </span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="k">switch</span> <span class="nx">e</span> <span class="o">:=</span> <span class="nx">err</span><span class="p">.(</span><span class="kd">type</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="k">case</span> <span class="o">*</span><span class="nx">exec</span><span class="p">.</span><span class="nx">Error</span><span class="p">:</span>
@@ -145,7 +143,7 @@ where we pipe data to the external process on its
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">grepCmd</span> <span class="o">:=</span> <span class="nx">exec</span><span class="p">.</span><span class="nf">Command</span><span class="p">(</span><span class="s">&#34;grep&#34;</span><span class="p">,</span> <span class="s">&#34;hello&#34;</span><span class="p">)</span></span></span></code></pre>
+            <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">grepCmd</span> <span class="o">:=</span> <span class="nx">exec</span><span class="p">.</span><span class="nf">Command</span><span class="p">(</span><span class="s">&#34;grep&#34;</span><span class="p">,</span> <span class="s">&#34;hello&#34;</span><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -159,7 +157,7 @@ to exit.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">grepIn</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">grepCmd</span><span class="p">.</span><span class="nf">StdinPipe</span><span class="p">()</span>
+            <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">grepIn</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">grepCmd</span><span class="p">.</span><span class="nf">StdinPipe</span><span class="p">()</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">grepOut</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">grepCmd</span><span class="p">.</span><span class="nf">StdoutPipe</span><span class="p">()</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">grepCmd</span><span class="p">.</span><span class="nf">Start</span><span class="p">()</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">grepIn</span><span class="p">.</span><span class="nf">Write</span><span class="p">([]</span><span class="nb">byte</span><span class="p">(</span><span class="s">&#34;hello grep\ngoodbye grep&#34;</span><span class="p">))</span>
@@ -180,7 +178,7 @@ exactly the same way.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;&gt; grep hello&#34;</span><span class="p">)</span>
+            <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;&gt; grep hello&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nb">string</span><span class="p">(</span><span class="nx">grepBytes</span><span class="p">))</span></span></span></code></pre>
           </td>
         </tr>
@@ -197,7 +195,7 @@ option:</p>
           </td>
           <td class="code">
             
-          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">lsCmd</span> <span class="o">:=</span> <span class="nx">exec</span><span class="p">.</span><span class="nf">Command</span><span class="p">(</span><span class="s">&#34;bash&#34;</span><span class="p">,</span> <span class="s">&#34;-c&#34;</span><span class="p">,</span> <span class="s">&#34;ls -a -l -h&#34;</span><span class="p">)</span>
+            <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">lsCmd</span> <span class="o">:=</span> <span class="nx">exec</span><span class="p">.</span><span class="nf">Command</span><span class="p">(</span><span class="s">&#34;bash&#34;</span><span class="p">,</span> <span class="s">&#34;-c&#34;</span><span class="p">,</span> <span class="s">&#34;ls -a -l -h&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">lsOut</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">lsCmd</span><span class="p">.</span><span class="nf">Output</span><span class="p">()</span>
 </span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="nb">panic</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
@@ -220,7 +218,7 @@ as if we had run them directly from the command-line.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run spawning-processes.go 
+            <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run spawning-processes.go 
 </span></span><span class="line"><span class="cl"><span class="gp">&gt;</span> date
 </span></span><span class="line"><span class="cl"><span class="go">Thu 05 May 2022 10:10:12 PM PDT</span></span></span></code></pre>
           </td>
@@ -234,7 +232,7 @@ an error message and non-zero return code.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="go">command exited with rc = 1
+            <pre class="chroma"><code><span class="line"><span class="cl"><span class="go">command exited with rc = 1
 </span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="gp">&gt;</span> grep hello
 </span></span><span class="line"><span class="cl"><span class="go">hello grep</span></span></span></code></pre>
           </td>
@@ -246,7 +244,7 @@ an error message and non-zero return code.</p>
           </td>
           <td class="code">
             
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">&gt;</span> ls -a -l -h
+            <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">&gt;</span> ls -a -l -h
 </span></span><span class="line"><span class="cl"><span class="go">drwxr-xr-x  4 mark 136B Oct 3 16:29 .
 </span></span></span><span class="line"><span class="cl"><span class="go">drwxr-xr-x 91 mark 3.0K Oct 3 12:50 ..
 </span></span></span><span class="line"><span class="cl"><span class="go">-rw-r--r--  1 mark 1.3K Oct 3 16:28 spawning-processes.go</span></span></span></code></pre>
@@ -275,6 +273,5 @@ an error message and non-zero return code.</p>
       var codeLines = [];
       codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import (\u000A    \"fmt\"\u000A    \"io\"\u000A    \"os/exec\"\u000A)\u000A');codeLines.push('func main() {\u000A');codeLines.push('    dateCmd :\u003D exec.Command(\"date\")\u000A');codeLines.push('    dateOut, err :\u003D dateCmd.Output()\u000A    if err !\u003D nil {\u000A        panic(err)\u000A    }\u000A    fmt.Println(\"\u003E date\")\u000A    fmt.Println(string(dateOut))\u000A');codeLines.push('    _, err \u003D exec.Command(\"date\", \"-x\").Output()\u000A    if err !\u003D nil {\u000A        switch e :\u003D err.(type) {\u000A        case *exec.Error:\u000A            fmt.Println(\"failed executing:\", err)\u000A        case *exec.ExitError:\u000A            fmt.Println(\"command exit rc \u003D\", e.ExitCode())\u000A        default:\u000A            panic(err)\u000A        }\u000A    }\u000A');codeLines.push('    grepCmd :\u003D exec.Command(\"grep\", \"hello\")\u000A');codeLines.push('    grepIn, _ :\u003D grepCmd.StdinPipe()\u000A    grepOut, _ :\u003D grepCmd.StdoutPipe()\u000A    grepCmd.Start()\u000A    grepIn.Write([]byte(\"hello grep\\ngoodbye grep\"))\u000A    grepIn.Close()\u000A    grepBytes, _ :\u003D io.ReadAll(grepOut)\u000A    grepCmd.Wait()\u000A');codeLines.push('    fmt.Println(\"\u003E grep hello\")\u000A    fmt.Println(string(grepBytes))\u000A');codeLines.push('    lsCmd :\u003D exec.Command(\"bash\", \"-c\", \"ls -a -l -h\")\u000A    lsOut, err :\u003D lsCmd.Output()\u000A    if err !\u003D nil {\u000A        panic(err)\u000A    }\u000A    fmt.Println(\"\u003E ls -a -l -h\")\u000A    fmt.Println(string(lsOut))\u000A}\u000A');codeLines.push('');codeLines.push('');codeLines.push('');
     </script>
-    <script src="site.js" async></script>
   </body>
 </html>

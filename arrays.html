@@ -5,24 +5,24 @@
     <title>Go by Example: Arrays</title>
     <link rel=stylesheet href="site.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-  </head>
-  <script>
+    <script>
       window.onkeydown = (e) => {
-          if (e.ctrlKey || e.altKey || e.shiftKey) {
-              return;
-          }
-          
-          if (e.key == "ArrowLeft") {
-              window.location.href = 'switch.html';
-          }
-          
-          
-          if (e.key == "ArrowRight") {
-              window.location.href = 'slices.html';
-          }
-          
+        if (e.ctrlKey || e.altKey || e.shiftKey) {
+          return;
+        }
+        
+        if (e.key == "ArrowLeft") {
+          window.location.href = 'switch.html';
+        }
+        
+        
+        if (e.key == "ArrowRight") {
+          window.location.href = 'slices.html';
+        }
+        
       }
-  </script>
+    </script>
+  </head>
   <body>
     <article class="example" id="arrays">
       <h2><a href="./">Go by Example</a>: Arrays</h2>
@@ -39,7 +39,7 @@ scenarios.</p>
           </td>
           <td class="code empty leading">
             
-          
+            
           </td>
         </tr>
         
@@ -48,11 +48,9 @@ scenarios.</p>
             
           </td>
           <td class="code leading">
-            
-              <a href="https://go.dev/play/p/-NFSggT7dFH" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="run"><polygon points="6 3 20 12 6 21 6 3"/></svg></a>
+            <a href="https://go.dev/play/p/-NFSggT7dFH" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="run"><polygon points="6 3 20 12 6 21 6 3"/></svg></a>
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="copy"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/></svg>
-            
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
+            <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -62,7 +60,7 @@ scenarios.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="s">&#34;fmt&#34;</span></span></span></code></pre>
+            <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="s">&#34;fmt&#34;</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -72,7 +70,7 @@ scenarios.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span></span></span></code></pre>
+            <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -86,7 +84,7 @@ zero-valued, which for <code>int</code>s means <code>0</code>s.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="kd">var</span> <span class="nx">a</span> <span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="kt">int</span>
+            <pre class="chroma"><code><span class="line"><span class="cl">    <span class="kd">var</span> <span class="nx">a</span> <span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="kt">int</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;emp:&#34;</span><span class="p">,</span> <span class="nx">a</span><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
@@ -100,7 +98,7 @@ zero-valued, which for <code>int</code>s means <code>0</code>s.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">a</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="p">=</span> <span class="mi">100</span>
+            <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">a</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="p">=</span> <span class="mi">100</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;set:&#34;</span><span class="p">,</span> <span class="nx">a</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;get:&#34;</span><span class="p">,</span> <span class="nx">a</span><span class="p">[</span><span class="mi">4</span><span class="p">])</span></span></span></code></pre>
           </td>
@@ -113,7 +111,7 @@ zero-valued, which for <code>int</code>s means <code>0</code>s.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;len:&#34;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="nx">a</span><span class="p">))</span></span></span></code></pre>
+            <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;len:&#34;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="nx">a</span><span class="p">))</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -125,7 +123,7 @@ in one line.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">b</span> <span class="o">:=</span> <span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="kt">int</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">}</span>
+            <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">b</span> <span class="o">:=</span> <span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="kt">int</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">}</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;dcl:&#34;</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
@@ -138,7 +136,7 @@ elements for you with <code>...</code></p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">b</span> <span class="p">=</span> <span class="p">[</span><span class="o">...</span><span class="p">]</span><span class="kt">int</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">}</span>
+            <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">b</span> <span class="p">=</span> <span class="p">[</span><span class="o">...</span><span class="p">]</span><span class="kt">int</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">}</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;dcl:&#34;</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
@@ -151,7 +149,7 @@ between will be zeroed.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">b</span> <span class="p">=</span> <span class="p">[</span><span class="o">...</span><span class="p">]</span><span class="kt">int</span><span class="p">{</span><span class="mi">100</span><span class="p">,</span> <span class="mi">3</span><span class="p">:</span> <span class="mi">400</span><span class="p">,</span> <span class="mi">500</span><span class="p">}</span>
+            <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">b</span> <span class="p">=</span> <span class="p">[</span><span class="o">...</span><span class="p">]</span><span class="kt">int</span><span class="p">{</span><span class="mi">100</span><span class="p">,</span> <span class="mi">3</span><span class="p">:</span> <span class="mi">400</span><span class="p">,</span> <span class="mi">500</span><span class="p">}</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;idx:&#34;</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
@@ -165,7 +163,7 @@ structures.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="kd">var</span> <span class="nx">twoD</span> <span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">3</span><span class="p">]</span><span class="kt">int</span>
+            <pre class="chroma"><code><span class="line"><span class="cl">    <span class="kd">var</span> <span class="nx">twoD</span> <span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">3</span><span class="p">]</span><span class="kt">int</span>
 </span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="k">range</span> <span class="mi">2</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="nx">j</span> <span class="o">:=</span> <span class="k">range</span> <span class="mi">3</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">            <span class="nx">twoD</span><span class="p">[</span><span class="nx">i</span><span class="p">][</span><span class="nx">j</span><span class="p">]</span> <span class="p">=</span> <span class="nx">i</span> <span class="o">+</span> <span class="nx">j</span>
@@ -183,7 +181,7 @@ arrays at once too.</p>
           </td>
           <td class="code">
             
-          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">twoD</span> <span class="p">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">3</span><span class="p">]</span><span class="kt">int</span><span class="p">{</span>
+            <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">twoD</span> <span class="p">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">3</span><span class="p">]</span><span class="kt">int</span><span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">},</span>
 </span></span><span class="line"><span class="cl">        <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">},</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
@@ -204,7 +202,7 @@ when printed with <code>fmt.Println</code>.</p>
           </td>
           <td class="code">
             
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run arrays.go
+            <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run arrays.go
 </span></span><span class="line"><span class="cl"><span class="go">emp: [0 0 0 0 0]
 </span></span></span><span class="line"><span class="cl"><span class="go">set: [0 0 0 0 100]
 </span></span></span><span class="line"><span class="cl"><span class="go">get: 100
@@ -239,6 +237,5 @@ when printed with <code>fmt.Println</code>.</p>
       var codeLines = [];
       codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import \"fmt\"\u000A');codeLines.push('func main() {\u000A');codeLines.push('    var a [5]int\u000A    fmt.Println(\"emp:\", a)\u000A');codeLines.push('    a[4] \u003D 100\u000A    fmt.Println(\"set:\", a)\u000A    fmt.Println(\"get:\", a[4])\u000A');codeLines.push('    fmt.Println(\"len:\", len(a))\u000A');codeLines.push('    b :\u003D [5]int{1, 2, 3, 4, 5}\u000A    fmt.Println(\"dcl:\", b)\u000A');codeLines.push('    b \u003D [...]int{1, 2, 3, 4, 5}\u000A    fmt.Println(\"dcl:\", b)\u000A');codeLines.push('    b \u003D [...]int{100, 3: 400, 500}\u000A    fmt.Println(\"idx:\", b)\u000A');codeLines.push('    var twoD [2][3]int\u000A    for i :\u003D range 2 {\u000A        for j :\u003D range 3 {\u000A            twoD[i][j] \u003D i + j\u000A        }\u000A    }\u000A    fmt.Println(\"2d: \", twoD)\u000A');codeLines.push('    twoD \u003D [2][3]int{\u000A        {1, 2, 3},\u000A        {1, 2, 3},\u000A    }\u000A    fmt.Println(\"2d: \", twoD)\u000A}\u000A');codeLines.push('');
     </script>
-    <script src="site.js" async></script>
   </body>
 </html>

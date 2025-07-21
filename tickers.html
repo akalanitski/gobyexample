@@ -5,24 +5,24 @@
     <title>Go by Example: Tickers</title>
     <link rel=stylesheet href="site.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-  </head>
-  <script>
+    <script>
       window.onkeydown = (e) => {
-          if (e.ctrlKey || e.altKey || e.shiftKey) {
-              return;
-          }
-          
-          if (e.key == "ArrowLeft") {
-              window.location.href = 'timers.html';
-          }
-          
-          
-          if (e.key == "ArrowRight") {
-              window.location.href = 'worker-pools.html';
-          }
-          
+        if (e.ctrlKey || e.altKey || e.shiftKey) {
+          return;
+        }
+        
+        if (e.key == "ArrowLeft") {
+          window.location.href = 'timers.html';
+        }
+        
+        
+        if (e.key == "ArrowRight") {
+          window.location.href = 'worker-pools.html';
+        }
+        
       }
-  </script>
+    </script>
+  </head>
   <body>
     <article class="example" id="tickers">
       <h2><a href="./">Go by Example</a>: Tickers</h2>
@@ -40,7 +40,7 @@ periodically until we stop it.</p>
           </td>
           <td class="code empty leading">
             
-          
+            
           </td>
         </tr>
         
@@ -49,11 +49,9 @@ periodically until we stop it.</p>
             
           </td>
           <td class="code leading">
-            
-              <a href="https://go.dev/play/p/gs6zoJP-Pl9" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="run"><polygon points="6 3 20 12 6 21 6 3"/></svg></a>
+            <a href="https://go.dev/play/p/gs6zoJP-Pl9" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="run"><polygon points="6 3 20 12 6 21 6 3"/></svg></a>
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="copy"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/></svg>
-            
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
+            <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -63,7 +61,7 @@ periodically until we stop it.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
+            <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
 </span></span><span class="line"><span class="cl">    <span class="s">&#34;fmt&#34;</span>
 </span></span><span class="line"><span class="cl">    <span class="s">&#34;time&#34;</span>
 </span></span><span class="line"><span class="cl"><span class="p">)</span></span></span></code></pre>
@@ -76,7 +74,7 @@ periodically until we stop it.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span></span></span></code></pre>
+            <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -90,7 +88,7 @@ values as they arrive every 500ms.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">ticker</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nf">NewTicker</span><span class="p">(</span><span class="mi">500</span> <span class="o">*</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Millisecond</span><span class="p">)</span>
+            <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">ticker</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nf">NewTicker</span><span class="p">(</span><span class="mi">500</span> <span class="o">*</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Millisecond</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">done</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="kt">bool</span><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
@@ -101,7 +99,7 @@ values as they arrive every 500ms.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="k">go</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
+            <pre class="chroma"><code><span class="line"><span class="cl">    <span class="k">go</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">            <span class="k">select</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">            <span class="k">case</span> <span class="o">&lt;-</span><span class="nx">done</span><span class="p">:</span>
@@ -123,7 +121,7 @@ channel. We&rsquo;ll stop ours after 1600ms.</p>
           </td>
           <td class="code">
             
-          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">time</span><span class="p">.</span><span class="nf">Sleep</span><span class="p">(</span><span class="mi">1600</span> <span class="o">*</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Millisecond</span><span class="p">)</span>
+            <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">time</span><span class="p">.</span><span class="nf">Sleep</span><span class="p">(</span><span class="mi">1600</span> <span class="o">*</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Millisecond</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">ticker</span><span class="p">.</span><span class="nf">Stop</span><span class="p">()</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">done</span> <span class="o">&lt;-</span> <span class="kc">true</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;Ticker stopped&#34;</span><span class="p">)</span>
@@ -143,7 +141,7 @@ before we stop it.</p>
           </td>
           <td class="code">
             
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run tickers.go
+            <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run tickers.go
 </span></span><span class="line"><span class="cl"><span class="go">Tick at 2012-09-23 11:29:56.487625 -0700 PDT
 </span></span></span><span class="line"><span class="cl"><span class="go">Tick at 2012-09-23 11:29:56.988063 -0700 PDT
 </span></span></span><span class="line"><span class="cl"><span class="go">Tick at 2012-09-23 11:29:57.488076 -0700 PDT
@@ -173,6 +171,5 @@ before we stop it.</p>
       var codeLines = [];
       codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import (\u000A    \"fmt\"\u000A    \"time\"\u000A)\u000A');codeLines.push('func main() {\u000A');codeLines.push('    ticker :\u003D time.NewTicker(500 * time.Millisecond)\u000A    done :\u003D make(chan bool)\u000A');codeLines.push('    go func() {\u000A        for {\u000A            select {\u000A            case \u003C-done:\u000A                return\u000A            case t :\u003D \u003C-ticker.C:\u000A                fmt.Println(\"Tick at\", t)\u000A            }\u000A        }\u000A    }()\u000A');codeLines.push('    time.Sleep(1600 * time.Millisecond)\u000A    ticker.Stop()\u000A    done \u003C- true\u000A    fmt.Println(\"Ticker stopped\")\u000A}\u000A');codeLines.push('');
     </script>
-    <script src="site.js" async></script>
   </body>
 </html>

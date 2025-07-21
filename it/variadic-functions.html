@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="it">
   <head>
     <meta charset="utf-8">
     <title>Go by Example - IT: Variadic Functions</title>
     <link rel=stylesheet href="site.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-YS5D7DR8P1"></script>
     <script>
@@ -12,6 +13,23 @@
       gtag('js', new Date());
 
       gtag('config', 'G-YS5D7DR8P1');
+    </script>
+    <script>
+      window.onkeydown = (e) => {
+        if (e.ctrlKey || e.altKey || e.shiftKey) {
+          return;
+        }
+        
+        if (e.key == "ArrowLeft") {
+          window.location.href = 'multiple-return-values.html';
+        }
+        
+        
+        if (e.key == "ArrowRight") {
+          window.location.href = 'closures.html';
+        }
+        
+      }
     </script>
   </head>
   <body>
@@ -28,7 +46,7 @@ di una funzione variadica.</p>
 
           </td>
           <td class="code empty leading">
-	        
+            
             
           </td>
         </tr>
@@ -38,7 +56,8 @@ di una funzione variadica.</p>
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/WGXKSop2CA1"><img title="Run code" src="play.png" class="run" /></a>
+            <a href="https://go.dev/play/p/WGXKSop2CA1" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="run"><polygon points="6 3 20 12 6 21 6 3"/></svg></a>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="copy"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/></svg>
             <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
           </td>
         </tr>
@@ -48,7 +67,7 @@ di una funzione variadica.</p>
             
           </td>
           <td class="code leading">
-	        
+            
             <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="s">&#34;fmt&#34;</span></span></span></code></pre>
           </td>
         </tr>
@@ -60,7 +79,7 @@ arbitrario di parametri di tipo <code>int</code>.</p>
 
           </td>
           <td class="code leading">
-	        
+            
             <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">sum</span><span class="p">(</span><span class="nx">nums</span> <span class="o">...</span><span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Print</span><span class="p">(</span><span class="nx">nums</span><span class="p">,</span> <span class="s">&#34; &#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">total</span> <span class="o">:=</span> <span class="mi">0</span>
@@ -77,7 +96,7 @@ arbitrario di parametri di tipo <code>int</code>.</p>
             
           </td>
           <td class="code leading">
-	        
+            
             <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span></span></span></code></pre>
           </td>
         </tr>
@@ -89,7 +108,7 @@ classico modo indicando ogni parametro separatamente</p>
 
           </td>
           <td class="code leading">
-	        
+            
             <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nf">sum</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="nf">sum</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span></span></span></code></pre>
           </td>
@@ -103,7 +122,7 @@ seguente: <code>nomefunzione(slice...)</code></p>
 
           </td>
           <td class="code">
-	        
+            
             <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">nums</span> <span class="o">:=</span> <span class="p">[]</span><span class="kt">int</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">}</span>
 </span></span><span class="line"><span class="cl">    <span class="nf">sum</span><span class="p">(</span><span class="nx">nums</span><span class="o">...</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
@@ -119,7 +138,7 @@ seguente: <code>nomefunzione(slice...)</code></p>
             
           </td>
           <td class="code leading">
-	        
+            
             <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run variadic-functions.go 
 </span></span><span class="line"><span class="cl"><span class="go">[1 2] 3
 </span></span></span><span class="line"><span class="cl"><span class="go">[1 2 3] 6
@@ -135,7 +154,7 @@ nel prossimo esempio.</p>
 
           </td>
           <td class="code empty">
-	        
+            
             
           </td>
         </tr>
@@ -159,6 +178,5 @@ nel prossimo esempio.</p>
       var codeLines = [];
       codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import \"fmt\"\u000A');codeLines.push('func sum(nums ...int) {\u000A    fmt.Print(nums, \" \")\u000A    total :\u003D 0\u000A    for _, num :\u003D range nums {\u000A        total +\u003D num\u000A    }\u000A    fmt.Println(total)\u000A}\u000A');codeLines.push('func main() {\u000A');codeLines.push('    sum(1, 2)\u000A    sum(1, 2, 3)\u000A');codeLines.push('    nums :\u003D []int{1, 2, 3, 4}\u000A    sum(nums...)\u000A}\u000A');codeLines.push('');codeLines.push('');
     </script>
-    <script src="site.js" async></script>
   </body>
 </html>

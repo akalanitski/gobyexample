@@ -5,24 +5,24 @@
     <title>Go by Example: Epoch</title>
     <link rel=stylesheet href="site.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-  </head>
-  <script>
+    <script>
       window.onkeydown = (e) => {
-          if (e.ctrlKey || e.altKey || e.shiftKey) {
-              return;
-          }
-          
-          if (e.key == "ArrowLeft") {
-              window.location.href = 'time.html';
-          }
-          
-          
-          if (e.key == "ArrowRight") {
-              window.location.href = 'time-formatting-parsing.html';
-          }
-          
+        if (e.ctrlKey || e.altKey || e.shiftKey) {
+          return;
+        }
+        
+        if (e.key == "ArrowLeft") {
+          window.location.href = 'time.html';
+        }
+        
+        
+        if (e.key == "ArrowRight") {
+          window.location.href = 'time-formatting-parsing.html';
+        }
+        
       }
-  </script>
+    </script>
+  </head>
   <body>
     <article class="example" id="epoch">
       <h2><a href="./">Go by Example</a>: Epoch</h2>
@@ -39,7 +39,7 @@ Here&rsquo;s how to do it in Go.</p>
           </td>
           <td class="code empty leading">
             
-          
+            
           </td>
         </tr>
         
@@ -48,11 +48,9 @@ Here&rsquo;s how to do it in Go.</p>
             
           </td>
           <td class="code leading">
-            
-              <a href="https://go.dev/play/p/lRmD1EWHHPz" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="run"><polygon points="6 3 20 12 6 21 6 3"/></svg></a>
+            <a href="https://go.dev/play/p/lRmD1EWHHPz" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="run"><polygon points="6 3 20 12 6 21 6 3"/></svg></a>
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="copy"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/></svg>
-            
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
+            <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -62,7 +60,7 @@ Here&rsquo;s how to do it in Go.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
+            <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
 </span></span><span class="line"><span class="cl">    <span class="s">&#34;fmt&#34;</span>
 </span></span><span class="line"><span class="cl">    <span class="s">&#34;time&#34;</span>
 </span></span><span class="line"><span class="cl"><span class="p">)</span></span></span></code></pre>
@@ -75,7 +73,7 @@ Here&rsquo;s how to do it in Go.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span></span></span></code></pre>
+            <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -88,7 +86,7 @@ milliseconds or nanoseconds, respectively.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">now</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nf">Now</span><span class="p">()</span>
+            <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">now</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nf">Now</span><span class="p">()</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">now</span><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
@@ -99,7 +97,7 @@ milliseconds or nanoseconds, respectively.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">now</span><span class="p">.</span><span class="nf">Unix</span><span class="p">())</span>
+            <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">now</span><span class="p">.</span><span class="nf">Unix</span><span class="p">())</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">now</span><span class="p">.</span><span class="nf">UnixMilli</span><span class="p">())</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">now</span><span class="p">.</span><span class="nf">UnixNano</span><span class="p">())</span></span></span></code></pre>
           </td>
@@ -113,7 +111,7 @@ since the epoch into the corresponding <code>time</code>.</p>
           </td>
           <td class="code">
             
-          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nf">Unix</span><span class="p">(</span><span class="nx">now</span><span class="p">.</span><span class="nf">Unix</span><span class="p">(),</span> <span class="mi">0</span><span class="p">))</span>
+            <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nf">Unix</span><span class="p">(</span><span class="nx">now</span><span class="p">.</span><span class="nf">Unix</span><span class="p">(),</span> <span class="mi">0</span><span class="p">))</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nf">Unix</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nx">now</span><span class="p">.</span><span class="nf">UnixNano</span><span class="p">()))</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
           </td>
@@ -129,7 +127,7 @@ since the epoch into the corresponding <code>time</code>.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run epoch.go 
+            <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run epoch.go 
 </span></span><span class="line"><span class="cl"><span class="go">2012-10-31 16:13:58.292387 +0000 UTC
 </span></span></span><span class="line"><span class="cl"><span class="go">1351700038
 </span></span></span><span class="line"><span class="cl"><span class="go">1351700038292
@@ -147,7 +145,7 @@ parsing and formatting.</p>
           </td>
           <td class="code empty">
             
-          
+            
           </td>
         </tr>
         
@@ -173,6 +171,5 @@ parsing and formatting.</p>
       var codeLines = [];
       codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import (\u000A    \"fmt\"\u000A    \"time\"\u000A)\u000A');codeLines.push('func main() {\u000A');codeLines.push('    now :\u003D time.Now()\u000A    fmt.Println(now)\u000A');codeLines.push('    fmt.Println(now.Unix())\u000A    fmt.Println(now.UnixMilli())\u000A    fmt.Println(now.UnixNano())\u000A');codeLines.push('    fmt.Println(time.Unix(now.Unix(), 0))\u000A    fmt.Println(time.Unix(0, now.UnixNano()))\u000A}\u000A');codeLines.push('');codeLines.push('');
     </script>
-    <script src="site.js" async></script>
   </body>
 </html>

@@ -5,24 +5,24 @@
     <title>Go by Example: Methods</title>
     <link rel=stylesheet href="site.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-  </head>
-  <script>
+    <script>
       window.onkeydown = (e) => {
-          if (e.ctrlKey || e.altKey || e.shiftKey) {
-              return;
-          }
-          
-          if (e.key == "ArrowLeft") {
-              window.location.href = 'structs.html';
-          }
-          
-          
-          if (e.key == "ArrowRight") {
-              window.location.href = 'interfaces.html';
-          }
-          
+        if (e.ctrlKey || e.altKey || e.shiftKey) {
+          return;
+        }
+        
+        if (e.key == "ArrowLeft") {
+          window.location.href = 'structs.html';
+        }
+        
+        
+        if (e.key == "ArrowRight") {
+          window.location.href = 'interfaces.html';
+        }
+        
       }
-  </script>
+    </script>
+  </head>
   <body>
     <article class="example" id="methods">
       <h2><a href="./">Go by Example</a>: Methods</h2>
@@ -36,7 +36,7 @@
           </td>
           <td class="code empty leading">
             
-          
+            
           </td>
         </tr>
         
@@ -45,11 +45,9 @@
             
           </td>
           <td class="code leading">
-            
-              <a href="https://go.dev/play/p/4wmDCAydC1e" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="run"><polygon points="6 3 20 12 6 21 6 3"/></svg></a>
+            <a href="https://go.dev/play/p/4wmDCAydC1e" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="run"><polygon points="6 3 20 12 6 21 6 3"/></svg></a>
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="copy"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/></svg>
-            
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
+            <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -59,7 +57,7 @@
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="s">&#34;fmt&#34;</span></span></span></code></pre>
+            <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="s">&#34;fmt&#34;</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -69,7 +67,7 @@
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">type</span> <span class="nx">rect</span> <span class="kd">struct</span> <span class="p">{</span>
+            <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">type</span> <span class="nx">rect</span> <span class="kd">struct</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">width</span><span class="p">,</span> <span class="nx">height</span> <span class="kt">int</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
           </td>
@@ -82,7 +80,7 @@
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="p">(</span><span class="nx">r</span> <span class="o">*</span><span class="nx">rect</span><span class="p">)</span> <span class="nf">area</span><span class="p">()</span> <span class="kt">int</span> <span class="p">{</span>
+            <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="p">(</span><span class="nx">r</span> <span class="o">*</span><span class="nx">rect</span><span class="p">)</span> <span class="nf">area</span><span class="p">()</span> <span class="kt">int</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nx">r</span><span class="p">.</span><span class="nx">width</span> <span class="o">*</span> <span class="nx">r</span><span class="p">.</span><span class="nx">height</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
           </td>
@@ -96,7 +94,7 @@ receiver types. Here&rsquo;s an example of a value receiver.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="p">(</span><span class="nx">r</span> <span class="nx">rect</span><span class="p">)</span> <span class="nf">perim</span><span class="p">()</span> <span class="kt">int</span> <span class="p">{</span>
+            <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="p">(</span><span class="nx">r</span> <span class="nx">rect</span><span class="p">)</span> <span class="nf">perim</span><span class="p">()</span> <span class="kt">int</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mi">2</span><span class="o">*</span><span class="nx">r</span><span class="p">.</span><span class="nx">width</span> <span class="o">+</span> <span class="mi">2</span><span class="o">*</span><span class="nx">r</span><span class="p">.</span><span class="nx">height</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
           </td>
@@ -108,7 +106,7 @@ receiver types. Here&rsquo;s an example of a value receiver.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+            <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">r</span> <span class="o">:=</span> <span class="nx">rect</span><span class="p">{</span><span class="nx">width</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="nx">height</span><span class="p">:</span> <span class="mi">5</span><span class="p">}</span></span></span></code></pre>
           </td>
         </tr>
@@ -120,7 +118,7 @@ receiver types. Here&rsquo;s an example of a value receiver.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;area: &#34;</span><span class="p">,</span> <span class="nx">r</span><span class="p">.</span><span class="nf">area</span><span class="p">())</span>
+            <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;area: &#34;</span><span class="p">,</span> <span class="nx">r</span><span class="p">.</span><span class="nf">area</span><span class="p">())</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;perim:&#34;</span><span class="p">,</span> <span class="nx">r</span><span class="p">.</span><span class="nf">perim</span><span class="p">())</span></span></span></code></pre>
           </td>
         </tr>
@@ -136,7 +134,7 @@ receiving struct.</p>
           </td>
           <td class="code">
             
-          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">rp</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">r</span>
+            <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">rp</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">r</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;area: &#34;</span><span class="p">,</span> <span class="nx">rp</span><span class="p">.</span><span class="nf">area</span><span class="p">())</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;perim:&#34;</span><span class="p">,</span> <span class="nx">rp</span><span class="p">.</span><span class="nf">perim</span><span class="p">())</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
@@ -153,7 +151,7 @@ receiving struct.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run methods.go 
+            <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run methods.go 
 </span></span><span class="line"><span class="cl"><span class="go">area:  50
 </span></span></span><span class="line"><span class="cl"><span class="go">perim: 30
 </span></span></span><span class="line"><span class="cl"><span class="go">area:  50
@@ -169,7 +167,7 @@ naming related sets of methods: interfaces.</p>
           </td>
           <td class="code empty">
             
-          
+            
           </td>
         </tr>
         
@@ -195,6 +193,5 @@ naming related sets of methods: interfaces.</p>
       var codeLines = [];
       codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import \"fmt\"\u000A');codeLines.push('type rect struct {\u000A    width, height int\u000A}\u000A');codeLines.push('func (r *rect) area() int {\u000A    return r.width * r.height\u000A}\u000A');codeLines.push('func (r rect) perim() int {\u000A    return 2*r.width + 2*r.height\u000A}\u000A');codeLines.push('func main() {\u000A    r :\u003D rect{width: 10, height: 5}\u000A');codeLines.push('    fmt.Println(\"area: \", r.area())\u000A    fmt.Println(\"perim:\", r.perim())\u000A');codeLines.push('    rp :\u003D \u0026r\u000A    fmt.Println(\"area: \", rp.area())\u000A    fmt.Println(\"perim:\", rp.perim())\u000A}\u000A');codeLines.push('');codeLines.push('');
     </script>
-    <script src="site.js" async></script>
   </body>
 </html>

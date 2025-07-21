@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="it">
   <head>
     <meta charset="utf-8">
     <title>Go by Example - IT: Exec'ing Processes</title>
     <link rel=stylesheet href="site.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-YS5D7DR8P1"></script>
     <script>
@@ -12,6 +13,23 @@
       gtag('js', new Date());
 
       gtag('config', 'G-YS5D7DR8P1');
+    </script>
+    <script>
+      window.onkeydown = (e) => {
+        if (e.ctrlKey || e.altKey || e.shiftKey) {
+          return;
+        }
+        
+        if (e.key == "ArrowLeft") {
+          window.location.href = 'spawning-processes.html';
+        }
+        
+        
+        if (e.key == "ArrowRight") {
+          window.location.href = 'signals.html';
+        }
+        
+      }
     </script>
   </head>
   <body>
@@ -34,7 +52,7 @@ Go della classica syscall
 
           </td>
           <td class="code empty leading">
-	        
+            
             
           </td>
         </tr>
@@ -44,7 +62,8 @@ Go della classica syscall
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/JNb4t3Mx0lw"><img title="Run code" src="play.png" class="run" /></a>
+            <a href="https://go.dev/play/p/JNb4t3Mx0lw" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="run"><polygon points="6 3 20 12 6 21 6 3"/></svg></a>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="copy"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/></svg>
             <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
           </td>
         </tr>
@@ -54,7 +73,7 @@ Go della classica syscall
             
           </td>
           <td class="code leading">
-	        
+            
             <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="s">&#34;syscall&#34;</span>
 </span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="s">&#34;os&#34;</span>
 </span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="s">&#34;os/exec&#34;</span></span></span></code></pre>
@@ -66,7 +85,7 @@ Go della classica syscall
             
           </td>
           <td class="code leading">
-	        
+            
             <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span></span></span></code></pre>
           </td>
         </tr>
@@ -81,7 +100,7 @@ che vogliamo eseguire, quindi eseguiremo
 
           </td>
           <td class="code leading">
-	        
+            
             <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">binary</span><span class="p">,</span> <span class="nx">lookErr</span> <span class="o">:=</span> <span class="nx">exec</span><span class="p">.</span><span class="nf">LookPath</span><span class="p">(</span><span class="s">&#34;ls&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nx">lookErr</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="nb">panic</span><span class="p">(</span><span class="nx">lookErr</span><span class="p">)</span>
@@ -99,7 +118,7 @@ programma.</p>
 
           </td>
           <td class="code leading">
-	        
+            
             <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">args</span> <span class="o">:=</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&#34;ls&#34;</span><span class="p">,</span> <span class="s">&#34;-a&#34;</span><span class="p">,</span> <span class="s">&#34;-l&#34;</span><span class="p">,</span> <span class="s">&#34;-h&#34;</span><span class="p">}</span></span></span></code></pre>
           </td>
         </tr>
@@ -113,7 +132,7 @@ corrente.</p>
 
           </td>
           <td class="code leading">
-	        
+            
             <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">env</span> <span class="o">:=</span> <span class="nx">os</span><span class="p">.</span><span class="nf">Environ</span><span class="p">()</span></span></span></code></pre>
           </td>
         </tr>
@@ -128,7 +147,7 @@ otterremo un valore restituito.</p>
 
           </td>
           <td class="code">
-	        
+            
             <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">execErr</span> <span class="o">:=</span> <span class="nx">syscall</span><span class="p">.</span><span class="nf">Exec</span><span class="p">(</span><span class="nx">binary</span><span class="p">,</span> <span class="nx">args</span><span class="p">,</span> <span class="nx">env</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nx">execErr</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="nb">panic</span><span class="p">(</span><span class="nx">execErr</span><span class="p">)</span>
@@ -148,7 +167,7 @@ rimpiazzato da <code>ls</code></p>
 
           </td>
           <td class="code leading">
-	        
+            
             <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run execing-processes.go
 </span></span><span class="line"><span class="cl"><span class="go">total 16
 </span></span></span><span class="line"><span class="cl"><span class="go">drwxr-xr-x  4 mark 136B Oct 3 16:29 .
@@ -167,7 +186,7 @@ di <code>fork</code>.</p>
 
           </td>
           <td class="code empty">
-	        
+            
             
           </td>
         </tr>
@@ -191,6 +210,5 @@ di <code>fork</code>.</p>
       var codeLines = [];
       codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import \"syscall\"\u000Aimport \"os\"\u000Aimport \"os/exec\"\u000A');codeLines.push('func main() {\u000A');codeLines.push('    binary, lookErr :\u003D exec.LookPath(\"ls\")\u000A    if lookErr !\u003D nil {\u000A        panic(lookErr)\u000A    }\u000A');codeLines.push('    args :\u003D []string{\"ls\", \"-a\", \"-l\", \"-h\"}\u000A');codeLines.push('    env :\u003D os.Environ()\u000A');codeLines.push('    execErr :\u003D syscall.Exec(binary, args, env)\u000A    if execErr !\u003D nil {\u000A        panic(execErr)\u000A    }\u000A}\u000A');codeLines.push('');codeLines.push('');
     </script>
-    <script src="site.js" async></script>
   </body>
 </html>

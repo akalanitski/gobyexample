@@ -5,24 +5,24 @@
     <title>Go by Example: Non-Blocking Channel Operations</title>
     <link rel=stylesheet href="site.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-  </head>
-  <script>
+    <script>
       window.onkeydown = (e) => {
-          if (e.ctrlKey || e.altKey || e.shiftKey) {
-              return;
-          }
-          
-          if (e.key == "ArrowLeft") {
-              window.location.href = 'timeouts.html';
-          }
-          
-          
-          if (e.key == "ArrowRight") {
-              window.location.href = 'closing-channels.html';
-          }
-          
+        if (e.ctrlKey || e.altKey || e.shiftKey) {
+          return;
+        }
+        
+        if (e.key == "ArrowLeft") {
+          window.location.href = 'timeouts.html';
+        }
+        
+        
+        if (e.key == "ArrowRight") {
+          window.location.href = 'closing-channels.html';
+        }
+        
       }
-  </script>
+    </script>
+  </head>
   <body>
     <article class="example" id="non-blocking-channel-operations">
       <h2><a href="./">Go by Example</a>: Non-Blocking Channel Operations</h2>
@@ -39,7 +39,7 @@ non-blocking multi-way <code>select</code>s.</p>
           </td>
           <td class="code empty leading">
             
-          
+            
           </td>
         </tr>
         
@@ -48,11 +48,9 @@ non-blocking multi-way <code>select</code>s.</p>
             
           </td>
           <td class="code leading">
-            
-              <a href="https://go.dev/play/p/TFv6-7OVNVq" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="run"><polygon points="6 3 20 12 6 21 6 3"/></svg></a>
+            <a href="https://go.dev/play/p/TFv6-7OVNVq" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="run"><polygon points="6 3 20 12 6 21 6 3"/></svg></a>
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="copy"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/></svg>
-            
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
+            <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -62,7 +60,7 @@ non-blocking multi-way <code>select</code>s.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="s">&#34;fmt&#34;</span></span></span></code></pre>
+            <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="s">&#34;fmt&#34;</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -72,7 +70,7 @@ non-blocking multi-way <code>select</code>s.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+            <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">messages</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="kt">string</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">signals</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="kt">bool</span><span class="p">)</span></span></span></code></pre>
           </td>
@@ -88,7 +86,7 @@ it will immediately take the <code>default</code> case.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="k">select</span> <span class="p">{</span>
+            <pre class="chroma"><code><span class="line"><span class="cl">    <span class="k">select</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="k">case</span> <span class="nx">msg</span> <span class="o">:=</span> <span class="o">&lt;-</span><span class="nx">messages</span><span class="p">:</span>
 </span></span><span class="line"><span class="cl">        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;received message&#34;</span><span class="p">,</span> <span class="nx">msg</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="k">default</span><span class="p">:</span>
@@ -107,7 +105,7 @@ Therefore the <code>default</code> case is selected.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">msg</span> <span class="o">:=</span> <span class="s">&#34;hi&#34;</span>
+            <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">msg</span> <span class="o">:=</span> <span class="s">&#34;hi&#34;</span>
 </span></span><span class="line"><span class="cl">    <span class="k">select</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="k">case</span> <span class="nx">messages</span> <span class="o">&lt;-</span> <span class="nx">msg</span><span class="p">:</span>
 </span></span><span class="line"><span class="cl">        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;sent message&#34;</span><span class="p">,</span> <span class="nx">msg</span><span class="p">)</span>
@@ -127,7 +125,7 @@ on both <code>messages</code> and <code>signals</code>.</p>
           </td>
           <td class="code">
             
-          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="k">select</span> <span class="p">{</span>
+            <pre class="chroma"><code><span class="line"><span class="cl">    <span class="k">select</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="k">case</span> <span class="nx">msg</span> <span class="o">:=</span> <span class="o">&lt;-</span><span class="nx">messages</span><span class="p">:</span>
 </span></span><span class="line"><span class="cl">        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;received message&#34;</span><span class="p">,</span> <span class="nx">msg</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="k">case</span> <span class="nx">sig</span> <span class="o">:=</span> <span class="o">&lt;-</span><span class="nx">signals</span><span class="p">:</span>
@@ -149,7 +147,7 @@ on both <code>messages</code> and <code>signals</code>.</p>
           </td>
           <td class="code">
             
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run non-blocking-channel-operations.go 
+            <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run non-blocking-channel-operations.go 
 </span></span><span class="line"><span class="cl"><span class="go">no message received
 </span></span></span><span class="line"><span class="cl"><span class="go">no message sent
 </span></span></span><span class="line"><span class="cl"><span class="go">no activity</span></span></span></code></pre>
@@ -178,6 +176,5 @@ on both <code>messages</code> and <code>signals</code>.</p>
       var codeLines = [];
       codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import \"fmt\"\u000A');codeLines.push('func main() {\u000A    messages :\u003D make(chan string)\u000A    signals :\u003D make(chan bool)\u000A');codeLines.push('    select {\u000A    case msg :\u003D \u003C-messages:\u000A        fmt.Println(\"received message\", msg)\u000A    default:\u000A        fmt.Println(\"no message received\")\u000A    }\u000A');codeLines.push('    msg :\u003D \"hi\"\u000A    select {\u000A    case messages \u003C- msg:\u000A        fmt.Println(\"sent message\", msg)\u000A    default:\u000A        fmt.Println(\"no message sent\")\u000A    }\u000A');codeLines.push('    select {\u000A    case msg :\u003D \u003C-messages:\u000A        fmt.Println(\"received message\", msg)\u000A    case sig :\u003D \u003C-signals:\u000A        fmt.Println(\"received signal\", sig)\u000A    default:\u000A        fmt.Println(\"no activity\")\u000A    }\u000A}\u000A');codeLines.push('');
     </script>
-    <script src="site.js" async></script>
   </body>
 </html>

@@ -5,24 +5,24 @@
     <title>Go by Example: Time Formatting / Parsing</title>
     <link rel=stylesheet href="site.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-  </head>
-  <script>
+    <script>
       window.onkeydown = (e) => {
-          if (e.ctrlKey || e.altKey || e.shiftKey) {
-              return;
-          }
-          
-          if (e.key == "ArrowLeft") {
-              window.location.href = 'epoch.html';
-          }
-          
-          
-          if (e.key == "ArrowRight") {
-              window.location.href = 'random-numbers.html';
-          }
-          
+        if (e.ctrlKey || e.altKey || e.shiftKey) {
+          return;
+        }
+        
+        if (e.key == "ArrowLeft") {
+          window.location.href = 'epoch.html';
+        }
+        
+        
+        if (e.key == "ArrowRight") {
+          window.location.href = 'random-numbers.html';
+        }
+        
       }
-  </script>
+    </script>
+  </head>
   <body>
     <article class="example" id="time-formatting-parsing">
       <h2><a href="./">Go by Example</a>: Time Formatting / Parsing</h2>
@@ -37,7 +37,7 @@ pattern-based layouts.</p>
           </td>
           <td class="code empty leading">
             
-          
+            
           </td>
         </tr>
         
@@ -46,11 +46,9 @@ pattern-based layouts.</p>
             
           </td>
           <td class="code leading">
-            
-              <a href="https://go.dev/play/p/BoZYtr_2j66" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="run"><polygon points="6 3 20 12 6 21 6 3"/></svg></a>
+            <a href="https://go.dev/play/p/BoZYtr_2j66" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="run"><polygon points="6 3 20 12 6 21 6 3"/></svg></a>
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="copy"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/></svg>
-            
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
+            <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -60,7 +58,7 @@ pattern-based layouts.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
+            <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
 </span></span><span class="line"><span class="cl">    <span class="s">&#34;fmt&#34;</span>
 </span></span><span class="line"><span class="cl">    <span class="s">&#34;time&#34;</span>
 </span></span><span class="line"><span class="cl"><span class="p">)</span></span></span></code></pre>
@@ -73,7 +71,7 @@ pattern-based layouts.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+            <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">p</span> <span class="o">:=</span> <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span></span></span></code></pre>
           </td>
         </tr>
@@ -87,7 +85,7 @@ constant.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">t</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nf">Now</span><span class="p">()</span>
+            <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">t</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nf">Now</span><span class="p">()</span>
 </span></span><span class="line"><span class="cl">    <span class="nf">p</span><span class="p">(</span><span class="nx">t</span><span class="p">.</span><span class="nf">Format</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">RFC3339</span><span class="p">))</span></span></span></code></pre>
           </td>
         </tr>
@@ -99,7 +97,7 @@ constant.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">t1</span><span class="p">,</span> <span class="nx">e</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nf">Parse</span><span class="p">(</span>
+            <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">t1</span><span class="p">,</span> <span class="nx">e</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nf">Parse</span><span class="p">(</span>
 </span></span><span class="line"><span class="cl">        <span class="nx">time</span><span class="p">.</span><span class="nx">RFC3339</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">        <span class="s">&#34;2012-11-01T22:08:41+00:00&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="nf">p</span><span class="p">(</span><span class="nx">t1</span><span class="p">)</span></span></span></code></pre>
@@ -119,7 +117,7 @@ The example time must be exactly as shown: the year 2006,
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nf">p</span><span class="p">(</span><span class="nx">t</span><span class="p">.</span><span class="nf">Format</span><span class="p">(</span><span class="s">&#34;3:04PM&#34;</span><span class="p">))</span>
+            <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nf">p</span><span class="p">(</span><span class="nx">t</span><span class="p">.</span><span class="nf">Format</span><span class="p">(</span><span class="s">&#34;3:04PM&#34;</span><span class="p">))</span>
 </span></span><span class="line"><span class="cl">    <span class="nf">p</span><span class="p">(</span><span class="nx">t</span><span class="p">.</span><span class="nf">Format</span><span class="p">(</span><span class="s">&#34;Mon Jan _2 15:04:05 2006&#34;</span><span class="p">))</span>
 </span></span><span class="line"><span class="cl">    <span class="nf">p</span><span class="p">(</span><span class="nx">t</span><span class="p">.</span><span class="nf">Format</span><span class="p">(</span><span class="s">&#34;2006-01-02T15:04:05.999999-07:00&#34;</span><span class="p">))</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">form</span> <span class="o">:=</span> <span class="s">&#34;3 04 PM&#34;</span>
@@ -137,7 +135,7 @@ components of the time value.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;%d-%02d-%02dT%02d:%02d:%02d-00:00\n&#34;</span><span class="p">,</span>
+            <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;%d-%02d-%02dT%02d:%02d:%02d-00:00\n&#34;</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">        <span class="nx">t</span><span class="p">.</span><span class="nf">Year</span><span class="p">(),</span> <span class="nx">t</span><span class="p">.</span><span class="nf">Month</span><span class="p">(),</span> <span class="nx">t</span><span class="p">.</span><span class="nf">Day</span><span class="p">(),</span>
 </span></span><span class="line"><span class="cl">        <span class="nx">t</span><span class="p">.</span><span class="nf">Hour</span><span class="p">(),</span> <span class="nx">t</span><span class="p">.</span><span class="nf">Minute</span><span class="p">(),</span> <span class="nx">t</span><span class="p">.</span><span class="nf">Second</span><span class="p">())</span></span></span></code></pre>
           </td>
@@ -151,7 +149,7 @@ explaining the parsing problem.</p>
           </td>
           <td class="code">
             
-          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">ansic</span> <span class="o">:=</span> <span class="s">&#34;Mon Jan _2 15:04:05 2006&#34;</span>
+            <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">ansic</span> <span class="o">:=</span> <span class="s">&#34;Mon Jan _2 15:04:05 2006&#34;</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">_</span><span class="p">,</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">time</span><span class="p">.</span><span class="nf">Parse</span><span class="p">(</span><span class="nx">ansic</span><span class="p">,</span> <span class="s">&#34;8:41PM&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="nf">p</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
@@ -168,7 +166,7 @@ explaining the parsing problem.</p>
           </td>
           <td class="code">
             
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run time-formatting-parsing.go 
+            <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run time-formatting-parsing.go 
 </span></span><span class="line"><span class="cl"><span class="go">2014-04-15T18:00:15-07:00
 </span></span></span><span class="line"><span class="cl"><span class="go">2012-11-01 22:08:41 +0000 +0000
 </span></span></span><span class="line"><span class="cl"><span class="go">6:00PM
@@ -202,6 +200,5 @@ explaining the parsing problem.</p>
       var codeLines = [];
       codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import (\u000A    \"fmt\"\u000A    \"time\"\u000A)\u000A');codeLines.push('func main() {\u000A    p :\u003D fmt.Println\u000A');codeLines.push('    t :\u003D time.Now()\u000A    p(t.Format(time.RFC3339))\u000A');codeLines.push('    t1, e :\u003D time.Parse(\u000A        time.RFC3339,\u000A        \"2012-11-01T22:08:41+00:00\")\u000A    p(t1)\u000A');codeLines.push('    p(t.Format(\"3:04PM\"))\u000A    p(t.Format(\"Mon Jan _2 15:04:05 2006\"))\u000A    p(t.Format(\"2006-01-02T15:04:05.999999-07:00\"))\u000A    form :\u003D \"3 04 PM\"\u000A    t2, e :\u003D time.Parse(form, \"8 41 PM\")\u000A    p(t2)\u000A');codeLines.push('    fmt.Printf(\"%d-%02d-%02dT%02d:%02d:%02d-00:00\\n\",\u000A        t.Year(), t.Month(), t.Day(),\u000A        t.Hour(), t.Minute(), t.Second())\u000A');codeLines.push('    ansic :\u003D \"Mon Jan _2 15:04:05 2006\"\u000A    _, e \u003D time.Parse(ansic, \"8:41PM\")\u000A    p(e)\u000A}\u000A');codeLines.push('');
     </script>
-    <script src="site.js" async></script>
   </body>
 </html>

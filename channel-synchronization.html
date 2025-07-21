@@ -5,24 +5,24 @@
     <title>Go by Example: Channel Synchronization</title>
     <link rel=stylesheet href="site.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-  </head>
-  <script>
+    <script>
       window.onkeydown = (e) => {
-          if (e.ctrlKey || e.altKey || e.shiftKey) {
-              return;
-          }
-          
-          if (e.key == "ArrowLeft") {
-              window.location.href = 'channel-buffering.html';
-          }
-          
-          
-          if (e.key == "ArrowRight") {
-              window.location.href = 'channel-directions.html';
-          }
-          
+        if (e.ctrlKey || e.altKey || e.shiftKey) {
+          return;
+        }
+        
+        if (e.key == "ArrowLeft") {
+          window.location.href = 'channel-buffering.html';
+        }
+        
+        
+        if (e.key == "ArrowRight") {
+          window.location.href = 'channel-directions.html';
+        }
+        
       }
-  </script>
+    </script>
+  </head>
   <body>
     <article class="example" id="channel-synchronization">
       <h2><a href="./">Go by Example</a>: Channel Synchronization</h2>
@@ -40,7 +40,7 @@ you may prefer to use a <a href="waitgroups">WaitGroup</a>.</p>
           </td>
           <td class="code empty leading">
             
-          
+            
           </td>
         </tr>
         
@@ -49,11 +49,9 @@ you may prefer to use a <a href="waitgroups">WaitGroup</a>.</p>
             
           </td>
           <td class="code leading">
-            
-              <a href="https://go.dev/play/p/Nw-1DzIGk5f" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="run"><polygon points="6 3 20 12 6 21 6 3"/></svg></a>
+            <a href="https://go.dev/play/p/Nw-1DzIGk5f" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="run"><polygon points="6 3 20 12 6 21 6 3"/></svg></a>
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="copy"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/></svg>
-            
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
+            <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -63,7 +61,7 @@ you may prefer to use a <a href="waitgroups">WaitGroup</a>.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
+            <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
 </span></span><span class="line"><span class="cl">    <span class="s">&#34;fmt&#34;</span>
 </span></span><span class="line"><span class="cl">    <span class="s">&#34;time&#34;</span>
 </span></span><span class="line"><span class="cl"><span class="p">)</span></span></span></code></pre>
@@ -79,7 +77,7 @@ goroutine that this function&rsquo;s work is done.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">worker</span><span class="p">(</span><span class="nx">done</span> <span class="kd">chan</span> <span class="kt">bool</span><span class="p">)</span> <span class="p">{</span>
+            <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">worker</span><span class="p">(</span><span class="nx">done</span> <span class="kd">chan</span> <span class="kt">bool</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Print</span><span class="p">(</span><span class="s">&#34;working...&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">time</span><span class="p">.</span><span class="nf">Sleep</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;done&#34;</span><span class="p">)</span></span></span></code></pre>
@@ -93,7 +91,7 @@ goroutine that this function&rsquo;s work is done.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">done</span> <span class="o">&lt;-</span> <span class="kc">true</span>
+            <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">done</span> <span class="o">&lt;-</span> <span class="kc">true</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
           </td>
         </tr>
@@ -104,7 +102,7 @@ goroutine that this function&rsquo;s work is done.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span></span></span></code></pre>
+            <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -116,7 +114,7 @@ notify on.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">done</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="kt">bool</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+            <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">done</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="kt">bool</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="k">go</span> <span class="nf">worker</span><span class="p">(</span><span class="nx">done</span><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
@@ -129,7 +127,7 @@ worker on the channel.</p>
           </td>
           <td class="code">
             
-          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="o">&lt;-</span><span class="nx">done</span>
+            <pre class="chroma"><code><span class="line"><span class="cl">    <span class="o">&lt;-</span><span class="nx">done</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
           </td>
         </tr>
@@ -144,7 +142,7 @@ worker on the channel.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run channel-synchronization.go      
+            <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run channel-synchronization.go      
 </span></span><span class="line"><span class="cl"><span class="go">working...done                  </span></span></span></code></pre>
           </td>
         </tr>
@@ -158,7 +156,7 @@ started.</p>
           </td>
           <td class="code empty">
             
-          
+            
           </td>
         </tr>
         
@@ -184,6 +182,5 @@ started.</p>
       var codeLines = [];
       codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import (\u000A    \"fmt\"\u000A    \"time\"\u000A)\u000A');codeLines.push('func worker(done chan bool) {\u000A    fmt.Print(\"working...\")\u000A    time.Sleep(time.Second)\u000A    fmt.Println(\"done\")\u000A');codeLines.push('    done \u003C- true\u000A}\u000A');codeLines.push('func main() {\u000A');codeLines.push('    done :\u003D make(chan bool, 1)\u000A    go worker(done)\u000A');codeLines.push('    \u003C-done\u000A}\u000A');codeLines.push('');codeLines.push('');
     </script>
-    <script src="site.js" async></script>
   </body>
 </html>

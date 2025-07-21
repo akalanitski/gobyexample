@@ -5,24 +5,24 @@
     <title>Go by Example: Rate Limiting</title>
     <link rel=stylesheet href="site.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-  </head>
-  <script>
+    <script>
       window.onkeydown = (e) => {
-          if (e.ctrlKey || e.altKey || e.shiftKey) {
-              return;
-          }
-          
-          if (e.key == "ArrowLeft") {
-              window.location.href = 'waitgroups.html';
-          }
-          
-          
-          if (e.key == "ArrowRight") {
-              window.location.href = 'atomic-counters.html';
-          }
-          
+        if (e.ctrlKey || e.altKey || e.shiftKey) {
+          return;
+        }
+        
+        if (e.key == "ArrowLeft") {
+          window.location.href = 'waitgroups.html';
+        }
+        
+        
+        if (e.key == "ArrowRight") {
+          window.location.href = 'atomic-counters.html';
+        }
+        
       }
-  </script>
+    </script>
+  </head>
   <body>
     <article class="example" id="rate-limiting">
       <h2><a href="./">Go by Example</a>: Rate Limiting</h2>
@@ -40,7 +40,7 @@ channels, and <a href="tickers">tickers</a>.</p>
           </td>
           <td class="code empty leading">
             
-          
+            
           </td>
         </tr>
         
@@ -49,11 +49,9 @@ channels, and <a href="tickers">tickers</a>.</p>
             
           </td>
           <td class="code leading">
-            
-              <a href="https://go.dev/play/p/y9V3goQfy5m" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="run"><polygon points="6 3 20 12 6 21 6 3"/></svg></a>
+            <a href="https://go.dev/play/p/y9V3goQfy5m" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="run"><polygon points="6 3 20 12 6 21 6 3"/></svg></a>
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="copy"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/></svg>
-            
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
+            <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -63,7 +61,7 @@ channels, and <a href="tickers">tickers</a>.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
+            <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
 </span></span><span class="line"><span class="cl">    <span class="s">&#34;fmt&#34;</span>
 </span></span><span class="line"><span class="cl">    <span class="s">&#34;time&#34;</span>
 </span></span><span class="line"><span class="cl"><span class="p">)</span></span></span></code></pre>
@@ -76,7 +74,7 @@ channels, and <a href="tickers">tickers</a>.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span></span></span></code></pre>
+            <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -90,7 +88,7 @@ same name.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">requests</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="kt">int</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+            <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">requests</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="kt">int</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">1</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;=</span> <span class="mi">5</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="nx">requests</span> <span class="o">&lt;-</span> <span class="nx">i</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
@@ -107,7 +105,7 @@ our rate limiting scheme.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">limiter</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nf">Tick</span><span class="p">(</span><span class="mi">200</span> <span class="o">*</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Millisecond</span><span class="p">)</span></span></span></code></pre>
+            <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">limiter</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nf">Tick</span><span class="p">(</span><span class="mi">200</span> <span class="o">*</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Millisecond</span><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -120,7 +118,7 @@ before serving each request, we limit ourselves to
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="k">for</span> <span class="nx">req</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">requests</span> <span class="p">{</span>
+            <pre class="chroma"><code><span class="line"><span class="cl">    <span class="k">for</span> <span class="nx">req</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">requests</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="o">&lt;-</span><span class="nx">limiter</span>
 </span></span><span class="line"><span class="cl">        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;request&#34;</span><span class="p">,</span> <span class="nx">req</span><span class="p">,</span> <span class="nx">time</span><span class="p">.</span><span class="nf">Now</span><span class="p">())</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span></span></span></code></pre>
@@ -138,7 +136,7 @@ channel will allow bursts of up to 3 events.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">burstyLimiter</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Time</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span></span></span></code></pre>
+            <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">burstyLimiter</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Time</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -149,7 +147,7 @@ channel will allow bursts of up to 3 events.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="k">for</span> <span class="k">range</span> <span class="mi">3</span> <span class="p">{</span>
+            <pre class="chroma"><code><span class="line"><span class="cl">    <span class="k">for</span> <span class="k">range</span> <span class="mi">3</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="nx">burstyLimiter</span> <span class="o">&lt;-</span> <span class="nx">time</span><span class="p">.</span><span class="nf">Now</span><span class="p">()</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span></span></span></code></pre>
           </td>
@@ -163,7 +161,7 @@ value to <code>burstyLimiter</code>, up to its limit of 3.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="k">go</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
+            <pre class="chroma"><code><span class="line"><span class="cl">    <span class="k">go</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="nx">t</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">time</span><span class="p">.</span><span class="nf">Tick</span><span class="p">(</span><span class="mi">200</span> <span class="o">*</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Millisecond</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">            <span class="nx">burstyLimiter</span> <span class="o">&lt;-</span> <span class="nx">t</span>
 </span></span><span class="line"><span class="cl">        <span class="p">}</span>
@@ -180,7 +178,7 @@ of <code>burstyLimiter</code>.</p>
           </td>
           <td class="code">
             
-          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">burstyRequests</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="kt">int</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+            <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">burstyRequests</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="kt">int</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">1</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;=</span> <span class="mi">5</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="nx">burstyRequests</span> <span class="o">&lt;-</span> <span class="nx">i</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
@@ -205,7 +203,7 @@ handled once every ~200 milliseconds as desired.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run rate-limiting.go
+            <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run rate-limiting.go
 </span></span><span class="line"><span class="cl"><span class="go">request 1 2012-10-19 00:38:18.687438 +0000 UTC
 </span></span></span><span class="line"><span class="cl"><span class="go">request 2 2012-10-19 00:38:18.887471 +0000 UTC
 </span></span></span><span class="line"><span class="cl"><span class="go">request 3 2012-10-19 00:38:19.087238 +0000 UTC
@@ -223,7 +221,7 @@ then serve the remaining 2 with ~200ms delays each.</p>
           </td>
           <td class="code">
             
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="go">request 1 2012-10-19 00:38:20.487578 +0000 UTC
+            <pre class="chroma"><code><span class="line"><span class="cl"><span class="go">request 1 2012-10-19 00:38:20.487578 +0000 UTC
 </span></span></span><span class="line"><span class="cl"><span class="go">request 2 2012-10-19 00:38:20.487645 +0000 UTC
 </span></span></span><span class="line"><span class="cl"><span class="go">request 3 2012-10-19 00:38:20.487676 +0000 UTC
 </span></span></span><span class="line"><span class="cl"><span class="go">request 4 2012-10-19 00:38:20.687483 +0000 UTC
@@ -253,6 +251,5 @@ then serve the remaining 2 with ~200ms delays each.</p>
       var codeLines = [];
       codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import (\u000A    \"fmt\"\u000A    \"time\"\u000A)\u000A');codeLines.push('func main() {\u000A');codeLines.push('    requests :\u003D make(chan int, 5)\u000A    for i :\u003D 1; i \u003C\u003D 5; i++ {\u000A        requests \u003C- i\u000A    }\u000A    close(requests)\u000A');codeLines.push('    limiter :\u003D time.Tick(200 * time.Millisecond)\u000A');codeLines.push('    for req :\u003D range requests {\u000A        \u003C-limiter\u000A        fmt.Println(\"request\", req, time.Now())\u000A    }\u000A');codeLines.push('    burstyLimiter :\u003D make(chan time.Time, 3)\u000A');codeLines.push('    for range 3 {\u000A        burstyLimiter \u003C- time.Now()\u000A    }\u000A');codeLines.push('    go func() {\u000A        for t :\u003D range time.Tick(200 * time.Millisecond) {\u000A            burstyLimiter \u003C- t\u000A        }\u000A    }()\u000A');codeLines.push('    burstyRequests :\u003D make(chan int, 5)\u000A    for i :\u003D 1; i \u003C\u003D 5; i++ {\u000A        burstyRequests \u003C- i\u000A    }\u000A    close(burstyRequests)\u000A    for req :\u003D range burstyRequests {\u000A        \u003C-burstyLimiter\u000A        fmt.Println(\"request\", req, time.Now())\u000A    }\u000A}\u000A');codeLines.push('');codeLines.push('');
     </script>
-    <script src="site.js" async></script>
   </body>
 </html>
