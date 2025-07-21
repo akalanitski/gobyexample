@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="it">
   <head>
     <meta charset="utf-8">
     <title>Go by Example - IT: Atomic Counters</title>
     <link rel=stylesheet href="site.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-YS5D7DR8P1"></script>
     <script>
@@ -12,6 +13,23 @@
       gtag('js', new Date());
 
       gtag('config', 'G-YS5D7DR8P1');
+    </script>
+    <script>
+      window.onkeydown = (e) => {
+        if (e.ctrlKey || e.altKey || e.shiftKey) {
+          return;
+        }
+        
+        if (e.key == "ArrowLeft") {
+          window.location.href = 'rate-limiting.html';
+        }
+        
+        
+        if (e.key == "ArrowRight") {
+          window.location.href = 'mutexes.html';
+        }
+        
+      }
     </script>
   </head>
   <body>
@@ -33,7 +51,7 @@ letto e aggiornato da svariate goroutine.</p>
 
           </td>
           <td class="code empty leading">
-	        
+            
             
           </td>
         </tr>
@@ -43,7 +61,8 @@ letto e aggiornato da svariate goroutine.</p>
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/UFVueex_Qwm"><img title="Run code" src="play.png" class="run" /></a>
+            <a href="https://go.dev/play/p/UFVueex_Qwm" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="run"><polygon points="6 3 20 12 6 21 6 3"/></svg></a>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="copy"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/></svg>
             <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
           </td>
         </tr>
@@ -53,7 +72,7 @@ letto e aggiornato da svariate goroutine.</p>
             
           </td>
           <td class="code leading">
-	        
+            
             <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="s">&#34;fmt&#34;</span>
 </span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="s">&#34;time&#34;</span>
 </span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="s">&#34;sync/atomic&#34;</span>
@@ -66,7 +85,7 @@ letto e aggiornato da svariate goroutine.</p>
             
           </td>
           <td class="code leading">
-	        
+            
             <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span></span></span></code></pre>
           </td>
         </tr>
@@ -78,7 +97,7 @@ il nostro contatore (che non sarà mai negativo).</p>
 
           </td>
           <td class="code leading">
-	        
+            
             <pre class="chroma"><code><span class="line"><span class="cl">    <span class="kd">var</span> <span class="nx">ops</span> <span class="kt">uint64</span> <span class="p">=</span> <span class="mi">0</span></span></span></code></pre>
           </td>
         </tr>
@@ -91,7 +110,7 @@ il contatore circa ogni millisecondo.</p>
 
           </td>
           <td class="code leading">
-	        
+            
             <pre class="chroma"><code><span class="line"><span class="cl">    <span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="mi">50</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="k">go</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">            <span class="k">for</span> <span class="p">{</span></span></span></code></pre>
@@ -107,7 +126,7 @@ utilizzando l&rsquo;operatore <code>&amp;</code>.</p>
 
           </td>
           <td class="code leading">
-	        
+            
             <pre class="chroma"><code><span class="line"><span class="cl">                <span class="nx">atomic</span><span class="p">.</span><span class="nf">AddUint64</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">ops</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
@@ -118,7 +137,7 @@ utilizzando l&rsquo;operatore <code>&amp;</code>.</p>
 
           </td>
           <td class="code leading">
-	        
+            
             <pre class="chroma"><code><span class="line"><span class="cl">                <span class="nx">runtime</span><span class="p">.</span><span class="nf">Gosched</span><span class="p">()</span>
 </span></span><span class="line"><span class="cl">            <span class="p">}</span>
 </span></span><span class="line"><span class="cl">        <span class="p">}()</span>
@@ -133,7 +152,7 @@ di effettuare qualche incremento.</p>
 
           </td>
           <td class="code leading">
-	        
+            
             <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">time</span><span class="p">.</span><span class="nf">Sleep</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
@@ -149,7 +168,7 @@ il puntatore <code>&amp;ops</code> dal quale leggere il valore</p>
 
           </td>
           <td class="code">
-	        
+            
             <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">opsFinal</span> <span class="o">:=</span> <span class="nx">atomic</span><span class="p">.</span><span class="nf">LoadUint64</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">ops</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;ops:&#34;</span><span class="p">,</span> <span class="nx">opsFinal</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
@@ -167,7 +186,7 @@ circa 40.000 operazioni.</p>
 
           </td>
           <td class="code leading">
-	        
+            
             <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run atomic-counters.go
 </span></span><span class="line"><span class="cl"><span class="go">ops: 40200</span></span></span></code></pre>
           </td>
@@ -180,7 +199,7 @@ modificare lo stato.</p>
 
           </td>
           <td class="code empty">
-	        
+            
             
           </td>
         </tr>
@@ -204,6 +223,5 @@ modificare lo stato.</p>
       var codeLines = [];
       codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import \"fmt\"\u000Aimport \"time\"\u000Aimport \"sync/atomic\"\u000Aimport \"runtime\"\u000A');codeLines.push('func main() {\u000A');codeLines.push('    var ops uint64 \u003D 0\u000A');codeLines.push('    for i :\u003D 0; i \u003C 50; i++ {\u000A        go func() {\u000A            for {\u000A');codeLines.push('                atomic.AddUint64(\u0026ops, 1)\u000A');codeLines.push('                runtime.Gosched()\u000A            }\u000A        }()\u000A    }\u000A');codeLines.push('    time.Sleep(time.Second)\u000A');codeLines.push('    opsFinal :\u003D atomic.LoadUint64(\u0026ops)\u000A    fmt.Println(\"ops:\", opsFinal)\u000A}\u000A');codeLines.push('');codeLines.push('');
     </script>
-    <script src="site.js" async></script>
   </body>
 </html>

@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="it">
   <head>
     <meta charset="utf-8">
     <title>Go by Example - IT: Rate Limiting</title>
     <link rel=stylesheet href="site.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-YS5D7DR8P1"></script>
     <script>
@@ -12,6 +13,23 @@
       gtag('js', new Date());
 
       gtag('config', 'G-YS5D7DR8P1');
+    </script>
+    <script>
+      window.onkeydown = (e) => {
+        if (e.ctrlKey || e.altKey || e.shiftKey) {
+          return;
+        }
+        
+        if (e.key == "ArrowLeft") {
+          window.location.href = 'waitgroups.html';
+        }
+        
+        
+        if (e.key == "ArrowRight") {
+          window.location.href = 'atomic-counters.html';
+        }
+        
+      }
     </script>
   </head>
   <body>
@@ -30,7 +48,7 @@ goroutine, i channel e i <a href="ticker">ticker</a>.</p>
 
           </td>
           <td class="code empty leading">
-	        
+            
             
           </td>
         </tr>
@@ -40,7 +58,8 @@ goroutine, i channel e i <a href="ticker">ticker</a>.</p>
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/oh2f6zZkDxs"><img title="Run code" src="play.png" class="run" /></a>
+            <a href="https://go.dev/play/p/oh2f6zZkDxs" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="run"><polygon points="6 3 20 12 6 21 6 3"/></svg></a>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="copy"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/></svg>
             <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
           </td>
         </tr>
@@ -50,7 +69,7 @@ goroutine, i channel e i <a href="ticker">ticker</a>.</p>
             
           </td>
           <td class="code leading">
-	        
+            
             <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="s">&#34;time&#34;</span>
 </span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="s">&#34;fmt&#34;</span></span></span></code></pre>
           </td>
@@ -61,7 +80,7 @@ goroutine, i channel e i <a href="ticker">ticker</a>.</p>
             
           </td>
           <td class="code leading">
-	        
+            
             <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span></span></span></code></pre>
           </td>
         </tr>
@@ -76,7 +95,7 @@ mimare l&rsquo;entrata delle richieste.</p>
 
           </td>
           <td class="code leading">
-	        
+            
             <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">richieste</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="kt">int</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">1</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;=</span> <span class="mi">5</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="nx">richieste</span> <span class="o">&lt;-</span> <span class="nx">i</span>
@@ -93,7 +112,7 @@ nostro schema di rate limiting.</p>
 
           </td>
           <td class="code leading">
-	        
+            
             <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">limitatore</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nf">Tick</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">Millisecond</span> <span class="o">*</span> <span class="mi">200</span><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
@@ -107,7 +126,7 @@ limitiamo a fare al massimo una richiesta ogni
 
           </td>
           <td class="code leading">
-	        
+            
             <pre class="chroma"><code><span class="line"><span class="cl">    <span class="k">for</span> <span class="nx">ric</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">richieste</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="o">&lt;-</span><span class="nx">limitatore</span>
 </span></span><span class="line"><span class="cl">        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;richiesta&#34;</span><span class="p">,</span> <span class="nx">ric</span><span class="p">,</span> <span class="nx">time</span><span class="p">.</span><span class="nf">Now</span><span class="p">())</span>
@@ -126,7 +145,7 @@ raffiche fino ad un massimo di 3 richieste.</p>
 
           </td>
           <td class="code leading">
-	        
+            
             <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">limitatoreARaffica</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Time</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
@@ -138,7 +157,7 @@ possiamo prendere in carico 3 richieste.</p>
 
           </td>
           <td class="code leading">
-	        
+            
             <pre class="chroma"><code><span class="line"><span class="cl">    <span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="mi">3</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="nx">limitatoreARaffica</span> <span class="o">&lt;-</span> <span class="nx">time</span><span class="p">.</span><span class="nf">Now</span><span class="p">()</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span></span></span></code></pre>
@@ -153,7 +172,7 @@ arrivare al suo limite di 3 richieste.</p>
 
           </td>
           <td class="code leading">
-	        
+            
             <pre class="chroma"><code><span class="line"><span class="cl">    <span class="k">go</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="nx">t</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">time</span><span class="p">.</span><span class="nf">Tick</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">Millisecond</span> <span class="o">*</span> <span class="mi">200</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">            <span class="nx">limitatoreARaffica</span> <span class="o">&lt;-</span> <span class="nx">t</span>
@@ -170,7 +189,7 @@ limitatore di eseguire richieste a raffica.</p>
 
           </td>
           <td class="code">
-	        
+            
             <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">richiesteARaffica</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="kt">int</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">1</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;=</span> <span class="mi">5</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="nx">richiesteARaffica</span> <span class="o">&lt;-</span> <span class="nx">i</span>
@@ -196,7 +215,7 @@ millisecondi.</p>
 
           </td>
           <td class="code leading">
-	        
+            
             <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run rate-limiting.go
 </span></span><span class="line"><span class="cl"><span class="go">richiesta 1 2016-04-17 19:05:37.736132953 +0200 CEST
 </span></span></span><span class="line"><span class="cl"><span class="go">richiesta 2 2016-04-17 19:05:37.936138961 +0200 CEST
@@ -215,7 +234,7 @@ millisecondi l&rsquo;una dall&rsquo;altra.</p>
 
           </td>
           <td class="code">
-	        
+            
             <pre class="chroma"><code><span class="line"><span class="cl"><span class="go">richiesta 1 2016-04-17 19:05:38.536251527 +0200 CEST
 </span></span></span><span class="line"><span class="cl"><span class="go">richiesta 2 2016-04-17 19:05:38.536266185 +0200 CEST
 </span></span></span><span class="line"><span class="cl"><span class="go">richiesta 3 2016-04-17 19:05:38.536277665 +0200 CEST
@@ -243,6 +262,5 @@ millisecondi l&rsquo;una dall&rsquo;altra.</p>
       var codeLines = [];
       codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import \"time\"\u000Aimport \"fmt\"\u000A');codeLines.push('func main() {\u000A');codeLines.push('    richieste :\u003D make(chan int, 5)\u000A    for i :\u003D 1; i \u003C\u003D 5; i++ {\u000A        richieste \u003C- i\u000A    }\u000A    close(richieste)\u000A');codeLines.push('    limitatore :\u003D time.Tick(time.Millisecond * 200)\u000A');codeLines.push('    for ric :\u003D range richieste {\u000A        \u003C-limitatore\u000A        fmt.Println(\"richiesta\", ric, time.Now())\u000A    }\u000A');codeLines.push('    limitatoreARaffica :\u003D make(chan time.Time, 3)\u000A');codeLines.push('    for i :\u003D 0; i \u003C 3; i++ {\u000A        limitatoreARaffica \u003C- time.Now()\u000A    }\u000A');codeLines.push('    go func() {\u000A        for t :\u003D range time.Tick(time.Millisecond * 200) {\u000A            limitatoreARaffica \u003C- t\u000A        }\u000A    }()\u000A');codeLines.push('    richiesteARaffica :\u003D make(chan int, 5)\u000A    for i :\u003D 1; i \u003C\u003D 5; i++ {\u000A        richiesteARaffica \u003C- i\u000A    }\u000A    close(richiesteARaffica)\u000A    for ric :\u003D range richiesteARaffica {\u000A        \u003C-limitatoreARaffica\u000A        fmt.Println(\"richiesta\", ric, time.Now())\u000A    }\u000A}\u000A');codeLines.push('');codeLines.push('');
     </script>
-    <script src="site.js" async></script>
   </body>
 </html>

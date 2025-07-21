@@ -5,24 +5,24 @@
     <title>Go by Example: Time</title>
     <link rel=stylesheet href="site.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-  </head>
-  <script>
+    <script>
       window.onkeydown = (e) => {
-          if (e.ctrlKey || e.altKey || e.shiftKey) {
-              return;
-          }
-          
-          if (e.key == "ArrowLeft") {
-              window.location.href = 'xml.html';
-          }
-          
-          
-          if (e.key == "ArrowRight") {
-              window.location.href = 'epoch.html';
-          }
-          
+        if (e.ctrlKey || e.altKey || e.shiftKey) {
+          return;
+        }
+        
+        if (e.key == "ArrowLeft") {
+          window.location.href = 'xml.html';
+        }
+        
+        
+        if (e.key == "ArrowRight") {
+          window.location.href = 'epoch.html';
+        }
+        
       }
-  </script>
+    </script>
+  </head>
   <body>
     <article class="example" id="time">
       <h2><a href="./">Go by Example</a>: Time</h2>
@@ -37,7 +37,7 @@ here are some examples.</p>
           </td>
           <td class="code empty leading">
             
-          
+            
           </td>
         </tr>
         
@@ -46,11 +46,9 @@ here are some examples.</p>
             
           </td>
           <td class="code leading">
-            
-              <a href="https://go.dev/play/p/YAM3s1KPc8c" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="run"><polygon points="6 3 20 12 6 21 6 3"/></svg></a>
+            <a href="https://go.dev/play/p/YAM3s1KPc8c" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="run"><polygon points="6 3 20 12 6 21 6 3"/></svg></a>
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="copy"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/></svg>
-            
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
+            <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -60,7 +58,7 @@ here are some examples.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
+            <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
 </span></span><span class="line"><span class="cl">    <span class="s">&#34;fmt&#34;</span>
 </span></span><span class="line"><span class="cl">    <span class="s">&#34;time&#34;</span>
 </span></span><span class="line"><span class="cl"><span class="p">)</span></span></span></code></pre>
@@ -73,7 +71,7 @@ here are some examples.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+            <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">p</span> <span class="o">:=</span> <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span></span></span></code></pre>
           </td>
         </tr>
@@ -85,7 +83,7 @@ here are some examples.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">now</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nf">Now</span><span class="p">()</span>
+            <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">now</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nf">Now</span><span class="p">()</span>
 </span></span><span class="line"><span class="cl">    <span class="nf">p</span><span class="p">(</span><span class="nx">now</span><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
@@ -99,7 +97,7 @@ with a <code>Location</code>, i.e. time zone.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">then</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nf">Date</span><span class="p">(</span>
+            <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">then</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nf">Date</span><span class="p">(</span>
 </span></span><span class="line"><span class="cl">        <span class="mi">2009</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">34</span><span class="p">,</span> <span class="mi">58</span><span class="p">,</span> <span class="mi">651387237</span><span class="p">,</span> <span class="nx">time</span><span class="p">.</span><span class="nx">UTC</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="nf">p</span><span class="p">(</span><span class="nx">then</span><span class="p">)</span></span></span></code></pre>
           </td>
@@ -113,7 +111,7 @@ value as expected.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nf">p</span><span class="p">(</span><span class="nx">then</span><span class="p">.</span><span class="nf">Year</span><span class="p">())</span>
+            <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nf">p</span><span class="p">(</span><span class="nx">then</span><span class="p">.</span><span class="nf">Year</span><span class="p">())</span>
 </span></span><span class="line"><span class="cl">    <span class="nf">p</span><span class="p">(</span><span class="nx">then</span><span class="p">.</span><span class="nf">Month</span><span class="p">())</span>
 </span></span><span class="line"><span class="cl">    <span class="nf">p</span><span class="p">(</span><span class="nx">then</span><span class="p">.</span><span class="nf">Day</span><span class="p">())</span>
 </span></span><span class="line"><span class="cl">    <span class="nf">p</span><span class="p">(</span><span class="nx">then</span><span class="p">.</span><span class="nf">Hour</span><span class="p">())</span>
@@ -131,7 +129,7 @@ value as expected.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nf">p</span><span class="p">(</span><span class="nx">then</span><span class="p">.</span><span class="nf">Weekday</span><span class="p">())</span></span></span></code></pre>
+            <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nf">p</span><span class="p">(</span><span class="nx">then</span><span class="p">.</span><span class="nf">Weekday</span><span class="p">())</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -144,7 +142,7 @@ as the second, respectively.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nf">p</span><span class="p">(</span><span class="nx">then</span><span class="p">.</span><span class="nf">Before</span><span class="p">(</span><span class="nx">now</span><span class="p">))</span>
+            <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nf">p</span><span class="p">(</span><span class="nx">then</span><span class="p">.</span><span class="nf">Before</span><span class="p">(</span><span class="nx">now</span><span class="p">))</span>
 </span></span><span class="line"><span class="cl">    <span class="nf">p</span><span class="p">(</span><span class="nx">then</span><span class="p">.</span><span class="nf">After</span><span class="p">(</span><span class="nx">now</span><span class="p">))</span>
 </span></span><span class="line"><span class="cl">    <span class="nf">p</span><span class="p">(</span><span class="nx">then</span><span class="p">.</span><span class="nf">Equal</span><span class="p">(</span><span class="nx">now</span><span class="p">))</span></span></span></code></pre>
           </td>
@@ -158,7 +156,7 @@ the interval between two times.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">diff</span> <span class="o">:=</span> <span class="nx">now</span><span class="p">.</span><span class="nf">Sub</span><span class="p">(</span><span class="nx">then</span><span class="p">)</span>
+            <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">diff</span> <span class="o">:=</span> <span class="nx">now</span><span class="p">.</span><span class="nf">Sub</span><span class="p">(</span><span class="nx">then</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="nf">p</span><span class="p">(</span><span class="nx">diff</span><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
@@ -171,7 +169,7 @@ various units.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nf">p</span><span class="p">(</span><span class="nx">diff</span><span class="p">.</span><span class="nf">Hours</span><span class="p">())</span>
+            <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nf">p</span><span class="p">(</span><span class="nx">diff</span><span class="p">.</span><span class="nf">Hours</span><span class="p">())</span>
 </span></span><span class="line"><span class="cl">    <span class="nf">p</span><span class="p">(</span><span class="nx">diff</span><span class="p">.</span><span class="nf">Minutes</span><span class="p">())</span>
 </span></span><span class="line"><span class="cl">    <span class="nf">p</span><span class="p">(</span><span class="nx">diff</span><span class="p">.</span><span class="nf">Seconds</span><span class="p">())</span>
 </span></span><span class="line"><span class="cl">    <span class="nf">p</span><span class="p">(</span><span class="nx">diff</span><span class="p">.</span><span class="nf">Nanoseconds</span><span class="p">())</span></span></span></code></pre>
@@ -187,7 +185,7 @@ duration.</p>
           </td>
           <td class="code">
             
-          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nf">p</span><span class="p">(</span><span class="nx">then</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="nx">diff</span><span class="p">))</span>
+            <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nf">p</span><span class="p">(</span><span class="nx">then</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="nx">diff</span><span class="p">))</span>
 </span></span><span class="line"><span class="cl">    <span class="nf">p</span><span class="p">(</span><span class="nx">then</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="o">-</span><span class="nx">diff</span><span class="p">))</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
           </td>
@@ -203,7 +201,7 @@ duration.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run time.go
+            <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run time.go
 </span></span><span class="line"><span class="cl"><span class="go">2012-10-31 15:50:13.793654 +0000 UTC
 </span></span></span><span class="line"><span class="cl"><span class="go">2009-11-17 20:34:58.651387237 +0000 UTC
 </span></span></span><span class="line"><span class="cl"><span class="go">2009
@@ -236,7 +234,7 @@ the Unix epoch.</p>
           </td>
           <td class="code empty">
             
-          
+            
           </td>
         </tr>
         
@@ -262,6 +260,5 @@ the Unix epoch.</p>
       var codeLines = [];
       codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import (\u000A    \"fmt\"\u000A    \"time\"\u000A)\u000A');codeLines.push('func main() {\u000A    p :\u003D fmt.Println\u000A');codeLines.push('    now :\u003D time.Now()\u000A    p(now)\u000A');codeLines.push('    then :\u003D time.Date(\u000A        2009, 11, 17, 20, 34, 58, 651387237, time.UTC)\u000A    p(then)\u000A');codeLines.push('    p(then.Year())\u000A    p(then.Month())\u000A    p(then.Day())\u000A    p(then.Hour())\u000A    p(then.Minute())\u000A    p(then.Second())\u000A    p(then.Nanosecond())\u000A    p(then.Location())\u000A');codeLines.push('    p(then.Weekday())\u000A');codeLines.push('    p(then.Before(now))\u000A    p(then.After(now))\u000A    p(then.Equal(now))\u000A');codeLines.push('    diff :\u003D now.Sub(then)\u000A    p(diff)\u000A');codeLines.push('    p(diff.Hours())\u000A    p(diff.Minutes())\u000A    p(diff.Seconds())\u000A    p(diff.Nanoseconds())\u000A');codeLines.push('    p(then.Add(diff))\u000A    p(then.Add(-diff))\u000A}\u000A');codeLines.push('');codeLines.push('');
     </script>
-    <script src="site.js" async></script>
   </body>
 </html>

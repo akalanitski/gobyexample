@@ -41,6 +41,8 @@ var langCode = "en"
 
 var templatePath = "templates/"
 
+const staticDir = "static/"
+
 func verbose() bool {
 	return len(os.Getenv("VERBOSE")) > 0
 }
@@ -265,12 +267,14 @@ func parseExamples() []*Example {
 	i := 0
 	examples := make([]*Example, 0)
 	exampleNames := readLines("examples.txt")
+	n := len(exampleNames)
 	for _, exampleName := range exampleNames {
+		logStr := "Processing [%d/%d]\t %s"
 		if exampleName == "" || strings.HasPrefix(exampleName, "#") {
+			if verbose() {
+				fmt.Printf(logStr+" Skipped\n", i+1, n, exampleName)
+			}
 			continue
-		}
-		if verbose() {
-			fmt.Printf("Processing [%d/%d]\t %s\n", i+1, len(exampleNames), exampleName)
 		}
 		example := Example{Name: exampleName}
 		exampleID := strings.ToLower(exampleName)
@@ -284,11 +288,22 @@ func parseExamples() []*Example {
 			example.FileName += "." + outputExt
 		}
 		example.Segs = make([][]*Seg, 0)
-		exampleDirPath := "examples/" + exampleID + "/"
-		if langCode != "en" {
-			exampleDirPath += langCode + "/"
-		}
+		exampleDirPath := "examples/" + exampleID + "/" + langCode + "/"
 		sourcePaths := mustGlob(exampleDirPath + "*")
+		if len(sourcePaths) == 0 {
+			logStr += " [" + langCode + "] not translated, "
+			exampleDirPath = "examples/" + exampleID + "/"
+			sourcePaths = mustGlob(exampleDirPath + "*")
+		}
+		if len(sourcePaths) == 0 {
+			if verbose() {
+				fmt.Printf(logStr+" Skipped\n", i+1, n, exampleName)
+			}
+			continue
+		}
+		if verbose() {
+			fmt.Printf(logStr+" files:%v\n", i+1, n, exampleName, len(sourcePaths))
+		}
 		for _, sourcePath := range sourcePaths {
 			if isDir(sourcePath) {
 				continue
@@ -370,7 +385,7 @@ func main() {
 	if len(flag.Args()) > 1 {
 		siteDir = flag.Args()[1]
 	}
-	fmt.Println("Lang: %v, Extension: %v, site: %v", langCode, outputExt, siteDir)
+	fmt.Printf("Genarate HTML for Lang: %v, Extension: %v, dir: %v\n", langCode, outputExt, siteDir)
 	ensureDir(siteDir)
 
 	if langCode != "en" {
@@ -380,7 +395,7 @@ func main() {
 	// Clone static content in public directory
 	staticFiles := []string{"site.css", "site.js", "favicon.ico", "play.png", "clipboard.png"}
 	for _, fileName := range staticFiles {
-		copyFile(templatePath, siteDir, fileName)
+		copyFile(staticDir, siteDir, fileName)
 	}
 
 	examples := parseExamples()

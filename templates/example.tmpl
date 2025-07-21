@@ -5,24 +5,24 @@
     <title>Go by Example: {{.Name}}</title>
     <link rel=stylesheet href="site.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-  </head>
-  <script>
+    <script>
       window.onkeydown = (e) => {
-          if (e.ctrlKey || e.altKey || e.shiftKey) {
-              return;
-          }
-          {{if .PrevExample}}
-          if (e.key == "ArrowLeft") {
-              window.location.href = '{{.PrevExample.FileName}}';
-          }
-          {{end}}
-          {{if .NextExample}}
-          if (e.key == "ArrowRight") {
-              window.location.href = '{{.NextExample.FileName}}';
-          }
-          {{end}}
+        if (e.ctrlKey || e.altKey || e.shiftKey) {
+          return;
+        }
+        {{if .PrevExample}}
+        if (e.key == "ArrowLeft") {
+          window.location.href = '{{.PrevExample.FileName}}';
+        }
+        {{end}}
+        {{if .NextExample}}
+        if (e.key == "ArrowRight") {
+          window.location.href = '{{.NextExample.FileName}}';
+        }
+        {{end}}
       }
-  </script>
+    </script>
+  </head>
   <body>
     <article class="example" id="{{.ID}}">
       <h2><a href="./">Go by Example</a>: {{.Name}}</h2>
@@ -34,11 +34,9 @@
             {{.DocsRendered}}
           </td>
           <td class="code{{if .CodeEmpty}} empty{{end}}{{if .CodeLeading}} leading{{end}}">
-            {{if .CodeRun}}
-              <a href="https://go.dev/play/p/{{$.URLHash}}" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="run"><polygon points="6 3 20 12 6 21 6 3"/></svg></a>
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="copy"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/></svg>
-            {{end}}
-          {{.CodeRendered}}
+            {{if .CodeRun}}<a href="https://go.dev/play/p/{{$.URLHash}}" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="run"><polygon points="6 3 20 12 6 21 6 3"/></svg></a>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="copy"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/></svg>{{end}}
+            {{.CodeRendered}}
           </td>
         </tr>
         {{end}}
@@ -55,6 +53,5 @@
       var codeLines = [];
       {{range .Segs}}{{range .}}codeLines.push('{{js .CodeForJs}}');{{end}}{{end}}
     </script>
-    <script src="site.js" async></script>
   </body>
 </html>

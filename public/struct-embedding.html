@@ -5,24 +5,24 @@
     <title>Go by Example: Struct Embedding</title>
     <link rel=stylesheet href="site.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-  </head>
-  <script>
+    <script>
       window.onkeydown = (e) => {
-          if (e.ctrlKey || e.altKey || e.shiftKey) {
-              return;
-          }
-          
-          if (e.key == "ArrowLeft") {
-              window.location.href = 'enums.html';
-          }
-          
-          
-          if (e.key == "ArrowRight") {
-              window.location.href = 'generics.html';
-          }
-          
+        if (e.ctrlKey || e.altKey || e.shiftKey) {
+          return;
+        }
+        
+        if (e.key == "ArrowLeft") {
+          window.location.href = 'enums.html';
+        }
+        
+        
+        if (e.key == "ArrowRight") {
+          window.location.href = 'generics.html';
+        }
+        
       }
-  </script>
+    </script>
+  </head>
   <body>
     <article class="example" id="struct-embedding">
       <h2><a href="./">Go by Example</a>: Struct Embedding</h2>
@@ -40,7 +40,7 @@ files and folders into the application binary.</p>
           </td>
           <td class="code empty leading">
             
-          
+            
           </td>
         </tr>
         
@@ -49,11 +49,9 @@ files and folders into the application binary.</p>
             
           </td>
           <td class="code leading">
-            
-              <a href="https://go.dev/play/p/-LOu1L0i2tR" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="run"><polygon points="6 3 20 12 6 21 6 3"/></svg></a>
+            <a href="https://go.dev/play/p/-LOu1L0i2tR" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="run"><polygon points="6 3 20 12 6 21 6 3"/></svg></a>
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="copy"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/></svg>
-            
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
+            <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -63,7 +61,7 @@ files and folders into the application binary.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="s">&#34;fmt&#34;</span></span></span></code></pre>
+            <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="s">&#34;fmt&#34;</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -73,7 +71,7 @@ files and folders into the application binary.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">type</span> <span class="nx">base</span> <span class="kd">struct</span> <span class="p">{</span>
+            <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">type</span> <span class="nx">base</span> <span class="kd">struct</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">num</span> <span class="kt">int</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
           </td>
@@ -85,7 +83,7 @@ files and folders into the application binary.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="p">(</span><span class="nx">b</span> <span class="nx">base</span><span class="p">)</span> <span class="nf">describe</span><span class="p">()</span> <span class="kt">string</span> <span class="p">{</span>
+            <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="p">(</span><span class="nx">b</span> <span class="nx">base</span><span class="p">)</span> <span class="nf">describe</span><span class="p">()</span> <span class="kt">string</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nx">fmt</span><span class="p">.</span><span class="nf">Sprintf</span><span class="p">(</span><span class="s">&#34;base with num=%v&#34;</span><span class="p">,</span> <span class="nx">b</span><span class="p">.</span><span class="nx">num</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
           </td>
@@ -99,7 +97,7 @@ like a field without a name.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">type</span> <span class="nx">container</span> <span class="kd">struct</span> <span class="p">{</span>
+            <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">type</span> <span class="nx">container</span> <span class="kd">struct</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">base</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">str</span> <span class="kt">string</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
@@ -112,7 +110,7 @@ like a field without a name.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span></span></span></code></pre>
+            <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -125,7 +123,7 @@ embedded type serves as the field name.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">co</span> <span class="o">:=</span> <span class="nx">container</span><span class="p">{</span>
+            <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">co</span> <span class="o">:=</span> <span class="nx">container</span><span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="nx">base</span><span class="p">:</span> <span class="nx">base</span><span class="p">{</span>
 </span></span><span class="line"><span class="cl">            <span class="nx">num</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">        <span class="p">},</span>
@@ -142,7 +140,7 @@ e.g. <code>co.num</code>.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;co={num: %v, str: %v}\n&#34;</span><span class="p">,</span> <span class="nx">co</span><span class="p">.</span><span class="nx">num</span><span class="p">,</span> <span class="nx">co</span><span class="p">.</span><span class="nx">str</span><span class="p">)</span></span></span></code></pre>
+            <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;co={num: %v, str: %v}\n&#34;</span><span class="p">,</span> <span class="nx">co</span><span class="p">.</span><span class="nx">num</span><span class="p">,</span> <span class="nx">co</span><span class="p">.</span><span class="nx">str</span><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -154,7 +152,7 @@ the embedded type name.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;also num:&#34;</span><span class="p">,</span> <span class="nx">co</span><span class="p">.</span><span class="nx">base</span><span class="p">.</span><span class="nx">num</span><span class="p">)</span></span></span></code></pre>
+            <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;also num:&#34;</span><span class="p">,</span> <span class="nx">co</span><span class="p">.</span><span class="nx">base</span><span class="p">.</span><span class="nx">num</span><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -168,7 +166,7 @@ directly on <code>co</code>.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;describe:&#34;</span><span class="p">,</span> <span class="nx">co</span><span class="p">.</span><span class="nf">describe</span><span class="p">())</span></span></span></code></pre>
+            <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;describe:&#34;</span><span class="p">,</span> <span class="nx">co</span><span class="p">.</span><span class="nf">describe</span><span class="p">())</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -178,7 +176,7 @@ directly on <code>co</code>.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="kd">type</span> <span class="nx">describer</span> <span class="kd">interface</span> <span class="p">{</span>
+            <pre class="chroma"><code><span class="line"><span class="cl">    <span class="kd">type</span> <span class="nx">describer</span> <span class="kd">interface</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="nf">describe</span><span class="p">()</span> <span class="kt">string</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span></span></span></code></pre>
           </td>
@@ -194,7 +192,7 @@ we see that a <code>container</code> now implements the
           </td>
           <td class="code">
             
-          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="kd">var</span> <span class="nx">d</span> <span class="nx">describer</span> <span class="p">=</span> <span class="nx">co</span>
+            <pre class="chroma"><code><span class="line"><span class="cl">    <span class="kd">var</span> <span class="nx">d</span> <span class="nx">describer</span> <span class="p">=</span> <span class="nx">co</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;describer:&#34;</span><span class="p">,</span> <span class="nx">d</span><span class="p">.</span><span class="nf">describe</span><span class="p">())</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
           </td>
@@ -210,7 +208,7 @@ we see that a <code>container</code> now implements the
           </td>
           <td class="code">
             
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run struct-embedding.go
+            <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run struct-embedding.go
 </span></span><span class="line"><span class="cl"><span class="go">co={num: 1, str: some name}
 </span></span></span><span class="line"><span class="cl"><span class="go">also num: 1
 </span></span></span><span class="line"><span class="cl"><span class="go">describe: base with num=1
@@ -240,6 +238,5 @@ we see that a <code>container</code> now implements the
       var codeLines = [];
       codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import \"fmt\"\u000A');codeLines.push('type base struct {\u000A    num int\u000A}\u000A');codeLines.push('func (b base) describe() string {\u000A    return fmt.Sprintf(\"base with num\u003D%v\", b.num)\u000A}\u000A');codeLines.push('type container struct {\u000A    base\u000A    str string\u000A}\u000A');codeLines.push('func main() {\u000A');codeLines.push('    co :\u003D container{\u000A        base: base{\u000A            num: 1,\u000A        },\u000A        str: \"some name\",\u000A    }\u000A');codeLines.push('    fmt.Printf(\"co\u003D{num: %v, str: %v}\\n\", co.num, co.str)\u000A');codeLines.push('    fmt.Println(\"also num:\", co.base.num)\u000A');codeLines.push('    fmt.Println(\"describe:\", co.describe())\u000A');codeLines.push('    type describer interface {\u000A        describe() string\u000A    }\u000A');codeLines.push('    var d describer \u003D co\u000A    fmt.Println(\"describer:\", d.describe())\u000A}\u000A');codeLines.push('');
     </script>
-    <script src="site.js" async></script>
   </body>
 </html>

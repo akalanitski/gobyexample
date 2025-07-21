@@ -5,20 +5,20 @@
     <title>Go by Example: Hello World</title>
     <link rel=stylesheet href="site.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-  </head>
-  <script>
+    <script>
       window.onkeydown = (e) => {
-          if (e.ctrlKey || e.altKey || e.shiftKey) {
-              return;
-          }
-          
-          
-          if (e.key == "ArrowRight") {
-              window.location.href = 'values.html';
-          }
-          
+        if (e.ctrlKey || e.altKey || e.shiftKey) {
+          return;
+        }
+        
+        
+        if (e.key == "ArrowRight") {
+          window.location.href = 'values.html';
+        }
+        
       }
-  </script>
+    </script>
+  </head>
   <body>
     <article class="example" id="hello-world">
       <h2><a href="./">Go by Example</a>: Hello World</h2>
@@ -32,11 +32,9 @@ message. Here&rsquo;s the full source code.</p>
 
           </td>
           <td class="code leading">
-            
-              <a href="https://go.dev/play/p/NeviD0awXjt" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="run"><polygon points="6 3 20 12 6 21 6 3"/></svg></a>
+            <a href="https://go.dev/play/p/NeviD0awXjt" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="run"><polygon points="6 3 20 12 6 21 6 3"/></svg></a>
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="copy"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/></svg>
-            
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
+            <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -46,7 +44,7 @@ message. Here&rsquo;s the full source code.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="s">&#34;fmt&#34;</span></span></span></code></pre>
+            <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="s">&#34;fmt&#34;</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -56,7 +54,7 @@ message. Here&rsquo;s the full source code.</p>
           </td>
           <td class="code">
             
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+            <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;hello world&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
           </td>
@@ -74,7 +72,7 @@ use <code>go run</code>.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run hello-world.go
+            <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run hello-world.go
 </span></span><span class="line"><span class="cl"><span class="go">hello world</span></span></span></code></pre>
           </td>
         </tr>
@@ -87,7 +85,7 @@ binaries. We can do this using <code>go build</code>.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go build hello-world.go
+            <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go build hello-world.go
 </span></span><span class="line"><span class="cl"><span class="gp">$</span> ls
 </span></span><span class="line"><span class="cl"><span class="go">hello-world    hello-world.go</span></span></span></code></pre>
           </td>
@@ -100,7 +98,7 @@ binaries. We can do this using <code>go build</code>.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> ./hello-world
+            <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> ./hello-world
 </span></span><span class="line"><span class="cl"><span class="go">hello world</span></span></span></code></pre>
           </td>
         </tr>
@@ -113,7 +111,7 @@ learn more about the language.</p>
           </td>
           <td class="code empty">
             
-          
+            
           </td>
         </tr>
         
@@ -139,6 +137,5 @@ learn more about the language.</p>
       var codeLines = [];
       codeLines.push('package main\u000A');codeLines.push('import \"fmt\"\u000A');codeLines.push('func main() {\u000A    fmt.Println(\"hello world\")\u000A}\u000A');codeLines.push('');codeLines.push('');codeLines.push('');codeLines.push('');
     </script>
-    <script src="site.js" async></script>
   </body>
 </html>
