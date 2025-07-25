@@ -34,15 +34,10 @@ function switchLanguage(targetLang) {
     if (currentLanguage === targetLang) {
         return;
     }
-
-    if (targetLang === "en") {
-        path.splice(path.indexOf(currentLanguage), 1);
-        url.pathname = path.join("/")
-        console.log("TO ENGLISH -- ", url.pathname, url);
-    } else {
+    if (targetLang !== "en") {
         path.splice(path.length - 1, 0, targetLang);
-        url.pathname = path.join("/");
-        console.log("TO ", targetLang, " -- ", url.pathname, url);
     }
+    url.pathname = path.join("/");
+    console.log("TO ", targetLang, " -- ", url.pathname, url);
     window.location.href = url.href;
 }
