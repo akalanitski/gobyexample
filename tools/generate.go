@@ -337,7 +337,7 @@ func parseExamples() []*Example {
 	return examples
 }
 
-func renderIndex(examples []*Example) {
+func renderIndex() {
 	if verbose() {
 		fmt.Println("Rendering index")
 	}
@@ -347,7 +347,9 @@ func renderIndex(examples []*Example) {
 	indexF, err := os.Create(siteDir + "/index.html")
 	check(err)
 	defer indexF.Close()
-	check(indexTmpl.Execute(indexF, examples))
+	indexMD := readTemplateFile("index.md")
+	md := markdown(indexMD)
+	check(indexTmpl.Execute(indexF, md))
 }
 
 func renderExamples(examples []*Example) {
@@ -399,7 +401,7 @@ func main() {
 	}
 
 	examples := parseExamples()
-	renderIndex(examples)
+	renderIndex()
 	renderExamples(examples)
 	render404()
 }

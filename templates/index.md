@@ -1,0 +1,105 @@
+## [Go by Example](./)
+
+[Go](https://go.dev) is an open source programming language designed for building scalable, secure and reliable software. Please read the [official documentation](https://go.dev/doc/tutorial/getting-started) to learn more.
+
+**Go by Example** is a hands-on introduction to Go using annotated example programs. Check out the [first example](hello-world) or browse the full list below.
+
+Unless stated otherwise, examples here assume the [latest major release Go](https://go.dev/doc/devel/release) and may use new language features. Try to upgrade to the latest version if something isn't working.
+
+### Basics
+* [Hello World](hello-world.html)
+* [Values](values.html)
+* [Variables](variables.html)
+* [Constants](constants.html)
+* [For](for.html)
+* [If/Else](if-else.html)
+* [Switch](switch.html)
+* [Arrays](arrays.html)
+* [Slices](slices.html)
+* [Maps](maps.html)
+
+### Functions and Methods
+* [Functions](functions.html)
+* [Multiple Return Values](multiple-return-values.html)
+* [Variadic Functions](variadic-functions.html)
+* [Closures](closures.html)
+* [Recursion](recursion.html)
+* [Methods](methods.html)
+* [Sorting by Functions](sorting-by-functions.html)
+
+### Data types
+* [Range over Built-in Types](range-over-built-in-types.html)
+* [Pointers](pointers.html)
+* [Strings and Runes](strings-and-runes.html)
+* [Structs](structs.html)
+* [Interfaces](interfaces.html)
+* [Enums](enums.html)
+* [Struct Embedding](struct-embedding.html)
+* [Generics](generics.html)
+* [Range over Iterators](range-over-iterators.html)
+* [Errors](errors.html)
+* [Custom Errors](custom-errors.html)
+* [Sorting](sorting.html)
+* [Panic](panic.html)
+* [Defer](defer.html)
+* [Recover](recover.html)
+* [String Functions](string-functions.html)
+* [String Formatting](string-formatting.html)
+* [Text Templates](text-templates.html)
+* [Regular Expressions](regular-expressions.html)
+* [Time](time.html)
+* [Epoch](epoch.html)
+* [Time Formatting / Parsing](time-formatting-parsing.html)
+* [Random Numbers](random-numbers.html)
+* [Number Parsing](number-parsing.html)
+* [Testing and Benchmarking](testing-and-benchmarking.html)
+
+### Cuncurrency
+* [Goroutines](goroutines.html)
+* [Channels](channels.html)
+* [Channel Buffering](channel-buffering.html)
+* [Channel Synchronization](channel-synchronization.html)
+* [Channel Directions](channel-directions.html)
+* [Select](select.html)
+* [Timeouts](timeouts.html)
+* [Non-Blocking Channel Operations](non-blocking-channel-operations.html)
+* [Closing Channels](closing-channels.html)
+* [Range over Channels](range-over-channels.html)
+* [Timers](timers.html)
+* [Tickers](Tickers.html)
+* [Worker Pools](worker-pools.html)
+* [WaitGroups](waitgroups.html)
+* [Rate Limiting](rate-limiting.html)
+* [Atomic Counters](atomic-counters.html)
+* [Mutexes](mutexes.html)
+* [Stateful Goroutines](stateful-goroutines.html)
+
+### File System
+* [Reading Files](reading-files.html)
+* [Writing Files](writing-files.html)
+* [Line Filters](line-filters.html)
+* [File Paths](file-paths.html)
+* [Directories](directories.html)
+* [Temporary Files and Directories](temporary-files-and-directories.html)
+* [Embed Directive](embed-directive.html)
+
+### Command Line
+* [Command-Line Arguments](command-line-arguments.html)
+* [Command-Line Flags](command-line-flags.html)
+* [Command-Line Subcommands](command-line-subcommands.html)
+* [Environment Variables](environment-variables.html)
+
+### Web
+* [JSON](json.html)
+* [XML](xml.html)
+* [URL Parsing](url-parsing.html)
+* [SHA256 Hashes](sha256-hashes.html)
+* [Base64 Encoding](base64-encoding.html)
+* [Logging](logging.html)
+* [HTTP Client](http-client.html)
+* [HTTP Server](http-server.html)
+* [Context](context.html)
+* [Spawning Processes](spawning-Processes.html)
+* [Exec'ing Processes](execing-processes.html)
+* [Signals](signals.html)
+* [Exit](exit.html)
