@@ -2,18 +2,9 @@
 <html lang="it">
   <head>
     <meta charset="utf-8">
-    <title>Go by Example - IT: Stateful Goroutines</title>
+    <title>Go by Example - IT: stateful-goroutines</title>
     <link rel=stylesheet href="site.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YS5D7DR8P1"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'G-YS5D7DR8P1');
-    </script>
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
     <script>
       window.onkeydown = (e) => {
         if (e.ctrlKey || e.altKey || e.shiftKey) {
@@ -21,12 +12,12 @@
         }
         
         if (e.key == "ArrowLeft") {
-          window.location.href = 'mutexes.html';
+          window.location.href = 'non-blocking-channel-operations.html';
         }
         
         
         if (e.key == "ArrowRight") {
-          window.location.href = 'sorting.html';
+          window.location.href = 'reading-files.html';
         }
         
       }
@@ -34,7 +25,7 @@
   </head>
   <body>
     <article class="example" id="stateful-goroutines">
-      <h2><a href="./">Go by Example - IT</a>: Stateful Goroutines</h2>
+      <h2><a href="./">Go by Example - IT</a>: stateful-goroutines</h2>
       
       <table>
         
@@ -292,7 +283,7 @@ codice.</p>
       
       
       <p class="next">
-        Prossimo esempio: <a href="sorting.html" rel="next">Sorting</a>.
+        Prossimo esempio: <a href="reading-files.html" rel="next">reading-files</a>.
       </p>
       
 
@@ -301,6 +292,15 @@ codice.</p>
         Мова <a href="#" onclick="switchLanguage('be')">BE</a> | <a href="#" onclick="switchLanguage('en')">EN</a> | <a href="#" onclick="switchLanguage('it')">IT</a>
     </p>
     <script src="site.js" async></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YS5D7DR8P1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-YS5D7DR8P1');
+    </script>
 
     </article>
     <script>

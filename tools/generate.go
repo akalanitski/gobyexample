@@ -43,8 +43,10 @@ var templatePath = "templates/"
 
 const staticDir = "static/"
 
-func verbose() bool {
-	return len(os.Getenv("VERBOSE")) > 0
+func log(str string) {
+	if len(os.Getenv("VERBOSE")) > 0 {
+		fmt.Println(str)
+	}
 }
 
 func check(err error) {
@@ -142,9 +144,7 @@ func parseHashFile(sourcePath string) (string, string) {
 }
 
 func resetURLHashFile(codehash, code, sourcePath string) string {
-	if verbose() {
-		fmt.Println("  Sending request to play.golang.org")
-	}
+	log(fmt.Sprintln("  Sending request to play.golang.org"))
 	payload := strings.NewReader(code)
 	resp, err := http.Post("https://play.golang.org/share", "text/plain", payload)
 	check(err)
@@ -266,15 +266,16 @@ func parseAndRenderSegs(sourcePath string) ([]*Seg, string) {
 func parseExamples() []*Example {
 	i := 0
 	examples := make([]*Example, 0)
-	exampleNames := readLines("examples.txt")
-	n := len(exampleNames)
-	for _, exampleName := range exampleNames {
-		logStr := "Processing [%d/%d]\t %s"
-		if exampleName == "" || strings.HasPrefix(exampleName, "#") {
-			if verbose() {
-				fmt.Printf(logStr+" Skipped\n", i+1, n, exampleName)
-			}
-			continue
+	exampleEntries, err := os.ReadDir("examples")
+	check(err)
+	n := len(exampleEntries)
+	for _, exampleEntry := range exampleEntries {
+		logStr := "Processing [%v/%d]\t %s"
+		exampleIndex := exampleEntry.Name()[:3]
+		exampleName := exampleEntry.Name()[4:]
+		if !exampleEntry.IsDir() || strings.HasPrefix(exampleName, ".") {
+			log(fmt.Sprintf(logStr+" Skipped", "-", n, exampleName))
+			continue // Skip files and hidden directories
 		}
 		example := Example{Name: exampleName}
 		exampleID := strings.ToLower(exampleName)
@@ -288,22 +289,18 @@ func parseExamples() []*Example {
 			example.FileName += "." + outputExt
 		}
 		example.Segs = make([][]*Seg, 0)
-		exampleDirPath := "examples/" + exampleID + "/" + langCode + "/"
+		exampleDirPath := "examples/" + exampleIndex + "-" + exampleID + "/" + langCode + "/"
 		sourcePaths := mustGlob(exampleDirPath + "*")
 		if len(sourcePaths) == 0 {
 			logStr += " [" + langCode + "] not translated, "
-			exampleDirPath = "examples/" + exampleID + "/"
+			exampleDirPath = "examples/" + exampleIndex + "-" + exampleID + "/"
 			sourcePaths = mustGlob(exampleDirPath + "*")
 		}
 		if len(sourcePaths) == 0 {
-			if verbose() {
-				fmt.Printf(logStr+" Skipped\n", i+1, n, exampleName)
-			}
+			log(fmt.Sprintf(logStr+" Skipped", i+1, n, exampleName))
 			continue
 		}
-		if verbose() {
-			fmt.Printf(logStr+" files:%v\n", i+1, n, exampleName, len(sourcePaths))
-		}
+		log(fmt.Sprintf(logStr+" files:%v", i+1, n, exampleName, len(sourcePaths)))
 		for _, sourcePath := range sourcePaths {
 			if isDir(sourcePath) {
 				continue
@@ -338,9 +335,7 @@ func parseExamples() []*Example {
 }
 
 func renderIndex() {
-	if verbose() {
-		fmt.Println("Rendering index")
-	}
+	log("Rendering index")
 	indexTmpl := template.New("index")
 	template.Must(indexTmpl.Parse(readTemplateFile("footer.tmpl")))
 	template.Must(indexTmpl.Parse(readTemplateFile("index.tmpl")))
@@ -353,9 +348,7 @@ func renderIndex() {
 }
 
 func renderExamples(examples []*Example) {
-	if verbose() {
-		fmt.Println("Rendering examples")
-	}
+	log("Rendering examples")
 	exampleTmpl := template.New("example")
 	template.Must(exampleTmpl.Parse(readTemplateFile("footer.tmpl")))
 	template.Must(exampleTmpl.Parse(readTemplateFile("example.tmpl")))
@@ -368,9 +361,7 @@ func renderExamples(examples []*Example) {
 }
 
 func render404() {
-	if verbose() {
-		fmt.Println("Rendering 404")
-	}
+	log("Rendering 404")
 	tmpl := template.New("404")
 	template.Must(tmpl.Parse(readTemplateFile("footer.tmpl")))
 	template.Must(tmpl.Parse(readTemplateFile("404.tmpl")))
@@ -387,7 +378,7 @@ func main() {
 	if len(flag.Args()) > 1 {
 		siteDir = flag.Args()[1]
 	}
-	fmt.Printf("Genarate HTML for Lang: %v, Extension: %v, dir: %v\n", langCode, outputExt, siteDir)
+	log(fmt.Sprintf("Genarate HTML for Lang: %v, Extension: %v, dir: %v", langCode, outputExt, siteDir))
 	ensureDir(siteDir)
 
 	if langCode != "en" {
